@@ -75,7 +75,7 @@ FOOTER = """
       <div>
         <img src="img/logo-knockout-offwhite.png" alt="Project H.O.O.D." style="height:54px;margin-bottom:14px;">
         <p style="font-family:var(--font-display);letter-spacing:.08em;font-size:13px;text-transform:uppercase;color:var(--yellow);margin-bottom:4px;">Helping Others Obtain Destiny</p>
-        <p style="font-size:13.5px;opacity:.9;">A community-rooted nonprofit investing in Woodlawn &amp; Chicago's South Side — through workforce development, violence prevention, education, mental health, and economic growth.</p>
+        <p style="font-size:13.5px;opacity:.9;">A community-rooted nonprofit investing in Woodlawn &amp; Chicago's South Side — through violence prevention, workforce development, health &amp; wellness, youth programming, and re-entry services.</p>
       </div>
       <div>
         <h5>Get Involved</h5>
@@ -210,7 +210,7 @@ home_body = f"""
     <div>
       <div class="eyebrow">Woodlawn, Chicago</div>
       <h2>Five Pillars. One neighborhood. A decade of showing up.</h2>
-      <p style="font-size:var(--fs-lead);">Project H.O.O.D. invests directly on the block — in workforce training, violence prevention, mental health, education, and economic growth. No national overhead, no middle layer.</p>
+      <p style="font-size:var(--fs-lead);">Project H.O.O.D. invests directly on the block — in violence prevention, workforce development, health &amp; wellness, youth programming, and re-entry services. No national overhead, no middle layer.</p>
       <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
         <a class="btn btn-primary" href="impact.html">See our impact</a>
         <a class="btn btn-outline-light" href="about.html">About us</a>
@@ -256,21 +256,21 @@ home_body = f"""
         <a href="programs.html" style="margin-top:auto;">Read more →</a>
       </div>
       <div class="prog-card pg-blue">
-        <span class="tag tag-blue">Education</span>
+        <span class="tag tag-blue">Youth Programming</span>
         <h3 style="margin-top:10px;">Esports &amp; youth enrichment.</h3>
         <p style="font-family:var(--font-serif);">After-school programs, tournaments, and mentorship — meeting kids where they already are.</p>
         <a href="programs.html" style="margin-top:auto;">Read more →</a>
       </div>
       <div class="prog-card pg-purple">
-        <span class="tag tag-purple">Mental Health</span>
-        <h3 style="margin-top:10px;">Trauma-informed care.</h3>
+        <span class="tag tag-purple">Health &amp; Wellness</span>
+        <h3 style="margin-top:10px;">Counseling &amp; community care.</h3>
         <p style="font-family:var(--font-serif);">Free counseling, group sessions, and crisis response — run by licensed clinicians and peer specialists.</p>
         <a href="programs.html" style="margin-top:auto;">Read more →</a>
       </div>
       <div class="prog-card pg-yellow">
-        <span class="tag tag-yellow">Economic Growth</span>
-        <h3 style="margin-top:10px;">Small-business support.</h3>
-        <p style="font-family:var(--font-serif);">Technical assistance, micro-grants, and mentorship for Woodlawn entrepreneurs.</p>
+        <span class="tag tag-yellow">Re-Entry Services</span>
+        <h3 style="margin-top:10px;">Second chances, real support.</h3>
+        <p style="font-family:var(--font-serif);">Employment pathways, housing navigation, and wraparound support for individuals returning from incarceration.</p>
         <a href="programs.html" style="margin-top:auto;">Read more →</a>
       </div>
       <div class="prog-card">
@@ -347,7 +347,7 @@ about_body = f"""
     <div>
       <div class="eyebrow">Our mission</div>
       <h2>A decade of showing up.</h2>
-      <p>Project H.O.O.D. (Helping Others Obtain Destiny) exists to create sustainable change in Woodlawn and the broader South Side of Chicago. We operate across five interconnected pillars — violence prevention, workforce development, education, mental health, and economic growth — because no one of these alone is enough.</p>
+      <p>Project H.O.O.D. (Helping Others Obtain Destiny) exists to create sustainable change in Woodlawn and the broader South Side of Chicago. We operate across five interconnected pillars — violence prevention, workforce development, health &amp; wellness, youth programming, and re-entry services — because no one of these alone is enough.</p>
       <p>We believe that the people closest to the problems are closest to the solutions. Everything we do is built with the neighborhood, not for it.</p>
     </div>
     <div class="img-ph" style="min-height:340px;">MISSION PHOTO · community or founder</div>
@@ -451,7 +451,7 @@ programs_body = f"""
   <div class="wrap">
     <div class="eyebrow" style="color:var(--yellow);">Programs</div>
     <h1>Five Pillars. One <span class="hl-yellow">strategy.</span></h1>
-    <p class="lead">Violence prevention, workforce development, education, mental health, and economic growth — interlocking, not siloed. You can't fix one without touching the others.</p>
+    <p class="lead">Violence prevention, workforce development, health &amp; wellness, youth programming, and re-entry services — interlocking, not siloed. You can't fix one without touching the others.</p>
   </div>
 </section>
 
@@ -469,7 +469,7 @@ programs_body = f"""
           <li>Hospital-based intervention</li>
           <li>School partnership mediators</li>
         </ul>
-        <a href="program.html" class="btn btn-outline" style="align-self:flex-start;margin-top:auto;">About Violence Prevention</a>
+        <a href="violence-prevention.html" class="btn btn-outline" style="align-self:flex-start;margin-top:auto;">About Violence Prevention</a>
       </div>
       <div class="prog-card">
         <span class="tag tag-red">02 · Workforce Development</span>
@@ -480,10 +480,10 @@ programs_body = f"""
           <li>IT/tech bootcamp</li>
           <li>Direct-hire employer network</li>
         </ul>
-        <a href="program.html" class="btn btn-outline" style="align-self:flex-start;margin-top:auto;">About Workforce</a>
+        <a href="workforce-development.html" class="btn btn-outline" style="align-self:flex-start;margin-top:auto;">About Workforce</a>
       </div>
       <div class="prog-card pg-blue">
-        <span class="tag tag-blue">03 · Education</span>
+        <span class="tag tag-blue">03 · Youth Programming</span>
         <h3 style="margin-top:12px;">Esports &amp; youth enrichment.</h3>
         <p>After-school programs, academic support, and youth mentorship — built around what kids actually want to do.</p>
         <ul style="font-size:14px;color:var(--muted);margin:var(--sp-2) 0;">
@@ -491,29 +491,29 @@ programs_body = f"""
           <li>Homework + tutoring</li>
           <li>College/career readiness</li>
         </ul>
-        <a href="program.html" class="btn btn-outline" style="align-self:flex-start;margin-top:auto;">About Education</a>
+        <a href="youth-programming.html" class="btn btn-outline" style="align-self:flex-start;margin-top:auto;">About Youth Programming</a>
       </div>
       <div class="prog-card pg-purple">
-        <span class="tag tag-purple">04 · Mental Health</span>
-        <h3 style="margin-top:12px;">Trauma-informed care.</h3>
+        <span class="tag tag-purple">04 · Health &amp; Wellness</span>
+        <h3 style="margin-top:12px;">Counseling &amp; community care.</h3>
         <p>Free counseling, group work, and crisis response — delivered by licensed clinicians and peer specialists.</p>
         <ul style="font-size:14px;color:var(--muted);margin:var(--sp-2) 0;">
           <li>Individual therapy</li>
           <li>Group support circles</li>
           <li>Crisis + post-incident response</li>
         </ul>
-        <a href="program.html" class="btn btn-outline" style="align-self:flex-start;margin-top:auto;">About Mental Health</a>
+        <a href="health-wellness.html" class="btn btn-outline" style="align-self:flex-start;margin-top:auto;">About Health &amp; Wellness</a>
       </div>
       <div class="prog-card pg-yellow">
-        <span class="tag tag-yellow">05 · Economic Growth</span>
-        <h3 style="margin-top:12px;">Small-business support.</h3>
-        <p>Technical assistance, micro-grants, and mentorship for Woodlawn entrepreneurs — so dollars that come into the neighborhood stay in the neighborhood.</p>
+        <span class="tag tag-yellow">05 · Re-Entry Services</span>
+        <h3 style="margin-top:12px;">Second chances, real support.</h3>
+        <p>Employment pathways, housing navigation, and wraparound support for individuals returning from incarceration — so they land somewhere stable.</p>
         <ul style="font-size:14px;color:var(--muted);margin:var(--sp-2) 0;">
-          <li>Business plan coaching</li>
-          <li>Grant + capital access</li>
-          <li>Local-vendor procurement</li>
+          <li>Job placement + career coaching</li>
+          <li>Housing assistance</li>
+          <li>Case management + referrals</li>
         </ul>
-        <a href="program.html" class="btn btn-outline" style="align-self:flex-start;margin-top:auto;">About Economic Growth</a>
+        <a href="reentry-services.html" class="btn btn-outline" style="align-self:flex-start;margin-top:auto;">About Re-Entry Services</a>
       </div>
       <div class="prog-card">
         <span class="tag tag-black">Participant Intake</span>
@@ -521,6 +521,52 @@ programs_body = f"""
         <p>Our case-management system is Social Solutions Apricot. Apply once, and our intake team will route you to the right program and staff member.</p>
         <a href="https://projecthood.socialsolutionsportal.com/apricot-intake/0eb461e5-38a9-4ad1-9a4e-02bb3ee1414d" class="btn btn-primary" style="align-self:flex-start;margin-top:auto;" target="_blank" rel="noopener">Start an application →</a>
         <p style="font-size:12px;color:var(--muted);margin-top:8px;font-style:italic;">Opens Apricot intake portal in a new tab.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-offwhite">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--purple);">Health &amp; Wellness · Partner Spotlight</div>
+    <h2>Free medical care, right at New Beginnings Church.</h2>
+    <div class="grid-2" style="margin-top:var(--sp-3);align-items:center;gap:var(--sp-4);">
+      <div>
+        <p style="font-size:var(--fs-lead);">The <strong>Southside Free Clinic (SSFC)</strong> — a collaboration between the University of Chicago Pritzker School of Medicine, Project H.O.O.D., and Friend Health — provides free, quality medical care to South Side residents. No insurance needed. Walk-ins welcome.</p>
+        <div style="margin:var(--sp-3) 0;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <span style="font-size:20px;">📍</span>
+            <div><strong>New Beginnings Church</strong><br>6620 S. King Dr., Chicago, IL 60637</div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <span style="font-size:20px;">🗓</span>
+            <div><strong>1st &amp; 3rd Sunday of each month</strong><br>12PM – 4PM</div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <span style="font-size:20px;">📞</span>
+            <div><a href="tel:3127256648"><strong>312-725-6648</strong></a><br>Call to schedule an appointment</div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <span style="font-size:20px;">🏥</span>
+            <div><strong>Referrals</strong><br>Patients are referred to Friend Health at 6250 S. Cottage Grove</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a class="btn btn-primary" href="docs/ssfc-flyer-2025-2026.pdf" target="_blank" rel="noopener">Download flyer</a>
+        </div>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:var(--sp-3);border:1px solid var(--line);">
+        <p style="font-size:13px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--muted);margin-bottom:var(--sp-2);">Services offered</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+          <li style="padding:10px 14px;background:var(--purple);color:#fff;border-radius:4px;font-weight:600;">Diabetes</li>
+          <li style="padding:10px 14px;background:var(--purple);color:#fff;border-radius:4px;font-weight:600;">High Blood Pressure</li>
+          <li style="padding:10px 14px;background:var(--purple);color:#fff;border-radius:4px;font-weight:600;">High Cholesterol</li>
+          <li style="padding:10px 14px;background:var(--purple);color:#fff;border-radius:4px;font-weight:600;">General Health Check-Ups</li>
+          <li style="padding:10px 14px;background:var(--purple);color:#fff;border-radius:4px;font-weight:600;">Rash / Allergies</li>
+          <li style="padding:10px 14px;background:var(--purple);color:#fff;border-radius:4px;font-weight:600;">Upset Stomach · Bodily Pain</li>
+          <li style="padding:10px 14px;background:var(--bg);border-radius:4px;font-weight:600;color:var(--muted);font-style:italic;">And more — walk-ins welcome</li>
+        </ul>
+        <p style="margin-top:var(--sp-2);font-size:12px;color:var(--muted);">In collaboration with the University of Chicago Pritzker School of Medicine &amp; Friend Health.</p>
       </div>
     </div>
   </div>
@@ -537,30 +583,32 @@ programs_body = f"""
 </section>
 """
 
-# -------- SINGLE PROGRAM PAGE (template) --------
-program_body = f"""
+# -------- PILLAR 1: VIOLENCE PREVENTION --------
+violence_prevention_body = f"""
 <section class="hero bg-green">
   <div class="wrap">
-    <div class="eyebrow" style="color:var(--yellow);">Programs · Violence Prevention</div>
-    <h1>Outreach <span class="hl-yellow">on the block.</span></h1>
-    <p class="lead">Credible messengers and conflict mediators embedded in the neighborhood, defusing violence before it escalates and mentoring young people out of the life.</p>
+    <div class="eyebrow" style="color:var(--yellow);">Programs · Pillar 1</div>
+    <h1>Creating <span class="hl-yellow">Safer Communities.</span></h1>
+    <p class="lead">Credible messengers and conflict mediators embedded in the neighborhood — defusing violence before it escalates and mentoring young people out of the life.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap grid-2">
     <div>
-      <div class="eyebrow">How it works</div>
-      <h2>Tangible activities.</h2>
-      <p>Outreach workers are out on the block nightly — mediating beefs, riding to the hospital with shooting victims, pulling young men aside before a retaliation escalates. Every worker carries a caseload of participants they mentor long-term.</p>
+      <div class="eyebrow">What we do</div>
+      <h2>Prevention before the incident. Response after.</h2>
+      <p>Our Violence Prevention pillar takes a multifaceted approach to building safer neighborhoods. Outreach workers are out on the block nightly — mediating disputes, riding to the hospital with shooting victims, and pulling young men aside before a retaliation escalates. Every worker carries a long-term caseload of participants they mentor directly.</p>
       <ul>
         <li>24/7 community response team covering Woodlawn + Washington Park</li>
         <li>Hospital-based intervention partnering with University of Chicago Medicine</li>
         <li>Embedded mediators in local schools</li>
         <li>Weekly peace circles for young men 16–24</li>
+        <li>Conflict resolution training for community members</li>
+        <li>Community events promoting unity and connection</li>
       </ul>
     </div>
-    <div class="img-ph" style="min-height:380px;">PROGRAM PHOTO · staff or outreach scene</div>
+    <div class="img-ph" style="min-height:380px;">PHOTO · outreach team / community event</div>
   </div>
 </section>
 
@@ -569,7 +617,7 @@ program_body = f"""
     <div>
       <div class="eyebrow">Who runs it</div>
       <h2>Led by people from the block.</h2>
-      <p>Our outreach team is led by [Director name], a former participant who rose through the program. The team is 12 strong — all credible messengers with lived experience and specialized training.</p>
+      <p>Our outreach team is made up of credible messengers — people with lived experience in the community who have earned trust on the street. They work alongside licensed professionals and in close collaboration with law enforcement and community partners.</p>
     </div>
     <div>
       <div class="eyebrow" style="color:var(--green);">Partners</div>
@@ -586,17 +634,17 @@ program_body = f"""
 
 <section class="section bg-green">
   <div class="wrap">
-    <div class="eyebrow" style="color:var(--yellow);">Proof</div>
+    <div class="eyebrow" style="color:var(--yellow);">2025 Impact</div>
     <h2 style="color:var(--white);">What the work is producing.</h2>
     <div class="stat-grid" style="margin-top:var(--sp-3);">
-      <div class="stat"><div class="v">140+</div><div class="l">incidents mediated in 2025</div></div>
+      <div class="stat"><div class="v">140+</div><div class="l">incidents mediated</div></div>
       <div class="stat"><div class="v">22</div><div class="l">hospital-bedside interventions</div></div>
       <div class="stat"><div class="v">85</div><div class="l">young men in peace circles</div></div>
-      <div class="stat"><div class="v">31%</div><div class="l">reduction in 60637 gun homicides (2024→2025)</div></div>
+      <div class="stat"><div class="v">31%</div><div class="l">reduction in 60637 gun homicides</div></div>
     </div>
     <div class="testimonial" style="margin-top:var(--sp-4);background:var(--black);">
       <blockquote>"They showed up when nobody else did. When my brother got shot, outreach was at the hospital before my mother got there."</blockquote>
-      <cite>— Program participant, 23</cite>
+      <cite>— Program participant, age 23</cite>
     </div>
   </div>
 </section>
@@ -605,9 +653,330 @@ program_body = f"""
   <div class="wrap">
     <h2>Support the outreach team.</h2>
     <div class="btn-group">
-      <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/">Fund this program</a>
+      <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/">Fund this pillar</a>
       <a class="btn btn-outline-light" href="get-involved.html">Volunteer</a>
       <a class="btn btn-outline-light" href="https://projecthood.socialsolutionsportal.com/apricot-intake/0eb461e5-38a9-4ad1-9a4e-02bb3ee1414d" target="_blank" rel="noopener">Apply as participant</a>
+    </div>
+  </div>
+</section>
+"""
+
+# -------- PILLAR 2: WORKFORCE DEVELOPMENT --------
+workforce_development_body = f"""
+<section class="hero bg-red">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--yellow);">Programs · Pillar 2</div>
+    <h1>Providing <span class="hl-yellow">Opportunities.</span></h1>
+    <p class="lead">Comprehensive job training, placement, and career development — because economic empowerment is how you break the cycle for good.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap grid-2">
+    <div>
+      <div class="eyebrow">What we do</div>
+      <h2>Careers, not just jobs.</h2>
+      <p>Our Workforce Development pillar equips individuals with the skills, credentials, and connections to build real careers. From construction trades to tech, we partner with employers directly so training leads to placement — not just a certificate.</p>
+      <ul>
+        <li>Comprehensive job training programs in construction, tech, and logistics</li>
+        <li>Job placement support and employer partnerships</li>
+        <li>Career development and advancement resources</li>
+        <li>Financial literacy and resume building</li>
+        <li>Networking opportunities and mentorship</li>
+        <li>Pre-Apprenticeship Construction cohort program</li>
+      </ul>
+      <div style="margin-top:var(--sp-3);">
+        <a class="btn btn-primary" href="https://www.projecthood.org/construction-cohort" target="_blank" rel="noopener">Pre-Apprenticeship Construction cohort →</a>
+      </div>
+    </div>
+    <div class="img-ph" style="min-height:380px;">PHOTO · job training / construction cohort</div>
+  </div>
+</section>
+
+<section class="section bg-offwhite">
+  <div class="wrap grid-2">
+    <div>
+      <div class="eyebrow">Who runs it</div>
+      <h2>Practitioners, not just instructors.</h2>
+      <p>Our workforce team includes credentialed trainers, industry-connected case managers, and employer partners who hire our graduates. We walk participants from intake through day one on the job — and stay in contact beyond.</p>
+    </div>
+    <div>
+      <div class="eyebrow" style="color:var(--red);">Partners</div>
+      <h3>Who we work with.</h3>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:8px 0;border-bottom:1px solid var(--line);">Local construction firms + trade unions</li>
+        <li style="padding:8px 0;border-bottom:1px solid var(--line);">Chicago Cook Workforce Partnership</li>
+        <li style="padding:8px 0;border-bottom:1px solid var(--line);">City Colleges of Chicago</li>
+        <li style="padding:8px 0;">New Beginnings Church of Chicago</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-red">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--yellow);">2025 Impact</div>
+    <h2 style="color:var(--white);">The numbers.</h2>
+    <div class="stat-grid" style="margin-top:var(--sp-3);">
+      <div class="stat"><div class="v">1,048</div><div class="l">job placements in 2025</div></div>
+      <div class="stat"><div class="v">$19/hr</div><div class="l">average starting wage</div></div>
+      <div class="stat"><div class="v">72%</div><div class="l">retained at 6 months</div></div>
+      <div class="stat"><div class="v">Multiple</div><div class="l">trades + industries served</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Ready to take the first step?</h2>
+    <div class="btn-group">
+      <a class="btn btn-yellow" href="https://projecthood.socialsolutionsportal.com/apricot-intake/0eb461e5-38a9-4ad1-9a4e-02bb3ee1414d" target="_blank" rel="noopener">Apply as participant</a>
+      <a class="btn btn-outline-light" href="https://projecthood.networkforgood.com/">Fund this pillar</a>
+      <a class="btn btn-outline-light" href="partner.html">Become an employer partner</a>
+    </div>
+  </div>
+</section>
+"""
+
+# -------- PILLAR 3: HEALTH & WELLNESS --------
+health_wellness_body = f"""
+<section class="hero bg-purple">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--yellow);">Programs · Pillar 3</div>
+    <h1>Elevating <span class="hl-yellow">Your Well-Being.</span></h1>
+    <p class="lead">Free, quality healthcare and wellness services for South Side residents — because a healthier community is a stronger community.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap grid-2">
+    <div>
+      <div class="eyebrow">What we do</div>
+      <h2>Holistic care, no barriers.</h2>
+      <p>Our Health &amp; Wellness pillar addresses the full picture — physical health, mental health, emotional wellness, and social connection. We recognize that healthcare disparities are real, and we work to ensure every South Side resident has equitable access to the care they need regardless of insurance status or income.</p>
+      <ul>
+        <li>Free medical screenings and health check-ups</li>
+        <li>Mental health counseling and therapy</li>
+        <li>Group support circles and crisis response</li>
+        <li>Fitness programs and social engagement</li>
+        <li>Health education and wellness resources</li>
+        <li>Referral network to ongoing care providers</li>
+      </ul>
+    </div>
+    <div class="img-ph" style="min-height:380px;">PHOTO · health clinic / wellness event</div>
+  </div>
+</section>
+
+<section class="section bg-offwhite">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--purple);">Partner Spotlight · Southside Free Clinic</div>
+    <h2>Free medical care, right here in the neighborhood.</h2>
+    <div class="grid-2" style="margin-top:var(--sp-3);align-items:center;gap:var(--sp-4);">
+      <div>
+        <p style="font-size:var(--fs-lead);">The <strong>Southside Free Clinic (SSFC)</strong> — a collaboration between the University of Chicago Pritzker School of Medicine, Project H.O.O.D., and Friend Health — brings free medical care directly to our community at New Beginnings Church. No insurance required. Walk-ins welcome.</p>
+        <div style="margin:var(--sp-3) 0;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <span style="font-size:20px;">📍</span>
+            <div><strong>New Beginnings Church</strong><br>6620 S. King Dr., Chicago, IL 60637</div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <span style="font-size:20px;">🗓</span>
+            <div><strong>1st &amp; 3rd Sunday of each month</strong><br>12PM – 4PM · Walk-ins welcome</div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <span style="font-size:20px;">📞</span>
+            <div><a href="tel:3127256648"><strong>312-725-6648</strong></a> · To schedule an appointment</div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <span style="font-size:20px;">🏥</span>
+            <div>Patients referred to <strong>Friend Health</strong> at 6250 S. Cottage Grove for ongoing care</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a class="btn btn-primary" href="tel:3127256648">Call to schedule</a>
+          <a class="btn btn-outline" href="docs/ssfc-flyer-2025-2026.pdf" target="_blank" rel="noopener">Download flyer</a>
+        </div>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:var(--sp-3);border:1px solid var(--line);">
+        <p style="font-size:13px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--muted);margin-bottom:var(--sp-2);">Services offered</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li style="padding:10px 14px;background:var(--purple);color:#fff;border-radius:4px;font-weight:600;">Diabetes</li>
+          <li style="padding:10px 14px;background:var(--purple);color:#fff;border-radius:4px;font-weight:600;">High Blood Pressure</li>
+          <li style="padding:10px 14px;background:var(--purple);color:#fff;border-radius:4px;font-weight:600;">High Cholesterol</li>
+          <li style="padding:10px 14px;background:var(--purple);color:#fff;border-radius:4px;font-weight:600;">General Health Check-Ups</li>
+          <li style="padding:10px 14px;background:var(--purple);color:#fff;border-radius:4px;font-weight:600;">Rash / Allergies · Upset Stomach · Bodily Pain</li>
+          <li style="padding:10px 14px;background:var(--bg);border-radius:4px;color:var(--muted);font-style:italic;">And more — walk-ins welcome</li>
+        </ul>
+        <p style="margin-top:12px;font-size:12px;color:var(--muted);">In collaboration with UChicago Pritzker School of Medicine &amp; Friend Health.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-purple">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--yellow);">2025 Impact</div>
+    <h2 style="color:var(--white);">The numbers.</h2>
+    <div class="stat-grid" style="margin-top:var(--sp-3);">
+      <div class="stat"><div class="v">520</div><div class="l">counseling sessions delivered</div></div>
+      <div class="stat"><div class="v">$0</div><div class="l">cost to participants</div></div>
+      <div class="stat"><div class="v">Free</div><div class="l">SSFC clinic · 1st &amp; 3rd Sunday</div></div>
+      <div class="stat"><div class="v">3</div><div class="l">partner organizations delivering care</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Ready to take the first step?</h2>
+    <div class="btn-group">
+      <a class="btn btn-yellow" href="https://projecthood.socialsolutionsportal.com/apricot-intake/0eb461e5-38a9-4ad1-9a4e-02bb3ee1414d" target="_blank" rel="noopener">Apply as participant</a>
+      <a class="btn btn-outline-light" href="tel:3127256648">Call SSFC clinic</a>
+      <a class="btn btn-outline-light" href="https://projecthood.networkforgood.com/">Fund this pillar</a>
+    </div>
+  </div>
+</section>
+"""
+
+# -------- PILLAR 4: YOUTH PROGRAMMING --------
+youth_programming_body = f"""
+<section class="hero bg-blue">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--yellow);">Programs · Pillar 4</div>
+    <h1>Empowering <span class="hl-yellow">Futures.</span></h1>
+    <p class="lead">After-school programs, esports, mentorship, and enrichment — meeting young people where they are and investing in where they're going.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap grid-2">
+    <div>
+      <div class="eyebrow">What we do</div>
+      <h2>Built around what young people actually want to do.</h2>
+      <p>Project H.O.O.D.'s Youth Programming is a dynamic, community-centered initiative aimed at empowering young people in Woodlawn and the broader South Side. We break the cycle of poverty and limited opportunity by creating an environment where young people can discover their potential, develop real skills, and build a path forward.</p>
+      <ul>
+        <li>After-school tutoring and homework assistance</li>
+        <li>Esports tournaments, leagues, and competitive teams</li>
+        <li>Skills training and enrichment programs</li>
+        <li>College and career readiness coaching</li>
+        <li>Mentorship from community role models</li>
+        <li>Summer internship placement</li>
+      </ul>
+    </div>
+    <div class="img-ph" style="min-height:380px;">PHOTO · esports arena / youth programming</div>
+  </div>
+</section>
+
+<section class="section bg-offwhite">
+  <div class="wrap grid-2">
+    <div>
+      <div class="eyebrow">Who runs it</div>
+      <h2>Coaches, mentors, and educators from the community.</h2>
+      <p>Our youth team is made up of educators, coaches, and community mentors who show up consistently — building relationships that go beyond a single program. Young people who come through often return as mentors themselves.</p>
+    </div>
+    <div>
+      <div class="eyebrow" style="color:var(--blue);">Partners</div>
+      <h3>Who we work with.</h3>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:8px 0;border-bottom:1px solid var(--line);">Chicago Public Schools</li>
+        <li style="padding:8px 0;border-bottom:1px solid var(--line);">Local esports partners and leagues</li>
+        <li style="padding:8px 0;border-bottom:1px solid var(--line);">Summer internship employers</li>
+        <li style="padding:8px 0;">New Beginnings Church of Chicago</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-blue">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--yellow);">2025 Impact</div>
+    <h2 style="color:var(--white);">The numbers.</h2>
+    <div class="stat-grid" style="margin-top:var(--sp-3);">
+      <div class="stat"><div class="v">380</div><div class="l">youth enrolled</div></div>
+      <div class="stat"><div class="v">94%</div><div class="l">weekly attendance rate</div></div>
+      <div class="stat"><div class="v">42</div><div class="l">placed in summer internships</div></div>
+      <div class="stat"><div class="v">LEO</div><div class="l">400-seat esports arena coming</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Ready to take the first step?</h2>
+    <div class="btn-group">
+      <a class="btn btn-yellow" href="https://projecthood.socialsolutionsportal.com/apricot-intake/0eb461e5-38a9-4ad1-9a4e-02bb3ee1414d" target="_blank" rel="noopener">Apply as participant</a>
+      <a class="btn btn-outline-light" href="https://projecthood.networkforgood.com/">Fund this pillar</a>
+      <a class="btn btn-outline-light" href="get-involved.html">Volunteer</a>
+    </div>
+  </div>
+</section>
+"""
+
+# -------- PILLAR 5: RE-ENTRY SERVICES --------
+reentry_services_body = f"""
+<section class="hero bg-yellow" style="color:var(--black);">
+  <div class="wrap">
+    <div class="eyebrow">Programs · Pillar 5</div>
+    <h1>Building Bridges <span style="background:var(--black);color:var(--yellow);padding:0 6px;border-radius:4px;">to Success.</span></h1>
+    <p class="lead" style="color:var(--ink);">Second chances are real here. We walk with individuals returning from incarceration through every step of reintegration — employment, housing, counseling, and belonging.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap grid-2">
+    <div>
+      <div class="eyebrow">What we do</div>
+      <h2>A pathway, not just a hand-off.</h2>
+      <p>Our Re-Entry Services pillar is built on the belief that people deserve real second chances — and that means more than just a referral sheet. We provide comprehensive, wraparound support to individuals with justice involvement as they reintegrate into their communities and rebuild their lives.</p>
+      <ul>
+        <li>Job readiness training and career coaching</li>
+        <li>Job placement and employer partnerships</li>
+        <li>Housing navigation and support</li>
+        <li>Individual counseling and case management</li>
+        <li>Mentorship from people with lived experience</li>
+        <li>Connection to community resources and referrals</li>
+      </ul>
+    </div>
+    <div class="img-ph" style="min-height:380px;">PHOTO · re-entry services / staff</div>
+  </div>
+</section>
+
+<section class="section bg-offwhite">
+  <div class="wrap grid-2">
+    <div>
+      <div class="eyebrow">Who runs it</div>
+      <h2>People who understand what returning home actually means.</h2>
+      <p>Our re-entry team includes case managers, counselors, and mentors — many with lived experience of the justice system. They understand the real barriers returning citizens face and work to dismantle them one by one.</p>
+    </div>
+    <div>
+      <div class="eyebrow" style="color:var(--green);">Partners</div>
+      <h3>Who we work with.</h3>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:8px 0;border-bottom:1px solid var(--line);">Legal Aid Society (LAS)</li>
+        <li style="padding:8px 0;border-bottom:1px solid var(--line);">Local housing and social service providers</li>
+        <li style="padding:8px 0;border-bottom:1px solid var(--line);">Employer partners committed to fair chance hiring</li>
+        <li style="padding:8px 0;">New Beginnings Church of Chicago</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-black">
+  <div class="wrap">
+    <div class="testimonial">
+      <blockquote>"When I came home, I didn't know where to start. Project H.O.O.D. helped me find a job, find a place to stay, and find myself again."</blockquote>
+      <cite>— Re-entry participant</cite>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Ready to take the first step?</h2>
+    <div class="btn-group">
+      <a class="btn btn-yellow" href="https://docs.google.com/forms/d/14iVTtk2vXman0g1mQEH2LwJINUCQsfh1Jy5mmMRAhPQ/viewform" target="_blank" rel="noopener">Begin your journey</a>
+      <a class="btn btn-outline-light" href="https://projecthood.networkforgood.com/">Fund this pillar</a>
+      <a class="btn btn-outline-light" href="get-involved.html">Volunteer</a>
     </div>
   </div>
 </section>
@@ -658,12 +1027,12 @@ impact_body = f"""
         <p>Construction trades, tech, and logistics. $19/hr average starting wage. 72% still employed with the same employer six months out.</p>
       </div>
       <div class="prog-card pg-blue">
-        <span class="tag tag-blue">Education</span>
+        <span class="tag tag-blue">Youth Programming</span>
         <h3>380 youth · 94% attendance rate</h3>
         <p>Esports league, tutoring, and mentorship. 94% weekly attendance. 42 youth placed in summer internships.</p>
       </div>
       <div class="prog-card pg-purple">
-        <span class="tag tag-purple">Mental Health</span>
+        <span class="tag tag-purple">Health &amp; Wellness</span>
         <h3>520 sessions · 0 cost to participants</h3>
         <p>Individual therapy, group work, and crisis response — entirely free to participants, funded by foundations + individual donors.</p>
       </div>
@@ -761,7 +1130,7 @@ leo_body = f"""
     <div>
       <div class="eyebrow">What it is</div>
       <h2>One building, five pillars, one neighborhood.</h2>
-      <p>The LEO Center brings every Project H.O.O.D. program under one roof: workforce training classrooms, mental health counseling suites, esports arena, economic growth incubator, outreach team offices, community kitchen, and a 400-seat multipurpose hall.</p>
+      <p>The LEO Center brings every Project H.O.O.D. pillar under one roof: workforce training classrooms, health &amp; wellness counseling suites, esports arena, re-entry services hub, outreach team offices, community kitchen, and a 400-seat multipurpose hall.</p>
       <p>It's being built on land owned by Project H.O.O.D., directly on S. King Drive — a deliberate statement that serious investment belongs on the South Side.</p>
     </div>
     <div class="img-ph" style="min-height:360px;">FLOOR PLAN OR RENDERING</div>
@@ -1227,7 +1596,7 @@ news_body = f"""
         <a href="#" style="margin-top:auto;">Read →</a>
       </div>
       <div class="card card-accent" style="border-top-color:var(--purple);">
-        <div class="eyebrow">Dec 18, 2025 · Mental Health</div>
+        <div class="eyebrow">Dec 18, 2025 · Health &amp; Wellness</div>
         <h3>Free counseling, no waitlist: the 2025 clinical report.</h3>
         <p>520 sessions delivered, 0 cost to participants. How we funded it, what we're expanding for 2026.</p>
         <a href="#" style="margin-top:auto;">Read →</a>
@@ -1470,11 +1839,15 @@ notfound_body = f"""
 # Registry — (filename, title, meta, active key, body)
 # ---------------------------------------------------------------------------
 pages = [
-    ("index.html",       "Home",                         "Project H.O.O.D. — a community-rooted nonprofit investing in Chicago's South Side through violence prevention, workforce development, mental health, education, and economic growth.", None,            home_body),
+    ("index.html",       "Home",                         "Project H.O.O.D. — a community-rooted nonprofit investing in Chicago's South Side through violence prevention, workforce development, health & wellness, youth programming, and re-entry services.", None,            home_body),
     ("about.html",       "About",                        "Project H.O.O.D. was founded by Pastor Corey B. Brooks in 2012. A decade of showing up in Woodlawn.",                                   "a_about",        about_body),
     ("exec-director.html", "Executive Director",         "Meet Desmond 'Dez' Marshall — Executive Director of Project H.O.O.D. Led the team from 3 to 83 staff, raised $44M+, serves 15,000+ annually.", "a_about",    exec_director_body),
-    ("programs.html",    "Programs",                     "Five Pillars, one neighborhood. Violence prevention, workforce development, education, mental health, and economic growth.",         "a_programs",     programs_body),
-    ("program.html",     "Violence Prevention",          "Violence Prevention at Project H.O.O.D. — credible messengers and conflict mediators embedded in Woodlawn.",                          "a_programs",     program_body),
+    ("programs.html",    "Programs",                     "Five Pillars, one neighborhood. Violence prevention, workforce development, health & wellness, youth programming, and re-entry services.",         "a_programs",     programs_body),
+    ("violence-prevention.html",   "Violence Prevention",    "Creating safer communities in Woodlawn — credible messengers, conflict mediation, and hospital-based intervention.",           "a_programs",     violence_prevention_body),
+    ("workforce-development.html", "Workforce Development",  "Job training, placement, and career development on Chicago's South Side. 1,048 placements in 2025. $19/hr average wage.",          "a_programs",     workforce_development_body),
+    ("health-wellness.html",       "Health & Wellness",      "Free medical care, counseling, and wellness programs for South Side residents — including the Southside Free Clinic (SSFC).",     "a_programs",     health_wellness_body),
+    ("youth-programming.html",     "Youth Programming",      "After-school programs, esports, mentorship, and enrichment — 380 youth enrolled, 94% attendance, 42 summer internships in 2025.", "a_programs",     youth_programming_body),
+    ("reentry-services.html",      "Re-Entry Services",      "Second chances, real support — job readiness, housing, counseling, and mentorship for individuals returning from incarceration.",  "a_programs",     reentry_services_body),
     ("impact.html",      "Impact",                       "2025 impact — 15,000+ served, 1,048 job placements, 2M+ lbs of food distributed, 70% LEO Center funded.",                             "a_impact",       impact_body),
     ("leo-center.html",  "LEO Center",                   "The Leadership and Economic Opportunity Center — 70% funded, a 90,000 sq ft community hub on S. King Drive.",                        "a_leo",          leo_body),
     ("campaigns.html",   "Walk With Us!",                "Walk With Us! — a nationwide movement to raise $25M for youth, families, and the LEO Center. Give, walk, or start a team on Tiltify.",  "a_campaigns",    campaigns_body),
