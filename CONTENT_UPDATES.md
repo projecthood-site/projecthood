@@ -63,13 +63,18 @@ If that feels complicated, just write the post in a Google Doc, send it to Brian
 
 ## Updating events
 
-⚠️ **Pre-launch decision pending** — events are currently maintained as HTML (like news posts), not auto-synced from Google Calendar. Once that decision is made, this section will be updated with the final process.
+**The events page pulls live from Google Calendar — you don't need to touch the website at all.**
 
-**If we end up with the Google Calendar embed (Option A):** you won't need to touch the website at all — just add/edit events in Google Calendar and they appear automatically.
+To add, edit, or remove an event:
+1. Open Google Calendar and find the **Project H.O.O.D. public calendar**
+2. Add or edit the event there — title, date, time, location, description
+3. The website updates automatically within a few minutes
 
-**If we stay with manual HTML (Option B):** follow the same process as news posts. Open `events.html`, find an existing event block, copy it, paste it above the others, and fill in the title, date, time, location, and Google Form RSVP URL. Remove past events once they're over.
+That's it. No GitHub required for events.
 
-Ask Brian which option is in place before making your first event update.
+**Who owns this:** Whoever manages the Google Calendar (comms or events lead). Make sure you have edit access to the shared calendar — ask Brian if you don't.
+
+**For event RSVPs:** create a Google Form for the specific event and paste the link in the event description inside Google Calendar. That way it shows up right there in the calendar embed on the site.
 
 ---
 
