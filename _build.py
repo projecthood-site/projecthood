@@ -554,6 +554,11 @@ programs_body = f"""
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
           <a class="btn btn-primary" href="docs/ssfc-flyer-2025-2026.pdf" target="_blank" rel="noopener">Download flyer</a>
         </div>
+        <div style="margin-top:var(--sp-3);border-radius:8px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.12);">
+          <iframe src="docs/ssfc-flyer-2025-2026.pdf" width="100%" height="560" style="display:block;border:none;" title="Southside Free Clinic flyer">
+            <p>Your browser doesn't support embedded PDFs. <a href="docs/ssfc-flyer-2025-2026.pdf" target="_blank">Download the flyer here.</a></p>
+          </iframe>
+        </div>
       </div>
       <div style="background:#fff;border-radius:8px;padding:var(--sp-3);border:1px solid var(--line);">
         <p style="font-size:13px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--muted);margin-bottom:var(--sp-2);">Services offered</p>
@@ -795,6 +800,11 @@ health_wellness_body = f"""
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
           <a class="btn btn-primary" href="tel:3127256648">Call to schedule</a>
           <a class="btn btn-outline" href="docs/ssfc-flyer-2025-2026.pdf" target="_blank" rel="noopener">Download flyer</a>
+        </div>
+        <div style="margin-top:var(--sp-3);border-radius:8px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.12);">
+          <iframe src="docs/ssfc-flyer-2025-2026.pdf" width="100%" height="620" style="display:block;border:none;" title="Southside Free Clinic flyer">
+            <p>Your browser doesn't support embedded PDFs. <a href="docs/ssfc-flyer-2025-2026.pdf" target="_blank">Download the flyer here.</a></p>
+          </iframe>
         </div>
       </div>
       <div style="background:#fff;border-radius:8px;padding:var(--sp-3);border:1px solid var(--line);">
