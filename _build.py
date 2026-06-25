@@ -314,7 +314,7 @@ home_body = f"""
         <a class="btn btn-outline-light" href="about.html">About us</a>
       </div>
     </div>
-    <div class="img-ph" style="min-height:300px;background-image:url('img/home-community.jpg');background-size:cover;background-position:center top;">PHOTO · neighborhood / staff / programs<br><span style="font-size:11px;opacity:.5;">→ img/home-community.jpg</span></div>
+    <div style="min-height:300px;background-image:url('img/home-community.jpg');background-size:cover;background-position:center top"></div>
   </div>
 </section>
 
@@ -395,7 +395,7 @@ home_body = f"""
 <section class="section bg-black">
   <div class="wrap">
     <div class="grid-2">
-      <div class="img-ph dark" style="min-height:300px;background-image:url('img/leo-center-rendering.jpg');background-size:cover;background-position:center top;">LEO CENTER RENDERING<br><span style="font-size:11px;opacity:.5;">→ img/leo-center-rendering.jpg</span></div>
+      <div style="min-height:300px;background-image:url('img/leo-center-rendering.jpg');background-size:cover;background-position:center top"></div>
       <div>
         <div class="eyebrow" style="color:var(--yellow);">Opening Fall 2026 · Capital Campaign</div>
         <h2>A home for everything we do.</h2>
@@ -458,7 +458,7 @@ about_body = f"""
       <p>Project H.O.O.D. (Helping Others Obtain Destiny) exists to create sustainable change in Woodlawn and the broader South Side of Chicago. We operate across five interconnected pillars — violence prevention, workforce development, health &amp; wellness, youth programming, and re-entry services — because no one of these alone is enough.</p>
       <p>We believe that the people closest to the problems are closest to the solutions. Everything we do is built with the neighborhood, not for it.</p>
     </div>
-    <div class="img-ph" style="min-height:340px;background-image:url('img/about-mission.jpg');background-size:cover;background-position:center top;">MISSION PHOTO · community or founder<br><span style="font-size:11px;opacity:.5;">→ img/about-mission.jpg</span></div>
+    <div style="min-height:340px;background-image:url('img/about-mission.jpg');background-size:cover;background-position:center top"></div>
   </div>
 </section>
 
@@ -489,7 +489,7 @@ about_body = f"""
 
 <section class="section bg-black">
   <div class="wrap grid-2">
-    <div class="img-ph dark" style="min-height:320px;background-image:url('img/about-pastor-brooks.jpg');background-size:cover;background-position:center top;">FOUNDER PORTRAIT · Pastor Brooks<br><span style="font-size:11px;opacity:.5;">→ img/about-pastor-brooks.jpg</span></div>
+    <div style="min-height:320px;background-image:url('img/about-pastor-brooks.jpg');background-size:cover;background-position:center top"></div>
     <div>
       <div class="eyebrow" style="color:var(--yellow);">Founder</div>
       <h2 style="color:var(--white);">Pastor Corey B. Brooks</h2>
@@ -504,10 +504,7 @@ about_body = f"""
 
 <section class="section bg-offwhite">
   <div class="wrap grid-2" style="align-items:center;gap:var(--sp-4);">
-    <div class="img-ph" style="min-height:340px;font-size:13px;background-image:url('img/desmond-marshall.jpg');background-size:cover;background-position:center top;">
-      PHOTO · Desmond "Dez" Marshall<br>
-      <span style="font-size:11px;opacity:.5;">→ img/desmond-marshall.jpg</span>
-    </div>
+    <div style="min-height:340px;background-image:url('img/desmond-marshall.jpg');background-size:cover;background-position:center top"></div>
     <div>
       <div class="eyebrow">Executive Director</div>
       <h2>Desmond "Dez" Marshall</h2>
@@ -882,7 +879,7 @@ workforce_development_body = f"""
         <a class="btn btn-primary" href="https://www.projecthood.org/construction-cohort" target="_blank" rel="noopener">Pre-Apprenticeship Construction cohort →</a>
       </div>
     </div>
-    <div class="img-ph" style="min-height:380px;background-image:url('img/programs-workforce.jpg');background-size:cover;background-position:center top;">PHOTO · job training / construction cohort<br><span style="font-size:11px;opacity:.5;">→ img/programs-workforce.jpg</span></div>
+    <div style="min-height:380px;background-image:url('img/programs-workforce.jpg');background-size:cover;background-position:center top"></div>
   </div>
 </section>
 
@@ -957,7 +954,7 @@ health_wellness_body = f"""
         <li>Referral network to ongoing care providers</li>
       </ul>
     </div>
-    <div class="img-ph" style="min-height:380px;background-image:url('img/programs-health-wellness.jpg');background-size:cover;background-position:center top;">PHOTO · health clinic / wellness event<br><span style="font-size:11px;opacity:.5;">→ img/programs-health-wellness.jpg</span></div>
+    <div style="min-height:380px;background-image:url('img/programs-health-wellness.jpg');background-size:cover;background-position:center top"></div>
   </div>
 </section>
 
@@ -1062,7 +1059,7 @@ youth_programming_body = f"""
         <li>Summer internship placement</li>
       </ul>
     </div>
-    <div class="img-ph" style="min-height:380px;background-image:url('img/programs-youth.jpg');background-size:cover;background-position:center top;">PHOTO · youth entrepreneurship / enrichment programming<br><span style="font-size:11px;opacity:.5;">→ img/programs-youth.jpg</span></div>
+    <div style="min-height:380px;background-image:url('img/programs-youth.jpg');background-size:cover;background-position:center top"></div>
   </div>
 </section>
 
@@ -1136,7 +1133,7 @@ reentry_services_body = f"""
         <li>Connection to community resources and referrals</li>
       </ul>
     </div>
-    <div class="img-ph" style="min-height:380px;background-image:url('img/programs-reentry.jpg');background-size:cover;background-position:center top;">PHOTO · re-entry services / staff<br><span style="font-size:11px;opacity:.5;">→ img/programs-reentry.jpg</span></div>
+    <div style="min-height:380px;background-image:url('img/programs-reentry.jpg');background-size:cover;background-position:center top"></div>
   </div>
 </section>
 
@@ -1363,7 +1360,7 @@ leo_body = f"""
           <a class="btn btn-outline-light" href="https://projecthood.networkforgood.com/">Fund the build</a>
         </div>
       </div>
-      <div class="img-ph dark" style="min-height:340px;background-image:url('img/leo-center-rendering.jpg');background-size:cover;background-position:center top;">LEO CENTER RENDERING / CONSTRUCTION PHOTO<br><span style="font-size:11px;opacity:.5;">→ img/leo-center-rendering.jpg</span></div>
+      <div style="min-height:340px;background-image:url('img/leo-center-rendering.jpg');background-size:cover;background-position:center top"></div>
     </div>
   </div>
 </section>
@@ -1479,7 +1476,7 @@ leo_body = f"""
       <p style="font-size:var(--fs-lead);">The LEO Center brings every Project H.O.O.D. program under one roof — workforce training classrooms, a youth enrichment hub, health and wellness suites, a business incubator, re-entry services, outreach team offices, a community kitchen, and a 400-seat multipurpose hall.</p>
       <p>It's being built on land owned by Project H.O.O.D., directly on S. King Drive — a deliberate statement that serious investment belongs on the South Side.</p>
     </div>
-    <div class="img-ph" style="min-height:360px;background-image:url('img/leo-center-floorplan.jpg');background-size:cover;background-position:center;">FLOOR PLAN / RENDERING<br><span style="font-size:11px;opacity:.5;">→ img/leo-center-floorplan.jpg</span></div>
+    <div style="min-height:360px;background-image:url('img/leo-center-floorplan.jpg');background-size:cover;background-position:center"></div>
   </div>
 </section>
 
@@ -2580,10 +2577,7 @@ exec_director_body = f"""
       <div>
         <!-- TODO: Save Dez's photo to img/desmond-marshall.jpg
              Source: https://www.projecthood.org/desmondmarshall -->
-        <div class="img-ph" style="min-height:480px;font-size:13px;line-height:1.6;background-image:url('img/desmond-marshall.jpg');background-size:cover;background-position:center top;">
-          PHOTO · Desmond "Dez" Marshall<br>
-          <span style="font-size:11px;opacity:.5;">→ img/desmond-marshall.jpg</span>
-        </div>
+        <div style="min-height:480px;background-image:url('img/desmond-marshall.jpg');background-size:cover;background-position:center top"></div>
       </div>
       <div>
         <div class="eyebrow">Executive Director</div>
