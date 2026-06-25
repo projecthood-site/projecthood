@@ -324,12 +324,12 @@ home_body = f"""
 <section class="section bg-offwhite">
   <div class="wrap">
     <div class="eyebrow">2025 Impact</div>
-    <h2>The numbers on the block.</h2>
+    <h2>Real people. Real results. On the block.</h2>
     <div class="stat-grid" style="margin-top:var(--sp-3);">
-      <div class="stat accent-green"><div class="v">15,000+</div><div class="l">community members served</div></div>
-      <div class="stat"><div class="v">2M+ lbs</div><div class="l">food distributed</div></div>
-      <div class="stat accent-red"><div class="v">1,048</div><div class="l">job placements</div></div>
-      <div class="stat"><div class="v">70%</div><div class="l">LEO Center funded</div></div>
+      <div class="stat accent-green"><div class="v">15,000+</div><div class="l">neighbors served — not cases, people</div></div>
+      <div class="stat"><div class="v">2M+ lbs</div><div class="l">food on the table</div></div>
+      <div class="stat accent-red"><div class="v">1,048</div><div class="l">careers launched, not just jobs filled</div></div>
+      <div class="stat"><div class="v">70%</div><div class="l">of the LEO Center funded — $10.5M to go</div></div>
     </div>
     <p style="margin-top:var(--sp-3);font-size:14px;color:var(--muted);"><a href="impact.html">See the full impact report →</a></p>
   </div>
@@ -355,14 +355,14 @@ home_body = f"""
       </div>
       <div class="prog-card pg-blue">
         <span class="tag tag-blue">Youth Programming</span>
-        <h3 style="margin-top:10px;">Esports &amp; youth enrichment.</h3>
-        <p style="font-family:var(--font-serif);">After-school programs, tournaments, and mentorship — meeting kids where they already are.</p>
+        <h3 style="margin-top:10px;">Entrepreneurship &amp; youth enrichment.</h3>
+        <p style="font-family:var(--font-serif);">Business skills, mentorship, and after-school programs — investing in who young people are becoming.</p>
         <a href="programs.html" style="margin-top:auto;">Read more →</a>
       </div>
       <div class="prog-card pg-purple">
         <span class="tag tag-purple">Health &amp; Wellness</span>
-        <h3 style="margin-top:10px;">Counseling &amp; community care.</h3>
-        <p style="font-family:var(--font-serif);">Free counseling, group sessions, and crisis response — run by licensed clinicians and peer specialists.</p>
+        <h3 style="margin-top:10px;">Access to care &amp; community wellness.</h3>
+        <p style="font-family:var(--font-serif);">Free medical access, counseling, senior programming, and crisis response — no insurance required, no barriers.</p>
         <a href="programs.html" style="margin-top:auto;">Read more →</a>
       </div>
       <div class="prog-card pg-yellow">
@@ -384,7 +384,11 @@ home_body = f"""
 <!-- HELP SOMEBODY -->
 <section style="background:#111111;padding:80px 24px;text-align:center;">
   <div style="font-family:'Arial Black','Impact','Arial',sans-serif;font-weight:900;font-size:clamp(72px,14vw,180px);line-height:.95;color:#ffffff;letter-spacing:-0.03em;text-transform:uppercase;display:block;">HELP<br>SOMEBODY</div>
-  <p style="color:rgba(255,255,255,.55);font-size:clamp(16px,2.5vw,20px);margin:28px auto 0;max-width:560px;font-family:var(--font-serif);font-style:italic;">It's not just a hoodie. It's who we are.</p>
+  <p style="color:rgba(255,255,255,.55);font-size:clamp(16px,2.5vw,20px);margin:28px auto 0;max-width:560px;font-family:var(--font-serif);font-style:italic;">When is the last time you helped somebody?</p>
+  <div style="margin-top:40px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+    <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/" style="font-size:clamp(15px,2vw,17px);padding:14px 28px;">Help somebody today →</a>
+    <button onclick="if(navigator.share){{navigator.share({{title:'Project H.O.O.D.',text:'When is the last time you helped somebody? @projecthood is doing it every day on Chicago's South Side.',url:window.location.origin}})}}else{{navigator.clipboard.writeText(window.location.origin).then(()=>alert('Link copied — share it.'));}}" style="background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff;border-radius:6px;padding:14px 28px;font-size:clamp(15px,2vw,17px);cursor:pointer;font-family:var(--font-body);font-weight:600;letter-spacing:.04em;">Share this →</button>
+  </div>
 </section>
 
 <!-- LEO CENTER FEATURE -->
@@ -423,12 +427,12 @@ home_body = f"""
 <!-- FINAL CTA -->
 <section class="cta-strip">
   <div class="wrap">
-    <h2>Give. Volunteer. <span class="hl-yellow">Show up.</span></h2>
-    <p style="max-width:640px;margin:0 auto var(--sp-3);opacity:.95;">Three ways to move the work forward. Start with whichever one you can give today.</p>
+    <h2>Give. Volunteer. <span class="hl-yellow">Tell somebody.</span></h2>
+    <p style="max-width:640px;margin:0 auto var(--sp-3);opacity:.95;">The most powerful thing you can do right now might just be sharing this with one person who needs to know this work exists.</p>
     <div class="btn-group">
       <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/">Donate</a>
       <a class="btn btn-outline-light" href="get-involved.html">Volunteer</a>
-      <a class="btn btn-outline-light" href="get-involved.html#apply">Connect with us</a>
+      <button onclick="if(navigator.share){{navigator.share({{title:'Project H.O.O.D.',text:'Help somebody. Project H.O.O.D. is transforming Chicago\'s South Side — and they need your support.',url:window.location.href}})}}else{{navigator.clipboard.writeText(window.location.href).then(()=>alert('Link copied — share it with someone.'));}}" class="btn btn-outline-light" style="cursor:pointer;">Share this page</button>
     </div>
   </div>
 </section>
@@ -574,10 +578,10 @@ programs_body = f"""
       </div>
       <div class="prog-card pg-blue">
         <span class="tag tag-blue">03 · Youth Programming</span>
-        <h3 style="margin-top:12px;">Esports &amp; youth enrichment.</h3>
-        <p>After-school programs, academic support, and youth mentorship — built around what kids actually want to do.</p>
+        <h3 style="margin-top:12px;">Entrepreneurship &amp; youth enrichment.</h3>
+        <p>Business skills, academic support, and mentorship — building the next generation of leaders from Woodlawn up.</p>
         <ul style="font-size:14px;color:var(--muted);margin:var(--sp-2) 0;">
-          <li>Esports tournaments + leagues</li>
+          <li>Entrepreneurship training</li>
           <li>Homework + tutoring</li>
           <li>College/career readiness</li>
         </ul>
@@ -585,8 +589,8 @@ programs_body = f"""
       </div>
       <div class="prog-card pg-purple">
         <span class="tag tag-purple">04 · Health &amp; Wellness</span>
-        <h3 style="margin-top:12px;">Counseling &amp; community care.</h3>
-        <p>Free counseling, group work, and crisis response — delivered by licensed clinicians and peer specialists.</p>
+        <h3 style="margin-top:12px;">Access to care &amp; community wellness.</h3>
+        <p>Free medical access, counseling, senior programming, and crisis response — because a healthy community is the foundation for everything else.</p>
         <ul style="font-size:14px;color:var(--muted);margin:var(--sp-2) 0;">
           <li>Individual therapy</li>
           <li>Group support circles</li>
@@ -847,8 +851,8 @@ health_wellness_body = f"""
 <section class="hero bg-purple">
   <div class="wrap">
     <div class="eyebrow" style="color:var(--yellow);">Programs · Pillar 3</div>
-    <h1>Elevating <span class="hl-yellow">Your Well-Being.</span></h1>
-    <p class="lead">Free, quality healthcare and wellness services for South Side residents — because a healthier community is a stronger community.</p>
+    <h1>Health. Access. <span class="hl-yellow">Community Care.</span></h1>
+    <p class="lead">Free, quality healthcare for South Side residents of all ages — because where you live should never determine whether you can see a doctor.</p>
   </div>
 </section>
 
@@ -856,14 +860,14 @@ health_wellness_body = f"""
   <div class="wrap grid-2">
     <div>
       <div class="eyebrow">What we do</div>
-      <h2>Holistic care, no barriers.</h2>
-      <p>Our Health &amp; Wellness pillar addresses the full picture — physical health, mental health, emotional wellness, and social connection. We recognize that healthcare disparities are real, and we work to ensure every South Side resident has equitable access to the care they need regardless of insurance status or income.</p>
+      <h2>Access to care. No barriers. No exceptions.</h2>
+      <p>Healthcare shouldn't be a privilege. Our Health &amp; Wellness pillar addresses the full picture — physical health, mental health, emotional wellness, and social connection — with a special commitment to seniors and those who have historically been locked out of the healthcare system.</p>
       <ul>
         <li>Free medical screenings and health check-ups</li>
+        <li>Access to care for uninsured and underinsured residents</li>
+        <li>Senior programming, social engagement, and wellness support</li>
         <li>Mental health counseling and therapy</li>
         <li>Group support circles and crisis response</li>
-        <li>Fitness programs and social engagement</li>
-        <li>Health education and wellness resources</li>
         <li>Referral network to ongoing care providers</li>
       </ul>
     </div>
@@ -952,8 +956,8 @@ youth_programming_body = f"""
 <section class="hero bg-blue">
   <div class="wrap">
     <div class="eyebrow" style="color:var(--yellow);">Programs · Pillar 4</div>
-    <h1>Empowering <span class="hl-yellow">Futures.</span></h1>
-    <p class="lead">After-school programs, esports, mentorship, and enrichment — meeting young people where they are and investing in where they're going.</p>
+    <h1>Entrepreneurship &amp; Youth <span class="hl-yellow">Enrichment.</span></h1>
+    <p class="lead">Entrepreneurship training, after-school programs, mentorship, and enrichment — investing in who young people are becoming, not just where they are right now.</p>
   </div>
 </section>
 
@@ -961,18 +965,18 @@ youth_programming_body = f"""
   <div class="wrap grid-2">
     <div>
       <div class="eyebrow">What we do</div>
-      <h2>Built around what young people actually want to do.</h2>
-      <p>Project H.O.O.D.'s Youth Programming is a dynamic, community-centered initiative aimed at empowering young people in Woodlawn and the broader South Side. We break the cycle of poverty and limited opportunity by creating an environment where young people can discover their potential, develop real skills, and build a path forward.</p>
+      <h2>Investing in who they're becoming — not just where they are.</h2>
+      <p>Project H.O.O.D.'s Youth Entrepreneurship and Enrichment programming is built on a simple belief: every young person in Woodlawn has something to offer. We create the environment to prove it — with real skills, real mentors, and real pathways forward.</p>
       <ul>
-        <li>After-school tutoring and homework assistance</li>
-        <li>Esports tournaments, leagues, and competitive teams</li>
+        <li>Entrepreneurship and business skill-building</li>
+        <li>After-school tutoring and academic support</li>
         <li>Skills training and enrichment programs</li>
         <li>College and career readiness coaching</li>
         <li>Mentorship from community role models</li>
         <li>Summer internship placement</li>
       </ul>
     </div>
-    <div class="img-ph" style="min-height:380px;background-image:url('img/programs-youth.jpg');background-size:cover;background-position:center top;">PHOTO · esports arena / youth programming<br><span style="font-size:11px;opacity:.5;">→ img/programs-youth.jpg</span></div>
+    <div class="img-ph" style="min-height:380px;background-image:url('img/programs-youth.jpg');background-size:cover;background-position:center top;">PHOTO · youth entrepreneurship / enrichment programming<br><span style="font-size:11px;opacity:.5;">→ img/programs-youth.jpg</span></div>
   </div>
 </section>
 
@@ -988,7 +992,7 @@ youth_programming_body = f"""
       <h3>Who we work with.</h3>
       <ul style="list-style:none;padding:0;">
         <li style="padding:8px 0;border-bottom:1px solid var(--line);">Chicago Public Schools</li>
-        <li style="padding:8px 0;border-bottom:1px solid var(--line);">Local esports partners and leagues</li>
+        <li style="padding:8px 0;border-bottom:1px solid var(--line);">Local entrepreneurship and workforce partners</li>
         <li style="padding:8px 0;border-bottom:1px solid var(--line);">Summer internship employers</li>
         <li style="padding:8px 0;">New Beginnings Church of Chicago</li>
       </ul>
@@ -1004,7 +1008,7 @@ youth_programming_body = f"""
       <div class="stat"><div class="v">380</div><div class="l">youth enrolled</div></div>
       <div class="stat"><div class="v">94%</div><div class="l">weekly attendance rate</div></div>
       <div class="stat"><div class="v">42</div><div class="l">placed in summer internships</div></div>
-      <div class="stat"><div class="v">LEO</div><div class="l">400-seat esports arena coming</div></div>
+      <div class="stat"><div class="v">LEO</div><div class="l">Youth Enrichment Hub opening soon</div></div>
     </div>
   </div>
 </section>
@@ -1138,7 +1142,7 @@ impact_body = f"""
       <div class="prog-card pg-blue">
         <span class="tag tag-blue">Youth Programming</span>
         <h3>380 youth · 94% attendance rate</h3>
-        <p>Esports league, tutoring, and mentorship. 94% weekly attendance. 42 youth placed in summer internships.</p>
+        <p>Entrepreneurship training, tutoring, and mentorship. 94% weekly attendance. 42 youth placed in summer internships.</p>
       </div>
       <div class="prog-card pg-purple">
         <span class="tag tag-purple">Health &amp; Wellness</span>
@@ -1311,7 +1315,7 @@ leo_body = f"""
     <div>
       <div class="eyebrow">What it is</div>
       <h2>One building, five pillars, one neighborhood.</h2>
-      <p>The LEO Center brings every Project H.O.O.D. pillar under one roof: workforce training classrooms, health &amp; wellness counseling suites, esports arena, re-entry services hub, outreach team offices, community kitchen, and a 400-seat multipurpose hall.</p>
+      <p>The LEO Center brings every Project H.O.O.D. pillar under one roof: workforce training classrooms, a youth enrichment hub, health and wellness suites, a business incubator, re-entry services, outreach team offices, a community kitchen, and a 400-seat multipurpose hall.</p>
       <p>It's being built on land owned by Project H.O.O.D., directly on S. King Drive — a deliberate statement that serious investment belongs on the South Side.</p>
     </div>
     <div class="img-ph" style="min-height:360px;background-image:url('img/leo-center-floorplan.jpg');background-size:cover;background-position:center top;">FLOOR PLAN OR RENDERING<br><span style="font-size:11px;opacity:.5;">→ img/leo-center-floorplan.jpg</span></div>
@@ -1323,12 +1327,12 @@ leo_body = f"""
     <div class="eyebrow" style="color:var(--green);">Inside the LEO</div>
     <h2>What fits inside 90,000 sq ft.</h2>
     <div class="grid-3" style="margin-top:var(--sp-3);">
-      <div class="card card-accent"><h3>Training wing</h3><p>Construction trades, tech bootcamp, OSHA classroom, direct-hire employer partners on-site.</p></div>
-      <div class="card card-accent" style="border-top-color:var(--blue);"><h3>Youth + Esports</h3><p>400-seat arena, tournament stage, tutoring rooms, after-school program base.</p></div>
-      <div class="card card-accent" style="border-top-color:var(--purple);"><h3>Counseling suites</h3><p>Private offices for therapists, group rooms, play-therapy space, crisis intake.</p></div>
-      <div class="card card-accent" style="border-top-color:#8a6d00;"><h3>Business incubator</h3><p>Co-working floor for Woodlawn entrepreneurs, grant desk, legal/financial clinic.</p></div>
-      <div class="card card-accent" style="border-top-color:var(--green);"><h3>Community kitchen</h3><p>Food distribution, community dinners, culinary training program, event catering.</p></div>
-      <div class="card card-accent" style="border-top-color:var(--black);"><h3>Outreach HQ</h3><p>24/7 response team base, de-escalation rooms, family-support space.</p></div>
+      <div class="card card-accent"><h3>Workforce Training Wing</h3><p>Construction trades, tech skills, OSHA certification, and direct-hire employer partners — where real careers begin.</p></div>
+      <div class="card card-accent" style="border-top-color:var(--blue);"><h3>Youth Enrichment Hub</h3><p>Entrepreneurship training, after-school programs, tutoring, mentorship, and college and career readiness — all under one roof.</p></div>
+      <div class="card card-accent" style="border-top-color:var(--purple);"><h3>Health &amp; Wellness Center</h3><p>Access to care for the whole community — counseling suites, health programming, senior services, and crisis response.</p></div>
+      <div class="card card-accent" style="border-top-color:#8a6d00;"><h3>Business Incubator</h3><p>Co-working space for Woodlawn entrepreneurs, grant writing support, and legal/financial clinic.</p></div>
+      <div class="card card-accent" style="border-top-color:var(--green);"><h3>Community Kitchen</h3><p>Food distribution, community dinners, culinary training, and event catering — the table is always set.</p></div>
+      <div class="card card-accent" style="border-top-color:var(--black);"><h3>Outreach HQ</h3><p>24/7 response team base, de-escalation rooms, and family-support space — always on call for the neighborhood.</p></div>
     </div>
   </div>
 </section>
@@ -1344,9 +1348,10 @@ leo_body = f"""
 
 <section class="cta-strip">
   <div class="wrap">
-    <h2>Help us close the last <span class="hl-yellow">$10.5M.</span></h2>
+    <h2>We're <span class="hl-yellow">70% there.</span> Help close the last $10.5M.</h2>
+    <p style="max-width:600px;margin:0 auto var(--sp-3);opacity:.95;">The building is rising. The community is watching. Every gift — at every level — moves the finish line closer. Don't let someone else write this part of the story without you.</p>
     <div class="btn-group">
-      <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/">Give to the build</a>
+      <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/">Fund the build</a>
       <a class="btn btn-outline-light" href="campaigns.html">Walk Across America</a>
       <a class="btn btn-outline-light" href="contact.html">Name a space</a>
     </div>
@@ -1927,7 +1932,7 @@ volunteer_body = f"""
       <ul>
         <li><strong>Events:</strong> community dinners, back-to-school, holiday drives, galas</li>
         <li><strong>Workforce program:</strong> mock interviews, résumé coaching, cohort mentors</li>
-        <li><strong>Youth programs:</strong> tutoring, esports coaching, field trips</li>
+        <li><strong>Youth programs:</strong> tutoring, entrepreneurship coaching, mentorship, field trips</li>
         <li><strong>LEO Center build:</strong> tours, donor events, community open houses</li>
         <li><strong>Operations:</strong> food pantry, logistics, admin support</li>
       </ul>
@@ -2463,7 +2468,7 @@ pages = [
     ("violence-prevention.html",   "Violence Prevention",    "Creating safer communities in Woodlawn — credible messengers, conflict mediation, and hospital-based intervention.",           "a_programs",     violence_prevention_body),
     ("workforce-development.html", "Workforce Development",  "Job training, placement, and career development on Chicago's South Side. 1,048 placements in 2025. $19/hr average wage.",          "a_programs",     workforce_development_body),
     ("health-wellness.html",       "Health & Wellness",      "Free medical care, counseling, and wellness programs for South Side residents — including the Southside Free Clinic (SSFC).",     "a_programs",     health_wellness_body),
-    ("youth-programming.html",     "Youth Programming",      "After-school programs, esports, mentorship, and enrichment — 380 youth enrolled, 94% attendance, 42 summer internships in 2025.", "a_programs",     youth_programming_body),
+    ("youth-programming.html",     "Youth Programming",      "Entrepreneurship training, mentorship, and after-school enrichment — 380 youth enrolled, 94% attendance, 42 summer internships in 2025.", "a_programs",     youth_programming_body),
     ("reentry-services.html",      "Re-Entry Services",      "Second chances, real support — job readiness, housing, counseling, and mentorship for individuals returning from incarceration.",  "a_programs",     reentry_services_body),
     ("impact.html",      "Impact",                       "2025 impact — 15,000+ served, 1,048 job placements, 2M+ lbs of food distributed, 70% LEO Center funded.",                             "a_impact",       impact_body),
     ("first-look.html",   "The First Look",               "The First Look \u2014 Project H.O.O.D. donor day. Give, share, and be part of this moment.",                                              "a_gi",           first_look_body),

@@ -118,12 +118,12 @@
 <section class="section bg-offwhite">
   <div class="wrap">
     <div class="eyebrow">2025 Impact</div>
-    <h2>The numbers on the block.</h2>
+    <h2>Real people. Real results. On the block.</h2>
     <div class="stat-grid" style="margin-top:var(--sp-3);">
-      <div class="stat accent-green"><div class="v">15,000+</div><div class="l">community members served</div></div>
-      <div class="stat"><div class="v">2M+ lbs</div><div class="l">food distributed</div></div>
-      <div class="stat accent-red"><div class="v">1,048</div><div class="l">job placements</div></div>
-      <div class="stat"><div class="v">70%</div><div class="l">LEO Center funded</div></div>
+      <div class="stat accent-green"><div class="v">15,000+</div><div class="l">neighbors served — not cases, people</div></div>
+      <div class="stat"><div class="v">2M+ lbs</div><div class="l">food on the table</div></div>
+      <div class="stat accent-red"><div class="v">1,048</div><div class="l">careers launched, not just jobs filled</div></div>
+      <div class="stat"><div class="v">70%</div><div class="l">of the LEO Center funded — $10.5M to go</div></div>
     </div>
     <p style="margin-top:var(--sp-3);font-size:14px;color:var(--muted);"><a href="impact.html">See the full impact report →</a></p>
   </div>
@@ -149,14 +149,14 @@
       </div>
       <div class="prog-card pg-blue">
         <span class="tag tag-blue">Youth Programming</span>
-        <h3 style="margin-top:10px;">Esports &amp; youth enrichment.</h3>
-        <p style="font-family:var(--font-serif);">After-school programs, tournaments, and mentorship — meeting kids where they already are.</p>
+        <h3 style="margin-top:10px;">Entrepreneurship &amp; youth enrichment.</h3>
+        <p style="font-family:var(--font-serif);">Business skills, mentorship, and after-school programs — investing in who young people are becoming.</p>
         <a href="programs.html" style="margin-top:auto;">Read more →</a>
       </div>
       <div class="prog-card pg-purple">
         <span class="tag tag-purple">Health &amp; Wellness</span>
-        <h3 style="margin-top:10px;">Counseling &amp; community care.</h3>
-        <p style="font-family:var(--font-serif);">Free counseling, group sessions, and crisis response — run by licensed clinicians and peer specialists.</p>
+        <h3 style="margin-top:10px;">Access to care &amp; community wellness.</h3>
+        <p style="font-family:var(--font-serif);">Free medical access, counseling, senior programming, and crisis response — no insurance required, no barriers.</p>
         <a href="programs.html" style="margin-top:auto;">Read more →</a>
       </div>
       <div class="prog-card pg-yellow">
@@ -178,7 +178,11 @@
 <!-- HELP SOMEBODY -->
 <section style="background:#111111;padding:80px 24px;text-align:center;">
   <div style="font-family:'Arial Black','Impact','Arial',sans-serif;font-weight:900;font-size:clamp(72px,14vw,180px);line-height:.95;color:#ffffff;letter-spacing:-0.03em;text-transform:uppercase;display:block;">HELP<br>SOMEBODY</div>
-  <p style="color:rgba(255,255,255,.55);font-size:clamp(16px,2.5vw,20px);margin:28px auto 0;max-width:560px;font-family:var(--font-serif);font-style:italic;">It's not just a hoodie. It's who we are.</p>
+  <p style="color:rgba(255,255,255,.55);font-size:clamp(16px,2.5vw,20px);margin:28px auto 0;max-width:560px;font-family:var(--font-serif);font-style:italic;">When is the last time you helped somebody?</p>
+  <div style="margin-top:40px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+    <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/" style="font-size:clamp(15px,2vw,17px);padding:14px 28px;">Help somebody today →</a>
+    <button onclick="if(navigator.share){navigator.share({title:'Project H.O.O.D.',text:'When is the last time you helped somebody? @projecthood is doing it every day on Chicago's South Side.',url:window.location.origin})}else{navigator.clipboard.writeText(window.location.origin).then(()=>alert('Link copied — share it.'));}" style="background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff;border-radius:6px;padding:14px 28px;font-size:clamp(15px,2vw,17px);cursor:pointer;font-family:var(--font-body);font-weight:600;letter-spacing:.04em;">Share this →</button>
+  </div>
 </section>
 
 <!-- LEO CENTER FEATURE -->
@@ -217,12 +221,12 @@
 <!-- FINAL CTA -->
 <section class="cta-strip">
   <div class="wrap">
-    <h2>Give. Volunteer. <span class="hl-yellow">Show up.</span></h2>
-    <p style="max-width:640px;margin:0 auto var(--sp-3);opacity:.95;">Three ways to move the work forward. Start with whichever one you can give today.</p>
+    <h2>Give. Volunteer. <span class="hl-yellow">Tell somebody.</span></h2>
+    <p style="max-width:640px;margin:0 auto var(--sp-3);opacity:.95;">The most powerful thing you can do right now might just be sharing this with one person who needs to know this work exists.</p>
     <div class="btn-group">
       <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/">Donate</a>
       <a class="btn btn-outline-light" href="get-involved.html">Volunteer</a>
-      <a class="btn btn-outline-light" href="get-involved.html#apply">Connect with us</a>
+      <button onclick="if(navigator.share){navigator.share({title:'Project H.O.O.D.',text:'Help somebody. Project H.O.O.D. is transforming Chicago's South Side — and they need your support.',url:window.location.href})}else{navigator.clipboard.writeText(window.location.href).then(()=>alert('Link copied — share it with someone.'));}" class="btn btn-outline-light" style="cursor:pointer;">Share this page</button>
     </div>
   </div>
 </section>
