@@ -128,14 +128,13 @@ HEAD = """<!DOCTYPE html>
   <meta property="og:description" content="{meta}">
   <meta property="og:image" content="img/social-icon.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Google Analytics 4 — replace YOUR_GA4_ID with your Measurement ID (format: G-XXXXXXXXXX)
-       Get it at: analytics.google.com → Admin → Data Streams → your stream → Measurement ID -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA4_ID"></script>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NFBL61B4BN"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){{dataLayer.push(arguments);}}
     gtag('js', new Date());
-    gtag('config', 'YOUR_GA4_ID');
+    gtag('config', 'G-NFBL61B4BN');
   </script>
 </head>
 <body>
