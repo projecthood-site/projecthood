@@ -659,7 +659,7 @@ letter_body = """
     <h2>Give. Volunteer. <span class="hl-yellow">Tell somebody.</span></h2>
     <div class="btn-group">
       <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/" target="_blank" rel="noopener">Give to Project H.O.O.D. →</a>
-      <a class="btn btn-outline-light" href="ways-to-give.html">All ways to give</a>
+      <a class="btn btn-outline-light" href="donate.html">All ways to give</a>
       <a class="btn btn-outline-light" href="get-involved.html">Get involved</a>
     </div>
   </div>
@@ -1896,7 +1896,7 @@ gi_body = f"""
 # -------- DONATE --------
 donate_body = f"""
 <section class="hero bg-red">
-  <div class="wrap hero-split">
+  <div class="wrap">
     <div>
       <div class="eyebrow" style="color:var(--yellow);">Donate</div>
       <h1>Your gift <span class="hl-yellow">stays</span> in Woodlawn.</h1>
@@ -1907,19 +1907,75 @@ donate_body = f"""
       </div>
       <p style="font-size:12px;opacity:.8;margin-top:12px;">Tax-deductible · EIN 45-3964886 · takes under 2 minutes</p>
     </div>
-    <div style="background:rgba(255,255,255,.12);padding:22px;border-left:4px solid var(--yellow);">
-      <div class="eyebrow" style="color:var(--yellow);margin-bottom:8px;">How your gift is used</div>
-      <ul style="list-style:none;padding:0;margin:0;font-family:var(--font-serif);font-size:15px;line-height:1.85;">
-        <li><strong>$50</strong> · feeds a family for a week</li>
-        <li><strong>$250</strong> · sponsors a training cohort seat</li>
-        <li><strong>$1,000</strong> · funds an outreach worker's week</li>
-        <li><strong>$5,000+</strong> · names a LEO Center space</li>
-      </ul>
+  </div>
+</section>
+
+<!-- JUMP NAV -->
+<section class="section-sm" style="border-bottom:1px solid var(--line);background:var(--white);">
+  <div class="wrap" style="display:flex;gap:24px;font-family:var(--font-display);text-transform:uppercase;font-size:12px;letter-spacing:.12em;flex-wrap:wrap;">
+    <a href="#give-online" style="color:var(--ink);text-decoration:none;">Give Online</a>
+    <a href="#brick" style="color:var(--ink);text-decoration:none;">Brick by Brick</a>
+    <a href="#walk" style="color:var(--ink);text-decoration:none;">Walk With Us</a>
+    <a href="#stock" style="color:var(--ink);text-decoration:none;">Stock &amp; Securities</a>
+    <a href="#daf" style="color:var(--ink);text-decoration:none;">Donor-Advised Fund</a>
+    <a href="#other" style="color:var(--ink);text-decoration:none;">Check · Match · Planned</a>
+  </div>
+</section>
+
+<!-- ONLINE -->
+<section class="section" id="give-online">
+  <div class="wrap" style="max-width:760px;">
+    <div class="eyebrow" style="color:var(--green);">Fastest · Most flexible</div>
+    <h2>Give online</h2>
+    <p style="font-size:15.5px;">Credit card, debit, or bank transfer via NetworkForGood — our secure partner platform since day one. Choose a one-time or recurring gift and designate it to the program closest to your heart.</p>
+    <ul style="margin:12px 0 20px;padding-left:18px;font-size:14.5px;line-height:2;">
+      <li>One-time or monthly recurring</li>
+      <li>Designate to a specific program</li>
+      <li>Receipt emailed instantly</li>
+      <li>Every dollar stays in Woodlawn</li>
+    </ul>
+    <a class="btn btn-primary" style="font-size:15px;padding:14px 26px;" href="https://projecthood.networkforgood.com/" target="_blank" rel="noopener">Donate now →</a>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:8px;">Opens projecthood.networkforgood.com · secure · under 2 minutes</p>
+  </div>
+</section>
+
+<!-- BRICK BY BRICK -->
+<section class="section bg-black" id="brick" style="color:var(--white);">
+  <div class="wrap grid-2" style="align-items:center;gap:var(--sp-4);">
+    <div>
+      <div class="eyebrow" style="color:var(--yellow);">Capital Campaign · LEO Center</div>
+      <h2 style="color:var(--white);">Brick by Brick.</h2>
+      <p style="font-size:var(--fs-lead);opacity:.9;">Get your name engraved in history. Every brick in the LEO Center's Walkway of Destiny represents someone who believed in Chicago's South Side — before the rest of the world caught up.</p>
+      <p style="opacity:.85;margin-top:12px;">Long after the ribbon is cut, families will walk across these names. This is your chance to leave more than a donation — a legacy engraved in stone.</p>
+      <div style="margin-top:var(--sp-3);display:flex;gap:12px;flex-wrap:wrap;">
+        <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/projects/301372-2026-brick-by-brick-campaign" target="_blank" rel="noopener">Claim your brick →</a>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="background:var(--white);color:var(--black);border:none;">
+        <div class="eyebrow" style="color:var(--muted);">Named-gift levels</div>
+        <ul style="list-style:none;padding:0;margin-top:12px;">
+          <li style="padding:16px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;">
+            <div><strong>Legacy Brick</strong><p style="font-size:13px;color:var(--muted);margin:2px 0 0;">Prime placement · engraved name</p></div>
+            <span style="font-size:1.3rem;font-weight:700;color:var(--green);">$10,000</span>
+          </li>
+          <li style="padding:16px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;">
+            <div><strong>Heritage Brick</strong><p style="font-size:13px;color:var(--muted);margin:2px 0 0;">Engraved name · permanent placement</p></div>
+            <span style="font-size:1.3rem;font-weight:700;color:var(--green);">$5,000</span>
+          </li>
+          <li style="padding:16px 0;display:flex;justify-content:space-between;align-items:center;">
+            <div><strong>Foundation Brick</strong><p style="font-size:13px;color:var(--muted);margin:2px 0 0;">Engraved name · lasting legacy</p></div>
+            <span style="font-size:1.3rem;font-weight:700;color:var(--green);">$2,500</span>
+          </li>
+        </ul>
+        <a class="btn btn-primary" href="https://projecthood.networkforgood.com/projects/301372-2026-brick-by-brick-campaign" target="_blank" rel="noopener" style="width:100%;text-align:center;margin-top:16px;">Choose your brick →</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section bg-blue">
+<!-- WALK WITH US -->
+<section class="section bg-blue" id="walk">
   <div class="wrap grid-2" style="align-items:center;">
     <div>
       <div class="eyebrow" style="color:var(--yellow);">Walk With Us!</div>
@@ -1933,15 +1989,137 @@ donate_body = f"""
   </div>
 </section>
 
-<section class="section">
+<!-- STOCK -->
+<section class="section bg-offwhite" id="stock">
   <div class="wrap">
-    <div class="eyebrow" style="color:var(--green);">Other ways to give</div>
-    <div class="grid-4" style="margin-top:var(--sp-3);">
-      <div class="card"><h4>Stock &amp; Securities</h4><p style="font-size:13.5px;">Donate appreciated stock directly — avoid capital gains, maximize your impact.</p><a href="ways-to-give.html#stock" style="font-size:13px;color:var(--green);font-weight:600;">How it works →</a></div>
-      <div class="card"><h4>Donor-Advised Fund</h4><p style="font-size:13.5px;">Grant from your Fidelity Charitable, Schwab, or Vanguard DAF using EIN 45-3964886.</p><a href="ways-to-give.html#daf" style="font-size:13px;color:var(--green);font-weight:600;">DAF details →</a></div>
-      <div class="card"><h4>Check by mail</h4><p style="font-size:13.5px;">Project H.O.O.D.<br>6620 S. King Drive<br>Chicago IL 60637</p></div>
-      <div class="card"><h4>Planned &amp; corporate</h4><p style="font-size:13.5px;">Bequests, beneficiary designations, or employer matching.</p><a href="ways-to-give.html" style="font-size:13px;color:var(--green);font-weight:600;">All options →</a></div>
+    <div class="eyebrow" style="color:var(--green);">Tax-smart giving</div>
+    <h2>Donate stock or securities</h2>
+    <p style="max-width:640px;font-size:15.5px;line-height:1.75;">Donating appreciated stock lets you avoid capital gains tax <em>and</em> deduct the full market value — often worth 20–37% more than selling and donating cash. Ideal for stocks, mutual funds, or ETFs held more than one year.</p>
+    <div class="grid-2" style="margin-top:var(--sp-4);gap:var(--sp-4);">
+      <div class="card" style="border-top:4px solid var(--green);">
+        <h4 style="margin-top:0;">Option A — DonateStock (recommended)</h4>
+        <p style="font-size:13.5px;">DonateStock is a free platform that handles the full transfer for you — no paperwork, no faxing. Your broker initiates the transfer and DonateStock converts it and sends the proceeds directly to Project H.O.O.D.</p>
+        <ol style="font-size:13.5px;padding-left:18px;line-height:1.85;margin-bottom:16px;">
+          <li>Click the button below</li>
+          <li>Select your brokerage</li>
+          <li>Choose your stock and share count</li>
+          <li>DonateStock handles the rest</li>
+        </ol>
+        <a class="btn btn-primary" href="https://www.donatestock.com" target="_blank" rel="noopener" style="font-size:14px;">Donate Stock →</a>
+      </div>
+      <div class="card" style="border-top:4px solid var(--blue);">
+        <h4 style="margin-top:0;">Option B — Direct broker transfer</h4>
+        <p style="font-size:13.5px;">Contact your broker and instruct them to transfer shares directly, then email <a href="mailto:info@projecthood.org">info@projecthood.org</a> with your name, stock name, and share count so we can credit your gift.</p>
+        <table style="font-size:13.5px;width:100%;border-collapse:collapse;margin:8px 0 0;">
+          <tr style="border-bottom:1px solid var(--line);"><td style="padding:7px 4px;font-weight:700;color:var(--muted);width:42%;">Account name</td><td style="padding:7px 4px;">Project H.O.O.D.</td></tr>
+          <tr><td style="padding:7px 4px;font-weight:700;color:var(--muted);">For credit to</td><td style="padding:7px 4px;">Project H.O.O.D. — EIN 45-3964886</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--muted);margin-top:10px;">Email us for our brokerage and DTC details to share with your broker.</p>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- DAF -->
+<section class="section" id="daf">
+  <div class="wrap grid-2" style="align-items:start;gap:var(--sp-6);">
+    <div>
+      <div class="eyebrow" style="color:var(--blue);">Fidelity · Schwab · Vanguard · any DAF</div>
+      <h2>Donor-Advised Fund</h2>
+      <p>Already have a donor-advised fund? Recommend a grant to Project H.O.O.D. from Fidelity Charitable, Schwab Charitable, Vanguard Charitable, or any community foundation DAF.</p>
+      <div style="background:var(--offwhite);padding:20px;border-left:4px solid var(--blue);margin-top:16px;">
+        <p style="font-family:var(--font-display);text-transform:uppercase;font-size:11px;letter-spacing:.1em;color:var(--muted);margin:0 0 10px;">Use this information with your DAF sponsor</p>
+        <table style="font-size:14px;width:100%;border-collapse:collapse;">
+          <tr style="border-bottom:1px solid var(--line);"><td style="padding:8px 4px;font-weight:700;color:var(--muted);width:40%;">Legal name</td><td style="padding:8px 4px;">Project H.O.O.D.</td></tr>
+          <tr style="border-bottom:1px solid var(--line);"><td style="padding:8px 4px;font-weight:700;color:var(--muted);">EIN</td><td style="padding:8px 4px;font-weight:700;">45-3964886</td></tr>
+          <tr><td style="padding:8px 4px;font-weight:700;color:var(--muted);">Address</td><td style="padding:8px 4px;">6620 S. King Drive<br>Chicago, IL 60637</td></tr>
+        </table>
+      </div>
+    </div>
+    <div style="margin-top:8px;">
+      <div class="card card-accent" style="border-top-color:var(--blue);">
+        <h4>Quick links by platform</h4>
+        <ul style="list-style:none;padding:0;margin:0;font-size:14px;line-height:2.4;">
+          <li><a href="https://www.fidelitycharitable.org/giving-account/grant.html" target="_blank" rel="noopener" style="color:var(--green);">Fidelity Charitable → Grant now ↗</a></li>
+          <li><a href="https://www.schwabcharitable.org/nonprofit-search" target="_blank" rel="noopener" style="color:var(--green);">Schwab Charitable → Search nonprofits ↗</a></li>
+          <li><a href="https://vanguardcharitable.org/grantmaking" target="_blank" rel="noopener" style="color:var(--green);">Vanguard Charitable → Recommend a grant ↗</a></li>
+        </ul>
+      </div>
+      <div class="card" style="margin-top:16px;">
+        <h4>Can't find us in your DAF portal?</h4>
+        <p style="font-size:13.5px;">Search by EIN <strong>45-3964886</strong> or email <a href="mailto:info@projecthood.org">info@projecthood.org</a> — we can provide any documentation your sponsor needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECK + MATCH + PLANNED -->
+<section class="section bg-offwhite" id="other">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--green);">More ways to give</div>
+    <h2 style="margin-bottom:var(--sp-3);">Check, corporate match &amp; planned giving</h2>
+    <div class="grid-3" style="gap:var(--sp-4);">
+      <div class="card card-accent" style="border-top-color:var(--green);">
+        <h4>Check or money order</h4>
+        <p style="font-size:13.5px;">Make checks payable to <strong>Project H.O.O.D.</strong> and mail to:</p>
+        <address style="font-style:normal;font-size:14px;line-height:1.85;padding:12px;background:var(--offwhite);margin:12px 0;">
+          Project H.O.O.D.<br>
+          6620 S. King Drive<br>
+          Chicago, IL 60637
+        </address>
+        <p style="font-size:12.5px;color:var(--muted);">Include your name and email on the memo line to receive a tax receipt.</p>
+      </div>
+      <div class="card card-accent" id="match" style="border-top-color:var(--blue);">
+        <h4>Corporate matching</h4>
+        <p style="font-size:13.5px;">Many employers match charitable gifts dollar-for-dollar — doubling or tripling your impact at no extra cost.</p>
+        <ol style="font-size:13.5px;padding-left:18px;line-height:1.85;margin-bottom:12px;">
+          <li>Check with your HR or benefits team</li>
+          <li>Submit your donation receipt through your company's matching portal</li>
+          <li>Your employer sends a matching gift to Project H.O.O.D.</li>
+        </ol>
+        <p style="font-size:12.5px;color:var(--muted);">Need our EIN or W-9? Email <a href="mailto:info@projecthood.org">info@projecthood.org</a></p>
+      </div>
+      <div class="card card-accent" id="planned" style="border-top-color:var(--red);">
+        <h4>Planned giving</h4>
+        <p style="font-size:13.5px;">Leave a legacy in Woodlawn. Common planned gift types include:</p>
+        <ul style="font-size:13.5px;padding-left:18px;line-height:1.85;margin-bottom:12px;">
+          <li>Bequest in your will</li>
+          <li>IRA or retirement account beneficiary designation</li>
+          <li>Life insurance beneficiary</li>
+          <li>Charitable remainder trust</li>
+        </ul>
+        <p style="font-size:12.5px;color:var(--muted);">To discuss options, contact <a href="mailto:info@projecthood.org">info@projecthood.org</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONOR RESOURCES -->
+<section class="section-sm" style="border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--green);margin-bottom:var(--sp-2);">Donor Resources</div>
+    <div class="grid-2" style="gap:var(--sp-3);">
+      <div class="card" style="border-top:4px solid var(--yellow);">
+        <h4 style="margin-top:0;">&#x1F4C4; Donor Toolkit</h4>
+        <p style="font-size:13.5px;">Sample social posts, impact stats, and everything you need to champion Project H.O.O.D. in your network.</p>
+        <a href="[DONOR_TOOLKIT_DROPBOX_LINK]" target="_blank" rel="noopener" style="font-size:13px;color:var(--green);font-weight:600;">Download toolkit (PDF) &rarr;</a>
+      </div>
+      <div class="card" style="border-top:4px solid var(--blue);">
+        <h4 style="margin-top:0;">&#x1F4F0; Media Kit</h4>
+        <p style="font-size:13.5px;">Organization overview, LEO Center facts, leadership bios, logos, and press contact for media use.</p>
+        <a href="[MEDIA_KIT_DROPBOX_LINK]" target="_blank" rel="noopener" style="font-size:13px;color:var(--blue);font-weight:600;">Download media kit (PDF) &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUESTIONS CTA -->
+<section class="section bg-red" style="text-align:center;">
+  <div class="wrap" style="max-width:600px;margin:0 auto;">
+    <h2 style="color:var(--white);">Questions about giving?</h2>
+    <p style="color:var(--white);opacity:.95;font-size:15.5px;">Whether you're planning a major gift, want to visit in person, or need a W-9 or 990 — our development team is here to help.</p>
+    <a class="btn btn-yellow" style="margin-top:10px;font-size:15px;padding:14px 26px;" href="mailto:info@projecthood.org">info@projecthood.org</a>
+    <p style="color:var(--white);font-size:12px;opacity:.75;margin-top:14px;">501(c)(3) nonprofit · EIN 45-3964886 · All gifts tax-deductible to the extent allowed by law.</p>
   </div>
 </section>
 
@@ -2031,7 +2209,7 @@ first_look_body = f"""
       </div>
       <div style="border-bottom:1px solid var(--line);padding:16px 0;">
         <h4 style="margin:0 0 8px;">Can I give stock or through my DAF?</h4>
-        <p style="margin:0;font-size:14px;color:var(--muted);">Absolutely. See our <a href="ways-to-give.html" style="color:var(--green);">Ways to Give page</a> for stock transfer instructions, DAF links, and planned giving options.</p>
+        <p style="margin:0;font-size:14px;color:var(--muted);">Absolutely. See our <a href="donate.html" style="color:var(--green);">Ways to Give page</a> for stock transfer instructions, DAF links, and planned giving options.</p>
       </div>
       <div style="padding:16px 0;">
         <h4 style="margin:0 0 8px;">I have more questions.</h4>
@@ -2048,7 +2226,7 @@ first_look_body = f"""
     <div class="btn-group" style="justify-content:center;">
       <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/" target="_blank" rel="noopener">Give now &rarr;</a>
       <a class="btn btn-outline-light" href="#share">Share the moment</a>
-      <a class="btn btn-outline-light" href="ways-to-give.html">All giving options</a>
+      <a class="btn btn-outline-light" href="donate.html">All giving options</a>
     </div>
   </div>
 </section>
@@ -2247,6 +2425,20 @@ ways_to_give_body = f"""
     <p style="color:var(--white);opacity:.95;font-size:15.5px;">Our development team is here to help. Whether you're planning a major gift, want to visit in person, or need a W-9 or 990 — reach out.</p>
     <a class="btn btn-yellow" style="margin-top:10px;font-size:15px;padding:14px 26px;" href="mailto:info@projecthood.org">info@projecthood.org</a>
     <p style="color:var(--white);font-size:12px;opacity:.75;margin-top:14px;">Project H.O.O.D. is a 501(c)(3) nonprofit · EIN 45-3964886 · All gifts are tax-deductible to the extent allowed by law.</p>
+  </div>
+</section>
+"""
+
+# Ways to Give has been consolidated into the Donate page. This thin page
+# redirects old /ways-to-give links to /donate so nothing breaks.
+ways_to_give_redirect = f"""
+<section class="section" style="text-align:center;min-height:46vh;display:flex;align-items:center;justify-content:center;">
+  <div class="wrap" style="max-width:560px;">
+    <div class="eyebrow" style="color:var(--green);">Ways to Give</div>
+    <h1>Every way to give is now in one place.</h1>
+    <p class="lead">Online, Brick by Brick, Walk With Us, stock, donor-advised funds, check, corporate match, and planned giving — all on our Donate page.</p>
+    <a class="btn btn-primary" href="donate.html" style="margin-top:12px;">Go to Donate →</a>
+    <script>setTimeout(function(){{location.replace('/donate');}},1500);</script>
   </div>
 </section>
 """
@@ -2807,7 +2999,7 @@ pages = [
     ("campaigns.html",   "Walk With Us!",                "Walk With Us! — a nationwide movement to raise $25M for youth, families, and the LEO Center. Give, walk, or start a team on Tiltify.",  "a_campaigns",    campaigns_body),
     ("get-involved.html","Get Involved",                 "Three ways to move the work forward — give, volunteer, or partner.",                                                                   "a_gi",           gi_body),
     ("donate.html",      "Donate",                       "Donate securely through NetworkForGood. Your gift stays in Woodlawn.",                                                                 "a_gi",           donate_body),
-    ("ways-to-give.html","Ways to Give",                 "Every way to give to Project H.O.O.D. — online, stock, DAF, check, corporate match, and planned giving. EIN 45-3964886.",              "a_gi",           ways_to_give_body),
+    ("ways-to-give.html","Ways to Give",                 "All giving options are now on the Project H.O.O.D. Donate page — online, Brick by Brick, stock, DAF, check, corporate match, and planned giving.",              "a_gi",           ways_to_give_redirect),
     ("volunteer.html",   "Volunteer",                    "Volunteer with Project H.O.O.D. — sign up and we'll match you to an opportunity.",                                                      "a_gi",           volunteer_body),
     ("events.html",      "Events",                       "Upcoming events in Woodlawn — workshops, health fairs, youth programs, and community gatherings. RSVP powered by Eventbrite.",        "a_gi",           events_body),
     ("partner.html",     "Partner with us",              "Partner with Project H.O.O.D. — corporate, employer, foundation, church partnerships.",                                                 "a_gi",           partner_body),
