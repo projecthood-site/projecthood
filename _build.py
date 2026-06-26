@@ -440,7 +440,7 @@ home_body = f"""
 <section class="section bg-black">
   <div class="wrap">
     <div class="grid-2">
-      <div style="min-height:300px;background-image:url('img/leo-center-rendering.jpg');background-size:cover;background-position:center top"></div>
+      <div style="min-height:420px;background-image:url('img/leo-center-rendering.jpg');background-size:cover;background-position:center top;border-radius:6px;"></div>
       <div>
         <div class="eyebrow" style="color:var(--yellow);">Opening Fall 2026 · Capital Campaign</div>
         <h2>A home for everything we do.</h2>
@@ -1448,21 +1448,22 @@ function copyCaption(id,btn){var el=document.getElementById(id);var text=el?el.i
 # -------- LEO CENTER --------
 leo_body = f"""
 <!-- HERO -->
-<section class="hero bg-black">
-  <div class="wrap">
-    <div class="hero-split">
-      <div>
-        <div class="eyebrow" style="color:var(--yellow);letter-spacing:.12em;">Opening Fall 2026 · Woodlawn, Chicago</div>
-        <h1>The <span class="hl-yellow">LEO Center.</span> Built for the South Side.</h1>
-        <p class="lead">The Robert R. McCormick Leadership &amp; Economic Opportunity Center — 90,000 sq ft on S. King Drive, opening Fall 2026. Every Project H.O.O.D. program, one permanent address.</p>
-        <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;">
-          <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/projects/301372-2026-brick-by-brick-campaign">Brick by Brick →</a>
-          <a class="btn btn-outline-light" href="https://projecthood.networkforgood.com/">Fund the build</a>
-        </div>
-      </div>
-      <div style="min-height:340px;background-image:url('img/leo-center-rendering.jpg');background-size:cover;background-position:center top"></div>
+<section class="hero bg-black" style="padding-bottom:var(--sp-3);">
+  <div class="wrap" style="text-align:center;max-width:820px;">
+    <div class="eyebrow" style="color:var(--yellow);letter-spacing:.12em;">Opening Fall 2026 · Woodlawn, Chicago</div>
+    <h1>The <span class="hl-yellow">LEO Center.</span> Built for the South Side.</h1>
+    <p class="lead" style="margin-left:auto;margin-right:auto;">The Robert R. McCormick Leadership &amp; Economic Opportunity Center — 90,000 sq ft on S. King Drive, opening Fall 2026. Every Project H.O.O.D. program, one permanent address.</p>
+    <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+      <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/projects/301372-2026-brick-by-brick-campaign">Brick by Brick →</a>
+      <a class="btn btn-outline-light" href="https://projecthood.networkforgood.com/">Fund the build</a>
     </div>
   </div>
+</section>
+
+<!-- RENDERING SHOWCASE (full-bleed) -->
+<section style="padding:0;background:var(--black);">
+  <img src="img/leo-center-rendering.jpg" alt="Architectural rendering of the LEO Center — 90,000 sq ft on S. King Drive, Woodlawn" style="width:100%;display:block;">
+  <div style="text-align:center;padding:14px 20px;color:rgba(255,255,255,.8);font-family:var(--font-serif);font-style:italic;font-size:14px;">A rendering of the Robert R. McCormick Leadership &amp; Economic Opportunity Center, rising now in Woodlawn.</div>
 </section>
 
 <!-- OPENING ANNOUNCEMENT BANNER -->
@@ -1484,7 +1485,7 @@ leo_body = f"""
       <div class="progress" style="height:56px;border-radius:4px;">
         <div class="progress-fill" style="width:84%;font-size:17px;border-radius:4px 0 0 4px;">$38M raised · 84%</div>
       </div>
-      <p style="font-size:14px;color:var(--muted);margin-top:10px;">$13.5M remaining · Every dollar goes directly to the build</p>
+      <p style="font-size:14px;color:var(--muted);margin-top:10px;">$7M remaining · Every dollar goes directly to the build</p>
     </div>
     <div style="margin-top:var(--sp-3);display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
       <a class="btn btn-primary" href="https://projecthood.networkforgood.com/">Give to the build</a>
