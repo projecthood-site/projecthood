@@ -2102,12 +2102,12 @@ donate_body = f"""
       <div class="card" style="border-top:4px solid var(--yellow);">
         <h4 style="margin-top:0;">&#x1F4C4; Donor Toolkit</h4>
         <p style="font-size:13.5px;">Sample social posts, impact stats, and everything you need to champion Project H.O.O.D. in your network.</p>
-        <a href="[DONOR_TOOLKIT_DROPBOX_LINK]" target="_blank" rel="noopener" style="font-size:13px;color:var(--green);font-weight:600;">Download toolkit (PDF) &rarr;</a>
+        <a href="docs/ph-donor-toolkit.pdf" target="_blank" rel="noopener" style="font-size:13px;color:var(--green);font-weight:600;">Download toolkit (PDF) &rarr;</a>
       </div>
       <div class="card" style="border-top:4px solid var(--blue);">
         <h4 style="margin-top:0;">&#x1F4F0; Media Kit</h4>
         <p style="font-size:13.5px;">Organization overview, LEO Center facts, leadership bios, logos, and press contact for media use.</p>
-        <a href="[MEDIA_KIT_DROPBOX_LINK]" target="_blank" rel="noopener" style="font-size:13px;color:var(--blue);font-weight:600;">Download media kit (PDF) &rarr;</a>
+        <a href="docs/ph-media-kit.pdf" target="_blank" rel="noopener" style="font-size:13px;color:var(--blue);font-weight:600;">Download media kit (PDF) &rarr;</a>
       </div>
     </div>
   </div>
@@ -2407,12 +2407,12 @@ ways_to_give_body = f"""
       <div class="card" style="border-top:4px solid var(--yellow);">
         <h4 style="margin-top:0;">&#x1F4C4; Donor Toolkit</h4>
         <p style="font-size:13.5px;">Sample social posts, impact stats, and everything you need to champion Project H.O.O.D. in your network.</p>
-        <a href="[DONOR_TOOLKIT_DROPBOX_LINK]" target="_blank" rel="noopener" style="font-size:13px;color:var(--green);font-weight:600;">Download toolkit (PDF) &rarr;</a>
+        <a href="docs/ph-donor-toolkit.pdf" target="_blank" rel="noopener" style="font-size:13px;color:var(--green);font-weight:600;">Download toolkit (PDF) &rarr;</a>
       </div>
       <div class="card" style="border-top:4px solid var(--blue);">
         <h4 style="margin-top:0;">&#x1F4F0; Media Kit</h4>
         <p style="font-size:13.5px;">Organization overview, LEO Center facts, leadership bios, logos, and press contact for media use.</p>
-        <a href="[MEDIA_KIT_DROPBOX_LINK]" target="_blank" rel="noopener" style="font-size:13px;color:var(--blue);font-weight:600;">Download media kit (PDF) &rarr;</a>
+        <a href="docs/ph-media-kit.pdf" target="_blank" rel="noopener" style="font-size:13px;color:var(--blue);font-weight:600;">Download media kit (PDF) &rarr;</a>
       </div>
     </div>
   </div>
