@@ -1472,7 +1472,7 @@ leo_body = f"""
     <p style="font-family:var(--font-display);font-size:clamp(18px,3vw,26px);font-weight:700;color:var(--black);letter-spacing:.04em;margin:0;">
       🏗 Construction is underway — the LEO Center opens <strong>Fall 2026.</strong>
     </p>
-    <p style="font-size:15px;color:var(--black);margin:8px 0 0;opacity:.75;">6620 S. Martin Luther King Dr, Chicago, IL 60637 · The heart of Woodlawn</p>
+    <p style="font-size:15px;color:var(--black);margin:8px 0 0;opacity:.75;">6621 S. King Drive, Chicago, IL 60637 · The heart of Woodlawn</p>
   </div>
 </section>
 
