@@ -8,7 +8,7 @@ A plain-English guide for updating the projecthood.org website after launch. **N
 
 ### One-time setup
 1. Make sure you have a GitHub account (free — sign up at https://github.com)
-2. Send Brian your GitHub username so he can add you as a collaborator on the `brianlamar/projecthood` repo
+2. Send Brian your GitHub username so he can add you as a collaborator on the `projecthood-site/projecthood` repo
 3. Accept the collaborator invite email
 4. You're in. You can now edit from any browser.
 
@@ -22,7 +22,7 @@ A plain-English guide for updating the projecthood.org website after launch. **N
 
 **Use case:** you want to change a headline, fix a typo, update a paragraph.
 
-1. Go to https://github.com/brianlamar/projecthood
+1. Go to https://github.com/projecthood-site/projecthood
 2. Click the file that matches the page you want to edit (e.g., `about.html` for the About page — see [SITEMAP.md](SITEMAP.md) for the full list)
 3. Click the ✏️ pencil icon in the top-right of the file view
 4. The file opens in an editor. Use Ctrl+F (Windows) or Cmd+F (Mac) to find the text you want to change.
@@ -115,7 +115,7 @@ Until the Eventbrite collection widget is embedded, event cards are managed dire
 - If your photo is huge (like 15MB from a DSLR), use https://tinypng.com to shrink it — free, takes 5 seconds
 
 ### Step 2 — Upload to the repo
-1. Go to https://github.com/brianlamar/projecthood
+1. Go to https://github.com/projecthood-site/projecthood
 2. Click into the **img** folder
 3. Click **Add file** → **Upload files**
 4. Drag your photo in

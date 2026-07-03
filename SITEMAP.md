@@ -2,7 +2,7 @@
 
 One row per page. Use this for QA, content ownership, and onboarding new staff. Owner = who signs off on content for that page.
 
-Live preview: https://brianlamar.github.io/projecthood/
+Live preview: https://projecthood-site.github.io/projecthood/
 Production (pending cutover): https://projecthood.org
 
 ---

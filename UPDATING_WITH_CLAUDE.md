@@ -17,7 +17,7 @@ Claude Cowork runs **locally on one computer** and conversations **cannot be
 shared** with other people or synced between machines. So there is no single
 "team thread" everyone joins. Instead:
 
-- The **GitHub repo `brianlamar/projecthood` is the shared source of truth.**
+- The **GitHub repo `projecthood-site/projecthood` is the shared source of truth.**
 - **Each maintainer runs their own Claude** on their own computer, pointed at
   their own copy of the repo.
 - Everyone's changes meet in GitHub. As long as each person edits on the
@@ -34,7 +34,7 @@ Do this once on each person's computer.
 
 ### 1. Get access to the repo
 The repo owner adds each maintainer as a **collaborator**:
-GitHub → `brianlamar/projecthood` → **Settings → Collaborators → Add people**.
+GitHub → `projecthood-site/projecthood` → **Settings → Collaborators → Add people**.
 Each maintainer accepts the email invite and creates a free GitHub account if
 they don't have one.
 
@@ -45,7 +45,7 @@ Pick one:
   there. (This is how the current setup works — the site lives under
   `…/PH Website Update/site/projecthood`.)
 - **Standard developer way:** install GitHub Desktop (desktop.github.com), sign
-  in, and **Clone** `brianlamar/projecthood` to the computer.
+  in, and **Clone** `projecthood-site/projecthood` to the computer.
 
 ### 3. Install Claude desktop + open Cowork
 Download the Claude desktop app, sign in, and open **Cowork mode**.
@@ -98,7 +98,7 @@ There are two gates on purpose, so nothing ships by accident:
 
 1. **Save to `staging`** — Claude commits and pushes your change to GitHub's
    `staging` branch. This does **not** make it live. Preview it at
-   https://brianlamar.github.io/projecthood/ once `staging` is merged for preview,
+   https://projecthood-site.github.io/projecthood/ once `staging` is merged for preview,
    or review the diff Claude shows you.
 2. **Publish** — to actually update the live site, `staging` is merged into the
    **`main`** branch. GitHub Pages rebuilds from `main`. Ask Claude to *"open a

@@ -1,6 +1,6 @@
 # QA Findings — projecthood.org Preview
 **Date:** June 19, 2026  
-**Preview URL:** https://brianlamar.github.io/projecthood/  
+**Preview URL:** https://projecthood-site.github.io/projecthood/  
 **Reviewed by:** Claude (automated + visual check)
 
 ---
