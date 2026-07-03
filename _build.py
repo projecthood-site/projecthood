@@ -37,10 +37,12 @@ EVENTBRITE_ORG_URL = "https://www.eventbrite.com/o/project-hood-41178041593"
 # Responses land on the "Newsletter" tab of the Site Form Responses workbook.
 NEWSLETTER_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSel7-YfFSxXgX-L6xExCCyMU45e8URnxAxrS-PFTes2TkLbrA/viewform"
 
-def _eb_fetch_events():
+def _eb_fetch_events(time_filter="current_future", order="start_asc", status="live", limit=None):
     """
-    Fetch upcoming events from Eventbrite API.
-    Returns a list of dicts with keys: title, date_str, location, url
+    Fetch events from the Eventbrite API for the organization.
+    time_filter: "current_future" (upcoming) or "past".
+    status: "live" for upcoming (hides drafts); None for past (returns completed).
+    Returns a list of dicts with keys: title, date_str, location, url, image, is_free
     Returns None if token is missing or request fails.
     """
     token = os.environ.get("EVENTBRITE_TOKEN", "").strip()
@@ -49,8 +51,10 @@ def _eb_fetch_events():
     try:
         url = (
             f"https://www.eventbriteapi.com/v3/organizations/{EVENTBRITE_ORG_ID}/events/"
-            f"?status=live&order_by=start_asc&expand=venue,logo&time_filter=current_future"
+            f"?order_by={order}&expand=venue,logo&time_filter={time_filter}"
         )
+        if status:
+            url += f"&status={status}"
         req = urlreq.Request(url, headers={"Authorization": f"Bearer {token}"})
         with urlreq.urlopen(req, timeout=10) as resp:
             data = json.loads(resp.read())
@@ -79,6 +83,8 @@ def _eb_fetch_events():
                 "image": image,
                 "is_free": bool(ev.get("is_free", False)),
             })
+        if limit:
+            events = events[:limit]
         return events if events else None
     except Exception as exc:
         print(f"  [Eventbrite] Could not fetch events: {exc}")
@@ -87,7 +93,7 @@ def _eb_fetch_events():
 # BG colors cycle for event cards
 _EB_COLORS = ["var(--green)", "var(--blue)", "var(--red)", "var(--purple)", "var(--yellow)"]
 
-def _build_event_cards_html(events):
+def _build_event_cards_html(events, is_past=False):
     """Render a grid of event cards from a list of event dicts."""
     cards = []
     for i, ev in enumerate(events):
@@ -97,14 +103,23 @@ def _build_event_cards_html(events):
         url = ev["url"]
         # Media: real Eventbrite flyer if available, else a branded colored tile
         if ev.get("image"):
+            img_style = "width:100%;height:240px;object-fit:cover;display:block;"
+            if is_past:
+                img_style += "filter:grayscale(35%);opacity:.9;"
             media = (f'<img src="{ev["image"]}" alt="{safe_title} flyer" loading="lazy" '
-                     f'style="width:100%;height:240px;object-fit:cover;display:block;">')
+                     f'style="{img_style}">')
         else:
             media = (f'<div class="img-ph" style="min-height:240px;background:{color};display:flex;'
                      f'align-items:center;justify-content:center;text-align:center;padding:20px;'
                      f'color:var(--white);font-family:var(--font-display);text-transform:uppercase;'
                      f'letter-spacing:.06em;font-size:14px;line-height:1.3;">{safe_title}</div>')
         loc_line = f'{safe_loc} · Free' if ev.get("is_free") else safe_loc
+        if is_past:
+            action = (f'<a class="btn btn-outline" href="{url}" target="_blank" rel="noopener" '
+                      f'style="font-size:13px;padding:8px 16px;">View details →</a>')
+        else:
+            action = (f'<a class="btn btn-primary" href="{url}" target="_blank" rel="noopener" '
+                      f'style="font-size:13px;padding:8px 16px;">RSVP →</a>')
         cards.append(f"""
       <div class="card" style="padding:0;overflow:hidden;">
         {media}
@@ -113,7 +128,7 @@ def _build_event_cards_html(events):
           <div style="font-size:17px;font-weight:800;color:var(--dark);font-family:var(--font-display);line-height:1.2;margin-bottom:3px;">{safe_title}</div>
           <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">{loc_line}</div>
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-            <a class="btn btn-primary" href="{url}" target="_blank" rel="noopener" style="font-size:13px;padding:8px 16px;">RSVP →</a>
+            {action}
             <button class="ph-share-btn" data-title="{safe_title}" data-url="{url}" style="background:transparent;border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:var(--font-body);color:var(--ink);">Share</button>
           </div>
         </div>
@@ -121,13 +136,21 @@ def _build_event_cards_html(events):
     return "\n".join(cards)
 
 # Try fetching live events now; fall back to hardcoded cards if unavailable
-_live_events = _eb_fetch_events()
+_live_events = _eb_fetch_events(time_filter="current_future", order="start_asc", status="live")
 if _live_events:
-    print(f"  [Eventbrite] Loaded {len(_live_events)} live events from API ✓")
+    print(f"  [Eventbrite] Loaded {len(_live_events)} upcoming events from API ✓")
     _event_cards_html = _build_event_cards_html(_live_events)
 else:
     print("  [Eventbrite] No token — using hardcoded event cards")
     _event_cards_html = None   # filled in below with the hardcoded block
+
+# Past events (most recent first, capped) — powers the "Past events" tab
+_past_events = _eb_fetch_events(time_filter="past", order="start_desc", status=None, limit=6)
+if _past_events:
+    print(f"  [Eventbrite] Loaded {len(_past_events)} past events from API ✓")
+    _past_cards_html = _build_event_cards_html(_past_events, is_past=True)
+else:
+    _past_cards_html = None   # filled in below with a fallback message
 
 SITE_DIR = Path(__file__).parent
 
@@ -173,13 +196,12 @@ HEAD = """<!DOCTYPE html>
     </a>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav-links" aria-label="Primary">
-      <a href="about.html"{a_about}>About</a>
       <a href="programs.html"{a_programs}>Programs</a>
-      <a href="impact.html"{a_impact}>Impact</a>
+      <a href="events.html"{a_events}>Community Calendar</a>
       <a href="leo-center.html"{a_leo}>LEO Center</a>
-      <a href="get-involved.html"{a_gi}>Get Involved</a>
-      <a href="news.html"{a_news}>News</a>
-      <a href="ways-to-give.html"{a_ways}>Ways to Give</a>
+      <a href="impact.html"{a_impact}>News &amp; Impact</a>
+      <a href="get-help.html" class="get-help">Get Help</a>
+      <a href="get-involved.html"{a_gi}>Help Somebody</a>
       <a href="https://projecthood.networkforgood.com/" class="donate">Donate</a>
     </nav>
   </div>
@@ -200,11 +222,12 @@ FOOTER = f"""
         <p style="font-size:13.5px;opacity:.9;">A community-rooted nonprofit investing in Woodlawn &amp; Chicago's South Side — through violence prevention, workforce development, health &amp; wellness, youth programming, and re-entry services.</p>
       </div>
       <div>
-        <h5>Get Involved</h5>
+        <h5>Get Help &amp; Give</h5>
         <ul>
+          <li><a href="get-help.html">Get Help</a></li>
           <li><a href="get-involved.html">Volunteer</a></li>
           <li><a href="https://projecthood.networkforgood.com/">Donate</a></li>
-          <li><a href="events.html">Events</a></li>
+          <li><a href="events.html">Community Calendar</a></li>
           <li><a href="partner.html">Partner with us</a></li>
           <li><a href="https://tiltify.com/project-hood/walk-across-america-2025">Walk With Us!</a></li>
           <li><a href="https://projecthood.networkforgood.com/projects/301372-2026-brick-by-brick-campaign" target="_blank" rel="noopener">Brick by Brick</a></li>
@@ -216,9 +239,9 @@ FOOTER = f"""
           <li><a href="about.html">About</a></li>
           <li><a href="exec-director.html">Executive Director</a></li>
           <li><a href="programs.html">Programs</a></li>
-          <li><a href="impact.html">Impact</a></li>
+          <li><a href="impact.html">News &amp; Impact</a></li>
           <li><a href="leo-center.html">LEO Center</a></li>
-          <li><a href="news.html">News</a></li>
+          <li><a href="ways-to-give.html">Ways to Give</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -281,7 +304,8 @@ def _clean_internal_urls(html):
 
 def render(title, meta, active, body):
     active_flags = dict.fromkeys(
-        ['a_about','a_programs','a_impact','a_leo','a_campaigns','a_gi','a_ways','a_news'], '')
+        ['a_about','a_programs','a_impact','a_leo','a_campaigns','a_gi','a_ways','a_news',
+         'a_events','a_help'], '')
     if active:
         active_flags[active] = ' class="active"'
     head = HEAD.format(title=title, meta=meta, **active_flags)
@@ -1302,9 +1326,9 @@ reentry_services_body = f"""
 impact_body = f"""
 <section class="hero bg-black">
   <div class="wrap">
-    <div class="eyebrow" style="color:var(--yellow);">Impact</div>
+    <div class="eyebrow" style="color:var(--yellow);">News &amp; Impact</div>
     <h1>What <span class="hl-yellow">shows up</span> on the block.</h1>
-    <p class="lead">Every number here is what happened in 2025 in Woodlawn and the surrounding South Side — served, placed, trained, fed, funded.</p>
+    <p class="lead">The numbers behind the work in 2025 — served, placed, trained, fed, funded — plus the latest news and press from Woodlawn.</p>
   </div>
 </section>
 
@@ -1377,6 +1401,64 @@ impact_body = f"""
     <div class="testimonial">
       <blockquote>"I came in looking for a construction job. I left with a trade, a clean slate, and a plan. That's not a statistic — that's a life."</blockquote>
       <cite>— Workforce program graduate, 2025 cohort</cite>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-offwhite">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom:var(--sp-2);">In the news</div>
+    <h2>What they're saying about us.</h2>
+    <p style="max-width:var(--w-read);margin-top:8px;">Coverage of Project H.O.O.D. from local and national outlets — the stories others are telling about the work happening in Woodlawn.</p>
+    <div class="grid-2" style="margin-top:var(--sp-3);">
+      <div class="card card-accent" style="border-top-color:var(--green);">
+        <div class="eyebrow">CBS Chicago · Violence Prevention</div>
+        <h3>Project HOOD credited for Woodlawn violent crime drop.</h3>
+        <p>Homicides in Woodlawn are down roughly 35%. Pastor Brooks and his outreach team — credible messengers from the community — are why.</p>
+        <a href="https://www.cbsnews.com/chicago/news/violent-crime-woodlawn-project-hood/" target="_blank" rel="noopener" style="margin-top:auto;">Read on CBS Chicago →</a>
+      </div>
+      <div class="card card-accent" style="border-top-color:var(--blue);">
+        <div class="eyebrow">ABC7 Chicago · Community</div>
+        <h3>1,000 Men Unity Gathering: violence-free zone on the South Side.</h3>
+        <p>Project HOOD convened more than 1,000 men to celebrate progress at the LEO Center and a growing violence-free zone in Woodlawn.</p>
+        <a href="https://abc7chicago.com/post/1000-men-unity-gathering-celebrates-progress-project-hood-center-violence-free-zone-south-side/19121177/" target="_blank" rel="noopener" style="margin-top:auto;">Read on ABC7 →</a>
+      </div>
+      <div class="card card-accent" style="border-top-color:var(--red);">
+        <div class="eyebrow">WGN-TV · Milestone</div>
+        <h3>South Side nonprofit Project HOOD rings NYSE opening bell.</h3>
+        <p>Project HOOD traveled to New York City to ring the New York Stock Exchange opening bell — a national stage for a South Side mission.</p>
+        <a href="https://wgntv.com/news/chicago-news/project-hood-nyc-stock-exchange/" target="_blank" rel="noopener" style="margin-top:auto;">Read on WGN →</a>
+      </div>
+      <div class="card card-accent" style="border-top-color:var(--purple);">
+        <div class="eyebrow">Fox News · Policy</div>
+        <h3>Capitol Hill lawmakers visit Project H.O.O.D. — a "major step forward."</h3>
+        <p>Members of Congress came to Woodlawn to see Project HOOD's community-driven violence interruption model firsthand.</p>
+        <a href="https://www.foxnews.com/media/pastor-brooks-and-project-h-o-o-d-visited-by-capitol-hill-lawmakers-in-major-step-forward" target="_blank" rel="noopener" style="margin-top:auto;">Read on Fox News →</a>
+      </div>
+      <div class="card card-accent" style="border-top-color:var(--gold);">
+        <div class="eyebrow">CBS Chicago · LEO Center</div>
+        <h3>Project HOOD receives $8M donation toward new community center.</h3>
+        <p>A major gift accelerates the $45M Robert R. McCormick Leadership &amp; Economic Opportunity Center at 66th &amp; King Drive.</p>
+        <a href="https://www.cbsnews.com/chicago/news/project-hood-donation-community-center/" target="_blank" rel="noopener" style="margin-top:auto;">Read on CBS Chicago →</a>
+      </div>
+      <div class="card card-accent" style="border-top-color:var(--green);">
+        <div class="eyebrow">Building Up Chicago · May 2024</div>
+        <h3>First look inside the LEO Center construction in Woodlawn.</h3>
+        <p>A deep-dive site visit into the 85,000 sq ft building rising at King Drive — what's going in each floor, and what it means for the neighborhood.</p>
+        <a href="https://buildingupchicago.com/2024/05/02/robert-r-mccormick-leadership-economic-opportunity-center-construction/" target="_blank" rel="noopener" style="margin-top:auto;">Read on Building Up Chicago →</a>
+      </div>
+      <div class="card card-accent" style="border-top-color:var(--blue);">
+        <div class="eyebrow">CBS Chicago · Workforce</div>
+        <h3>LEO Center Offering Construction Training Program.</h3>
+        <p>Project HOOD's Pre-Apprenticeship Construction cohort gives Woodlawn residents a direct path from training to union-track careers.</p>
+        <a href="https://www.cbsnews.com/chicago/news/project-hood-construction-training-program/" target="_blank" rel="noopener" style="margin-top:auto;">Read on CBS Chicago →</a>
+      </div>
+      <div class="card card-accent" style="border-top-color:var(--red);">
+        <div class="eyebrow">Chicago Crusader · Walk Across America</div>
+        <h3>Pastor Corey Brooks walks across America for Project H.O.O.D.</h3>
+        <p>Coverage from Chicago's oldest Black-owned newspaper of the cross-country walk that raised millions for Woodlawn's LEO Center.</p>
+        <a href="https://chicagocrusader.com/pastor-corey-brooks-walks-across-america/" target="_blank" rel="noopener" style="margin-top:auto;">Read on Chicago Crusader →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1828,8 +1910,8 @@ campaigns_body = f"""
 gi_body = f"""
 <section class="hero bg-red">
   <div class="wrap">
-    <div class="eyebrow" style="color:var(--yellow);">Get Involved</div>
-    <h1>Three ways to <span class="hl-yellow">move the work forward.</span></h1>
+    <div class="eyebrow" style="color:var(--yellow);">Help Somebody</div>
+    <h1>Three ways to <span class="hl-yellow">help somebody today.</span></h1>
     <p class="lead">Give, volunteer, or partner. Each one matters — start with whichever you can bring today.</p>
   </div>
 </section>
@@ -2320,53 +2402,30 @@ volunteer_body = f"""
 """
 
 # -------- EVENTS --------
-# Hardcoded event cards — used when EVENTBRITE_TOKEN is not set
+# Fallback shown only if the Eventbrite API can't be reached at build time.
+# Deliberately date-free so stale/past events can never appear as "upcoming."
 _hardcoded_cards = """
-      <div class="card" style="padding:0;overflow:hidden;">
-        <img src="img/events/community-day-2026.jpg" alt="Community Day 2026 flyer"
-             style="width:100%;height:240px;object-fit:cover;display:block;">
-        <div style="padding:14px 18px 16px;">
-          <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Sun, Jun 28 · 10 AM – 3 PM</div>
-          <div style="font-size:17px;font-weight:800;color:var(--dark);font-family:var(--font-display);line-height:1.2;margin-bottom:3px;">Community Day 2026</div>
-          <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">6620 S. King Dr. · Free</div>
-          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-            <a class="btn btn-primary" href="https://www.eventbrite.com/e/community-day-2026-tickets-1992501020188" target="_blank" rel="noopener" style="font-size:13px;padding:8px 16px;">RSVP →</a>
-            <button class="ph-share-btn" data-title="Community Day 2026" data-url="https://www.eventbrite.com/e/community-day-2026-tickets-1992501020188" style="background:transparent;border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:var(--font-body);color:var(--ink);">Share</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="padding:0;overflow:hidden;">
-        <img src="img/events/christmas-in-july.jpg" alt="Christmas in July flyer"
-             style="width:100%;height:240px;object-fit:cover;display:block;">
-        <div style="padding:14px 18px 16px;">
-          <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Wed, Jul 1 · 4 – 7 PM</div>
-          <div style="font-size:17px;font-weight:800;color:var(--dark);font-family:var(--font-display);line-height:1.2;margin-bottom:3px;">Christmas in July</div>
-          <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">West 66th Street · Free</div>
-          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-            <a class="btn btn-primary" href="https://www.eventbrite.com/e/christmas-in-july-tickets-1992501767423" target="_blank" rel="noopener" style="font-size:13px;padding:8px 16px;">RSVP →</a>
-            <button class="ph-share-btn" data-title="Christmas in July" data-url="https://www.eventbrite.com/e/christmas-in-july-tickets-1992501767423" style="background:transparent;border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:var(--font-body);color:var(--ink);">Share</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="padding:0;overflow:hidden;">
-        <img src="img/events/trunk-party-2026.jpg" alt="Trunk Party 2026 flyer"
-             style="width:100%;height:240px;object-fit:cover;display:block;">
-        <div style="padding:14px 18px 16px;">
-          <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Fri, Aug 7 · 4 – 7 PM</div>
-          <div style="font-size:17px;font-weight:800;color:var(--dark);font-family:var(--font-display);line-height:1.2;margin-bottom:3px;">Trunk Party 2026</div>
-          <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">6620 S. King Dr. · Free</div>
-          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-            <a class="btn btn-primary" href="https://www.eventbrite.com/e/trunk-party-2026-tickets-1992502132515" target="_blank" rel="noopener" style="font-size:13px;padding:8px 16px;">RSVP →</a>
-            <button class="ph-share-btn" data-title="Trunk Party 2026" data-url="https://www.eventbrite.com/e/trunk-party-2026-tickets-1992502132515" style="background:transparent;border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:var(--font-body);color:var(--ink);">Share</button>
-          </div>
-        </div>
+      <div class="card" style="padding:32px;text-align:center;grid-column:1/-1;">
+        <p style="font-family:var(--font-serif);color:var(--muted);font-size:15px;margin:0;">
+          Our upcoming events are posted on Eventbrite. See what's coming up on
+          <a href="https://www.eventbrite.com/o/project-hood-41178041593" target="_blank" rel="noopener">our Eventbrite page</a>.
+        </p>
       </div>
 """
 
 # Pick live API cards if available, otherwise hardcoded fallback
 _eb_cards = _event_cards_html if _event_cards_html else _hardcoded_cards
+
+# Past-events grid: live API cards, or a friendly fallback message
+_past_fallback = """
+      <div class="card" style="padding:32px;text-align:center;grid-column:1/-1;">
+        <p style="font-family:var(--font-serif);color:var(--muted);font-size:15px;margin:0;">
+          Past events show up here once we've hosted them. In the meantime, see everything on
+          <a href="https://www.eventbrite.com/o/project-hood-41178041593" target="_blank" rel="noopener">our Eventbrite page</a>.
+        </p>
+      </div>
+"""
+_past_cards = _past_cards_html if _past_cards_html else _past_fallback
 
 events_body = f"""
 <section class="hero bg-yellow" style="color:var(--black);">
@@ -2380,8 +2439,8 @@ events_body = f"""
 <!-- TAB BAR -->
 <section class="section-sm" style="border-bottom:1px solid var(--line);background:var(--white);">
   <div class="wrap" style="display:flex;gap:24px;font-family:var(--font-display);text-transform:uppercase;font-size:12.5px;letter-spacing:.14em;align-items:center;flex-wrap:wrap;">
-    <span style="color:var(--red);border-bottom:2px solid var(--red);padding-bottom:4px;">Upcoming</span>
-    <span style="color:var(--muted);">Past events</span>
+    <button type="button" class="ph-tab" data-target="ph-upcoming" style="background:none;border:none;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--red);border-bottom:2px solid var(--red);padding:0 0 4px;">Upcoming</button>
+    <button type="button" class="ph-tab" data-target="ph-past" style="background:none;border:none;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--muted);border-bottom:2px solid transparent;padding:0 0 4px;">Past events</button>
     <div style="margin-left:auto;">
       <a href="https://www.eventbrite.com/o/project-hood-41178041593" target="_blank" rel="noopener" style="font-family:var(--font-serif);text-transform:none;letter-spacing:0;font-size:12.5px;color:var(--muted);font-style:italic;">View all on Eventbrite →</a>
     </div>
@@ -2393,14 +2452,19 @@ events_body = f"""
 <section class="section">
   <div class="wrap">
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;">
+    <div id="ph-upcoming" class="ph-panel" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;">
 {_eb_cards}
+    </div>
+
+    <div id="ph-past" class="ph-panel" style="display:none;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;">
+{_past_cards}
     </div>
   </div>
 </section>
 
 <script>
 (function() {{
+  // Share buttons
   document.querySelectorAll('.ph-share-btn').forEach(function(btn) {{
     btn.addEventListener('click', function() {{
       var url = this.getAttribute('data-url') || window.location.href;
@@ -2415,6 +2479,21 @@ events_body = f"""
           setTimeout(function() {{ self.textContent = orig; }}, 2000);
         }});
       }}
+    }});
+  }});
+  // Upcoming / Past tab toggle
+  var tabs = document.querySelectorAll('.ph-tab');
+  tabs.forEach(function(tab) {{
+    tab.addEventListener('click', function() {{
+      var target = this.getAttribute('data-target');
+      document.querySelectorAll('.ph-panel').forEach(function(panel) {{
+        panel.style.display = (panel.id === target) ? 'grid' : 'none';
+      }});
+      tabs.forEach(function(t) {{
+        var on = (t === tab);
+        t.style.color = on ? 'var(--red)' : 'var(--muted)';
+        t.style.borderBottomColor = on ? 'var(--red)' : 'transparent';
+      }});
     }});
   }});
 }})();
@@ -2493,70 +2572,16 @@ partner_body = f"""
 """
 
 # -------- NEWS --------
-news_body = f"""
+news_body = """
 <section class="hero bg-black">
   <div class="wrap">
-    <div class="eyebrow" style="color:var(--yellow);">News &amp; updates</div>
-    <h1>What we're <span class="hl-yellow">writing about.</span></h1>
-    <p class="lead">Program milestones, LEO Center progress, stories from the block, press mentions.</p>
+    <div class="eyebrow" style="color:var(--yellow);">News &amp; Impact</div>
+    <h1>This page <span class="hl-yellow">moved.</span></h1>
+    <p class="lead">Our news now lives alongside our impact numbers. Taking you there…</p>
+    <div style="margin-top:var(--sp-3);"><a class="btn btn-yellow" href="impact.html">Go to News &amp; Impact &rarr;</a></div>
   </div>
 </section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="eyebrow" style="margin-bottom:var(--sp-2);">In the press</div>
-    <div class="grid-2">
-      <div class="card card-accent" style="border-top-color:var(--green);">
-        <div class="eyebrow">CBS Chicago · Violence Prevention</div>
-        <h3>Project HOOD credited for Woodlawn violent crime drop.</h3>
-        <p>Homicides in Woodlawn are down roughly 35%. Pastor Brooks and his outreach team — credible messengers from the community — are why.</p>
-        <a href="https://www.cbsnews.com/chicago/news/violent-crime-woodlawn-project-hood/" target="_blank" rel="noopener" style="margin-top:auto;">Read on CBS Chicago →</a>
-      </div>
-      <div class="card card-accent" style="border-top-color:var(--blue);">
-        <div class="eyebrow">ABC7 Chicago · Community</div>
-        <h3>1,000 Men Unity Gathering: violence-free zone on the South Side.</h3>
-        <p>Project HOOD convened more than 1,000 men to celebrate progress at the LEO Center and a growing violence-free zone in Woodlawn.</p>
-        <a href="https://abc7chicago.com/post/1000-men-unity-gathering-celebrates-progress-project-hood-center-violence-free-zone-south-side/19121177/" target="_blank" rel="noopener" style="margin-top:auto;">Read on ABC7 →</a>
-      </div>
-      <div class="card card-accent" style="border-top-color:var(--red);">
-        <div class="eyebrow">WGN-TV · Milestone</div>
-        <h3>South Side nonprofit Project HOOD rings NYSE opening bell.</h3>
-        <p>Project HOOD traveled to New York City to ring the New York Stock Exchange opening bell — a national stage for a South Side mission.</p>
-        <a href="https://wgntv.com/news/chicago-news/project-hood-nyc-stock-exchange/" target="_blank" rel="noopener" style="margin-top:auto;">Read on WGN →</a>
-      </div>
-      <div class="card card-accent" style="border-top-color:#5B2D8E;">
-        <div class="eyebrow">Fox News · Policy</div>
-        <h3>Capitol Hill lawmakers visit Project H.O.O.D. — a "major step forward."</h3>
-        <p>Members of Congress came to Woodlawn to see Project HOOD's community-driven violence interruption model firsthand.</p>
-        <a href="https://www.foxnews.com/media/pastor-brooks-and-project-h-o-o-d-visited-by-capitol-hill-lawmakers-in-major-step-forward" target="_blank" rel="noopener" style="margin-top:auto;">Read on Fox News →</a>
-      </div>
-      <div class="card card-accent" style="border-top-color:#8a6d00;">
-        <div class="eyebrow">CBS Chicago · LEO Center</div>
-        <h3>Project HOOD receives $8M donation toward new community center.</h3>
-        <p>A major gift accelerates the $45M Robert R. McCormick Leadership &amp; Economic Opportunity Center at 66th &amp; King Drive.</p>
-        <a href="https://www.cbsnews.com/chicago/news/project-hood-donation-community-center/" target="_blank" rel="noopener" style="margin-top:auto;">Read on CBS Chicago →</a>
-      </div>
-      <div class="card card-accent" style="border-top-color:var(--green);">
-        <div class="eyebrow">Building Up Chicago · May 2024</div>
-        <h3>First look inside the LEO Center construction in Woodlawn.</h3>
-        <p>A deep-dive site visit into the 85,000 sq ft building rising at King Drive — what's going in each floor, and what it means for the neighborhood.</p>
-        <a href="https://buildingupchicago.com/2024/05/02/robert-r-mccormick-leadership-economic-opportunity-center-construction/" target="_blank" rel="noopener" style="margin-top:auto;">Read on Building Up Chicago →</a>
-      </div>
-      <div class="card card-accent" style="border-top-color:var(--blue);">
-        <div class="eyebrow">CBS Chicago · Workforce</div>
-        <h3>LEO Center Offering Construction Training Program.</h3>
-        <p>Project HOOD's Pre-Apprenticeship Construction cohort gives Woodlawn residents a direct path from training to union-track careers.</p>
-        <a href="https://www.cbsnews.com/chicago/news/project-hood-construction-training-program/" target="_blank" rel="noopener" style="margin-top:auto;">Read on CBS Chicago →</a>
-      </div>
-      <div class="card card-accent" style="border-top-color:var(--red);">
-        <div class="eyebrow">Chicago Crusader · Walk Across America</div>
-        <h3>Pastor Corey Brooks walks across America for Project H.O.O.D.</h3>
-        <p>Coverage from Chicago's oldest Black-owned newspaper of the cross-country walk that raised millions for Woodlawn's LEO Center.</p>
-        <a href="https://chicagocrusader.com/pastor-corey-brooks-walks-across-america/" target="_blank" rel="noopener" style="margin-top:auto;">Read on Chicago Crusader →</a>
-      </div>
-    </div>
-  </div>
-</section>
+<script>window.location.replace('impact.html');</script>
 """
 
 # -------- CONTACT --------
@@ -2811,6 +2836,96 @@ notfound_body = f"""
 </section>
 """
 
+# -------- GET HELP --------
+get_help_body = """
+<section class="hero bg-green">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--yellow);">Get Help</div>
+    <h1>How can we <span class="hl-yellow">help?</span></h1>
+    <p class="lead">Wherever you are — just beginning your journey or continuing it toward your destiny — Project H.O.O.D. is here. Everything below is free and open to the neighborhood. No insurance, no barriers, no judgment.</p>
+    <div style="margin-top:var(--sp-3);display:flex;gap:12px;flex-wrap:wrap;">
+      <a class="btn btn-yellow" href="tel:7739238270">Call 773-923-8270</a>
+      <a class="btn btn-outline-light" href="#services">See how we can help &darr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Quick-start contact band -->
+<section class="section-sm bg-offwhite">
+  <div class="wrap" style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;">
+    <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-size:20px;flex-shrink:0;">&#128222;</span><div><strong>Call or text</strong><br><a href="tel:7739238270" style="color:var(--green);">773-923-8270</a></div></div>
+    <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-size:20px;flex-shrink:0;">&#9993;</span><div><strong>Email</strong><br><a href="mailto:info@projecthood.org" style="color:var(--green);">info@projecthood.org</a></div></div>
+    <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-size:20px;flex-shrink:0;">&#128205;</span><div><strong>Visit</strong><br>6620 S. King Drive, Chicago</div></div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="eyebrow">What do you need?</div>
+    <h2>Find the right kind of help.</h2>
+    <p style="max-width:var(--w-read);margin-top:8px;">Pick what fits where you are right now. Not sure? Call us &mdash; we'll point you to the right person.</p>
+    <div class="grid-2" style="margin-top:var(--sp-3);">
+
+      <div class="prog-card pg-green">
+        <span class="tag tag-green">Safety</span>
+        <h3>I need to stay safe.</h3>
+        <p>Violence interruption, conflict mediation, and support after a crisis &mdash; from credible messengers who live on the block.</p>
+        <a href="violence-prevention.html" style="margin-top:auto;">Violence prevention &rarr;</a>
+      </div>
+
+      <div class="prog-card">
+        <span class="tag tag-red">Jobs</span>
+        <h3>I need a job or training.</h3>
+        <p>Free job training, certifications, and placement in construction, tech, and the trades &mdash; average starting wage $19/hr.</p>
+        <a href="workforce-development.html" style="margin-top:auto;">Workforce development &rarr;</a>
+      </div>
+
+      <div class="prog-card pg-purple">
+        <span class="tag tag-purple">Wellness</span>
+        <h3>I need care or someone to talk to.</h3>
+        <p>Free medical access, counseling, recovery navigation, and senior programming &mdash; no insurance required.</p>
+        <a href="health-wellness.html" style="margin-top:auto;">Health &amp; wellness &rarr;</a>
+      </div>
+
+      <div class="prog-card pg-blue">
+        <span class="tag tag-blue">Youth</span>
+        <h3>Something for my child.</h3>
+        <p>After-school enrichment, mentorship, and entrepreneurship programs that invest in who young people are becoming.</p>
+        <a href="youth-programming.html" style="margin-top:auto;">Youth programming &rarr;</a>
+      </div>
+
+      <div class="prog-card pg-green">
+        <span class="tag tag-green">Re-entry</span>
+        <h3>I'm coming home.</h3>
+        <p>Employment pathways, housing navigation, and wraparound support for people returning from incarceration.</p>
+        <a href="reentry-services.html" style="margin-top:auto;">Re-entry services &rarr;</a>
+      </div>
+
+      <div class="prog-card">
+        <span class="tag tag-red">Food &amp; events</span>
+        <h3>Food &amp; community support.</h3>
+        <p>Food distributions, health fairs, and free community events happen year-round. See what's coming up on the calendar.</p>
+        <a href="events.html" style="margin-top:auto;">Community Calendar &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Not sure where to start -->
+<section class="section bg-black">
+  <div class="wrap" style="text-align:center;">
+    <div class="eyebrow" style="color:var(--yellow);">Not sure where to start?</div>
+    <h2 style="color:var(--white);">Just reach out. We'll take it from there.</h2>
+    <p class="lead" style="max-width:var(--w-read);margin:12px auto 0;">Tell us a little about what you're looking for and we'll connect you with the right person &mdash; usually within one business day.</p>
+    <div style="margin-top:var(--sp-3);display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a class="btn btn-yellow" href="https://docs.google.com/forms/d/e/1FAIpQLScXh7YTveg_BRJLetB7Tclr0MFGhi_QDetgc-iPCCJZ1Narww/viewform" target="_blank" rel="noopener">Send us a message</a>
+      <a class="btn btn-outline-light" href="tel:7739238270">Call 773-923-8270</a>
+    </div>
+  </div>
+</section>
+"""
+
 # ---------------------------------------------------------------------------
 # Registry — (filename, title, meta, active key, body)
 # ---------------------------------------------------------------------------
@@ -2825,17 +2940,18 @@ pages = [
     ("health-wellness.html",       "Health & Wellness",      "Free medical care, counseling, and wellness programs for South Side residents — including the Southside Free Clinic (SSFC).",     "a_programs",     health_wellness_body),
     ("youth-programming.html",     "Youth Programming",      "Entrepreneurship training, mentorship, and after-school enrichment — 380 youth enrolled, 94% attendance, 42 summer internships in 2025.", "a_programs",     youth_programming_body),
     ("reentry-services.html",      "Re-Entry Services",      "Second chances, real support — job readiness, housing, counseling, and mentorship for individuals returning from incarceration.",  "a_programs",     reentry_services_body),
-    ("impact.html",      "Impact",                       "2025 impact — 15,000+ served, 2M+ lbs of food distributed, $19/hr average starting wage, 84% LEO Center funded.",                             "a_impact",       impact_body),
+    ("impact.html",      "News & Impact",                "Project H.O.O.D. news and 2025 impact — 15,000+ served, 2M+ lbs of food distributed, $19/hr average starting wage, 84% LEO Center funded, plus the latest press.", "a_impact",       impact_body),
     ("first-look.html",   "The First Look",               "The First Look \u2014 Project H.O.O.D. donor day. Give, share, and be part of this moment.",                                              "a_gi",           first_look_body),
     ("leo-center.html",  "LEO Center",                   "The Leadership and Economic Opportunity Center — 84% funded, a 90,000 sq ft community hub on S. King Drive.",                        "a_leo",          leo_body),
     ("campaigns.html",   "Walk With Us!",                "Walk With Us! — a nationwide movement to raise $25M for youth, families, and the LEO Center. Give, walk, or start a team on Tiltify.",  "a_campaigns",    campaigns_body),
-    ("get-involved.html","Get Involved",                 "Three ways to move the work forward — give, volunteer, or partner.",                                                                   "a_gi",           gi_body),
+    ("get-help.html",    "Get Help",                     "How can we help? Free, no-barrier support in Woodlawn — safety, jobs and training, health and counseling, youth programs, re-entry, and food. Call 773-923-8270.", None,             get_help_body),
+    ("get-involved.html","Help Somebody",                "Help somebody today — give, volunteer, or partner with Project H.O.O.D.",                                                              "a_gi",           gi_body),
     ("donate.html",      "Donate",                       "Donate securely through NetworkForGood. Your gift stays in Woodlawn.",                                                                 "a_gi",           donate_body),
     ("ways-to-give.html","Ways to Give",                 "Every way to give to Project H.O.O.D. — give online, name a brick in the LEO Center, donate stock or from your DAF, give by check, corporate match, or planned giving. EIN 45-3964886.",              "a_ways",          ways_to_give_body),
     ("volunteer.html",   "Volunteer",                    "Volunteer with Project H.O.O.D. — sign up and we'll match you to an opportunity.",                                                      "a_gi",           volunteer_body),
-    ("events.html",      "Events",                       "Upcoming events in Woodlawn — workshops, health fairs, youth programs, and community gatherings. RSVP powered by Eventbrite.",        "a_gi",           events_body),
+    ("events.html",      "Community Calendar",           "Community Calendar — upcoming events, workshops, health fairs, youth programs, and gatherings in Woodlawn. RSVP powered by Eventbrite.",  "a_events",       events_body),
     ("partner.html",     "Partner with us",              "Partner with Project H.O.O.D. — corporate, employer, foundation, church partnerships.",                                                 "a_gi",           partner_body),
-    ("news.html",        "News",                         "Program milestones, LEO Center progress, stories from the block, press mentions.",                                                    "a_news",         news_body),
+    ("news.html",        "News & Impact",                "Project H.O.O.D. news and impact — this page now lives at News & Impact.",                                                             None,             news_body),
     ("contact.html",     "Contact",                      "Talk to us — press, partnership, participant, or general inquiry.",                                                                    None,             contact_body),
     ("privacy.html",     "Privacy Policy",               "Project H.O.O.D. privacy policy — what we collect, how we use it, and your rights.",                                               None,             privacy_body),
     ("404.html",         "Page not found",               "This page moved or never existed — here's where to go next.",                                                                          None,             notfound_body),

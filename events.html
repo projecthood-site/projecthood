@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="index,follow">
-  <title>Events · Project H.O.O.D.</title>
-  <meta name="description" content="Upcoming events in Woodlawn — workshops, health fairs, youth programs, and community gatherings. RSVP powered by Eventbrite.">
+  <title>Community Calendar · Project H.O.O.D.</title>
+  <meta name="description" content="Community Calendar — upcoming events, workshops, health fairs, youth programs, and gatherings in Woodlawn. RSVP powered by Eventbrite.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Zilla+Slab:ital,wght@0,400;0,500;0,700;1,400&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="img/social-icon.jpg">
-  <meta property="og:title" content="Events · Project H.O.O.D.">
-  <meta property="og:description" content="Upcoming events in Woodlawn — workshops, health fairs, youth programs, and community gatherings. RSVP powered by Eventbrite.">
+  <meta property="og:title" content="Community Calendar · Project H.O.O.D.">
+  <meta property="og:description" content="Community Calendar — upcoming events, workshops, health fairs, youth programs, and gatherings in Woodlawn. RSVP powered by Eventbrite.">
   <meta property="og:image" content="img/social-icon.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <!-- Google Analytics 4 -->
@@ -36,13 +36,12 @@
     </a>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav-links" aria-label="Primary">
-      <a href="about">About</a>
       <a href="programs">Programs</a>
-      <a href="impact">Impact</a>
+      <a href="events" class="active">Community Calendar</a>
       <a href="leo-center">LEO Center</a>
-      <a href="get-involved" class="active">Get Involved</a>
-      <a href="news">News</a>
-      <a href="ways-to-give">Ways to Give</a>
+      <a href="impact">News &amp; Impact</a>
+      <a href="get-help" class="get-help">Get Help</a>
+      <a href="get-involved">Help Somebody</a>
       <a href="https://projecthood.networkforgood.com/" class="donate">Donate</a>
     </nav>
   </div>
@@ -61,8 +60,8 @@
 <!-- TAB BAR -->
 <section class="section-sm" style="border-bottom:1px solid var(--line);background:var(--white);">
   <div class="wrap" style="display:flex;gap:24px;font-family:var(--font-display);text-transform:uppercase;font-size:12.5px;letter-spacing:.14em;align-items:center;flex-wrap:wrap;">
-    <span style="color:var(--red);border-bottom:2px solid var(--red);padding-bottom:4px;">Upcoming</span>
-    <span style="color:var(--muted);">Past events</span>
+    <button type="button" class="ph-tab" data-target="ph-upcoming" style="background:none;border:none;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--red);border-bottom:2px solid var(--red);padding:0 0 4px;">Upcoming</button>
+    <button type="button" class="ph-tab" data-target="ph-past" style="background:none;border:none;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--muted);border-bottom:2px solid transparent;padding:0 0 4px;">Past events</button>
     <div style="margin-left:auto;">
       <a href="https://www.eventbrite.com/o/project-hood-41178041593" target="_blank" rel="noopener" style="font-family:var(--font-serif);text-transform:none;letter-spacing:0;font-size:12.5px;color:var(--muted);font-style:italic;">View all on Eventbrite →</a>
     </div>
@@ -74,52 +73,33 @@
 <section class="section">
   <div class="wrap">
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;">
+    <div id="ph-upcoming" class="ph-panel" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;">
 
-      <div class="card" style="padding:0;overflow:hidden;">
-        <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1188170798%2F658599699843%2F1%2Foriginal.20260703-183108?auto=format%2Ccompress&q=75&sharp=10&s=d19f236d57d6f9492f0c016da46b06d4" alt="AviNation American Dream Tour 2026 flyer" loading="lazy" style="width:100%;height:240px;object-fit:cover;display:block;">
-        <div style="padding:14px 18px 16px;">
-          <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Fri, Jul 17 · 8:00 AM</div>
-          <div style="font-size:17px;font-weight:800;color:var(--dark);font-family:var(--font-display);line-height:1.2;margin-bottom:3px;">AviNation American Dream Tour 2026</div>
-          <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">Woodlawn · Free</div>
-          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-            <a class="btn btn-primary" href="https://www.eventbrite.com/e/avination-american-dream-tour-2026-tickets-1993153727453" target="_blank" rel="noopener" style="font-size:13px;padding:8px 16px;">RSVP →</a>
-            <button class="ph-share-btn" data-title="AviNation American Dream Tour 2026" data-url="https://www.eventbrite.com/e/avination-american-dream-tour-2026-tickets-1993153727453" style="background:transparent;border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:var(--font-body);color:var(--ink);">Share</button>
-          </div>
-        </div>
+      <div class="card" style="padding:32px;text-align:center;grid-column:1/-1;">
+        <p style="font-family:var(--font-serif);color:var(--muted);font-size:15px;margin:0;">
+          Our upcoming events are posted on Eventbrite. See what's coming up on
+          <a href="https://www.eventbrite.com/o/project-hood-41178041593" target="_blank" rel="noopener">our Eventbrite page</a>.
+        </p>
       </div>
 
-      <div class="card" style="padding:0;overflow:hidden;">
-        <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1187573554%2F3006348310113%2F1%2Foriginal.20260624-161941?auto=format%2Ccompress&q=75&sharp=10&s=2e3b42f3ef03d7ff84f5480bbcbb15af" alt="Trunk Party 2026 flyer" loading="lazy" style="width:100%;height:240px;object-fit:cover;display:block;">
-        <div style="padding:14px 18px 16px;">
-          <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Fri, Aug 7 · 4:00 PM</div>
-          <div style="font-size:17px;font-weight:800;color:var(--dark);font-family:var(--font-display);line-height:1.2;margin-bottom:3px;">Trunk Party 2026</div>
-          <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">Project HOOD · Free</div>
-          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-            <a class="btn btn-primary" href="https://www.eventbrite.com/e/trunk-party-2026-tickets-1992502132515" target="_blank" rel="noopener" style="font-size:13px;padding:8px 16px;">RSVP →</a>
-            <button class="ph-share-btn" data-title="Trunk Party 2026" data-url="https://www.eventbrite.com/e/trunk-party-2026-tickets-1992502132515" style="background:transparent;border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:var(--font-body);color:var(--ink);">Share</button>
-          </div>
-        </div>
+    </div>
+
+    <div id="ph-past" class="ph-panel" style="display:none;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;">
+
+      <div class="card" style="padding:32px;text-align:center;grid-column:1/-1;">
+        <p style="font-family:var(--font-serif);color:var(--muted);font-size:15px;margin:0;">
+          Past events show up here once we've hosted them. In the meantime, see everything on
+          <a href="https://www.eventbrite.com/o/project-hood-41178041593" target="_blank" rel="noopener">our Eventbrite page</a>.
+        </p>
       </div>
 
-      <div class="card" style="padding:0;overflow:hidden;">
-        <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1188171517%2F658599699843%2F1%2Foriginal.20260703-184533?auto=format%2Ccompress&q=75&sharp=10&s=b5c2796ceb8ca465a94d0184396fecc9" alt="Secretary of State DMV Community Service Day flyer" loading="lazy" style="width:100%;height:240px;object-fit:cover;display:block;">
-        <div style="padding:14px 18px 16px;">
-          <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Sat, Aug 29 · 9:00 AM</div>
-          <div style="font-size:17px;font-weight:800;color:var(--dark);font-family:var(--font-display);line-height:1.2;margin-bottom:3px;">Secretary of State DMV Community Service Day</div>
-          <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">Project HOOD · Free</div>
-          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-            <a class="btn btn-primary" href="https://www.eventbrite.com/e/secretary-of-state-dmv-community-service-day-tickets-1993154521829" target="_blank" rel="noopener" style="font-size:13px;padding:8px 16px;">RSVP →</a>
-            <button class="ph-share-btn" data-title="Secretary of State DMV Community Service Day" data-url="https://www.eventbrite.com/e/secretary-of-state-dmv-community-service-day-tickets-1993154521829" style="background:transparent;border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:var(--font-body);color:var(--ink);">Share</button>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
 <script>
 (function() {
+  // Share buttons
   document.querySelectorAll('.ph-share-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var url = this.getAttribute('data-url') || window.location.href;
@@ -136,6 +116,21 @@
       }
     });
   });
+  // Upcoming / Past tab toggle
+  var tabs = document.querySelectorAll('.ph-tab');
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var target = this.getAttribute('data-target');
+      document.querySelectorAll('.ph-panel').forEach(function(panel) {
+        panel.style.display = (panel.id === target) ? 'grid' : 'none';
+      });
+      tabs.forEach(function(t) {
+        var on = (t === tab);
+        t.style.color = on ? 'var(--red)' : 'var(--muted)';
+        t.style.borderBottomColor = on ? 'var(--red)' : 'transparent';
+      });
+    });
+  });
 })();
 </script>
 
@@ -150,11 +145,12 @@
         <p style="font-size:13.5px;opacity:.9;">A community-rooted nonprofit investing in Woodlawn &amp; Chicago's South Side — through violence prevention, workforce development, health &amp; wellness, youth programming, and re-entry services.</p>
       </div>
       <div>
-        <h5>Get Involved</h5>
+        <h5>Get Help &amp; Give</h5>
         <ul>
+          <li><a href="get-help">Get Help</a></li>
           <li><a href="get-involved">Volunteer</a></li>
           <li><a href="https://projecthood.networkforgood.com/">Donate</a></li>
-          <li><a href="events">Events</a></li>
+          <li><a href="events">Community Calendar</a></li>
           <li><a href="partner">Partner with us</a></li>
           <li><a href="https://tiltify.com/project-hood/walk-across-america-2025">Walk With Us!</a></li>
           <li><a href="https://projecthood.networkforgood.com/projects/301372-2026-brick-by-brick-campaign" target="_blank" rel="noopener">Brick by Brick</a></li>
@@ -166,9 +162,9 @@
           <li><a href="about">About</a></li>
           <li><a href="exec-director">Executive Director</a></li>
           <li><a href="programs">Programs</a></li>
-          <li><a href="impact">Impact</a></li>
+          <li><a href="impact">News &amp; Impact</a></li>
           <li><a href="leo-center">LEO Center</a></li>
-          <li><a href="news">News</a></li>
+          <li><a href="ways-to-give">Ways to Give</a></li>
           <li><a href="contact">Contact</a></li>
         </ul>
       </div>

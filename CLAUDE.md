@@ -13,7 +13,7 @@ The static HTML source for **projecthood.org** (Project H.O.O.D., a Chicago
 nonprofit). Plain HTML + one CSS file + a little JS. No framework, no build step
 to *view* — every `.html` file renders on its own.
 
-- **GitHub repo:** `brianlamar/projecthood`
+- **GitHub repo:** `projecthood-site/projecthood`
 - **Working branch:** `staging` — make all edits here.
 - **Deploy:** GitHub Pages serves from the **`main`** branch (root). Changes go
   live only after `staging` is merged into `main`. Production `projecthood.org`

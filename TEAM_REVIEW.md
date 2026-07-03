@@ -2,7 +2,7 @@
 
 Everything you need to QA the new site.
 
-**Preview URL:** https://brianlamar.github.io/projecthood/
+**Preview URL:** https://projecthood-site.github.io/projecthood/
 
 > ⚠️ This preview is on a private repo and set to `noindex` so search engines skip it. **Please don't share the URL outside the team.**
 

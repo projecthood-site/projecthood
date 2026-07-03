@@ -17,7 +17,7 @@ The play-by-play for cutting over from Squarespace to the GitHub Pages build. Fo
 ### Accounts + access
 - [ ] Access to Squarespace admin confirmed (for shutting the old site down / pointing DNS)
 - [ ] Access to DNS registrar confirmed (where projecthood.org is registered — likely Google Domains / Squires / GoDaddy)
-- [ ] GitHub repo `brianlamar/projecthood` is still set to **Deploy from branch: main / root**
+- [ ] GitHub repo `projecthood-site/projecthood` is still set to **Deploy from branch: main / root**
 - [ ] NetworkForGood, Tiltify, Apricot, Google Workspace accounts all still active — verify by logging in
 
 ### Analytics + measurement
@@ -44,7 +44,7 @@ The play-by-play for cutting over from Squarespace to the GitHub Pages build. Fo
 ### Step 1 — Final push (T-1 hour)
 - [ ] Merge any last-minute content edits to `main`
 - [ ] Confirm GitHub Pages has rebuilt (green checkmark in Settings → Pages)
-- [ ] Load https://brianlamar.github.io/projecthood/ and click through all 15 pages one more time
+- [ ] Load https://projecthood-site.github.io/projecthood/ and click through all 15 pages one more time
 
 ### Step 2 — Configure custom domain in GitHub Pages (T-30 min)
 - [ ] Repo → Settings → Pages → Custom domain: enter `projecthood.org`
@@ -60,7 +60,7 @@ At your DNS registrar, update the records for `projecthood.org`:
 | A     | @    | 185.199.109.153 |
 | A     | @    | 185.199.110.153 |
 | A     | @    | 185.199.111.153 |
-| CNAME | www  | brianlamar.github.io. |
+| CNAME | www  | projecthood-site.github.io. |
 
 Remove or disable any existing A records pointing to Squarespace.
 
