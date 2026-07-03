@@ -69,17 +69,11 @@
   </div>
 </section>
 
-<!-- EVENT CARDS — auto-populated by scripts/sync_eventbrite.py, run daily (and
-     on-demand) by the "Sync Eventbrite events" GitHub Action. See
-     .github/workflows/sync-events.yml. The block between the markers below is
-     regenerated automatically on every sync — manual edits inside it will be
-     overwritten. To change what shows here, edit the event on Eventbrite
-     itself (title, date, flyer, description) and the next sync will pick it
-     up. The cards below are the last-known-good fallback. -->
+<!-- EVENT CARDS — auto-populated from Eventbrite API when EVENTBRITE_TOKEN is set;
+     otherwise uses the hardcoded cards below. See _build.py header for setup. -->
 <section class="section">
   <div class="wrap">
 
-    <!-- EVENTBRITE:CARDS:START -->
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;">
 
       <div class="card" style="padding:0;overflow:hidden;">
@@ -125,7 +119,6 @@
       </div>
 
     </div>
-    <!-- EVENTBRITE:CARDS:END -->
   </div>
 </section>
 
