@@ -27,7 +27,10 @@ except ImportError:
 # ---------------------------------------------------------------------------
 # Eventbrite live event fetcher
 # ---------------------------------------------------------------------------
-EVENTBRITE_ORG_ID = "41178041593"
+# Organization ID for the Eventbrite API (from GET /v3/users/me/organizations/).
+# NOTE: this is NOT the "41178041593" number in the public /o/ URL — that is the
+# organizer-profile ID and the API's events endpoint rejects it. Use the org ID.
+EVENTBRITE_ORG_ID = "798710286253"
 EVENTBRITE_ORG_URL = "https://www.eventbrite.com/o/project-hood-41178041593"
 
 # Newsletter signup Google Form (created via createNewsletterFormOnly() in create_ph_forms.gs).
@@ -45,8 +48,8 @@ def _eb_fetch_events():
         return None
     try:
         url = (
-            f"https://www.eventbriteapi.com/v3/organizers/{EVENTBRITE_ORG_ID}/events/"
-            f"?status=live&order_by=start_asc&expand=venue&time_filter=current_future"
+            f"https://www.eventbriteapi.com/v3/organizations/{EVENTBRITE_ORG_ID}/events/"
+            f"?status=live&order_by=start_asc&expand=venue,logo&time_filter=current_future"
         )
         req = urlreq.Request(url, headers={"Authorization": f"Bearer {token}"})
         with urlreq.urlopen(req, timeout=10) as resp:
@@ -63,11 +66,18 @@ def _eb_fetch_events():
                 day_str = start.get("local", "")
             venue = ev.get("venue") or {}
             location = venue.get("name") or venue.get("address", {}).get("city") or "Woodlawn"
+            # Event flyer image (falls back to a colored tile if none)
+            logo = ev.get("logo") or {}
+            image = ""
+            if logo:
+                image = (logo.get("original") or {}).get("url") or logo.get("url") or ""
             events.append({
                 "title": ev.get("name", {}).get("text", "Untitled Event"),
                 "date_str": day_str,
                 "location": location,
                 "url": ev.get("url", EVENTBRITE_ORG_URL),
+                "image": image,
+                "is_free": bool(ev.get("is_free", False)),
             })
         return events if events else None
     except Exception as exc:
@@ -85,13 +95,23 @@ def _build_event_cards_html(events):
         safe_title = ev["title"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
         safe_loc   = ev["location"].replace("&", "&amp;")
         url = ev["url"]
+        # Media: real Eventbrite flyer if available, else a branded colored tile
+        if ev.get("image"):
+            media = (f'<img src="{ev["image"]}" alt="{safe_title} flyer" loading="lazy" '
+                     f'style="width:100%;height:240px;object-fit:cover;display:block;">')
+        else:
+            media = (f'<div class="img-ph" style="min-height:240px;background:{color};display:flex;'
+                     f'align-items:center;justify-content:center;text-align:center;padding:20px;'
+                     f'color:var(--white);font-family:var(--font-display);text-transform:uppercase;'
+                     f'letter-spacing:.06em;font-size:14px;line-height:1.3;">{safe_title}</div>')
+        loc_line = f'{safe_loc} · Free' if ev.get("is_free") else safe_loc
         cards.append(f"""
       <div class="card" style="padding:0;overflow:hidden;">
-        <div class="img-ph" style="min-height:220px;background:{color};">FLYER · save to img/events/</div>
-        <div style="padding:16px 18px 18px;">
-          <div style="font-size:12px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">{ev["date_str"]}</div>
-          <h4 style="margin:0 0 6px;">{safe_title}</h4>
-          <p style="font-size:13.5px;margin:0 0 12px;color:var(--muted);">{safe_loc} · Free</p>
+        {media}
+        <div style="padding:14px 18px 16px;">
+          <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">{ev["date_str"]}</div>
+          <div style="font-size:17px;font-weight:800;color:var(--dark);font-family:var(--font-display);line-height:1.2;margin-bottom:3px;">{safe_title}</div>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">{loc_line}</div>
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
             <a class="btn btn-primary" href="{url}" target="_blank" rel="noopener" style="font-size:13px;padding:8px 16px;">RSVP →</a>
             <button class="ph-share-btn" data-title="{safe_title}" data-url="{url}" style="background:transparent;border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:var(--font-body);color:var(--ink);">Share</button>
