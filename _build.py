@@ -100,6 +100,8 @@ _EB_COLORS = ["var(--green)", "var(--blue)", "var(--red)", "var(--purple)", "var
 _RSVP_OVERRIDES = {
     "secretary of state dmv community service day":
         "https://docs.google.com/forms/d/e/1FAIpQLSepWJiAXLjX5fHqnX5VqV3lW4tAFHE79s6OHXJULhcDHn5HZw/viewform",
+    "trunk party":
+        "https://docs.google.com/forms/d/e/1FAIpQLScuY1qVREYg8wENDx7PyMUhlBkkHOGzRh0CepZsOmPSVlyL2w/viewform",
 }
 
 def _build_event_cards_html(events, is_past=False):
