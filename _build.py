@@ -151,164 +151,22 @@ def _build_event_cards_html(events, is_past=False):
       </div>""")
     return "\n".join(cards)
 
-# ---------------------------------------------------------------------------
-# Supabase native events fetcher (Project HOOD OS)
-# ---------------------------------------------------------------------------
-# The events page is now generated from the Supabase "events" table instead of
-# Eventbrite. The anon key is PUBLIC — RLS exposes only status=published rows.
-# Values fall back to the public project so GitHub Actions needs no secret.
-SUPABASE_URL = os.environ.get(
-    "SUPABASE_URL", "https://vzpqgmvwoxzlpodlcwfg.supabase.co").rstrip("/")
-SUPABASE_ANON_KEY = os.environ.get(
-    "SUPABASE_ANON_KEY",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ6cHFnbXZ3b3h6bHBvZGxjd2ZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0NzQzNDQsImV4cCI6MjA5OTA1MDM0NH0.gD9BnDyLKloqmpxU3f8KfovGjw1WCM6x1Em7POAlMe8",
-)
-# Native RSVP pages are served by the admin app.
-RSVP_ADMIN_BASE = "https://projecthood-admin.vercel.app/rsvp/"
-
-
-def fetch_events_supabase():
-    """Fetch published events from the Supabase REST API.
-    Returns a list of dicts (id, title, description, starts_at, location,
-    color_tint). On any network/error condition returns [] so the build
-    never fails."""
-    if urlreq is None:
-        return []
-    try:
-        url = (
-            f"{SUPABASE_URL}/rest/v1/events?status=eq.published"
-            f"&select=id,title,description,starts_at,location,color_tint"
-            f"&order=starts_at.asc"
-        )
-        req = urlreq.Request(url, headers={
-            "apikey": SUPABASE_ANON_KEY,
-            "Authorization": f"Bearer {SUPABASE_ANON_KEY}",
-        })
-        # Verified TLS first; on a local cert-store issue (common on macOS
-        # Python) retry with certifi, then an unverified context as a last
-        # resort. Safe here: public read-only anon endpoint, no secrets sent.
-        import ssl
-        try:
-            ctx = ssl.create_default_context()
-            try:
-                import certifi  # type: ignore
-                ctx = ssl.create_default_context(cafile=certifi.where())
-            except Exception:
-                pass
-            with urlreq.urlopen(req, timeout=10, context=ctx) as resp:
-                data = json.loads(resp.read())
-        except ssl.SSLError:
-            unverified = ssl._create_unverified_context()
-            with urlreq.urlopen(req, timeout=10, context=unverified) as resp:
-                data = json.loads(resp.read())
-        return data if isinstance(data, list) else []
-    except Exception as exc:
-        print(f"  [Supabase] Could not fetch events: {exc}")
-        return []
-
-
-def _esc(text):
-    return (str(text or "").replace("&", "&amp;")
-            .replace("<", "&lt;").replace(">", "&gt;"))
-
-
-def _fmt_event_datetime(starts_at):
-    """Parse an ISO timestamp and format e.g. 'Sat, Jun 28 · 10:00 AM'."""
-    from datetime import datetime
-    if not starts_at:
-        return ""
-    s = str(starts_at).strip()
-    try:
-        dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
-        try:
-            return dt.strftime("%a, %b %-d · %-I:%M %p")
-        except ValueError:  # platforms without %-d / %-I
-            return dt.strftime("%a, %b %d · %I:%M %p").replace(" 0", " ")
-    except Exception:
-        return s
-
-
-def _build_supabase_event_cards_html(events, is_past=False):
-    """Render a grid of event cards from Supabase events, reusing the same
-    card markup/classes as before. RSVP buttons link to the native admin
-    RSVP page; color_tint drives the accent tile when present."""
-    cards = []
-    for i, ev in enumerate(events):
-        tint = str(ev.get("color_tint") or "").strip()
-        color = tint if tint else _EB_COLORS[i % len(_EB_COLORS)]
-        safe_title = _esc(ev.get("title") or "Untitled Event")
-        safe_loc = _esc(ev.get("location") or "Woodlawn")
-        desc = str(ev.get("description") or "").strip()
-        if len(desc) > 160:
-            desc = desc[:157].rstrip() + "…"
-        safe_desc = _esc(desc)
-        date_str = _fmt_event_datetime(ev.get("starts_at"))
-        rsvp_url = f"{RSVP_ADMIN_BASE}{ev.get('id', '')}"
-        img_style = (
-            f"min-height:240px;background:{color};display:flex;align-items:center;"
-            f"justify-content:center;text-align:center;padding:20px;color:var(--white);"
-            f"font-family:var(--font-display);text-transform:uppercase;letter-spacing:.06em;"
-            f"font-size:14px;line-height:1.3;"
-        )
-        if is_past:
-            img_style += "filter:grayscale(35%);opacity:.9;"
-        media = f'<div class="img-ph" style="{img_style}">{safe_title}</div>'
-        if is_past:
-            action = (f'<a class="btn btn-outline" href="{rsvp_url}" target="_blank" rel="noopener" '
-                      f'style="font-size:13px;padding:8px 16px;">View details →</a>')
-        else:
-            action = (f'<a class="btn btn-primary" href="{rsvp_url}" target="_blank" rel="noopener" '
-                      f'style="font-size:13px;padding:8px 16px;">RSVP →</a>')
-        desc_html = (
-            f'<div style="font-size:13.5px;color:var(--ink);font-family:var(--font-serif);'
-            f'line-height:1.45;margin-bottom:12px;">{safe_desc}</div>'
-        ) if safe_desc else ""
-        cards.append(f"""
-      <div class="card" style="padding:0;overflow:hidden;">
-        {media}
-        <div style="padding:14px 18px 16px;">
-          <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">{date_str}</div>
-          <div style="font-size:17px;font-weight:800;color:var(--dark);font-family:var(--font-display);line-height:1.2;margin-bottom:3px;">{safe_title}</div>
-          <div style="font-size:13px;color:var(--muted);margin-bottom:10px;">{safe_loc}</div>
-          {desc_html}
-          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-            {action}
-            <button class="ph-share-btn" data-title="{safe_title}" data-url="{rsvp_url}" style="background:transparent;border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:var(--font-body);color:var(--ink);">Share</button>
-          </div>
-        </div>
-      </div>""")
-    return "\n".join(cards)
-
-
-# Fetch native events from Supabase, split into upcoming / past by start time.
-_sb_events = fetch_events_supabase()
-if _sb_events:
-    print(f"  [Supabase] Loaded {len(_sb_events)} published events ✓")
+# Try fetching live events now; fall back to hardcoded cards if unavailable
+_live_events = _eb_fetch_events(time_filter="current_future", order="start_asc", status="live")
+if _live_events:
+    print(f"  [Eventbrite] Loaded {len(_live_events)} upcoming events from API ✓")
+    _event_cards_html = _build_event_cards_html(_live_events)
 else:
-    print("  [Supabase] No published events (or unreachable) — using empty state")
+    print("  [Eventbrite] No token — using hardcoded event cards")
+    _event_cards_html = None   # filled in below with the hardcoded block
 
-
-def _event_is_upcoming(ev):
-    from datetime import datetime
-    s = str(ev.get("starts_at") or "").strip()
-    if not s:
-        return True
-    try:
-        dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
-        now = datetime.now(dt.tzinfo) if dt.tzinfo else datetime.now()
-        return dt >= now
-    except Exception:
-        return True
-
-
-_upcoming_events = [e for e in _sb_events if _event_is_upcoming(e)]
-# Past events: most-recent first (query was ascending).
-_past_events = [e for e in reversed(_sb_events) if not _event_is_upcoming(e)]
-
-_event_cards_html = (_build_supabase_event_cards_html(_upcoming_events)
-                     if _upcoming_events else None)
-_past_cards_html = (_build_supabase_event_cards_html(_past_events, is_past=True)
-                    if _past_events else None)
+# Past events (most recent first, capped) — powers the "Past events" tab
+_past_events = _eb_fetch_events(time_filter="past", order="start_desc", status=None, limit=6)
+if _past_events:
+    print(f"  [Eventbrite] Loaded {len(_past_events)} past events from API ✓")
+    _past_cards_html = _build_event_cards_html(_past_events, is_past=True)
+else:
+    _past_cards_html = None   # filled in below with a fallback message
 
 SITE_DIR = Path(__file__).parent
 
@@ -2560,25 +2418,26 @@ volunteer_body = f"""
 """
 
 # -------- EVENTS --------
-# Friendly empty state — shown when there are no published events in Supabase
-# (also the graceful fallback if the API can't be reached at build time).
-_events_empty_state = """
-      <div class="card" style="padding:44px 32px;text-align:center;grid-column:1/-1;">
-        <div style="font-family:var(--font-display);text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:var(--red);margin-bottom:8px;">Nothing on the calendar yet</div>
-        <p style="font-family:var(--font-serif);color:var(--muted);font-size:16px;margin:0;">
-          No upcoming events right now — check back soon.
+# Fallback shown only if the Eventbrite API can't be reached at build time.
+# Deliberately date-free so stale/past events can never appear as "upcoming."
+_hardcoded_cards = """
+      <div class="card" style="padding:32px;text-align:center;grid-column:1/-1;">
+        <p style="font-family:var(--font-serif);color:var(--muted);font-size:15px;margin:0;">
+          Our upcoming events are posted on Eventbrite. See what's coming up on
+          <a href="https://www.eventbrite.com/o/project-hood-41178041593" target="_blank" rel="noopener">our Eventbrite page</a>.
         </p>
       </div>
 """
 
-# Upcoming grid: native Supabase cards, or the friendly empty state
-_eb_cards = _event_cards_html if _event_cards_html else _events_empty_state
+# Pick live API cards if available, otherwise hardcoded fallback
+_eb_cards = _event_cards_html if _event_cards_html else _hardcoded_cards
 
-# Past-events grid: native Supabase cards, or the friendly empty state
+# Past-events grid: live API cards, or a friendly fallback message
 _past_fallback = """
-      <div class="card" style="padding:44px 32px;text-align:center;grid-column:1/-1;">
-        <p style="font-family:var(--font-serif);color:var(--muted);font-size:16px;margin:0;">
-          No past events to show yet — check back soon.
+      <div class="card" style="padding:32px;text-align:center;grid-column:1/-1;">
+        <p style="font-family:var(--font-serif);color:var(--muted);font-size:15px;margin:0;">
+          Past events show up here once we've hosted them. In the meantime, see everything on
+          <a href="https://www.eventbrite.com/o/project-hood-41178041593" target="_blank" rel="noopener">our Eventbrite page</a>.
         </p>
       </div>
 """
@@ -2598,11 +2457,14 @@ events_body = f"""
   <div class="wrap" style="display:flex;gap:24px;font-family:var(--font-display);text-transform:uppercase;font-size:12.5px;letter-spacing:.14em;align-items:center;flex-wrap:wrap;">
     <button type="button" class="ph-tab" data-target="ph-upcoming" style="background:none;border:none;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--red);border-bottom:2px solid var(--red);padding:0 0 4px;">Upcoming</button>
     <button type="button" class="ph-tab" data-target="ph-past" style="background:none;border:none;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--muted);border-bottom:2px solid transparent;padding:0 0 4px;">Past events</button>
+    <div style="margin-left:auto;">
+      <a href="https://www.eventbrite.com/o/project-hood-41178041593" target="_blank" rel="noopener" style="font-family:var(--font-serif);text-transform:none;letter-spacing:0;font-size:12.5px;color:var(--muted);font-style:italic;">View all on Eventbrite →</a>
+    </div>
   </div>
 </section>
 
-<!-- EVENT CARDS — generated from the Supabase "events" table (status=published)
-     by _build.py at build time. RSVP buttons link to the native admin RSVP page. -->
+<!-- EVENT CARDS — auto-populated from Eventbrite API when EVENTBRITE_TOKEN is set;
+     otherwise uses the hardcoded cards below. See _build.py header for setup. -->
 <section class="section">
   <div class="wrap">
 
@@ -3103,7 +2965,7 @@ pages = [
     ("donate.html",      "Donate",                       "Donate securely through NetworkForGood. Your gift stays in Woodlawn.",                                                                 "a_gi",           donate_body),
     ("ways-to-give.html","Ways to Give",                 "Every way to give to Project H.O.O.D. — give online, name a brick in the LEO Center, donate stock or from your DAF, give by check, corporate match, or planned giving. EIN 45-3964886.",              "a_ways",          ways_to_give_body),
     ("volunteer.html",   "Volunteer",                    "Volunteer with Project H.O.O.D. — sign up and we'll match you to an opportunity.",                                                      "a_gi",           volunteer_body),
-    ("events.html",      "Community Calendar",           "Community Calendar — upcoming events, workshops, health fairs, youth programs, and gatherings in Woodlawn. RSVP online.",  "a_events",       events_body),
+    ("events.html",      "Community Calendar",           "Community Calendar — upcoming events, workshops, health fairs, youth programs, and gatherings in Woodlawn. RSVP powered by Eventbrite.",  "a_events",       events_body),
     ("partner.html",     "Partner with us",              "Partner with Project H.O.O.D. — corporate, employer, foundation, church partnerships.",                                                 "a_gi",           partner_body),
     ("news.html",        "News & Impact",                "Project H.O.O.D. news and impact — this page now lives at News & Impact.",                                                             None,             news_body),
     ("contact.html",     "Contact",                      "Talk to us — press, partnership, participant, or general inquiry.",                                                                    None,             contact_body),
