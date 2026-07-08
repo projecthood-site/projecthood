@@ -2604,7 +2604,7 @@ contact_body = f"""
 <section class="hero bg-green">
   <div class="wrap">
     <div class="eyebrow" style="color:var(--yellow);">Contact</div>
-    <h1>Talk to us.</h1>
+    <h1 style="font-size:clamp(40px,7vw,72px);">Talk to us.</h1>
     <p class="lead">Press, partnership, participant inquiry, or general question — we answer every message.</p>
   </div>
 </section>
