@@ -268,6 +268,17 @@ FOOTER = f"""
       </div>
     </div>
 
+    <div class="footer-trust" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;padding:22px 0 4px;border-top:1px solid rgba(255,255,255,.14);">
+      <span style="font-family:var(--font-display);letter-spacing:.08em;font-size:12px;text-transform:uppercase;color:var(--yellow);opacity:.9;">Independently rated &amp; verified</span>
+      <a href="https://www.charitynavigator.org/ein/453964886" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:9px 14px;">
+        <span aria-hidden="true" style="color:var(--yellow);font-size:15px;letter-spacing:2px;">&#9733;&#9733;&#9733;&#9733;</span>
+        <span style="color:#fff;font-size:12.5px;line-height:1.25;"><strong>Charity Navigator</strong><br><span style="opacity:.85;">Four-Star Charity &middot; 95%</span></span>
+      </a>
+      <a href="https://www.guidestar.org/profile/45-3964886" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:9px 14px;">
+        <span style="color:#fff;font-size:12.5px;line-height:1.25;"><strong>Candid &middot; GuideStar</strong><br><span style="opacity:.85;">View our nonprofit profile &rarr;</span></span>
+      </a>
+    </div>
+
     <div class="footer-bottom">
       <div>
         © 2026 Project H.O.O.D. · 6620 S. King Drive, Chicago IL 60637 · EIN 45-3964886<br>
@@ -651,12 +662,12 @@ about_body = f"""
         <li style="padding:14px 0;border-bottom:1px solid var(--line);"><strong>2024 Annual Report</strong> · <a href="#">Download PDF</a></li>
         <li style="padding:14px 0;border-bottom:1px solid var(--line);">
           <a href="https://www.charitynavigator.org/ein/453964886" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
-            <img src="https://www.charitynavigator.org/assets/images/cn-four-star-seal.svg" alt="Charity Navigator 4-Star Rated" style="height:52px;width:auto;" onerror="this.style.display='none'">
-            <span style="color:var(--text);"><strong>Charity Navigator</strong> · 4-Star Rating · 95/100</span>
+            <span aria-hidden="true" style="color:#d98f00;font-size:18px;letter-spacing:2px;">&#9733;&#9733;&#9733;&#9733;</span>
+            <span style="color:var(--text);"><strong>Charity Navigator</strong> · Four-Star Charity · 95%</span>
           </a>
         </li>
         <li style="padding:14px 0;">
-          <a href="https://www.candid.org/profile/5193117" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);">
+          <a href="https://www.guidestar.org/profile/45-3964886" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);">
             <strong>Candid (GuideStar)</strong> · View our nonprofit profile →
           </a>
         </li>
