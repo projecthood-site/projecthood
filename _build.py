@@ -253,6 +253,7 @@ FOOTER = f"""
         <h5>Learn More</h5>
         <ul>
           <li><a href="about.html">About</a></li>
+          <li><a href="pastor-brooks.html">Pastor Brooks</a></li>
           <li><a href="exec-director.html">Executive Director</a></li>
           <li><a href="programs.html">Programs</a></li>
           <li><a href="impact.html">News &amp; Impact</a></li>
@@ -266,6 +267,17 @@ FOOTER = f"""
         <p style="font-size:13.5px;opacity:.9;">LEO Center progress, program milestones, upcoming events — delivered once a month.</p>
         <a class="btn btn-yellow" href="{NEWSLETTER_FORM_URL}" target="_blank" rel="noopener" style="margin-top:6px;display:inline-block;">Subscribe &rarr;</a>
       </div>
+    </div>
+
+    <div class="footer-trust" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;padding:22px 0 4px;border-top:1px solid rgba(255,255,255,.14);">
+      <span style="font-family:var(--font-display);letter-spacing:.08em;font-size:12px;text-transform:uppercase;color:var(--yellow);opacity:.9;">Independently rated &amp; verified</span>
+      <a href="https://www.charitynavigator.org/ein/453964886" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:9px 14px;">
+        <span aria-hidden="true" style="color:var(--yellow);font-size:15px;letter-spacing:2px;">&#9733;&#9733;&#9733;&#9733;</span>
+        <span style="color:#fff;font-size:12.5px;line-height:1.25;"><strong>Charity Navigator</strong><br><span style="opacity:.85;">Four-Star Charity &middot; 95%</span></span>
+      </a>
+      <a href="https://www.guidestar.org/profile/45-3964886" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:9px 14px;">
+        <span style="color:#fff;font-size:12.5px;line-height:1.25;"><strong>Candid &middot; GuideStar</strong><br><span style="opacity:.85;">View our nonprofit profile &rarr;</span></span>
+      </a>
     </div>
 
     <div class="footer-bottom">
@@ -651,12 +663,12 @@ about_body = f"""
         <li style="padding:14px 0;border-bottom:1px solid var(--line);"><strong>2024 Annual Report</strong> · <a href="#">Download PDF</a></li>
         <li style="padding:14px 0;border-bottom:1px solid var(--line);">
           <a href="https://www.charitynavigator.org/ein/453964886" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
-            <img src="https://www.charitynavigator.org/assets/images/cn-four-star-seal.svg" alt="Charity Navigator 4-Star Rated" style="height:52px;width:auto;" onerror="this.style.display='none'">
-            <span style="color:var(--text);"><strong>Charity Navigator</strong> · 4-Star Rating · 95/100</span>
+            <span aria-hidden="true" style="color:#d98f00;font-size:18px;letter-spacing:2px;">&#9733;&#9733;&#9733;&#9733;</span>
+            <span style="color:var(--text);"><strong>Charity Navigator</strong> · Four-Star Charity · 95%</span>
           </a>
         </li>
         <li style="padding:14px 0;">
-          <a href="https://www.candid.org/profile/5193117" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);">
+          <a href="https://www.guidestar.org/profile/45-3964886" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);">
             <strong>Candid (GuideStar)</strong> · View our nonprofit profile →
           </a>
         </li>
@@ -664,6 +676,118 @@ about_body = f"""
     </div>
   </div>
 </section>
+"""
+
+pastor_brooks_body = """
+<section class="hero bg-black">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--yellow);">Founder &amp; CEO</div>
+    <h1>Pastor <span class="hl-yellow">Corey B. Brooks</span></h1>
+    <p class="lead">The &ldquo;Rooftop Pastor.&rdquo; Founder and CEO of Project H.O.O.D., senior pastor of New Beginnings Church of Chicago, and a relentless voice for Chicago&rsquo;s South Side.</p>
+  </div>
+</section>
+
+<section class="section bg-black" style="padding-top:0;">
+  <div class="wrap grid-2" style="align-items:center;">
+    <div style="min-height:420px;background-image:url('img/about-pastor-brooks.jpg');background-size:cover;background-position:center top;border-radius:10px;"></div>
+    <div>
+      <p style="font-size:var(--fs-lead);color:var(--white);opacity:.92;">In 2011, Pastor Brooks moved onto the rooftop of an abandoned motel across from a funeral parlor and stayed 94 nights &mdash; through a Chicago winter &mdash; to protest the youth gun deaths tearing through Woodlawn. Project H.O.O.D. was born soon after.</p>
+      <p style="color:var(--white);opacity:.85;">More than a decade later, he leads an organization that serves 15,000+ people a year and is building the $45M Leadership &amp; Economic Opportunity (LEO) Center. In 2025 he walked 900+ miles from Chicago to New York to help fund it.</p>
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;">
+        <a class="btn btn-yellow" href="letter.html">Read Pastor Brooks&rsquo; letter</a>
+        <a class="btn btn-outline-light" href="#book">Book Pastor Brooks</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-offwhite">
+  <div class="wrap">
+    <div class="eyebrow">The story</div>
+    <h2>How we got here.</h2>
+    <div class="grid-2" style="margin-top:var(--sp-3);">
+      <div>
+        <h3>2012 &middot; Founded</h3>
+        <p>Pastor Brooks takes a stand against neighborhood violence by spending 94 nights on a motel rooftop across from a funeral parlor to protest youth gun deaths. Project H.O.O.D. launches soon after.</p>
+      </div>
+      <div>
+        <h3>2015&ndash;2020 &middot; Programs scale</h3>
+        <p>Workforce development partnerships grow from dozens to hundreds of placements. The violence-interruption team formalizes across Woodlawn.</p>
+      </div>
+      <div>
+        <h3>2022&ndash;2024 &middot; LEO breaks ground</h3>
+        <p>The capital campaign launches for the Leadership and Economic Opportunity Center &mdash; a 90,000 sq ft hub on S. King Drive. Groundbreaking in 2022.</p>
+      </div>
+      <div>
+        <h3>2025 &middot; Walk Across America</h3>
+        <p>Pastor Brooks walks 900+ miles from Chicago to New York to raise the final funds for LEO and spotlight what&rsquo;s possible. 15,000+ served this year.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--red);">Rooftop Revelations</div>
+    <h2>Latest from the rooftop.</h2>
+    <p style="font-size:var(--fs-lead);color:var(--muted);max-width:62ch;">Pastor Brooks&rsquo; ongoing video series on faith, community, and the fight for Chicago&rsquo;s South Side &mdash; short reflections that carry the spirit of the rooftop where it all began.</p>
+    <div class="grid-2" style="margin-top:var(--sp-3);gap:20px;">
+
+      <a href="https://www.foxnews.com/video/6387072632112" target="_blank" rel="noopener" style="display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;padding:22px;background:var(--white);">
+        <div style="font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--green);font-weight:700;">Latest &middot; Watch on Fox News</div>
+        <h3 style="margin:8px 0 6px;color:var(--ink);">2026 is the year to listen to opposing views</h3>
+        <p style="color:var(--muted);font-size:14px;margin:0;">Rooftop Revelations &rarr;</p>
+      </a>
+
+      <a href="https://www.foxnews.com/video/6384187866112" target="_blank" rel="noopener" style="display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;padding:22px;background:var(--white);">
+        <div style="font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--green);font-weight:700;">Watch on Fox News</div>
+        <h3 style="margin:8px 0 6px;color:var(--ink);">The system thrives and profits off of brokenness</h3>
+        <p style="color:var(--muted);font-size:14px;margin:0;">Rooftop Revelations &rarr;</p>
+      </a>
+
+      <a href="https://www.foxnews.com/video/6364243117112" target="_blank" rel="noopener" style="display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;padding:22px;background:var(--white);">
+        <div style="font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--green);font-weight:700;">Watch on Fox News</div>
+        <h3 style="margin:8px 0 6px;color:var(--ink);">Dear America, I still believe in you</h3>
+        <p style="color:var(--muted);font-size:14px;margin:0;">Rooftop Revelations &rarr;</p>
+      </a>
+
+      <a href="https://www.foxnews.com/video/6366747916112" target="_blank" rel="noopener" style="display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;padding:22px;background:var(--white);">
+        <div style="font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--green);font-weight:700;">Watch on Fox News</div>
+        <h3 style="margin:8px 0 6px;color:var(--ink);">Why do Americans ignore common sense about race relations?</h3>
+        <p style="color:var(--muted);font-size:14px;margin:0;">Rooftop Revelations &rarr;</p>
+      </a>
+
+    </div>
+    <div style="margin-top:var(--sp-3);">
+      <a class="btn btn-primary" href="https://www.foxnews.com/category/us/digital-originals/rooftop-revelations" target="_blank" rel="noopener">Watch the full series on Fox News &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-green">
+  <div class="wrap" style="max-width:var(--w-read);text-align:center;">
+    <div class="eyebrow" style="color:var(--yellow);">In his words</div>
+    <p style="font-family:var(--font-serif);font-size:clamp(20px,3vw,30px);line-height:1.5;color:var(--white);">&ldquo;When I moved onto the rooftop of an abandoned motel on Chicago&rsquo;s South Side, people thought I was crazy. Maybe I was. But I had made a promise &mdash; I was going to stay until something changed. That something is Project H.O.O.D.&rdquo;</p>
+    <div style="margin-top:24px;">
+      <a class="btn btn-yellow" href="letter.html">Read the full letter &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="book">
+  <div class="wrap">
+    <div style="max-width:640px;margin:0 auto;text-align:center;">
+      <div class="eyebrow" style="color:var(--red);">Speaking &amp; appearances</div>
+      <h2>Book Pastor Brooks</h2>
+      <p style="font-size:var(--fs-lead);color:var(--muted);">Pastor Brooks speaks on community transformation, faith-driven leadership, entrepreneurship, and what it takes to stay &mdash; in a neighborhood, in a mission, in the work. Tell us about your event and we&rsquo;ll follow up within two business days.</p>
+    </div>
+    <div style="max-width:640px;margin:var(--sp-3) auto 0;text-align:center;">
+      <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfFCudwdnRCOwYiK-mWnkWIBhg1jVO37uX2EZnXqPl3Yr38TQ/viewform" target="_blank" rel="noopener" style="font-size:17px;padding:16px 40px;display:inline-block;">Submit a booking inquiry &rarr;</a>
+      <p style="font-size:13px;color:var(--muted);margin-top:14px;">We respond within two business days. For urgent requests, call <a href="tel:7733548483" style="color:var(--green);">773.354.8483</a>.</p>
+    </div>
+  </div>
+</section>
+
 """
 
 # -------- LETTER FROM PASTOR BROOKS --------
@@ -979,7 +1103,7 @@ workforce_development_body = f"""
   <div class="wrap grid-2">
     <div>
       <div class="eyebrow">What we do</div>
-      <h2>Careers, not just jobs.</h2>
+      <h2>Careers, not just jobs</h2>
       <p>Our Workforce Development pillar equips individuals with the skills, credentials, and connections to build real careers. From construction trades to tech, we partner with employers directly so training leads to placement — not just a certificate.</p>
       <ul>
         <li>Comprehensive job training programs in construction, tech, and logistics</li>
@@ -987,7 +1111,6 @@ workforce_development_body = f"""
         <li>Career development and advancement resources</li>
         <li>Financial literacy and resume building</li>
         <li>Networking opportunities and mentorship</li>
-        <li>Pre-Apprenticeship Construction cohort program</li>
       </ul>
       <div style="margin-top:var(--sp-3);">
         <a class="btn btn-primary" href="https://www.projecthood.org/construction-cohort" target="_blank" rel="noopener">Pre-Apprenticeship Construction cohort →</a>
@@ -2605,7 +2728,7 @@ contact_body = f"""
 <section class="hero bg-green">
   <div class="wrap">
     <div class="eyebrow" style="color:var(--yellow);">Contact</div>
-    <h1>Talk to us.</h1>
+    <h1 style="font-size:clamp(40px,7vw,72px);">Talk to us.</h1>
     <p class="lead">Press, partnership, participant inquiry, or general question — we answer every message.</p>
   </div>
 </section>
@@ -2949,6 +3072,7 @@ pages = [
     ("index.html",       "Home",                         "Project H.O.O.D. — a community-rooted nonprofit investing in Chicago's South Side through violence prevention, workforce development, health & wellness, youth programming, and re-entry services.", None,            home_body),
     ("about.html",       "About",                        "Project H.O.O.D. was founded by Pastor Corey B. Brooks in 2012. A decade of showing up in Woodlawn.",                                   "a_about",        about_body),
     ("letter.html",      "A Letter from Pastor Brooks",  "A personal message from Project H.O.O.D. founder Pastor Corey Brooks — why he started this work and why he's still here.",                 "a_about",        letter_body),
+    ("pastor-brooks.html", "Pastor Corey Brooks",         "Meet Pastor Corey B. Brooks — the “Rooftop Pastor,” founder and CEO of Project H.O.O.D. His story, his letter, and the latest Rooftop Revelations.", "a_about",        pastor_brooks_body),
     ("exec-director.html", "Executive Director",         "Meet Desmond 'Dez' Marshall — Executive Director of Project H.O.O.D. Led the team from 3 to 83 staff, raised $44M+, serves 15,000+ annually.", "a_about",    exec_director_body),
     ("programs.html",    "Programs",                     "Five Pillars, one neighborhood. Violence prevention, workforce development, health & wellness, youth programming, and re-entry services.",         "a_programs",     programs_body),
     ("violence-prevention.html",   "Violence Prevention",    "Creating safer communities in Woodlawn — credible messengers, conflict mediation, and hospital-based intervention.",           "a_programs",     violence_prevention_body),
