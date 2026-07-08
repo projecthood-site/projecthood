@@ -990,7 +990,7 @@ workforce_development_body = f"""
   <div class="wrap grid-2">
     <div>
       <div class="eyebrow">What we do</div>
-      <h2>Careers, not just jobs.</h2>
+      <h2>Careers, not just jobs</h2>
       <p>Our Workforce Development pillar equips individuals with the skills, credentials, and connections to build real careers. From construction trades to tech, we partner with employers directly so training leads to placement — not just a certificate.</p>
       <ul>
         <li>Comprehensive job training programs in construction, tech, and logistics</li>
