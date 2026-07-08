@@ -2646,7 +2646,7 @@ partner_body = f"""
     </div>
     <div>
       <div class="eyebrow" style="color:var(--red);">Partner inquiry</div>
-      <div style="background:var(--offwhite);padding:var(--sp-4);border:2px dashed var(--line);">
+      <div style="background:var(--offwhite);padding:var(--sp-4);border:2px solid var(--line);">
         <p style="font-family:var(--font-display);text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:var(--muted);">Google Form embed · on real site</p>
         <h3 style="margin:10px 0;">Partner Inquiry Form</h3>
         <p style="font-size:14px;">Org name, contact, type of partnership, what you bring, what you need. Routes to our development team.</p>
