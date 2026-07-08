@@ -2128,7 +2128,6 @@ donate_body = f"""
     <p class="lead">If you&rsquo;re not redirected automatically, give through NetworkForGood below.</p>
     <a class="btn btn-primary" href="https://projecthood.networkforgood.com/" target="_blank" rel="noopener" style="margin-top:10px;">Give now &rarr;</a>
     <p style="font-size:13px;color:var(--muted);margin-top:16px;"><a href="ways-to-give.html" style="color:var(--green);">See all the ways to give &rarr;</a></p>
-    <script>location.replace('https://projecthood.networkforgood.com/');</script>
   </div>
 </section>
 """
