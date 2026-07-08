@@ -987,7 +987,6 @@ workforce_development_body = f"""
         <li>Career development and advancement resources</li>
         <li>Financial literacy and resume building</li>
         <li>Networking opportunities and mentorship</li>
-        <li>Pre-Apprenticeship Construction cohort program</li>
       </ul>
       <div style="margin-top:var(--sp-3);">
         <a class="btn btn-primary" href="https://www.projecthood.org/construction-cohort" target="_blank" rel="noopener">Pre-Apprenticeship Construction cohort →</a>
