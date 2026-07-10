@@ -2128,7 +2128,6 @@ donate_body = f"""
     <p class="lead">If you&rsquo;re not redirected automatically, give through NetworkForGood below.</p>
     <a class="btn btn-primary" href="https://projecthood.networkforgood.com/" target="_blank" rel="noopener" style="margin-top:10px;">Give now &rarr;</a>
     <p style="font-size:13px;color:var(--muted);margin-top:16px;"><a href="ways-to-give.html" style="color:var(--green);">See all the ways to give &rarr;</a></p>
-    <script>location.replace('https://projecthood.networkforgood.com/');</script>
   </div>
 </section>
 """
@@ -2647,7 +2646,7 @@ partner_body = f"""
     </div>
     <div>
       <div class="eyebrow" style="color:var(--red);">Partner inquiry</div>
-      <div style="background:var(--offwhite);padding:var(--sp-4);border:2px dashed var(--line);">
+      <div style="background:var(--offwhite);padding:var(--sp-4);border:2px solid var(--line);">
         <p style="font-family:var(--font-display);text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:var(--muted);">Google Form embed · on real site</p>
         <h3 style="margin:10px 0;">Partner Inquiry Form</h3>
         <p style="font-size:14px;">Org name, contact, type of partnership, what you bring, what you need. Routes to our development team.</p>
