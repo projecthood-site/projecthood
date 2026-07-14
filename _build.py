@@ -1392,7 +1392,7 @@ recovery_body = f"""
       <p>Here you&rsquo;ll find people who understand &mdash; because many of them have walked the same road. There&rsquo;s no judgment and no cost. Just honest support, real accountability, and a room full of people pulling for you.</p>
       <p>We meet people wherever they are on the journey: someone taking a first tentative step, someone rebuilding after a setback, or someone years into recovery who wants to give back. Every story is welcome.</p>
     </div>
-    <div style="min-height:380px;background-image:url('img/programs-health-wellness.jpg');background-size:cover;background-position:center top"></div>
+    <div style="min-height:420px;background-image:url('img/recovery-community.jpg');background-size:cover;background-position:center;border-radius:8px;"></div>
   </div>
 </section>
 
@@ -1444,6 +1444,23 @@ recovery_body = f"""
         <li style="padding:10px 0;border-bottom:1px solid var(--line);">Monthly Speakerthons &mdash; testimony, encouragement, community</li>
         <li style="padding:10px 0;">Ongoing connection and accountability after treatment</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-offwhite">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--purple);">In the community</div>
+    <h2>Showing up for one another.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--sp-3);margin-top:var(--sp-3);">
+      <figure style="margin:0;">
+        <img src="img/recovery-gathering.jpg" alt="Neighbors gathered together at a Project H.O.O.D. community gathering" loading="lazy" style="width:100%;height:440px;object-fit:cover;border-radius:8px;display:block;">
+        <figcaption style="font-size:13px;color:var(--muted);margin-top:8px;">Community and connection &mdash; no one walks alone.</figcaption>
+      </figure>
+      <figure style="margin:0;">
+        <img src="img/recovery-outreach.jpg" alt="Project H.O.O.D. team members handing out supplies during neighborhood outreach" loading="lazy" style="width:100%;height:440px;object-fit:cover;border-radius:8px;display:block;">
+        <figcaption style="font-size:13px;color:var(--muted);margin-top:8px;">Meeting neighbors where they are, out in the neighborhood.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
