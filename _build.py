@@ -37,6 +37,12 @@ EVENTBRITE_ORG_URL = "https://www.eventbrite.com/o/project-hood-41178041593"
 # Responses land on the "Newsletter" tab of the Site Form Responses workbook.
 NEWSLETTER_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSel7-YfFSxXgX-L6xExCCyMU45e8URnxAxrS-PFTes2TkLbrA/viewform"
 
+# Construction Pre-Apprenticeship cohort application Google Form.
+# Paste the PUBLISHED form URL ending in /viewform (the page embeds it in an
+# iframe so applicants apply without leaving the site). Leave "" to show the
+# fallback "reach out" box until the real link is ready.
+CONSTRUCTION_COHORT_FORM_URL = ""
+
 def _eb_fetch_events(time_filter="current_future", order="start_asc", status="live", limit=None):
     """
     Fetch events from the Eventbrite API for the organization.
@@ -1097,7 +1103,7 @@ workforce_development_body = f"""
         <li>Networking opportunities and mentorship</li>
       </ul>
       <div style="margin-top:var(--sp-3);">
-        <a class="btn btn-primary" href="https://www.projecthood.org/construction-cohort" target="_blank" rel="noopener">Pre-Apprenticeship Construction cohort →</a>
+        <a class="btn btn-primary" href="construction-cohort.html">Pre-Apprenticeship Construction cohort →</a>
       </div>
     </div>
     <div style="min-height:380px;background-image:url('img/programs-workforce.jpg');background-size:cover;background-position:center top"></div>
@@ -1161,6 +1167,89 @@ workforce_development_body = f"""
     <div class="btn-group">
       <a class="btn btn-yellow" href="https://projecthood.socialsolutionsportal.com/apricot-intake/0eb461e5-38a9-4ad1-9a4e-02bb3ee1414d" target="_blank" rel="noopener">Connect with us</a>
       <a class="btn btn-outline-light" href="https://projecthood.networkforgood.com/">Fund this pillar</a>
+      <a class="btn btn-outline-light" href="partner.html">Become an employer partner</a>
+    </div>
+  </div>
+</section>
+"""
+
+# -------- CONSTRUCTION PRE-APPRENTICESHIP COHORT --------
+# Application block: embed the Google Form when a URL is set, otherwise show a
+# contact fallback so the page never renders a broken iframe.
+if CONSTRUCTION_COHORT_FORM_URL:
+    _cc_embed_src = CONSTRUCTION_COHORT_FORM_URL
+    if "embedded=true" not in _cc_embed_src:
+        _cc_embed_src += ("&" if "?" in _cc_embed_src else "?") + "embedded=true"
+    _cc_apply = f"""
+    <div style="max-width:760px;margin:var(--sp-3) auto 0;">
+      <iframe src="{_cc_embed_src}" width="100%" height="1100" frameborder="0" marginheight="0" marginwidth="0" style="border:0;background:var(--white);" title="Construction Pre-Apprenticeship application form">Loading the application…</iframe>
+      <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:12px;">Having trouble with the form? <a href="{CONSTRUCTION_COHORT_FORM_URL}" target="_blank" rel="noopener">Open it in a new tab →</a></p>
+    </div>"""
+else:
+    _cc_apply = """
+    <div class="card" style="max-width:640px;margin:var(--sp-3) auto 0;text-align:center;padding:32px;">
+      <p style="margin-top:0;">Applications for the next cohort are handled by our workforce team. To be considered, reach out and we'll send you the application and next start date.</p>
+      <a class="btn btn-primary" href="mailto:tawannacotten@projecthood.org?subject=Construction%20Pre-Apprenticeship%20Application" style="margin-top:6px;">Email to apply →</a>
+      <p style="font-size:13px;color:var(--muted);margin-top:16px;margin-bottom:0;">Or call our office at <a href="tel:7739238270" style="color:var(--green);">773.923.8270</a>.</p>
+    </div>"""
+
+construction_cohort_body = f"""
+<section class="hero bg-red">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--yellow);">Workforce Development · Pre-Apprenticeship</div>
+    <h1>Build a career in <span class="hl-yellow">construction.</span></h1>
+    <p class="lead">A paid, hands-on pre-apprenticeship — in partnership with Illinois Works — that prepares Woodlawn residents to enter a U.S. Department of Labor apprenticeship or employment in the trades. All are welcome, especially people of color, women, and veterans.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap grid-2">
+    <div>
+      <div class="eyebrow">The program</div>
+      <h2>Our Construction Pre-Apprenticeship Training Program.</h2>
+      <p>At Project H.O.O.D., we recognize the vital role economic empowerment plays in transforming lives and communities. For the past several years, our construction training program has helped aspiring individuals lay the foundation for a successful career in the dynamic world of construction.</p>
+      <p>Sponsored by Illinois Works, our pre-apprenticeship program provides those with an interest in the construction industry hands-on training to prepare to enter a Department of Labor apprenticeship or employment — <strong>while being paid.</strong></p>
+    </div>
+    <div style="min-height:380px;background-image:url('img/programs-workforce.jpg');background-size:cover;background-position:center top"></div>
+  </div>
+</section>
+
+<section class="section bg-offwhite">
+  <div class="wrap grid-2">
+    <div>
+      <div class="eyebrow" style="color:var(--red);">What we offer</div>
+      <h2>Skills, certifications, and a path.</h2>
+      <p>In partnership with the State of Illinois, this comprehensive program equips participants with the essential skills and knowledge needed to excel across construction trades — from basic construction techniques to safety protocols and project management fundamentals.</p>
+      <p>Led by experienced instructors and industry professionals, the hands-on approach builds technical proficiency alongside a strong work ethic, teamwork, and problem-solving. <strong>Upon completion, participants earn three certifications.</strong></p>
+    </div>
+    <div>
+      <div class="eyebrow" style="color:var(--green);">Eligibility</div>
+      <h3>Who can apply.</h3>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:10px 0;border-bottom:1px solid var(--line);">Be a minimum of 18 years of age</li>
+        <li style="padding:10px 0;border-bottom:1px solid var(--line);">Have a high school diploma or GED equivalent</li>
+        <li style="padding:10px 0;">Be a resident of Illinois</li>
+      </ul>
+      <p style="margin-top:18px;font-size:14px;"><a href="https://www.projecthood.org/s/PH-ILW-Info-Sheet-2024_Revised.docx" target="_blank" rel="noopener">Read about our curriculum (info sheet) →</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap" style="text-align:center;">
+    <div class="eyebrow" style="color:var(--red);">Apply</div>
+    <h2>Interested? Apply for the next cohort.</h2>
+    <p style="font-size:var(--fs-lead);max-width:640px;margin:0 auto;color:var(--muted);">Complete the form below to be considered for our next start date. Questions? Reach out to Tawanna Cotten at <a href="mailto:tawannacotten@projecthood.org">tawannacotten@projecthood.org</a>.</p>
+    {_cc_apply}
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>More than one way in.</h2>
+    <div class="btn-group">
+      <a class="btn btn-yellow" href="workforce-development.html">All workforce programs</a>
+      <a class="btn btn-outline-light" href="https://projecthood.socialsolutionsportal.com/apricot-intake/0eb461e5-38a9-4ad1-9a4e-02bb3ee1414d" target="_blank" rel="noopener">General intake</a>
       <a class="btn btn-outline-light" href="partner.html">Become an employer partner</a>
     </div>
   </div>
@@ -3060,6 +3149,7 @@ pages = [
     ("programs.html",    "Programs",                     "Five Pillars, one neighborhood. Violence prevention, workforce development, health & wellness, youth programming, and re-entry services.",         "a_programs",     programs_body),
     ("violence-prevention.html",   "Violence Prevention",    "Creating safer communities in Woodlawn — credible messengers, conflict mediation, and hospital-based intervention.",           "a_programs",     violence_prevention_body),
     ("workforce-development.html", "Workforce Development",  "Job training, placement, and career development on Chicago's South Side. $19/hr average starting wage.",          "a_programs",     workforce_development_body),
+    ("construction-cohort.html", "Construction Pre-Apprenticeship", "Paid pre-apprenticeship construction training in Woodlawn, in partnership with Illinois Works. Earn three certifications and a path into the trades. Apply for the next cohort.", "a_programs", construction_cohort_body),
     ("health-wellness.html",       "Health & Wellness",      "Free medical care, counseling, and wellness programs for South Side residents — including the Southside Free Clinic (SSFC).",     "a_programs",     health_wellness_body),
     ("youth-programming.html",     "Youth Programming",      "Entrepreneurship training, mentorship, and after-school enrichment — 380 youth enrolled, 94% attendance, 42 summer internships in 2025.", "a_programs",     youth_programming_body),
     ("reentry-services.html",      "Re-Entry Services",      "Second chances, real support — job readiness, housing, counseling, and mentorship for individuals returning from incarceration.",  "a_programs",     reentry_services_body),
