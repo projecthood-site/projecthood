@@ -223,7 +223,7 @@ HEAD = """<!DOCTYPE html>
       <a href="leo-center.html"{a_leo}>LEO Center</a>
       <a href="impact.html"{a_impact}>News &amp; Impact</a>
       <a href="get-help.html" class="get-help">Get Help</a>
-      <a href="get-involved.html"{a_gi}>Help Somebody</a>
+      <a href="ways-to-give.html"{a_ways}>Ways to Give</a>
       <a href="https://projecthood.networkforgood.com/" class="donate">Donate</a>
     </nav>
   </div>
