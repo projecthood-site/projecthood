@@ -1355,8 +1355,9 @@ health_wellness_body = f"""
     <div class="eyebrow" style="color:var(--purple);">Real Stories</div>
     <h2>Healing happens in community.</h2>
     <p class="lead" style="max-width:760px;">&ldquo;Recovery is not a destination &mdash; it&rsquo;s a journey best traveled together.&rdquo;</p>
-    <p style="max-width:760px;">Every week, our Recovery in the Hood meetings bring neighbors together to support one another, share their experiences, and find strength in community &mdash; a safe space for healing, accountability, and hope. No one has to walk the journey alone.</p>
+    <p style="max-width:760px;">Every week, our <strong>Recovery in the H.O.O.D.</strong> meetings bring neighbors together to support one another, share their experiences, and find strength in community &mdash; a safe space for healing, accountability, and hope. No one has to walk the journey alone.</p>
     <p style="max-width:760px;">Wellness here isn&rsquo;t only about appointments. It&rsquo;s also our seniors gathering for Bingo Saturdays &mdash; fellowship, laughter, and connection that keep our elders rooted in the community they helped build.</p>
+    <p style="max-width:760px;margin-top:var(--sp-2);"><a class="btn btn-outline" href="recovery.html">Explore Recovery in the H.O.O.D. &rarr;</a></p>
   </div>
 </section>
 
@@ -1367,6 +1368,92 @@ health_wellness_body = f"""
       <a class="btn btn-yellow" href="https://projecthood.socialsolutionsportal.com/apricot-intake/0eb461e5-38a9-4ad1-9a4e-02bb3ee1414d" target="_blank" rel="noopener">Connect with us</a>
       <a class="btn btn-outline-light" href="tel:3127256648">Call SSFC clinic</a>
       <a class="btn btn-outline-light" href="https://projecthood.networkforgood.com/">Fund this pillar</a>
+    </div>
+  </div>
+</section>
+"""
+
+# -------- HEALTH & WELLNESS SUB-PAGE: RECOVERY --------
+recovery_body = f"""
+<section class="hero bg-purple">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--yellow);">Health &amp; Wellness · Recovery</div>
+    <h1>Recovery in the <span class="hl-yellow">H.O.O.D.</span></h1>
+    <p class="lead">Recovery is not a destination &mdash; it&rsquo;s a journey best traveled together. Whatever you&rsquo;re carrying, you don&rsquo;t have to carry it alone. We walk with you, step by step.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap grid-2">
+    <div>
+      <div class="eyebrow">What it is</div>
+      <h2>A community that walks with you.</h2>
+      <p>Recovery in the H.O.O.D. is a peer-led support community for neighbors working through addiction, trauma, and the hard road back to wholeness. It was built on a simple truth: healing happens faster, and lasts longer, when no one has to do it alone.</p>
+      <p>Here you&rsquo;ll find people who understand &mdash; because many of them have walked the same road. There&rsquo;s no judgment and no cost. Just honest support, real accountability, and a room full of people pulling for you.</p>
+      <p>We meet people wherever they are on the journey: someone taking a first tentative step, someone rebuilding after a setback, or someone years into recovery who wants to give back. Every story is welcome.</p>
+    </div>
+    <div style="min-height:380px;background-image:url('img/programs-health-wellness.jpg');background-size:cover;background-position:center top"></div>
+  </div>
+</section>
+
+<section class="section bg-offwhite">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--purple);">How we gather</div>
+    <h2>Weekly meetings. Monthly Speakerthons.</h2>
+    <div class="grid-2" style="margin-top:var(--sp-3);gap:var(--sp-4);">
+      <div style="background:#fff;border-radius:8px;padding:var(--sp-3);border:1px solid var(--line);">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <span style="font-size:22px;">🗓</span>
+          <div>
+            <h3 style="margin:0 0 6px;">Weekly meetings</h3>
+            <p style="margin:0;">Every week, our Recovery in the H.O.O.D. meetings bring neighbors together to support one another, share openly, and find strength in community &mdash; a safe space for healing, accountability, and hope. Come as you are.</p>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;border-radius:8px;padding:var(--sp-3);border:1px solid var(--line);">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <span style="font-size:22px;">🎤</span>
+          <div>
+            <h3 style="margin:0 0 6px;">Monthly Speakerthons</h3>
+            <p style="margin:0;">Once a month we host a Speakerthon &mdash; an open gathering where people in recovery share their testimonies out loud. These nights remind everyone in the room that change is possible and that recovery is worth fighting for.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:var(--sp-3);font-size:14px;color:var(--muted);">Want the next meeting or Speakerthon date? <a href="contact.html">Reach out</a> or <a href="tel:7739238270">call 773-923-8270</a> and we&rsquo;ll get you the details.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap grid-2">
+    <div>
+      <div class="eyebrow" style="color:var(--green);">Getting to treatment</div>
+      <h2>Referrals &mdash; and a hand to hold along the way.</h2>
+      <p>When someone needs more than peer support, we connect them to trusted treatment facilities and care providers. But we don&rsquo;t just hand you a phone number and wish you luck.</p>
+      <p>We walk with you step by step &mdash; helping you understand your options, get to intake, navigate the paperwork, and stay connected through the ups and downs. Our goal isn&rsquo;t only to get you into treatment; it&rsquo;s to make sure you&rsquo;re still supported when you come home.</p>
+    </div>
+    <div>
+      <div class="eyebrow" style="color:var(--purple);">The support</div>
+      <h3>What walking with you looks like.</h3>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:10px 0;border-bottom:1px solid var(--line);">Referrals to trusted treatment facilities and providers</li>
+        <li style="padding:10px 0;border-bottom:1px solid var(--line);">Step-by-step help getting to intake and through the paperwork</li>
+        <li style="padding:10px 0;border-bottom:1px solid var(--line);">Weekly peer support meetings &amp; group circles</li>
+        <li style="padding:10px 0;border-bottom:1px solid var(--line);">Monthly Speakerthons &mdash; testimony, encouragement, community</li>
+        <li style="padding:10px 0;">Ongoing connection and accountability after treatment</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Ready to take the first step?</h2>
+    <p class="lead" style="max-width:var(--w-read);margin:12px auto var(--sp-2);">Reach out today. We&rsquo;ll meet you where you are and walk with you from there.</p>
+    <div class="btn-group">
+      <a class="btn btn-yellow" href="https://projecthood.socialsolutionsportal.com/apricot-intake/0eb461e5-38a9-4ad1-9a4e-02bb3ee1414d" target="_blank" rel="noopener">Connect with us</a>
+      <a class="btn btn-outline-light" href="tel:7739238270">Call 773-923-8270</a>
+      <a class="btn btn-outline-light" href="health-wellness.html">Back to Health &amp; Wellness</a>
     </div>
   </div>
 </section>
@@ -3151,6 +3238,7 @@ pages = [
     ("workforce-development.html", "Workforce Development",  "Job training, placement, and career development on Chicago's South Side. $19/hr average starting wage.",          "a_programs",     workforce_development_body),
     ("construction-cohort.html", "Construction Pre-Apprenticeship", "Paid pre-apprenticeship construction training in Woodlawn, in partnership with Illinois Works. Earn three certifications and a path into the trades. Apply for the next cohort.", "a_programs", construction_cohort_body),
     ("health-wellness.html",       "Health & Wellness",      "Free medical care, counseling, and wellness programs for South Side residents — including the Southside Free Clinic (SSFC).",     "a_programs",     health_wellness_body),
+    ("recovery.html",              "Recovery in the H.O.O.D.", "Recovery in the H.O.O.D. — weekly peer-support meetings, monthly Speakerthons, and step-by-step navigation to treatment for South Side neighbors in recovery.", "a_programs",     recovery_body),
     ("youth-programming.html",     "Youth Programming",      "Entrepreneurship training, mentorship, and after-school enrichment — 380 youth enrolled, 94% attendance, 42 summer internships in 2025.", "a_programs",     youth_programming_body),
     ("reentry-services.html",      "Re-Entry Services",      "Second chances, real support — job readiness, housing, counseling, and mentorship for individuals returning from incarceration.",  "a_programs",     reentry_services_body),
     ("impact.html",      "News & Impact",                "Project H.O.O.D. news and 2025 impact — 15,000+ served, 2M+ lbs of food distributed, $19/hr average starting wage, 84% LEO Center funded, plus the latest press.", "a_impact",       impact_body),
