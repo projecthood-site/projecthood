@@ -664,6 +664,7 @@ about_body = f"""
     </div>
     <div>
       <ul style="list-style:none;padding:0;">
+        <li style="padding:14px 0;border-bottom:1px solid var(--line);"><strong>2025 Annual Report</strong> · <a href="annual-report.html">Read online</a> · <a href="docs/ph-annual-report-2025.pdf" target="_blank" rel="noopener">Download PDF</a></li>
         <li style="padding:14px 0;border-bottom:1px solid var(--line);"><strong>2024 Form 990</strong> · <a href="docs/ph-990-2024.pdf" target="_blank" rel="noopener">Download PDF</a></li>
         <li style="padding:14px 0;border-bottom:1px solid var(--line);"><strong>2023 Form 990</strong> · <a href="#">Download PDF</a></li>
         <li style="padding:14px 0;border-bottom:1px solid var(--line);"><strong>2024 Annual Report</strong> · <a href="#">Download PDF</a></li>
@@ -1790,7 +1791,7 @@ impact_body = f"""
     <div class="btn-group">
       <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/">Donate</a>
       <a class="btn btn-outline-light" href="get-involved.html">Volunteer</a>
-      <a class="btn btn-outline-light" href="#">Download 2025 report (PDF)</a>
+      <a class="btn btn-outline-light" href="annual-report.html">Read the 2025 Annual Report</a>
     </div>
   </div>
 </section>
@@ -3246,6 +3247,285 @@ get_help_body = """
 </section>
 """
 
+# -------- 2025 ANNUAL REPORT: embedded flipbook (plain string; keeps JS/CSS braces literal) --------
+annual_report_gallery = """
+<section class="section bg-black" id="read-report">
+  <div class="wrap" style="text-align:center;">
+    <div class="eyebrow" style="color:var(--yellow);">Read the full report</div>
+    <h2 style="color:var(--white);">Flip through all 13 pages.</h2>
+    <p class="lead" style="color:rgba(255,255,255,.85);max-width:var(--w-read);margin:8px auto 0;">Tap any page to zoom in. Use the arrows &mdash; or your keyboard&rsquo;s left/right keys &mdash; to turn the pages.</p>
+
+    <div class="flipbook">
+      <div class="flip-stage">
+        <button class="flip-nav flip-prev" type="button" aria-label="Previous page">&#8249;</button>
+        <img id="flip-img" class="flip-img" src="img/annual-report-2025/page-01.jpg" alt="Project H.O.O.D. 2025 Annual Report — page 1 of 13" loading="lazy">
+        <button class="flip-nav flip-next" type="button" aria-label="Next page">&#8250;</button>
+      </div>
+      <div class="flip-meta"><span id="flip-count">Page 1 of 13</span> &middot; tap to zoom</div>
+    </div>
+
+    <div style="margin-top:var(--sp-3);">
+      <a class="btn btn-yellow" href="docs/ph-annual-report-2025.pdf" target="_blank" rel="noopener">Download PDF</a>
+      <a class="btn btn-outline-light" href="#report-highlights">Skip to highlights</a>
+    </div>
+  </div>
+</section>
+
+<div id="flip-lightbox" class="flip-lightbox" aria-hidden="true" role="dialog" aria-label="Annual report full-page view">
+  <button class="flip-close" type="button" aria-label="Close">&times;</button>
+  <button class="flip-nav flip-prev" type="button" aria-label="Previous page">&#8249;</button>
+  <img id="flip-lb-img" src="" alt="Project H.O.O.D. 2025 Annual Report page">
+  <button class="flip-nav flip-next" type="button" aria-label="Next page">&#8250;</button>
+</div>
+
+<style>
+.flipbook{max-width:760px;margin:var(--sp-3) auto 0;}
+.flip-stage{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;}
+.flip-img{max-width:100%;height:auto;border-radius:6px;box-shadow:0 12px 44px rgba(0,0,0,.55);cursor:zoom-in;background:var(--white);}
+.flip-nav{background:rgba(255,255,255,.12);color:var(--white);border:1px solid rgba(255,255,255,.32);border-radius:50%;width:46px;height:46px;font-size:26px;line-height:1;cursor:pointer;flex:0 0 auto;transition:background .15s;}
+.flip-nav:hover{background:rgba(255,255,255,.28);}
+.flip-meta{margin-top:14px;color:rgba(255,255,255,.82);font-family:var(--font-display);letter-spacing:.06em;text-transform:uppercase;font-size:12.5px;}
+.flip-lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:9999;align-items:center;justify-content:center;gap:14px;padding:20px;}
+.flip-lightbox.open{display:flex;}
+.flip-lightbox img{max-width:90vw;max-height:90vh;height:auto;border-radius:4px;box-shadow:0 12px 44px rgba(0,0,0,.6);}
+.flip-close{position:absolute;top:14px;right:20px;background:none;border:none;color:var(--white);font-size:42px;line-height:1;cursor:pointer;}
+@media(max-width:600px){.flip-nav{width:40px;height:40px;font-size:22px;}.flip-lightbox .flip-nav{position:absolute;bottom:22px;}.flip-lightbox .flip-prev{left:24px;}.flip-lightbox .flip-next{right:24px;}}
+</style>
+<script>
+(function(){
+  var total=13,i=0,base="img/annual-report-2025/page-";
+  function src(n){return base+(n<9?"0":"")+(n+1)+".jpg";}
+  var img=document.getElementById("flip-img"),count=document.getElementById("flip-count");
+  var lb=document.getElementById("flip-lightbox"),lbimg=document.getElementById("flip-lb-img");
+  function render(){img.src=src(i);img.alt="Project H.O.O.D. 2025 Annual Report — page "+(i+1)+" of "+total;count.textContent="Page "+(i+1)+" of "+total;if(lb.classList.contains("open"))lbimg.src=src(i);}
+  function go(d){i=(i+d+total)%total;render();}
+  function open(){lb.classList.add("open");lb.setAttribute("aria-hidden","false");lbimg.src=src(i);document.body.style.overflow="hidden";}
+  function close(){lb.classList.remove("open");lb.setAttribute("aria-hidden","true");document.body.style.overflow="";}
+  document.querySelectorAll(".flip-prev").forEach(function(b){b.addEventListener("click",function(e){e.stopPropagation();go(-1);});});
+  document.querySelectorAll(".flip-next").forEach(function(b){b.addEventListener("click",function(e){e.stopPropagation();go(1);});});
+  img.addEventListener("click",open);
+  document.querySelector(".flip-close").addEventListener("click",close);
+  lb.addEventListener("click",function(e){if(e.target===lb)close();});
+  document.addEventListener("keydown",function(e){
+    if(e.key==="ArrowLeft")go(-1);
+    else if(e.key==="ArrowRight")go(1);
+    else if(e.key==="Escape"&&lb.classList.contains("open"))close();
+  });
+  render();
+})();
+</script>
+"""
+
+# -------- 2025 ANNUAL REPORT --------
+annual_report_body = f"""
+<section class="hero bg-black">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--yellow);">Annual Report · 2025</div>
+    <h1>A year of <span class="hl-yellow">restoration</span> and hope.</h1>
+    <p class="lead">Mentorship, training, and community for the residents of Woodlawn and Englewood. This is what your support built in 2025 &mdash; the lives changed, the doors opened, and the block that keeps showing up.</p>
+    <div class="btn-group" style="margin-top:var(--sp-3);">
+      <a class="btn btn-yellow" href="#read-report">Read the report now</a>
+      <a class="btn btn-outline-light" href="docs/ph-annual-report-2025.pdf" target="_blank" rel="noopener">Download PDF</a>
+    </div>
+  </div>
+</section>
+
+{annual_report_gallery}
+
+<div id="report-highlights"></div>
+
+{ACRONYM_TAPE}
+
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow">2025 at a glance</div>
+    <h2>The year in numbers.</h2>
+    <div class="stat-grid" style="margin-top:var(--sp-3);">
+      <div class="stat accent-green"><div class="v">91</div><div class="l">mediations &amp; conflict interventions to prevent community violence</div></div>
+      <div class="stat"><div class="v">1,000+</div><div class="l">job seekers connected to employers through job fairs &amp; hiring events</div></div>
+      <div class="stat accent-red"><div class="v">34</div><div class="l">graduates earned Carpentry Level 1 &amp; OSHA certifications</div></div>
+      <div class="stat"><div class="v">2M+ lbs</div><div class="l">food distributed &mdash; serving 6,500+ families through &ldquo;Everybody Eats&rdquo;</div></div>
+      <div class="stat accent-blue"><div class="v">500</div><div class="l">youth served with real pathways forward</div></div>
+      <div class="stat accent-yellow"><div class="v">110+</div><div class="l">supported through expungement &amp; job readiness services</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-offwhite">
+  <div class="wrap grid-2">
+    <div>
+      <div class="eyebrow" style="color:var(--red);">A letter from our founder</div>
+      <h2>Dear friends and supporters,</h2>
+      <p>As I reflect on 2025, I am filled with deep gratitude &mdash; for your faith, your generosity, and your willingness to stand with us as we continue building something that is transforming lives every single day on the South Side of Chicago.</p>
+      <p>One of the most visible signs of that progress is the continued development of the Leadership &amp; Economic Opportunity Center. With each phase of construction, we are getting closer to opening the doors to a space that will serve as a hub for education, workforce training, entrepreneurship, and opportunity for generations to come.</p>
+      <p>On a personal level, this year has been a journey of endurance and faith. While a medical setback and necessary surgery prevented me from continuing the Walk Across America as planned, the mission itself has never stopped. What began as my walk has become something much bigger &mdash; a movement of people across the country choosing to stand for hope, opportunity, and unity. I invite you to #WalkWithUs.</p>
+      <p>Thank you for walking with us. Thank you for believing. And thank you for helping us build hope where it is needed most.</p>
+      <p style="font-family:var(--font-display);text-transform:uppercase;letter-spacing:.05em;margin-top:var(--sp-2);"><strong>Pastor Corey B. Brooks</strong><br><span style="font-size:14px;color:var(--muted);">Founder &amp; CEO</span></p>
+    </div>
+    <div style="display:flex;align-items:flex-start;">
+      <img src="img/about-pastor-brooks.jpg" alt="Pastor Corey B. Brooks, Founder &amp; CEO of Project H.O.O.D." loading="lazy" style="width:100%;height:auto;border-radius:8px;display:block;">
+    </div>
+  </div>
+</section>
+
+<section class="section bg-green">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--yellow);">Walk Across America &middot; Walk With Us</div>
+    <h2 style="color:var(--white);">One walk became a movement.</h2>
+    <p class="lead" style="color:rgba(255,255,255,.9);max-width:var(--w-read);">In 2025, Pastor Corey Brooks took a bold step of faith &mdash; walking across America to raise awareness and support for Project H.O.O.D. When a foot injury required surgery and forced him to pause, the mission didn&rsquo;t stop. It evolved into <strong>Walk With Us</strong>, a nationwide movement inviting supporters to carry the vision forward in their own communities.</p>
+    <div class="stat-grid" style="margin-top:var(--sp-3);">
+      <div class="stat"><div class="v">$4.3M+</div><div class="l">raised to support the mission</div></div>
+      <div class="stat"><div class="v">1,000s</div><div class="l">of miles walked across multiple states</div></div>
+      <div class="stat"><div class="v">Nationwide</div><div class="l">awareness generated for Project H.O.O.D.</div></div>
+      <div class="stat"><div class="v">Movement</div><div class="l">Walk With Us launched, turning one journey into many</div></div>
+    </div>
+    <p style="color:rgba(255,255,255,.9);margin-top:var(--sp-3);max-width:var(--w-read);">These funds fuel two critical goals: completing the Leadership &amp; Economic Opportunity Center <strong>debt-free</strong>, and building a sustainable Project H.O.O.D. endowment.</p>
+    <div style="margin-top:var(--sp-3);">
+      <a class="btn btn-yellow" href="campaigns.html">Join Walk With Us</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow">Our five pillars</div>
+    <h2>Where the work landed in 2025.</h2>
+    <p style="max-width:var(--w-read);margin-top:8px;">Violence Prevention · Entrepreneurship &amp; Job Readiness · Health &amp; Wellness · Youth Programming · Re-Entry Services.</p>
+
+    <div class="grid-2" style="margin-top:var(--sp-3);">
+      <div class="prog-card pg-green">
+        <span class="tag tag-green">Violence Prevention</span>
+        <h3>91 mediations · 7,000+ families served</h3>
+        <p>Our 12-member Violence Interruption Team works daily to de-escalate conflict and build trust. In 2025 they hosted 88 community events and launched the FLIP Housing Initiative, providing stipends to 7 participants to support housing stability.</p>
+        <p style="font-size:14px;color:var(--muted);margin-top:auto;"><strong>Success story:</strong> Facing unemployment and housing instability, Demetrius Pouncy Jr. earned OSHA 10, Forklift, Flagger, and Construction Safety certifications, enrolled in a GED program, and secured a paid role with Windy City Harvest Corps &mdash; and now encourages other young people to choose a different path.</p>
+      </div>
+      <div class="prog-card">
+        <span class="tag tag-red">Entrepreneurship &amp; Job Readiness</span>
+        <h3>34 graduates · 1,048 job seekers connected</h3>
+        <p>Construction cohorts served 36 participants with 34 graduates. Six job fairs brought together 41+ employers, and we supported 23 entrepreneurs in forming 21 new LLCs &mdash; building a foundation for community wealth.</p>
+        <p style="font-size:14px;color:var(--muted);margin-top:auto;"><strong>Success story:</strong> Two graduates were accepted into the Roofers Union and now work with M. Cannon Roofing &mdash; contributing directly to the construction of Project H.O.O.D.&rsquo;s new LEO Center. Full circle.</p>
+      </div>
+      <div class="prog-card pg-purple">
+        <span class="tag tag-purple">Health &amp; Wellness</span>
+        <h3>2M+ lbs of food · 6,500+ families</h3>
+        <p>Our &ldquo;Everybody Eats&rdquo; drives anchor this work, while the South Side Free Clinic ran 14 clinic days serving 55 patients, and 700+ attended senior &amp; wellness events including Fall Prevention and the Health Care Hiring Job Fair.</p>
+        <p style="font-size:14px;color:var(--muted);margin-top:auto;"><strong>Success story:</strong> Seeing rising rates of high blood pressure and diabetes, SSFC launched the HEART Program &mdash; free home blood-pressure monitors, training, physician consultations, and referrals &mdash; helping neighbors take control of their health.</p>
+      </div>
+      <div class="prog-card pg-blue">
+        <span class="tag tag-blue">Youth Programming</span>
+        <h3>200 at summer camp · 228 after-school</h3>
+        <p>Free &ldquo;Secure The Bag&rdquo; Summer Camp reached 200 youth, with 228 enrolled in after-school programming. Sixteen youth traveled on an international mission trip to Zimbabwe, and our Teen Worker Program delivered hands-on job experience.</p>
+        <p style="font-size:14px;color:var(--muted);margin-top:auto;"><strong>Success story:</strong> Camp participant Marcus Easley stood out during our Aviation Nation partnership. His curiosity opened the door to continue exploring aviation beyond the summer &mdash; a camp activity that became a potential career pathway.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:var(--sp-3);">
+      <div class="prog-card" style="border-top-color:var(--gold);">
+        <span class="tag" style="background:var(--gold);color:var(--white);">Re-Entry Services · The Rebirth Project</span>
+        <h3>110+ supported · 46 through expungement clinics</h3>
+        <p>We walk alongside returning citizens through every stage of reentry &mdash; expungement support, job readiness, housing connections, and life skills. In 2025: 25 participants in the reentry cohort, 10 job placements &amp; referrals, 300+ community service hours, and a growing network of 11 partner organizations.</p>
+        <p style="font-size:14px;color:var(--muted);"><strong>Success story:</strong> A 25-year-old mother and survivor of domestic violence entered the Rebirth Project seeking a fresh start. After completing the cohort and life-skills training, she secured stable housing and employment, purchased a vehicle, and now takes her son to school each day &mdash; not just stable, but thriving.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-offwhite">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--purple);">Leadership &amp; Economic Opportunity Center</div>
+    <h2>The building goes up.</h2>
+    <p style="max-width:var(--w-read);">What began as an idea has taken shape as a transformative space for education, workforce development, entrepreneurship, and community connection on Chicago&rsquo;s South Side. Construction is <strong>about 70% complete.</strong></p>
+    <div style="margin-top:var(--sp-3);">
+      <div class="progress" style="height:54px;">
+        <div class="progress-fill" style="width:70%;font-size:18px;">Construction ~70% complete</div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:var(--sp-3);">
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid var(--line);"><strong>Structural construction</strong> fully completed &mdash; steel framework and exterior buildout</li>
+        <li style="padding:10px 0;border-bottom:1px solid var(--line);"><strong>Roofing &amp; building enclosure</strong> completed, securing the full structure</li>
+        <li style="padding:10px 0;border-bottom:1px solid var(--line);"><strong>Major interior buildout</strong> underway &mdash; classrooms, workforce training spaces, and common areas</li>
+        <li style="padding:10px 0;">Electrical, plumbing &amp; HVAC systems significantly advanced</li>
+      </ul>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:10px 0;border-bottom:1px solid var(--line);"><strong>Gymnasium</strong> and recreational spaces progressing toward completion</li>
+        <li style="padding:10px 0;border-bottom:1px solid var(--line);"><strong>Second Chance Hub</strong> and entrepreneurship spaces beginning interior development</li>
+        <li style="padding:10px 0;">Site work and surrounding infrastructure continuing to take shape</li>
+      </ul>
+    </div>
+    <div style="margin-top:var(--sp-3);">
+      <a class="btn btn-primary" href="leo-center.html">Explore the LEO Center</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow">2025 Financial Overview</div>
+    <h2>Disciplined stewardship.</h2>
+    <p style="max-width:var(--w-read);">Project H.O.O.D. closed the year with <strong>$8.9M in total income</strong> and a net surplus of <strong>$348,846</strong> &mdash; reflecting continued growth and disciplined financial stewardship. Nearly <strong>80 cents of every dollar</strong> spent went directly toward mission delivery. Figures below reflect programming operations and do not include construction costs of the LEO Center.</p>
+    <div class="stat-grid" style="margin-top:var(--sp-3);">
+      <div class="stat accent-green"><div class="v">$8,901,190</div><div class="l">total income</div></div>
+      <div class="stat accent-red"><div class="v">$8,554,108</div><div class="l">total expenditures</div></div>
+      <div class="stat accent-yellow"><div class="v">$348,846</div><div class="l">net surplus</div></div>
+    </div>
+    <div class="grid-2" style="margin-top:var(--sp-4);gap:var(--sp-4);">
+      <div>
+        <h3>Where the income came from</h3>
+        <ul style="list-style:none;padding:0;">
+          <li style="padding:10px 0;border-bottom:1px solid var(--line);"><strong>63%</strong> &mdash; Contributions &amp; special events (individual, corporate, online, gifts-in-kind, fundraising)</li>
+          <li style="padding:10px 0;border-bottom:1px solid var(--line);"><strong>31%</strong> &mdash; Grants (foundation, government, restricted)</li>
+          <li style="padding:10px 0;"><strong>7%</strong> &mdash; Violence prevention grant (dedicated safety &amp; prevention programming)</li>
+        </ul>
+      </div>
+      <div>
+        <h3>How it was spent</h3>
+        <ul style="list-style:none;padding:0;">
+          <li style="padding:8px 0;border-bottom:1px solid var(--line);"><strong>49%</strong> &mdash; Programs &amp; direct impact</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--line);"><strong>31%</strong> &mdash; Personnel</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--line);"><strong>7%</strong> &mdash; Marketing &amp; advertising</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--line);"><strong>4%</strong> &mdash; Annual gala</li>
+          <li style="padding:8px 0;border-bottom:1px solid var(--line);"><strong>3%</strong> &mdash; Travel &amp; meetings &middot; <strong>3%</strong> other &middot; <strong>2%</strong> outreach &amp; meals</li>
+          <li style="padding:8px 0;"><strong>1%</strong> &mdash; Occupancy</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:var(--sp-3);font-size:14px;color:var(--muted);">For full audited financials and 990s, see our <a href="about.html">About page</a>.</p>
+  </div>
+</section>
+
+<section class="section bg-offwhite">
+  <div class="wrap">
+    <div class="eyebrow">Leadership</div>
+    <h2>Board &amp; staff.</h2>
+    <div class="grid-2" style="margin-top:var(--sp-3);gap:var(--sp-4);">
+      <div>
+        <h3>Board of Directors</h3>
+        <p style="margin:0;">Pastor Corey Brooks <span style="color:var(--muted);">(President &amp; Founder)</span>, Steve Bozeman <span style="color:var(--muted);">(Secretary)</span>, Isaac Greene <span style="color:var(--muted);">(Treasurer)</span>, Mike Paulsen, and Patrick Milligan Sr.</p>
+        <h3 style="margin-top:var(--sp-3);">Staff leadership</h3>
+        <p style="margin:0;">Desmond &ldquo;Dez&rdquo; Marshall <span style="color:var(--muted);">(Executive Director)</span>, Brian Alexander <span style="color:var(--muted);">(COO)</span>, Jeff &ldquo;Rafi&rdquo; Boyd <span style="color:var(--muted);">(Re-Entry Director)</span>, TaWanna Cotton <span style="color:var(--muted);">(Workforce &amp; Resource Director)</span>, Maurita Gholston <span style="color:var(--muted);">(Programming Manager)</span>, Maia Goins <span style="color:var(--muted);">(Director of Operations)</span>, James Highsmith <span style="color:var(--muted);">(Non-Violence Director)</span>, Kristen Kell <span style="color:var(--muted);">(Communications)</span>, Shari Lewis <span style="color:var(--muted);">(Grants &amp; Data)</span>, LaDonna Peppers <span style="color:var(--muted);">(Program Success)</span>, and Arenda Troutman <span style="color:var(--muted);">(Government &amp; Community Relations)</span>.</p>
+      </div>
+      <div>
+        <h3>Advisory Board</h3>
+        <p style="margin:0;font-size:14.5px;color:var(--muted);line-height:1.9;">Chuck Adler · Nathan Arant · Larry Berlin · Rick Doering · Richard Edelman · Tom Gallagher · Pastor Keith Gordon · Bill Gorsline · Nick Gowen · Kanye Grau · Jim Hayes · Susan Heymann · Rashod Johnson · Ta&rsquo;Rhonda Jones · Ryan Kunkel · Dan Madura · Talia Maschiach · Patrick Milligan · Leslie Munger · John Munger · Bill O&rsquo;Kane · Jim Oberweis · Marty Ozinga · Mike Paulsen · Jim Purcell · Dr. John Radford · John Reaves · Sean Seay · David Selbst · Dr. Eric Wallace · John Williams · Rob Zappia</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Read it all &mdash; then help us make 2026 bigger.</h2>
+    <p class="lead" style="max-width:var(--w-read);margin:12px auto var(--sp-2);">The full report has every story, stat, and photo from the year. Your gift keeps this work on the block.</p>
+    <div class="btn-group">
+      <a class="btn btn-yellow" href="docs/ph-annual-report-2025.pdf" target="_blank" rel="noopener">Download the 2025 report (PDF)</a>
+      <a class="btn btn-outline-light" href="https://projecthood.networkforgood.com/">Donate</a>
+      <a class="btn btn-outline-light" href="get-involved.html">Get involved</a>
+    </div>
+  </div>
+</section>
+"""
+
 # ---------------------------------------------------------------------------
 # Registry — (filename, title, meta, active key, body)
 # ---------------------------------------------------------------------------
@@ -3264,6 +3544,7 @@ pages = [
     ("youth-programming.html",     "Youth Programming",      "Entrepreneurship training, mentorship, and after-school enrichment — 380 youth enrolled, 94% attendance, 42 summer internships in 2025.", "a_programs",     youth_programming_body),
     ("reentry-services.html",      "Re-Entry Services",      "Second chances, real support — job readiness, housing, counseling, and mentorship for individuals returning from incarceration.",  "a_programs",     reentry_services_body),
     ("impact.html",      "News & Impact",                "Project H.O.O.D. news and 2025 impact — 15,000+ served, 2M+ lbs of food distributed, $19/hr average starting wage, 84% LEO Center funded, plus the latest press.", "a_impact",       impact_body),
+    ("annual-report.html", "2025 Annual Report",         "Project H.O.O.D. 2025 Annual Report — $8.9M in total income, the five programming pillars, Walk With Us ($4.3M+ raised), LEO Center at ~70% complete, financials, and board & staff. Download the full PDF.", "a_impact",       annual_report_body),
     ("first-look.html",   "The First Look",               "The First Look \u2014 Project H.O.O.D. donor day. Give, share, and be part of this moment.",                                              "a_gi",           first_look_body),
     ("leo-center.html",  "LEO Center",                   "The Leadership and Economic Opportunity Center — 84% funded, a 90,000 sq ft community hub on S. King Drive.",                        "a_leo",          leo_body),
     ("campaigns.html",   "Walk With Us!",                "Walk With Us! — a nationwide movement to raise $25M for youth, families, and the LEO Center. Give, walk, or start a team on Tiltify.",  "a_campaigns",    campaigns_body),
