@@ -41,7 +41,7 @@ NEWSLETTER_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSel7-YfFSxXgX-L6
 # Paste the PUBLISHED form URL ending in /viewform (the page embeds it in an
 # iframe so applicants apply without leaving the site). Leave "" to show the
 # fallback "reach out" box until the real link is ready.
-CONSTRUCTION_COHORT_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSea3eRxuKg9dUfXfoIUb7trGRFJkLsLCfxKs6UNTGIIttQv3Q/viewform"
+CONSTRUCTION_COHORT_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSex-7Ww32xtYQt3g2URSA8L1z4fx4f-Xj_xlBSfuCZIt_to5g/viewform"
 
 def _eb_fetch_events(time_filter="current_future", order="start_asc", status="live", limit=None):
     """
@@ -1183,7 +1183,7 @@ if CONSTRUCTION_COHORT_FORM_URL:
         _cc_embed_src += ("&" if "?" in _cc_embed_src else "?") + "embedded=true"
     _cc_apply = f"""
     <div style="max-width:760px;margin:var(--sp-3) auto 0;">
-      <iframe src="{_cc_embed_src}" width="100%" height="1100" frameborder="0" marginheight="0" marginwidth="0" style="border:0;background:var(--white);" title="Construction Pre-Apprenticeship application form">Loading the application…</iframe>
+      <iframe src="{_cc_embed_src}" width="100%" height="820" frameborder="0" marginheight="0" marginwidth="0" style="border:0;background:var(--white);" title="Construction Pre-Apprenticeship interest form">Loading the form…</iframe>
       <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:12px;">Having trouble with the form? <a href="{CONSTRUCTION_COHORT_FORM_URL}" target="_blank" rel="noopener">Open it in a new tab →</a></p>
     </div>"""
 else:
@@ -1238,9 +1238,9 @@ construction_cohort_body = f"""
 
 <section class="section">
   <div class="wrap" style="text-align:center;">
-    <div class="eyebrow" style="color:var(--red);">Apply</div>
-    <h2>Interested? Apply for the next cohort.</h2>
-    <p style="font-size:var(--fs-lead);max-width:640px;margin:0 auto;color:var(--muted);">Complete the form below to be considered for our next start date. Questions? Reach out to Tawanna Cotten at <a href="mailto:tawannacotten@projecthood.org">tawannacotten@projecthood.org</a>.</p>
+    <div class="eyebrow" style="color:var(--red);">Sign up</div>
+    <h2>Interested in the next cohort?</h2>
+    <p style="font-size:var(--fs-lead);max-width:640px;margin:0 auto;color:var(--muted);">Complete the form below and we'll email you when applications open, with the registration link and next start date. Questions? Reach out to Tawanna Cotten at <a href="mailto:tawannacotten@projecthood.org">tawannacotten@projecthood.org</a>.</p>
     {_cc_apply}
   </div>
 </section>
