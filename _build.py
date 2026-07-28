@@ -513,7 +513,13 @@ def render(title, meta, active, body):
 
 def write_page(filename, title, meta, active, body):
     path = SITE_DIR / filename
-    path.write_text(render(title, meta, active, body), encoding="utf-8")
+    html = render(title, meta, active, body)
+    if filename == "404.html":
+        # The 404 page is served at whatever bad URL was requested (e.g.
+        # /events/get-involved), which breaks relative css/img/nav paths.
+        # <base href="/"> makes everything resolve from the site root.
+        html = html.replace("<head>", '<head>\n  <base href="/">', 1)
+    path.write_text(html, encoding="utf-8")
     return path
 
 
