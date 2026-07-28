@@ -13,6 +13,14 @@ Eventbrite auto-update:
   private token from eventbrite.com → Account Settings → Developer Links → API Keys.
   When present, the events page renders live events from your Eventbrite
   organizer profile (ID 41178041593) instead of the hardcoded cards.
+
+Google Calendar auto-update:
+  The events page ALSO pulls from the public "Project H.O.O.D. Events
+  [Public]" Google Calendar (no token needed). Add an event there and it
+  appears on the site at the next rebuild. Put a registration URL in the
+  event description to power the RSVP button; otherwise the card links to
+  the Google Calendar event. If the same event is on both Eventbrite and
+  the calendar with different dates, the calendar's date wins.
 """
 from pathlib import Path
 import re
@@ -88,6 +96,8 @@ def _eb_fetch_events(time_filter="current_future", order="start_asc", status="li
                 "url": ev.get("url", EVENTBRITE_ORG_URL),
                 "image": image,
                 "is_free": bool(ev.get("is_free", False)),
+                "_dt": start.get("local", ""),   # sortable ISO datetime (local)
+                "_src": "eventbrite",
             })
         if limit:
             events = events[:limit]
@@ -140,8 +150,9 @@ def _build_event_cards_html(events, is_past=False):
             action = (f'<a class="btn btn-outline" href="{url}" target="_blank" rel="noopener" '
                       f'style="font-size:13px;padding:8px 16px;">View details →</a>')
         else:
+            cta = ev.get("cta", "RSVP")
             action = (f'<a class="btn btn-primary" href="{url}" target="_blank" rel="noopener" '
-                      f'style="font-size:13px;padding:8px 16px;">RSVP →</a>')
+                      f'style="font-size:13px;padding:8px 16px;">{cta} →</a>')
         cards.append(f"""
       <div class="card" style="padding:0;overflow:hidden;">
         {media}
@@ -157,13 +168,168 @@ def _build_event_cards_html(events, is_past=False):
       </div>""")
     return "\n".join(cards)
 
+# ---------------------------------------------------------------------------
+# Google Calendar (Project H.O.O.D. Events [Public]) fetcher
+# ---------------------------------------------------------------------------
+# The team maintains the public "Project H.O.O.D. Events [Public]" Google
+# Calendar; anything added there appears on the events page at the next
+# rebuild — no Eventbrite listing required. If the same event exists in both
+# (matched by similar title within ±10 days), the calendar's DATE wins, but
+# the Eventbrite card is kept when the dates agree (it has the flyer + RSVP).
+GCAL_ID = ("c_aaab49ab274191a67fd34d3ec23430823e39f8a684eb5358c53ccfc"
+           "765269ec6@group.calendar.google.com")
+GCAL_ICS_URL = ("https://calendar.google.com/calendar/ical/"
+                + GCAL_ID.replace("@", "%40") + "/public/basic.ics")
+GCAL_HORIZON_DAYS = 180   # only show calendar events this far out
+
+def _ics_unescape(s):
+    return (s.replace("\\n", "\n").replace("\\N", "\n")
+             .replace("\\,", ",").replace("\\;", ";").replace("\\\\", "\\"))
+
+def _ics_parse(text):
+    """Minimal ICS parser: returns a list of {prop: value} dicts per VEVENT."""
+    # Unfold continuation lines (RFC 5545: lines starting with space/tab)
+    lines, out = text.splitlines(), []
+    for ln in lines:
+        if ln[:1] in (" ", "\t") and out:
+            out[-1] += ln[1:]
+        else:
+            out.append(ln)
+    events, cur = [], None
+    for ln in out:
+        if ln == "BEGIN:VEVENT":
+            cur = {}
+        elif ln == "END:VEVENT":
+            if cur is not None:
+                events.append(cur)
+            cur = None
+        elif cur is not None and ":" in ln:
+            key, val = ln.split(":", 1)
+            prop = key.split(";", 1)[0].upper()
+            cur[prop] = val
+    return events
+
+def _ics_dt(val):
+    """Parse an ICS date/datetime (local floating, TZID-stripped, or ...Z)."""
+    from datetime import datetime, timedelta
+    val = val.strip()
+    utc = val.endswith("Z")
+    val = val.rstrip("Z")
+    fmt = "%Y%m%dT%H%M%S" if "T" in val else "%Y%m%d"
+    dt = datetime.strptime(val, fmt)
+    if utc:
+        dt -= timedelta(hours=5)   # America/Chicago (CDT); events are local anyway
+    return dt
+
+def _gcal_event_url(uid):
+    """Public Google Calendar 'view event' link (lets visitors add to calendar)."""
+    import base64
+    eid = base64.urlsafe_b64encode(
+        f"{uid.replace('@google.com', '')} {GCAL_ID}".encode()).decode().rstrip("=")
+    return f"https://calendar.google.com/calendar/event?eid={eid}"
+
+def _gcal_fetch_events():
+    """
+    Fetch upcoming events from the public Google Calendar ICS feed.
+    Returns a list of event dicts (same shape as _eb_fetch_events) or None.
+    """
+    from datetime import datetime, timedelta
+    if urlreq is None:
+        return None
+    try:
+        req = urlreq.Request(GCAL_ICS_URL, headers={"User-Agent": "ph-site-build"})
+        with urlreq.urlopen(req, timeout=15) as resp:
+            raw = resp.read().decode("utf-8", "replace")
+    except Exception as exc:
+        print(f"  [GCal] Could not fetch public calendar: {exc}")
+        return None
+    now = datetime.now()
+    horizon = now + timedelta(days=GCAL_HORIZON_DAYS)
+    events, seen = [], set()
+    for ve in _ics_parse(raw):
+        if ve.get("STATUS", "").upper() == "CANCELLED":
+            continue
+        if "DTSTART" not in ve or "SUMMARY" not in ve:
+            continue
+        # Google's public ICS ships recurring series as expanded instances
+        # (RECURRENCE-ID) alongside the series master (RRULE). Skip masters —
+        # their occurrences are already present as instances.
+        if "RRULE" in ve and "RECURRENCE-ID" not in ve:
+            continue
+        try:
+            dt = _ics_dt(ve["DTSTART"])
+        except Exception:
+            continue
+        if not (now <= dt <= horizon):
+            continue
+        key = (ve.get("UID", ""), ve["DTSTART"])
+        if key in seen:
+            continue
+        seen.add(key)
+        desc = _ics_unescape(ve.get("DESCRIPTION", ""))
+        # First URL in the description becomes the card's action link
+        m = re.search(r"https?://\S+", desc)
+        url = m.group(0).rstrip(".,)") if m else _gcal_event_url(ve.get("UID", ""))
+        loc = _ics_unescape(ve.get("LOCATION", "")).strip() or "Woodlawn"
+        events.append({
+            "title": _ics_unescape(ve["SUMMARY"]).strip(),
+            "date_str": dt.strftime("%a, %b %-d · %-I:%M %p"),
+            "location": loc,
+            "url": url,
+            "image": "",
+            "is_free": True,          # community calendar events are free
+            "cta": "RSVP" if m else "Details",
+            "_dt": dt.strftime("%Y-%m-%dT%H:%M:%S"),
+            "_src": "gcal",
+        })
+    return events if events else None
+
+def _norm_title(t):
+    t = re.sub(r"[^a-z0-9 ]", "", t.lower())
+    t = re.sub(r"\b(20\d\d|the|a|an|with|in|hood)\b", "", t)
+    return re.sub(r"\s+", " ", t).strip().rstrip("s")
+
+def _merge_events(eb, gcal):
+    """Merge Eventbrite + calendar events. Calendar wins date conflicts."""
+    from datetime import datetime
+    eb, gcal = list(eb or []), list(gcal or [])
+    def _d(ev):
+        try:
+            return datetime.fromisoformat(ev["_dt"])
+        except Exception:
+            return None
+    kept_eb = []
+    for e in eb:
+        drop = False
+        ed = _d(e)
+        for g in gcal:
+            gd = _d(g)
+            if ed and gd and _norm_title(e["title"]) == _norm_title(g["title"]) \
+                    and abs((ed - gd).days) <= 10:
+                if ed.date() == gd.date():
+                    g["_skip"] = True   # same day: keep Eventbrite (flyer + RSVP)
+                else:
+                    drop = True         # dates differ: the calendar wins
+        if not drop:
+            kept_eb.append(e)
+    merged = kept_eb + [g for g in gcal if not g.get("_skip")]
+    merged.sort(key=lambda ev: ev.get("_dt") or "9999")
+    return merged
+
 # Try fetching live events now; fall back to hardcoded cards if unavailable
 _live_events = _eb_fetch_events(time_filter="current_future", order="start_asc", status="live")
 if _live_events:
     print(f"  [Eventbrite] Loaded {len(_live_events)} upcoming events from API ✓")
-    _event_cards_html = _build_event_cards_html(_live_events)
 else:
-    print("  [Eventbrite] No token — using hardcoded event cards")
+    print("  [Eventbrite] No token — Eventbrite events unavailable")
+_gcal_events = _gcal_fetch_events()
+if _gcal_events:
+    print(f"  [GCal] Loaded {len(_gcal_events)} upcoming events from public calendar ✓")
+_merged_events = _merge_events(_live_events, _gcal_events)
+if _merged_events:
+    _event_cards_html = _build_event_cards_html(_merged_events)
+else:
+    print("  [Events] No live sources — using hardcoded event cards")
     _event_cards_html = None   # filled in below with the hardcoded block
 
 # Past events (most recent first, capped) — powers the "Past events" tab
