@@ -89,6 +89,15 @@ def _eb_fetch_events(time_filter="current_future", order="start_asc", status="li
             image = ""
             if logo:
                 image = (logo.get("original") or {}).get("url") or logo.get("url") or ""
+            # Eventbrite listings sometimes carry a stale start time. When the
+            # Company-Wide calendar is authoritative, correct the displayed time
+            # here (see _TIME_OVERRIDES) — the Eventbrite listing itself should
+            # be fixed too, but this keeps the website accurate meanwhile.
+            _t_lc = ev.get("name", {}).get("text", "").lower()
+            for _key, _time in _TIME_OVERRIDES.items():
+                if _key in _t_lc and "\u00b7" in day_str:
+                    day_str = day_str.split("\u00b7")[0] + "\u00b7 " + _time
+                    break
             events.append({
                 "title": ev.get("name", {}).get("text", "Untitled Event"),
                 "date_str": day_str,
@@ -105,6 +114,14 @@ def _eb_fetch_events(time_filter="current_future", order="start_asc", status="li
     except Exception as exc:
         print(f"  [Eventbrite] Could not fetch events: {exc}")
         return None
+
+# Displayed start-time overrides for Eventbrite listings whose time is wrong on
+# Eventbrite but correct on the Project H.O.O.D. Company-Wide calendar.
+# Key: event title (case-insensitive substring). Value: start time to display.
+# Remove an entry once the Eventbrite listing itself has been corrected.
+_TIME_OVERRIDES = {
+    "trunk party": "3:00 PM",   # Eventbrite says 4:00 PM; actual start is 3:00 PM (3-7 PM)
+}
 
 # BG colors cycle for event cards
 _EB_COLORS = ["var(--green)", "var(--blue)", "var(--red)", "var(--purple)", "var(--yellow)"]
