@@ -796,7 +796,7 @@ about_body = f"""
       </div>
       <div>
         <h3>2025 · Walk Across America</h3>
-        <p>Pastor Brooks walks 900+ miles from Chicago to New York to raise the final $45M and spotlight what's possible. 15,000+ served this year. 2M+ lbs of food distributed. $19/hr average starting wage for job placements.</p>
+        <p>Pastor Brooks sets out from Times Square to walk across America for the mission. A foot injury and required surgery force him to pause the walk &mdash; and it becomes Walk With Us, a nationwide movement that has raised $4.3M+ to date. 2M+ lbs of food distributed this year.</p>
       </div>
     </div>
   </div>
@@ -891,7 +891,7 @@ pastor_brooks_body = """
     <div style="min-height:420px;background-image:url('img/about-pastor-brooks.jpg');background-size:cover;background-position:center top;border-radius:10px;"></div>
     <div>
       <p style="font-size:var(--fs-lead);color:var(--white);opacity:.92;">In 2011, Pastor Brooks moved onto the rooftop of an abandoned motel across from a funeral parlor and stayed 94 nights &mdash; through a Chicago winter &mdash; to protest the youth gun deaths tearing through Woodlawn. Project H.O.O.D. was born soon after.</p>
-      <p style="color:var(--white);opacity:.85;">More than a decade later, he leads an organization that serves 15,000+ people a year and is building the $45M Leadership &amp; Economic Opportunity (LEO) Center. In 2025 he walked 900+ miles from Chicago to New York to help fund it.</p>
+      <p style="color:var(--white);opacity:.85;">More than a decade later, he leads an organization that serves 15,000+ people a year and is building the $45M Leadership &amp; Economic Opportunity (LEO) Center. In 2025 he set out from Times Square to walk across America to help fund it; after a foot injury and surgery forced him to pause, the walk became Walk With Us &mdash; a nationwide movement that has raised $4.3M+.</p>
       <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;">
         <a class="btn btn-yellow" href="letter.html">Read Pastor Brooks&rsquo; letter</a>
         <a class="btn btn-outline-light" href="#book">Book Pastor Brooks</a>
@@ -919,7 +919,7 @@ pastor_brooks_body = """
       </div>
       <div>
         <h3>2025 &middot; Walk Across America</h3>
-        <p>Pastor Brooks walks 900+ miles from Chicago to New York to raise the final funds for LEO and spotlight what&rsquo;s possible. 15,000+ served this year.</p>
+        <p>Pastor Brooks sets out from Times Square to walk across America for the mission. A foot injury and surgery force him to pause the walk, and it becomes Walk With Us &mdash; a nationwide movement that has raised $4.3M+ to date.</p>
       </div>
     </div>
   </div>
@@ -1239,7 +1239,7 @@ violence_prevention_body = f"""
     <div class="eyebrow" style="color:var(--yellow);">2025 Impact</div>
     <h2 style="color:var(--white);">What the work is producing.</h2>
     <div class="stat-grid" style="margin-top:var(--sp-3);">
-      <div class="stat"><div class="v">140+</div><div class="l">incidents mediated</div></div>
+      <div class="stat"><div class="v">91</div><div class="l">mediations &amp; conflict interventions</div></div>
       <div class="stat"><div class="v">22</div><div class="l">hospital-bedside interventions</div></div>
       <div class="stat"><div class="v">85</div><div class="l">young men in peace circles</div></div>
       <div class="stat"><div class="v">31%</div><div class="l">reduction in 60637 gun homicides</div></div>
@@ -1328,9 +1328,9 @@ workforce_development_body = f"""
     <div class="eyebrow" style="color:var(--yellow);">2025 Impact</div>
     <h2 style="color:var(--white);">The numbers.</h2>
     <div class="stat-grid" style="margin-top:var(--sp-3);">
-      <div class="stat"><div class="v">$19/hr</div><div class="l">average starting wage</div></div>
-      <div class="stat"><div class="v">$19/hr</div><div class="l">average starting wage</div></div>
-      <div class="stat"><div class="v">72%</div><div class="l">retained at 6 months</div></div>
+      <div class="stat"><div class="v">1,048</div><div class="l">job seekers connected to opportunities</div></div>
+      <div class="stat"><div class="v">34</div><div class="l">construction cohort graduates</div></div>
+      <div class="stat"><div class="v">23</div><div class="l">entrepreneurs supported &middot; 21 new LLCs</div></div>
       <div class="stat"><div class="v">Multiple</div><div class="l">trades + industries served</div></div>
     </div>
   </div>
@@ -1535,7 +1535,7 @@ health_wellness_body = f"""
     <div class="eyebrow" style="color:var(--yellow);">2025 Impact</div>
     <h2 style="color:var(--white);">The numbers.</h2>
     <div class="stat-grid" style="margin-top:var(--sp-3);">
-      <div class="stat"><div class="v">520</div><div class="l">counseling sessions delivered</div></div>
+      <div class="stat"><div class="v">14</div><div class="l">free SSFC clinic days &middot; 55 patients</div></div>
       <div class="stat"><div class="v">$0</div><div class="l">cost to participants</div></div>
       <div class="stat"><div class="v">Free</div><div class="l">SSFC clinic · 1st &amp; 3rd Sunday</div></div>
       <div class="stat"><div class="v">3</div><div class="l">partner organizations delivering care</div></div>
@@ -1728,9 +1728,9 @@ youth_programming_body = f"""
     <div class="eyebrow" style="color:var(--yellow);">2025 Impact</div>
     <h2 style="color:var(--white);">The numbers.</h2>
     <div class="stat-grid" style="margin-top:var(--sp-3);">
-      <div class="stat"><div class="v">380</div><div class="l">youth enrolled</div></div>
-      <div class="stat"><div class="v">94%</div><div class="l">weekly attendance rate</div></div>
-      <div class="stat"><div class="v">42</div><div class="l">placed in summer internships</div></div>
+      <div class="stat"><div class="v">200</div><div class="l">youth in free &ldquo;Secure The Bag&rdquo; summer camp</div></div>
+      <div class="stat"><div class="v">228</div><div class="l">students enrolled in after-school programming</div></div>
+      <div class="stat"><div class="v">16</div><div class="l">youth on the Zimbabwe mission trip</div></div>
       <div class="stat"><div class="v">LEO</div><div class="l">Youth Enrichment Hub opening soon</div></div>
     </div>
   </div>
@@ -1857,10 +1857,10 @@ impact_body = f"""
       <div class="stat"><div class="v">2,000,000+ lbs</div><div class="l">food distributed</div></div>
       <div class="stat accent-red"><div class="v">$19/hr</div><div class="l">average starting wage for placements</div></div>
       <div class="stat"><div class="v">84%</div><div class="l">LEO Center capital campaign funded</div></div>
-      <div class="stat accent-blue"><div class="v">140+</div><div class="l">violence incidents mediated</div></div>
-      <div class="stat"><div class="v">380</div><div class="l">youth in education programs</div></div>
-      <div class="stat"><div class="v">520</div><div class="l">mental health sessions delivered</div></div>
-      <div class="stat accent-yellow"><div class="v">62</div><div class="l">small businesses coached</div></div>
+      <div class="stat accent-blue"><div class="v">91</div><div class="l">mediations &amp; conflict interventions</div></div>
+      <div class="stat"><div class="v">500</div><div class="l">youth served</div></div>
+      <div class="stat"><div class="v">6,500+</div><div class="l">families served through &ldquo;Everybody Eats&rdquo;</div></div>
+      <div class="stat accent-yellow"><div class="v">21</div><div class="l">new LLCs formed</div></div>
     </div>
   </div>
 </section>
@@ -1873,22 +1873,22 @@ impact_body = f"""
       <div class="prog-card pg-green">
         <span class="tag tag-green">Violence Prevention</span>
         <h3>31% fewer gun homicides in 60637</h3>
-        <p>Our outreach team mediated 140+ incidents and responded to 22 hospital bedside interventions. The 60637 ZIP saw a 31% reduction in gun homicides 2024→2025.</p>
+        <p>Our Violence Interruption Team conducted 91 mediations and conflict interventions, hosted 88 community events, and served 7,000+ families across Woodlawn and Englewood.</p>
       </div>
       <div class="prog-card">
         <span class="tag tag-red">Workforce Development</span>
-        <h3>Job placements · 72% retained at 6 months</h3>
-        <p>Construction trades, tech, and logistics. $19/hr average starting wage. 72% still employed with the same employer six months out.</p>
+        <h3>1,048 job seekers connected · 34 trade graduates</h3>
+        <p>Construction trades, tech, and logistics. 36 students served and 34 graduates earned Carpentry Level 1 and OSHA certifications. Six job fairs with 41+ employers connected 1,048 job seekers to opportunities.</p>
       </div>
       <div class="prog-card pg-blue">
         <span class="tag tag-blue">Youth Programming</span>
-        <h3>380 youth · 94% attendance rate</h3>
-        <p>Entrepreneurship training, tutoring, and mentorship. 94% weekly attendance. 42 youth placed in summer internships.</p>
+        <h3>500 youth served in 2025</h3>
+        <p>Entrepreneurship training, daily tutoring, financial literacy, and mentorship. 200 youth in the free &ldquo;Secure The Bag&rdquo; summer camp, 228 enrolled in after-school programming, and 16 on our Zimbabwe mission trip.</p>
       </div>
       <div class="prog-card pg-purple">
         <span class="tag tag-purple">Health &amp; Wellness</span>
-        <h3>520 sessions · 0 cost to participants</h3>
-        <p>Individual therapy, group work, and crisis response — entirely free to participants, funded by foundations + individual donors.</p>
+        <h3>14 free clinic days · 0 cost to participants</h3>
+        <p>The South Side Free Clinic served 55 patients across 14 clinic days, and 700+ neighbors attended senior and wellness events — entirely free to participants, funded by foundations + individual donors.</p>
       </div>
     </div>
   </div>
@@ -2142,7 +2142,7 @@ leo_body = f"""
         <div>
           <div style="font-weight:700;font-size:13px;color:var(--green);text-transform:uppercase;letter-spacing:.06em;">2024–2025 · Complete</div>
           <h4 style="margin:4px 0 6px;">Foundation &amp; Steel</h4>
-          <p style="color:var(--muted);font-size:14px;margin:0;">Foundation poured. Steel erected. Construction training crews — Project H.O.O.D. program graduates — worked the site. The walk from Chicago to New York raised final capital.</p>
+          <p style="color:var(--muted);font-size:14px;margin:0;">Foundation poured. Steel erected. Construction training crews — Project H.O.O.D. program graduates — worked the site. The Walk Across America and the Walk With Us movement it became raised final capital.</p>
         </div>
       </div>
       <div style="display:flex;gap:20px;align-items:flex-start;padding-bottom:32px;position:relative;">
@@ -2308,7 +2308,7 @@ campaigns_body = f"""
       <div>
         <div class="eyebrow" style="color:var(--yellow);">Campaigns · 2026</div>
         <h1>Walk With <span class="hl-yellow">Us!</span></h1>
-        <p class="lead">What started as Pastor Brooks' 900-mile walk from Chicago to New York has grown into a nationwide movement. Walk With Us! invites people everywhere to raise $25M for mentorship, youth development, violence prevention, and the LEO Center.</p>
+        <p class="lead">What started as Pastor Brooks' walk across America &mdash; begun in Times Square, and paused when a foot injury required surgery &mdash; has grown into a nationwide movement that has raised $4.3M+. Walk With Us! invites people everywhere to raise $25M for mentorship, youth development, violence prevention, and the LEO Center.</p>
         <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;">
           <a class="btn btn-yellow" href="https://tiltify.com/project-hood/walk-across-america-2025">Give to the movement</a>
           <a class="btn btn-outline-light" href="https://tiltify.com/project-hood/walk-across-america-2025">Start a team</a>
@@ -2333,8 +2333,8 @@ campaigns_body = f"""
   <div class="wrap grid-2">
     <div>
       <div class="eyebrow">Where it started</div>
-      <h2>900 miles. One community. One movement.</h2>
-      <p>In 2025, Pastor Brooks walked from Chicago to New York — 900+ miles — to put the South Side on the map and raise the final dollars for the LEO Center. That walk is over. The movement isn't.</p>
+      <h2>One journey. One community. One movement.</h2>
+      <p>In 2025, Pastor Brooks set out from Times Square to walk across America — to put the South Side on the map and raise the final dollars for the LEO Center. A foot injury and surgery forced him to pause the walk. The mission didn't stop: it became Walk With Us, and it has raised $4.3M+ and counting.</p>
       <p>Walk With Us! invites communities across America to keep carrying the mission forward: walks, church activations, volunteer days, and prayer gatherings — everywhere people are ready to step up.</p>
     </div>
     <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.15);">
@@ -2379,7 +2379,7 @@ campaigns_body = f"""
 
 <section class="section bg-black">
   <div class="wrap testimonial" style="border-left-color:var(--yellow);">
-    <blockquote>"They told me I was crazy to walk from Chicago to New York. I told them I was crazy to watch another kid get buried."</blockquote>
+    <blockquote>"They told me I was crazy to walk across America. I told them I was crazy to watch another kid get buried."</blockquote>
     <cite>— Pastor Corey B. Brooks</cite>
   </div>
 </section>
@@ -3739,7 +3739,7 @@ pages = [
     ("construction-cohort.html", "Construction Pre-Apprenticeship", "Paid pre-apprenticeship construction training in Woodlawn, in partnership with Illinois Works. Earn three certifications and a path into the trades. Apply for the next cohort.", "a_programs", construction_cohort_body),
     ("health-wellness.html",       "Health & Wellness",      "Free medical care, counseling, and wellness programs for South Side residents — including the Southside Free Clinic (SSFC).",     "a_programs",     health_wellness_body),
     ("recovery.html",              "Recovery in the H.O.O.D.", "Recovery in the H.O.O.D. — weekly peer-support meetings, monthly Speakerthons, and step-by-step navigation to treatment for South Side neighbors in recovery.", "a_programs",     recovery_body),
-    ("youth-programming.html",     "Youth Programming",      "Entrepreneurship training, mentorship, and after-school enrichment — 380 youth enrolled, 94% attendance, 42 summer internships in 2025.", "a_programs",     youth_programming_body),
+    ("youth-programming.html",     "Youth Programming",      "Entrepreneurship training, mentorship, and after-school enrichment — 500 youth served in 2025, including 200 in summer camp and 228 in after-school programming.", "a_programs",     youth_programming_body),
     ("reentry-services.html",      "Re-Entry Services",      "Second chances, real support — job readiness, housing, counseling, and mentorship for individuals returning from incarceration.",  "a_programs",     reentry_services_body),
     ("impact.html",      "News & Impact",                "Project H.O.O.D. news and 2025 impact — 15,000+ served, 2M+ lbs of food distributed, $19/hr average starting wage, 84% LEO Center funded, plus the latest press.", "a_impact",       impact_body),
     ("annual-report.html", "2025 Annual Report",         "Project H.O.O.D. 2025 Annual Report — $8.9M in total income, the five programming pillars, Walk With Us ($4.3M+ raised), LEO Center at ~70% complete, financials, and board & staff. Download the full PDF.", "a_impact",       annual_report_body),
