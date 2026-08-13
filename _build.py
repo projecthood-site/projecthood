@@ -137,6 +137,15 @@ _RSVP_OVERRIDES = {
         "https://docs.google.com/forms/d/e/1FAIpQLScuY1qVREYg8wENDx7PyMUhlBkkHOGzRh0CepZsOmPSVlyL2w/viewform",
 }
 
+# Reference sheet shown next to RSVP on an upcoming event card. Use when
+# attendees need to know what to bring before they arrive — services offered,
+# required documents, fees. Key: event title (case-insensitive substring).
+# Value: (href, button label). The PDF itself goes in docs/.
+_INFO_LINKS = {
+    "secretary of state dmv community service day":
+        ("docs/mobile-dmv-services-fees.pdf", "Services &amp; fees"),
+}
+
 def _build_event_cards_html(events, is_past=False):
     """Render a grid of event cards from a list of event dicts."""
     cards = []
@@ -170,6 +179,13 @@ def _build_event_cards_html(events, is_past=False):
             cta = ev.get("cta", "RSVP")
             action = (f'<a class="btn btn-primary" href="{url}" target="_blank" rel="noopener" '
                       f'style="font-size:13px;padding:8px 16px;">{cta} →</a>')
+            for _key, (_href, _label) in _INFO_LINKS.items():
+                if _key in _title_lc:
+                    action += (f'\n            <a class="btn btn-outline" href="{_href}" '
+                               f'target="_blank" rel="noopener" '
+                               f'aria-label="{_label} for {safe_title} (PDF)" '
+                               f'style="font-size:13px;padding:8px 16px;">{_label} (PDF)</a>')
+                    break
         cards.append(f"""
       <div class="card" style="padding:0;overflow:hidden;">
         {media}
