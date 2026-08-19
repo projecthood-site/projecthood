@@ -631,7 +631,25 @@ _STORY_ACCENTS = ["var(--red)", "var(--green)", "var(--purple)", "var(--blue)"]
 
 
 def _story_media(story, autoplay_title=None):
-    """Video embed if the story has one, otherwise the hero image. May be ''."""
+    """Video embed if the story has one, otherwise the hero image. May be ''.
+
+    A story can carry either a landscape YouTube video ("youtube") or a
+    portrait social reel ("reel_embed": the raw iframe src, e.g. a Facebook
+    reel plugin URL). Portrait reels are width-capped so they don't tower
+    over the column they sit in.
+    """
+    if story.get("reel_embed"):
+        return (
+            '<div style="display:flex;justify-content:center;">'
+            '<div style="width:100%;max-width:360px;aspect-ratio:340/735;border-radius:14px;'
+            'overflow:hidden;box-shadow:0 14px 44px rgba(0,0,0,.22);background:#000;">'
+            f'<iframe src="{story["reel_embed"]}" '
+            f'title="{story["name"]} &mdash; {story["headline"]} | Project H.O.O.D." '
+            'style="border:none;overflow:hidden;width:100%;height:100%;" scrolling="no" '
+            'frameborder="0" allowfullscreen="true" '
+            'allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>'
+            '</div></div>'
+        )
     if story.get("youtube"):
         return (
             '<div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;'
@@ -697,6 +715,26 @@ def _story_full(story, i=0):
 </article>"""
 
 
+def _story_feature(story, i=0):
+    """Featured block: the story's video/photo and its own headline together.
+
+    Used on the homepage so the featured video and its story read as one item
+    instead of appearing twice — once as media, once as a card.
+    """
+    accent = _STORY_ACCENTS[i % len(_STORY_ACCENTS)]
+    media = _story_media(story)
+    cta = "Watch the story" if (story.get("youtube") or story.get("reel_embed")) else "Read the story"
+    return f"""    <div class="grid-2" style="margin-top:var(--sp-3);align-items:center;gap:var(--sp-4);">
+      <div>{media}</div>
+      <div>
+        <div class="eyebrow" style="color:{accent};">{story['kicker']}</div>
+        <h3 style="margin:6px 0 10px;font-size:1.9rem;line-height:1.15;">{story['headline']}</h3>
+        <p style="font-size:var(--fs-lead);color:var(--muted);margin-bottom:18px;">{story['lede']}</p>
+        <a class="btn btn-primary" href="stories.html#{story['slug']}">{cta} &rarr;</a>
+      </div>
+    </div>"""
+
+
 def _story_card(story, i=0):
     """Compact card linking to the full story on stories.html."""
     accent = _STORY_ACCENTS[i % len(_STORY_ACCENTS)]
@@ -707,7 +745,7 @@ def _story_card(story, i=0):
             f'<img src="{thumb}" alt="{story["name"]}" loading="lazy" '
             'style="width:100%;height:190px;object-fit:cover;display:block;">'
         )
-    tag = "Watch the story &rarr;" if story.get("youtube") else "Read the story &rarr;"
+    tag = "Watch the story &rarr;" if (story.get("youtube") or story.get("reel_embed")) else "Read the story &rarr;"
     return f"""
       <a class="card" href="stories.html#{story['slug']}" style="padding:0;overflow:hidden;text-decoration:none;display:block;border-top:4px solid {accent};">
         {media}
@@ -752,9 +790,8 @@ _stories_jumplinks = "\n".join(
     for s in STORIES
 )
 _stories_all_html = "\n".join(_story_full(s, i) for i, s in enumerate(STORIES))
-_stories_home_cards = "\n".join(_story_card(s, i) for i, s in enumerate(STORIES[:3]))
-_featured_story = STORIES[0] if STORIES else None
-_featured_media = _story_media(_featured_story) if _featured_story else ""
+_stories_home_feature = _story_feature(STORIES[0], 0) if STORIES else ""
+_stories_home_cards = "\n".join(_story_card(s, i + 1) for i, s in enumerate(STORIES[1:4]))
 
 
 # ---------------------------------------------------------------------------
@@ -805,18 +842,16 @@ home_body = f"""
     <div class="eyebrow" style="color:var(--red);">Real Stories</div>
     <h2>This is what transformation looks like.</h2>
     <p style="font-size:var(--fs-lead);max-width:680px;">Behind every number is a person whose life changed on this block. Watch one &mdash; then read the rest.</p>
-    <div class="grid-2" style="margin-top:var(--sp-3);align-items:start;gap:var(--sp-4);">
-      <div>{_featured_media}</div>
-      <div style="display:grid;gap:16px;">
+{_stories_home_feature}
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:var(--sp-4);">
 {_stories_home_cards}
-        <a class="card" href="youth-programming.html" style="display:block;padding:20px 22px;text-decoration:none;border-left:4px solid var(--blue);">
-          <span style="display:block;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--blue);margin-bottom:6px;">Youth</span>
-          <strong style="display:block;color:var(--dark);font-size:18px;margin-bottom:4px;">300+ seniors sent off to college</strong>
-          <span style="color:var(--muted);font-size:14px;">Our annual Trunk Party launches the next chapter &rarr;</span>
-        </a>
-      </div>
+      <a class="card" href="youth-programming.html" style="padding:20px 22px;text-decoration:none;display:block;border-top:4px solid var(--blue);">
+        <span style="display:block;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--blue);margin-bottom:6px;">Youth</span>
+        <strong style="display:block;color:var(--dark);font-size:18px;line-height:1.25;margin-bottom:6px;">300+ seniors sent off to college</strong>
+        <span style="display:block;color:var(--muted);font-size:14px;">Our annual Trunk Party launches the next chapter &rarr;</span>
+      </a>
     </div>
-    <p style="margin-top:var(--sp-3);"><a class="btn btn-primary" href="stories.html">See all success stories &rarr;</a></p>
+    <p style="margin-top:var(--sp-3);"><a class="btn btn-outline" href="stories.html">See all success stories &rarr;</a></p>
   </div>
 </section>
 
