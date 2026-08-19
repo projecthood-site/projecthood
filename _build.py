@@ -464,6 +464,7 @@ FOOTER = f"""
           <li><a href="pastor-brooks.html">Pastor Brooks</a></li>
           <li><a href="exec-director.html">Executive Director</a></li>
           <li><a href="programs.html">Programs</a></li>
+          <li><a href="stories.html">Success Stories</a></li>
           <li><a href="impact.html">News &amp; Impact</a></li>
           <li><a href="leo-center.html">LEO Center</a></li>
           <li><a href="ways-to-give.html">Ways to Give</a></li>
@@ -560,6 +561,203 @@ def write_page(filename, title, meta, active, body):
 
 
 # ---------------------------------------------------------------------------
+# Success stories
+# ---------------------------------------------------------------------------
+# One entry per story, newest first. The first entry is what the homepage
+# features. Every story renders on stories.html and is automatically pulled
+# onto each program page listed in "pillars".
+#
+# To add a story: copy a block, fill it in, drop any photos in img/stories/,
+# and push. Nothing else to wire up.
+#
+#   slug      anchor on stories.html — kebab-case, must be unique
+#   name      how the person is credited (house style: first name + last initial)
+#   kicker    small label above the headline
+#   headline  the hook
+#   lede      one sentence — used on cards and as the page summary
+#   pillars   program page filenames (no .html) this story appears on
+#   youtube   YouTube video ID, or None
+#   hero      hero image path, or None (a video wins over a hero image)
+#   photos    [(path, alt), ...] extra images shown as a strip
+#   body      list of paragraphs (HTML allowed)
+#   pull      pull quote, or None
+STORIES = [
+    {
+        "slug": "terrance-h",
+        "name": "Terrance H.",
+        "kicker": "Workforce Development &middot; Construction Cohort",
+        "headline": "Built in the H.O.O.D. Built for the WORLD.",
+        "lede": "From taking orders at Starbucks to a proud member of the Roofers Union &mdash; and now he&rsquo;s helping build the roof of the LEO Center.",
+        "pillars": ["workforce-development", "construction-cohort"],
+        "youtube": "SIm53hTFoes",
+        "hero": None,
+        "photos": [],
+        "body": [
+            "The Opportunity Center isn&rsquo;t just being built <em>for</em> the community &mdash; it&rsquo;s being built <em>by</em> the community.",
+            "Meet <strong>Terrance</strong>, a graduate of Project H.O.O.D.&rsquo;s Construction Cohort who turned his training into a career and is now a proud member of the Roofers Union. From taking orders at Starbucks to a union roofer.",
+            "Meet <strong>Mark Cannon</strong>, CEO of M. Cannon Roofing Company, who is helping lead the charge by creating real opportunities for the next generation of skilled tradesmen and women.",
+            "And meet <strong>Jamar and Nate</strong>, who earned the opportunity to work on the very building that will open doors for thousands more young people behind them.",
+            "Through the Opportunity Center, our goal is to connect <strong>1,000+ young people</strong> to careers in construction, roofing, bricklaying, automotive, and other skilled trades. We aren&rsquo;t just building a building. We&rsquo;re building careers. We&rsquo;re building families. We&rsquo;re building generational change. And we&rsquo;re just getting started.",
+        ],
+        "pull": "This is what it&rsquo;s all about.",
+    },
+    {
+        "slug": "brandon-m",
+        "name": "Brandon M.",
+        "kicker": "Re-Entry &middot; Workforce Development",
+        "headline": "Do you believe in second chances?",
+        "lede": "Brandon came home looking for a chance, not a handout. Today he&rsquo;s a union carpenter who helped build the LEO Center &mdash; and the new Ryan Field.",
+        "pillars": ["reentry-services", "workforce-development", "construction-cohort"],
+        "youtube": None,
+        "hero": "img/stories/brandon-graduation.jpg",
+        "photos": [
+            ("img/stories/brandon-carpenters-union.jpg", "Brandon M. on site in a Mid-America Carpenters Regional Council hard hat"),
+            ("img/stories/brandon-leo-center.jpg", "Brandon M. carrying materials inside the LEO Center during construction"),
+            ("img/stories/brandon-ryan-field.jpg", "Brandon M. standing in front of the new Ryan Field in Evanston"),
+        ],
+        "body": [
+            "At Project H.O.O.D., we believe a person&rsquo;s past should never determine their future &mdash; that with opportunity, accountability, and support, lives can be transformed. Not just for an individual, but for an entire community.",
+            "Brandon first walked through our doors through our <strong>FLIP (Flatlining Violence Inspires Peace)</strong> initiative and <strong>Re-Entry Program</strong>. Like so many men returning home, he wasn&rsquo;t looking for a handout. He was looking for a chance. A chance to work. A chance to provide. A chance to prove that his story wasn&rsquo;t over.",
+            "Brandon enrolled in our four-month Construction Workforce Development Program. He showed up every day, earned his certifications, mastered the trade, and graduated ready for a career &mdash; not just a job. Today, Brandon is a proud member of the <strong>Carpenters Union</strong>.",
+            "His hands have helped build the Project H.O.O.D. Leadership &amp; Economic Opportunity Center &mdash; the very place that gave him his opportunity. He has also worked on one of the region&rsquo;s most iconic construction projects: the new <strong>Ryan Field</strong> in Evanston.",
+            "Think about that. A man who once needed someone to believe in him is now helping build landmarks that will serve generations to come. That is the power of a second chance.",
+            "Brandon&rsquo;s story is one of hundreds. With the opening of our Leadership &amp; Economic Opportunity Center, we have the opportunity to create thousands more. All it takes is someone willing to believe that people deserve another chance.",
+        ],
+        "pull": "We don&rsquo;t just change lives &mdash; we help people build them.",
+    },
+]
+
+_STORY_ACCENTS = ["var(--red)", "var(--green)", "var(--purple)", "var(--blue)"]
+
+
+def _story_media(story, autoplay_title=None):
+    """Video embed if the story has one, otherwise the hero image. May be ''."""
+    if story.get("youtube"):
+        return (
+            '<div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;'
+            'border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.15);">'
+            f'<iframe src="https://www.youtube.com/embed/{story["youtube"]}" '
+            f'title="{story["name"]} &mdash; {story["headline"]} | Project H.O.O.D." '
+            'frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
+            'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen '
+            'style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:8px;"></iframe></div>'
+        )
+    if story.get("hero"):
+        return (
+            f'<img src="{story["hero"]}" alt="{story["name"]} &mdash; {story["headline"]}" loading="lazy" '
+            'style="width:100%;height:auto;display:block;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.15);">'
+        )
+    return ""
+
+
+def _story_thumb(story):
+    """Small square-ish thumbnail for cards. YouTube poster, hero, or None."""
+    if story.get("youtube"):
+        return f'https://i.ytimg.com/vi/{story["youtube"]}/hqdefault.jpg'
+    return story.get("hero")
+
+
+def _story_full(story, i=0):
+    """The full story block used on stories.html."""
+    accent = _STORY_ACCENTS[i % len(_STORY_ACCENTS)]
+    media = _story_media(story)
+    paras = "\n      ".join(f"<p>{p}</p>" for p in story["body"])
+    pull = ""
+    if story.get("pull"):
+        pull = (
+            f'<div class="testimonial" style="margin-top:var(--sp-3);border-left-color:{accent};">'
+            f'<blockquote>&ldquo;{story["pull"]}&rdquo;</blockquote>'
+            f'<cite>&mdash; Project H.O.O.D.</cite></div>'
+        )
+    strip = ""
+    if story.get("photos"):
+        tiles = "\n        ".join(
+            f'<img src="{src}" alt="{alt}" loading="lazy" '
+            'style="width:100%;height:260px;object-fit:cover;display:block;border-radius:8px;">'
+            for src, alt in story["photos"]
+        )
+        strip = (
+            '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));'
+            f'gap:14px;margin-top:var(--sp-3);">\n        {tiles}\n      </div>'
+        )
+    media_block = f'<div style="margin-bottom:var(--sp-3);">{media}</div>' if media else ""
+    return f"""
+<article id="{story['slug']}" class="section" style="scroll-margin-top:90px;">
+  <div class="wrap">
+    <div class="eyebrow" style="color:{accent};">{story['kicker']}</div>
+    <h2>{story['headline']}</h2>
+    <p class="lead" style="max-width:var(--w-read);">{story['lede']}</p>
+    {media_block}
+    <div style="max-width:var(--w-read);">
+      {paras}
+    </div>
+    {pull}
+    {strip}
+  </div>
+</article>"""
+
+
+def _story_card(story, i=0):
+    """Compact card linking to the full story on stories.html."""
+    accent = _STORY_ACCENTS[i % len(_STORY_ACCENTS)]
+    thumb = _story_thumb(story)
+    media = ""
+    if thumb:
+        media = (
+            f'<img src="{thumb}" alt="{story["name"]}" loading="lazy" '
+            'style="width:100%;height:190px;object-fit:cover;display:block;">'
+        )
+    tag = "Watch the story &rarr;" if story.get("youtube") else "Read the story &rarr;"
+    return f"""
+      <a class="card" href="stories.html#{story['slug']}" style="padding:0;overflow:hidden;text-decoration:none;display:block;border-top:4px solid {accent};">
+        {media}
+        <div style="padding:16px 20px 18px;">
+          <span style="display:block;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:{accent};margin-bottom:6px;">{story['name']}</span>
+          <strong style="display:block;color:var(--dark);font-size:18px;line-height:1.25;margin-bottom:6px;">{story['headline']}</strong>
+          <span style="display:block;color:var(--muted);font-size:14px;margin-bottom:10px;">{story['lede']}</span>
+          <span style="color:{accent};font-size:13.5px;font-weight:700;">{tag}</span>
+        </div>
+      </a>"""
+
+
+def stories_section_for(page, heading="Success stories", intro=None, footnote=None):
+    """A ready-to-drop section of story cards for a program page.
+
+    Returns '' when no story is tagged for that page, so a pillar page never
+    renders an empty shell.
+    """
+    picked = [s for s in STORIES if page in s.get("pillars", [])]
+    if not picked:
+        return ""
+    cards = "\n".join(_story_card(s, i) for i, s in enumerate(picked))
+    intro_html = f'<p class="lead" style="max-width:var(--w-read);">{intro}</p>' if intro else ""
+    footnote_html = (f'<p style="margin-top:var(--sp-2);color:var(--muted);font-size:14px;max-width:var(--w-read);">{footnote}</p>' if footnote else "")
+    return f"""
+<section class="section bg-offwhite">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--red);">Real Stories</div>
+    <h2>{heading}</h2>
+    {intro_html}
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:var(--sp-3);">
+{cards}
+    </div>
+    <p style="margin-top:var(--sp-3);"><a class="btn btn-outline" href="stories.html">See all success stories &rarr;</a></p>
+    {footnote_html}
+  </div>
+</section>"""
+
+
+_stories_jumplinks = "\n".join(
+    f'    <a href="#{s["slug"]}" style="font-family:var(--font-serif);font-size:14px;color:var(--red);">{s["name"]}</a>'
+    for s in STORIES
+)
+_stories_all_html = "\n".join(_story_full(s, i) for i, s in enumerate(STORIES))
+_stories_home_cards = "\n".join(_story_card(s, i) for i, s in enumerate(STORIES[:3]))
+_featured_story = STORIES[0] if STORIES else None
+_featured_media = _story_media(_featured_story) if _featured_story else ""
+
+
+# ---------------------------------------------------------------------------
 # Pages
 # ---------------------------------------------------------------------------
 
@@ -606,31 +804,19 @@ home_body = f"""
   <div class="wrap">
     <div class="eyebrow" style="color:var(--red);">Real Stories</div>
     <h2>This is what transformation looks like.</h2>
-    <p style="font-size:var(--fs-lead);max-width:680px;">Behind every number is a person whose life changed on this block. Watch one — then read their stories.</p>
-    <div class="grid-2" style="margin-top:var(--sp-3);align-items:center;gap:var(--sp-4);">
-      <div style="display:flex;justify-content:center;">
-        <div style="width:100%;max-width:360px;aspect-ratio:340/735;border-radius:14px;overflow:hidden;box-shadow:0 14px 44px rgba(0,0,0,.22);background:#000;">
-          <iframe src="https://www.facebook.com/plugins/video.php?height=735&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1375823754382160%2F&show_text=false&width=360&t=0" style="border:none;overflow:hidden;width:100%;height:100%;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:14px;">
-        <a href="workforce-development.html" class="card" style="display:block;padding:20px 22px;text-decoration:none;border-left:4px solid var(--red);">
-          <span style="display:block;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--red);margin-bottom:6px;">Workforce</span>
-          <strong style="display:block;color:var(--dark);font-size:18px;margin-bottom:4px;">From our Construction Program to the Chicago Roofers Union</strong>
-          <span style="color:var(--muted);font-size:14px;">Terrance now helps build the LEO Center roof &rarr;</span>
-        </a>
-        <a href="reentry-services.html" class="card" style="display:block;padding:20px 22px;text-decoration:none;border-left:4px solid var(--gold);">
-          <span style="display:block;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--dark);margin-bottom:6px;">Re-Entry</span>
-          <strong style="display:block;color:var(--dark);font-size:18px;margin-bottom:4px;">Second chances, built two weeks at a time</strong>
-          <span style="color:var(--muted);font-size:14px;">The Rebirth Project graduates beating the odds &rarr;</span>
-        </a>
-        <a href="youth-programming.html" class="card" style="display:block;padding:20px 22px;text-decoration:none;border-left:4px solid var(--blue);">
+    <p style="font-size:var(--fs-lead);max-width:680px;">Behind every number is a person whose life changed on this block. Watch one &mdash; then read the rest.</p>
+    <div class="grid-2" style="margin-top:var(--sp-3);align-items:start;gap:var(--sp-4);">
+      <div>{_featured_media}</div>
+      <div style="display:grid;gap:16px;">
+{_stories_home_cards}
+        <a class="card" href="youth-programming.html" style="display:block;padding:20px 22px;text-decoration:none;border-left:4px solid var(--blue);">
           <span style="display:block;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--blue);margin-bottom:6px;">Youth</span>
           <strong style="display:block;color:var(--dark);font-size:18px;margin-bottom:4px;">300+ seniors sent off to college</strong>
           <span style="color:var(--muted);font-size:14px;">Our annual Trunk Party launches the next chapter &rarr;</span>
         </a>
       </div>
     </div>
+    <p style="margin-top:var(--sp-3);"><a class="btn btn-primary" href="stories.html">See all success stories &rarr;</a></p>
   </div>
 </section>
 
@@ -1352,23 +1538,7 @@ workforce_development_body = f"""
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="eyebrow" style="color:var(--red);">Real Stories</div>
-    <h2>When determination meets opportunity.</h2>
-    <div class="card" style="margin-top:var(--sp-3);padding:0;overflow:hidden;">
-      <div style="background:var(--red);padding:28px 32px;">
-        <p style="color:var(--white);font-family:var(--font-display);font-size:1.6rem;line-height:1.3;margin:0;">&ldquo;Terrance didn&rsquo;t just walk through our doors looking for a job. He was searching for a new beginning.&rdquo;</p>
-      </div>
-      <div style="padding:28px 32px;">
-        <p>A father determined to build a better life for his young son, <strong>Terrance H.</strong> enrolled in our Construction Training Program &mdash; and stood out from day one. His eagerness to learn, his consistency, and his commitment to growth made a lasting impression. Whether mastering new technical concepts or getting hands-on experience in the field, he approached every challenge with humility, focus, and drive.</p>
-        <p>By graduation, Terrance had developed strong construction skills &mdash; and discovered a new sense of purpose and pride. That dedication led to a position with M. Cannon Roofing Company, and today he is a proud member of the <strong>Chicago Roofers Union</strong>, providing for his family and setting an example for others in the community.</p>
-        <p style="margin-bottom:0;">His story has come full circle: Terrance is now using his skills to help build the roof of the Leadership &amp; Economic Opportunity Center &mdash; rising right here in Woodlawn.</p>
-      </div>
-    </div>
-    <p style="margin-top:18px;color:var(--muted);font-size:14px;">More wins from this year: over <strong>100 neighbors hired on the spot</strong> at our UPS hiring event, a Construction Cohort tour of IBEW Local 130, and a pop-up build challenge at the Chicago Furniture Bank.</p>
-  </div>
-</section>
+{stories_section_for("workforce-development", heading="Careers that started right here.", footnote="More wins from this year: over <strong>100 neighbors hired on the spot</strong> at our UPS hiring event, a Construction Cohort tour of IBEW Local 130, and a pop-up build challenge at the Chicago Furniture Bank.")}
 
 <section class="cta-strip">
   <div class="wrap">
@@ -1453,6 +1623,7 @@ construction_cohort_body = f"""
   </div>
 </section>
 
+{stories_section_for("construction-cohort", heading="Where this cohort leads.")}
 <section class="cta-strip">
   <div class="wrap">
     <h2>More than one way in.</h2>
@@ -1840,6 +2011,7 @@ reentry_services_body = f"""
   </div>
 </section>
 
+{stories_section_for("reentry-services", heading="Second chances, in their own words.")}
 <section class="cta-strip">
   <div class="wrap">
     <h2>Ready to take the first step?</h2>
@@ -3029,6 +3201,37 @@ events_body = f"""
 </script>
 """
 
+# -------- SUCCESS STORIES --------
+stories_body = f"""
+<section class="hero bg-red">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--yellow);">Real Stories</div>
+    <h1>Built in the H.O.O.D. <span class="hl-yellow">Built for the WORLD.</span></h1>
+    <p class="lead">Behind every number is a neighbor whose life changed on this block &mdash; and who is now building something for everybody coming behind them. These are their stories.</p>
+  </div>
+</section>
+
+<section class="section-sm" style="border-bottom:1px solid var(--line);background:var(--white);">
+  <div class="wrap" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+    <span style="font-family:var(--font-display);text-transform:uppercase;font-size:12.5px;letter-spacing:.14em;color:var(--muted);">Jump to</span>
+{_stories_jumplinks}
+  </div>
+</section>
+{_stories_all_html}
+
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Every story starts with somebody who believed.</h2>
+    <p style="max-width:620px;margin:0 auto var(--sp-3);opacity:.95;">Your gift puts the next neighbor through the program &mdash; and onto a career.</p>
+    <div class="btn-group">
+      <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/">Give today</a>
+      <a class="btn btn-outline-light" href="https://projecthood.socialsolutionsportal.com/apricot-intake/0eb461e5-38a9-4ad1-9a4e-02bb3ee1414d" target="_blank" rel="noopener">Start your own story</a>
+      <a class="btn btn-outline-light" href="partner.html">Become an employer partner</a>
+    </div>
+  </div>
+</section>
+"""
+
 # -------- PARTNER --------
 partner_body = f"""
 <section class="hero bg-purple">
@@ -3757,6 +3960,7 @@ pages = [
     ("recovery.html",              "Recovery in the H.O.O.D.", "Recovery in the H.O.O.D. — weekly peer-support meetings, monthly Speakerthons, and step-by-step navigation to treatment for South Side neighbors in recovery.", "a_programs",     recovery_body),
     ("youth-programming.html",     "Youth Programming",      "Entrepreneurship training, mentorship, and after-school enrichment — 500 youth served in 2025, including 200 in summer camp and 228 in after-school programming.", "a_programs",     youth_programming_body),
     ("reentry-services.html",      "Re-Entry Services",      "Second chances, real support — job readiness, housing, counseling, and mentorship for individuals returning from incarceration.",  "a_programs",     reentry_services_body),
+    ("stories.html",     "Success Stories",              "Success stories from Project H.O.O.D. — neighbors who came through our workforce, construction, and re-entry programs and built careers in the trades.", "a_impact",       stories_body),
     ("impact.html",      "News & Impact",                "Project H.O.O.D. news and 2025 impact — 15,000+ served, 2M+ lbs of food distributed, $19/hr average starting wage, 84% LEO Center funded, plus the latest press.", "a_impact",       impact_body),
     ("annual-report.html", "2025 Annual Report",         "Project H.O.O.D. 2025 Annual Report — $8.9M in total income, the five programming pillars, Walk With Us ($4.3M+ raised), LEO Center at ~70% complete, financials, and board & staff. Download the full PDF.", "a_impact",       annual_report_body),
     ("first-look.html",   "The First Look",               "The First Look \u2014 Project H.O.O.D. donor day. Give, share, and be part of this moment.",                                              "a_gi",           first_look_body),
