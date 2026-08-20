@@ -148,19 +148,74 @@ _INFO_LINKS = {
         ("docs/mobile-dmv-services-fees.pdf", "Services &amp; fees"),
 }
 
+def _norm_event_key(title):
+    """Loose key for spotting the same event repeating on many dates."""
+    return re.sub(r"[^a-z0-9]+", "", title.lower())
+
+
+def _group_recurring(events):
+    """Collapse repeats of the same event into one group, in date order.
+
+    The calendar feeds hand us one entry per occurrence, so a weekly meeting
+    arrives as twenty near-identical events. Grouping them keeps a single card
+    per event — anchored to the next date — instead of a wall of duplicates.
+    Groups keep the position of their earliest occurrence, so the grid still
+    reads chronologically.
+    """
+    groups, order = {}, []
+    for ev in events:
+        key = _norm_event_key(ev["title"])
+        if key not in groups:
+            groups[key] = []
+            order.append(key)
+        groups[key].append(ev)
+    return [groups[k] for k in order]
+
+
+def _date_list_html(occurrences, linked=True, is_past=False):
+    """The expandable list of every date in a recurring group."""
+    rows = []
+    for ev in occurrences:
+        label = ev["date_str"]
+        if linked and ev.get("url"):
+            rows.append(
+                f'<li style="padding:5px 0;border-bottom:1px solid var(--line);">'
+                f'<a href="{ev["url"]}" target="_blank" rel="noopener" '
+                f'style="font-size:13px;">{label}</a></li>'
+            )
+        else:
+            rows.append(
+                f'<li style="padding:5px 0;border-bottom:1px solid var(--line);'
+                f'font-size:13px;color:var(--muted);">{label}</li>'
+            )
+    word = "date" if len(occurrences) == 1 else "dates"
+    kind = "past " if is_past else ""
+    return (
+        f'<details style="margin-bottom:12px;">'
+        f'<summary style="cursor:pointer;font-size:13px;color:var(--red);font-weight:700;">'
+        f'See all {len(occurrences)} {kind}{word}</summary>'
+        f'<ul style="list-style:none;padding:0;margin:8px 0 0;max-height:230px;overflow:auto;">'
+        + "".join(rows) +
+        '</ul></details>'
+    )
+
+
 def _build_event_cards_html(events, is_past=False):
-    """Render a grid of event cards from a list of event dicts."""
+    """Render a grid of event cards, one card per event (not per occurrence)."""
     cards = []
-    for i, ev in enumerate(events):
+    for i, group in enumerate(_group_recurring(events)):
+        ev = group[0]                      # soonest upcoming / most recent past
         color = _EB_COLORS[i % len(_EB_COLORS)]
         safe_title = ev["title"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
         safe_loc   = ev["location"].replace("&", "&amp;")
         url = ev["url"]
         _title_lc = ev["title"].lower()
+        overridden = False
         if not is_past:
             for _key, _repl in _RSVP_OVERRIDES.items():
                 if _key in _title_lc:
                     url = _repl
+                    overridden = True
                     break
         # Media: real Eventbrite flyer if available, else a branded colored tile
         if ev.get("image"):
@@ -175,6 +230,15 @@ def _build_event_cards_html(events, is_past=False):
                      f'color:var(--white);font-family:var(--font-display);text-transform:uppercase;'
                      f'letter-spacing:.06em;font-size:14px;line-height:1.3;">{safe_title}</div>')
         loc_line = f'{safe_loc} · Free' if ev.get("is_free") else safe_loc
+        # Recurring: label the card with its next date and offer the full list.
+        date_line = ev["date_str"]
+        dates_block = ""
+        if len(group) > 1:
+            date_line = ("Next: " if not is_past else "Latest: ") + ev["date_str"]
+            loc_line += f' · {len(group)} dates'
+            # Per-date links only make sense when each occurrence has its own
+            # listing — an RSVP override sends every date to the same form.
+            dates_block = _date_list_html(group, linked=not overridden, is_past=is_past)
         if is_past:
             action = (f'<a class="btn btn-outline" href="{url}" target="_blank" rel="noopener" '
                       f'style="font-size:13px;padding:8px 16px;">View details →</a>')
@@ -193,9 +257,10 @@ def _build_event_cards_html(events, is_past=False):
       <div class="card" style="padding:0;overflow:hidden;">
         {media}
         <div style="padding:14px 18px 16px;">
-          <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">{ev["date_str"]}</div>
+          <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">{date_line}</div>
           <div style="font-size:17px;font-weight:800;color:var(--dark);font-family:var(--font-display);line-height:1.2;margin-bottom:3px;">{safe_title}</div>
           <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">{loc_line}</div>
+          {dates_block}
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
             {action}
             <button class="ph-share-btn" data-title="{safe_title}" data-url="{url}" style="background:transparent;border:1px solid var(--line);border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:var(--font-body);color:var(--ink);">Share</button>
