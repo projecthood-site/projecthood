@@ -129,7 +129,9 @@ _EB_COLORS = ["var(--green)", "var(--blue)", "var(--red)", "var(--purple)", "var
 # RSVP link overrides: event title (case-insensitive substring) -> replacement URL.
 # Use when registration must go somewhere other than the Eventbrite listing —
 # e.g. a Google Form that collects details required by an outside agency.
-# Applies to both the RSVP button and the Share link for the matching event.
+# Applies to the RSVP button and the Share link on UPCOMING cards only —
+# a past event keeps its original listing URL, so "View details" never lands a
+# visitor on a registration form that has since been closed.
 _RSVP_OVERRIDES = {
     "secretary of state dmv community service day":
         "https://docs.google.com/forms/d/e/1FAIpQLSepWJiAXLjX5fHqnX5VqV3lW4tAFHE79s6OHXJULhcDHn5HZw/viewform",
@@ -155,10 +157,11 @@ def _build_event_cards_html(events, is_past=False):
         safe_loc   = ev["location"].replace("&", "&amp;")
         url = ev["url"]
         _title_lc = ev["title"].lower()
-        for _key, _repl in _RSVP_OVERRIDES.items():
-            if _key in _title_lc:
-                url = _repl
-                break
+        if not is_past:
+            for _key, _repl in _RSVP_OVERRIDES.items():
+                if _key in _title_lc:
+                    url = _repl
+                    break
         # Media: real Eventbrite flyer if available, else a branded colored tile
         if ev.get("image"):
             img_style = "width:100%;height:240px;object-fit:cover;display:block;"
