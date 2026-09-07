@@ -521,7 +521,7 @@ FOOTER = f"""
           <li><a href="https://projecthood.networkforgood.com/">Donate</a></li>
           <li><a href="events.html">Community Calendar</a></li>
           <li><a href="partner.html">Partner with us</a></li>
-          <li><a href="https://tiltify.com/project-hood/walk-across-america-2025">Walk With Us!</a></li>
+          <li><a href="campaigns.html">Walk With Us! story</a></li>
           <li><a href="https://projecthood.networkforgood.com/projects/301372-2026-brick-by-brick-campaign" target="_blank" rel="noopener">Brick by Brick</a></li>
         </ul>
       </div>
@@ -868,43 +868,34 @@ _stories_home_cards = "\n".join(_story_card(s, i + 1) for i, s in enumerate(STOR
 
 # -------- HOME --------
 home_body = f"""
-<!-- HERO — WALK WITH US -->
+<!-- HERO — LEO CENTER -->
 <section class="hero bg-black">
   <div class="wrap">
     <div class="hero-split">
       <div>
-        <div class="eyebrow" style="color:var(--yellow);">Nationwide Campaign</div>
-        <h1>Walk Together. <span class="hl-yellow">Change Communities.</span> Restore Hope.</h1>
-        <p class="lead">Walk With Us! is a nationwide movement committed to restoring hope, opportunity, and unity in communities across America. Give, organize a walk, or start a team — and help raise $25M for youth, families, and the LEO Center.</p>
-        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
-          <a class="btn btn-yellow" href="https://tiltify.com/project-hood/walk-across-america-2025">Give to the movement</a>
-          <a class="btn btn-outline-light" href="campaigns.html">Learn more</a>
+        <div class="eyebrow" style="color:var(--yellow);">The LEO Center · Final push</div>
+        <h1>90,000 square feet of <span class="hl-yellow">what's possible.</span></h1>
+        <p class="lead">The Robert R. McCormick Leadership &amp; Economic Opportunity Center is rising on S. King Drive — built by the neighborhood it serves, with graduates of our own construction program on the crew. We're 84% of the way there.</p>
+        <div style="margin-top:24px;">
+          <div class="progress" style="background:#1a1718;border-color:var(--yellow);">
+            <div class="progress-fill" style="width:84%;">84% Funded · $38M of $45M</div>
+          </div>
+          <p style="font-size:14px;opacity:.85;margin-top:10px;">$7M left to finish the building.</p>
         </div>
+        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+          <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/projects/301372-2026-brick-by-brick-campaign">Name a brick</a>
+          <a class="btn btn-outline-light" href="leo-center.html">See the building</a>
+        </div>
+        <p style="font-size:13.5px;opacity:.8;margin-top:14px;font-family:var(--font-serif);font-style:italic;">Every brick in the Walkway of Destiny carries a name. Leave yours.</p>
       </div>
       <div style="position:relative;">
-        <img src="img/campaign-walk-hero.png" alt="Pastor Brooks — Walk With Us campaign" style="width:100%;border-radius:8px;display:block;">
+        <img src="img/leo-center-rendering.jpg" alt="The LEO Center — 90,000 sq ft rising on S. King Drive in Woodlawn" style="width:100%;border-radius:8px;display:block;">
         <div class="stamp-corner stamp"><img src="img/logo-knockout-offwhite.png" alt=""></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BRICK CAMPAIGN -->
-<section class="section bg-red" style="padding-top:var(--sp-3);padding-bottom:var(--sp-3);">
-  <div class="wrap" style="display:flex;align-items:center;gap:var(--sp-3);flex-wrap:wrap;justify-content:space-between;">
-    <div style="flex:1;min-width:260px;">
-      <div class="eyebrow" style="color:var(--yellow);">Buy a Brick</div>
-      <h2 style="color:#fff;margin:6px 0 10px;">Help us lay the foundation.</h2>
-      <p style="color:rgba(255,255,255,.9);font-size:var(--fs-lead);margin:0;">Every brick you buy goes toward the LEO Center — a permanent home for youth, families, and opportunity on Chicago's South Side. Leave your name. Leave your legacy.</p>
-    </div>
-    <div style="flex-shrink:0;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
-      <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/projects/301372-2026-brick-by-brick-campaign">Buy a Brick</a>
-      <a class="btn btn-outline-light" href="leo-center.html">About LEO</a>
-    </div>
-  </div>
-</section>
-
-<!-- STORIES + VIDEO HUB (retention) -->
 <section class="section">
   <div class="wrap">
     <div class="eyebrow" style="color:var(--red);">Real Stories</div>
@@ -1017,14 +1008,10 @@ home_body = f"""
     <div class="grid-2">
       <div style="min-height:420px;background-image:url('img/leo-center-rendering.jpg');background-size:cover;background-position:center top;border-radius:6px;"></div>
       <div>
-        <div class="eyebrow" style="color:var(--yellow);">Opening Fall 2026 · Capital Campaign</div>
+        <div class="eyebrow" style="color:var(--yellow);">What the building holds</div>
         <h2>A home for everything we do.</h2>
-        <p style="font-size:var(--fs-lead);opacity:.9;">The Robert R. McCormick Leadership &amp; Economic Opportunity Center — 90,000 sq ft on S. King Drive, opening Fall 2026. The physical home of Project H.O.O.D. and a signal that investment belongs on the South Side.</p>
-        <div style="margin-top:24px;">
-          <div class="progress" style="background:#1a1718;border-color:var(--yellow);">
-            <div class="progress-fill" style="width:84%;">84% Funded · $38M of $45M</div>
-          </div>
-        </div>
+        <p style="font-size:var(--fs-lead);opacity:.9;">Right now our five pillars run out of borrowed rooms across Woodlawn. The LEO Center puts them under one roof — a gym and workforce training floors, classrooms, counseling space, and a community kitchen on S. King Drive.</p>
+        <p style="opacity:.85;margin-top:12px;">It is the physical home of Project H.O.O.D., and a signal that investment belongs on the South Side.</p>
         <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
           <a class="btn btn-yellow" href="leo-center.html">Learn about LEO</a>
           <a class="btn btn-outline-light" href="https://projecthood.networkforgood.com/projects/301372-2026-brick-by-brick-campaign">Brick by Brick</a>
@@ -2597,12 +2584,13 @@ campaigns_body = f"""
   <div class="wrap">
     <div class="hero-split">
       <div>
-        <div class="eyebrow" style="color:var(--yellow);">Campaigns · 2026</div>
+        <div class="eyebrow" style="color:var(--yellow);">Completed campaign · 2025–2026</div>
         <h1>Walk With <span class="hl-yellow">Us!</span></h1>
-        <p class="lead">What started as Pastor Brooks' walk across America &mdash; begun in Times Square, and paused when a foot injury required surgery &mdash; has grown into a nationwide movement that has raised $4.3M+. Walk With Us! invites people everywhere to raise $25M for mentorship, youth development, violence prevention, and the LEO Center.</p>
+        <p class="lead">It started with Pastor Brooks walking out of Times Square, headed for the West Coast. A foot injury and surgery forced him to stop walking. The mission didn't stop — it became a nationwide movement, and it raised <strong>$4.3M+</strong> for youth, families, and the LEO Center.</p>
+        <p style="opacity:.9;">This campaign has closed. The building it paid for is still going up.</p>
         <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;">
-          <a class="btn btn-yellow" href="https://tiltify.com/project-hood/walk-across-america-2025">Give to the movement</a>
-          <a class="btn btn-outline-light" href="https://tiltify.com/project-hood/walk-across-america-2025">Start a team</a>
+          <a class="btn btn-yellow" href="leo-center.html">See what it built</a>
+          <a class="btn btn-outline-light" href="https://projecthood.networkforgood.com/projects/301372-2026-brick-by-brick-campaign">Name a brick</a>
         </div>
       </div>
       <img src="img/campaign-walk-poster.png" alt="Walk With Us! — The Movement" style="width:100%;border-radius:8px;display:block;">
@@ -2612,10 +2600,10 @@ campaigns_body = f"""
 
 <section class="section bg-yellow">
   <div class="wrap" style="text-align:center;">
-    <div class="eyebrow">The goal</div>
-    <h2>$25 million. <span style="background:var(--black);color:var(--yellow);padding:2px 12px;">Every dollar audited.</span></h2>
+    <div class="eyebrow">What it raised</div>
+    <h2>$4.3 million. <span style="background:var(--black);color:var(--yellow);padding:2px 12px;">Every dollar audited.</span></h2>
     <div style="max-width:720px;margin:var(--sp-3) auto 0;">
-      <p style="font-size:var(--fs-lead);">Funds go directly to mentorship, youth development, violence prevention, leadership training, education, and economic opportunity — through Project H.O.O.D. and the LEO Center.</p>
+      <p style="font-size:var(--fs-lead);">Given by thousands of people who had never set foot in Woodlawn. It went where it was promised — mentorship, youth development, violence prevention, leadership training, education, and the LEO Center.</p>
     </div>
   </div>
 </section>
@@ -2625,8 +2613,8 @@ campaigns_body = f"""
     <div>
       <div class="eyebrow">Where it started</div>
       <h2>One journey. One community. One movement.</h2>
-      <p>In 2025, Pastor Brooks set out from Times Square to walk across America — to put the South Side on the map and raise the final dollars for the LEO Center. A foot injury and surgery forced him to pause the walk. The mission didn't stop: it became Walk With Us, and it has raised $4.3M+ and counting.</p>
-      <p>Walk With Us! invites communities across America to keep carrying the mission forward: walks, church activations, volunteer days, and prayer gatherings — everywhere people are ready to step up.</p>
+      <p>In 2025, Pastor Brooks set out from Times Square to walk across America — to put the South Side on the map and raise the final dollars for the LEO Center. A foot injury and surgery forced him to pause the walk. The mission didn't stop: it became Walk With Us.</p>
+      <p>Communities across the country carried it from there — walks, church activations, volunteer days, and prayer gatherings, in towns most of us will never visit. Together they raised $4.3M+.</p>
     </div>
     <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.15);">
       <iframe
@@ -2643,27 +2631,12 @@ campaigns_body = f"""
 
 <section class="section bg-offwhite">
   <div class="wrap">
-    <div class="eyebrow">Three ways in</div>
-    <h2>Give. Walk. Start a team.</h2>
+    <div class="eyebrow">Where it went</div>
+    <h2>What the walk paid for.</h2>
     <div class="grid-3" style="margin-top:var(--sp-3);">
-      <div class="card card-accent"><h3>Give</h3><p>One-time or monthly gift supporting youth, families, and the LEO Center. Every dollar audited.</p><a class="btn btn-primary" href="https://tiltify.com/project-hood/walk-across-america-2025" style="align-self:flex-start;margin-top:12px;">Give on Tiltify →</a></div>
-      <div class="card card-accent" style="border-top-color:var(--blue);"><h3>Organize a walk</h3><p>Host a community walk in your city, congregation, or neighborhood. Fundraise together on Tiltify.</p><a class="btn btn-primary" href="https://tiltify.com/project-hood/walk-across-america-2025" style="align-self:flex-start;margin-top:12px;">See teams →</a></div>
-      <div class="card card-accent" style="border-top-color:var(--green);"><h3>Start your own team</h3><p>Rally your company, congregation, or crew. Create a team page in 2 minutes on Tiltify.</p><a class="btn btn-primary" href="https://tiltify.com/project-hood/walk-across-america-2025" style="align-self:flex-start;margin-top:12px;">Create a team →</a></div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div style="max-width:680px;margin:0 auto;text-align:center;">
-      <div class="eyebrow" style="color:var(--red);">Join the movement</div>
-      <h2>Sign up to Walk With Us!</h2>
-      <p style="font-size:var(--fs-lead);color:var(--muted);">Tell us you're in — and we'll get you your Walk With Us! gear and keep you connected to the campaign.</p>
-    </div>
-    <!-- GOOGLE FORM LINK — run create_ph_forms.gs → createAllForms() → copy "Walk With Us!" URL → replace href below -->
-    <div style="max-width:640px;margin:var(--sp-3) auto 0;text-align:center;">
-      <a class="btn btn-yellow" href="https://docs.google.com/forms/d/e/1FAIpQLSck9_hs4mHhfUNDnAWs3N2e0mqBx4VioqBHj3SzvXBXqRMUyA/viewform" target="_blank" rel="noopener" style="font-size:17px;padding:16px 40px;display:inline-block;">Count me in →</a>
-      <p style="font-size:13px;color:var(--muted);margin-top:14px;">Opens a short Google Form — takes 60 seconds.</p>
+      <div class="card card-accent"><h3>The building</h3><p>Final capital toward the 90,000 sq ft LEO Center on S. King Drive — the permanent home for all five program pillars.</p><a class="btn btn-primary" href="leo-center.html" style="align-self:flex-start;margin-top:12px;">See the LEO Center →</a></div>
+      <div class="card card-accent" style="border-top-color:var(--blue);"><h3>The programs</h3><p>Mentorship, youth development, violence prevention, workforce training, and re-entry — the work that runs every week whether or not a camera is on.</p><a class="btn btn-primary" href="programs.html" style="align-self:flex-start;margin-top:12px;">See the programs →</a></div>
+      <div class="card card-accent" style="border-top-color:var(--green);"><h3>The proof</h3><p>Graduates of our construction cohort worked the site — union carpenters and roofers who helped build the place that trained them.</p><a class="btn btn-primary" href="stories.html" style="align-self:flex-start;margin-top:12px;">Read their stories →</a></div>
     </div>
   </div>
 </section>
@@ -2947,8 +2920,8 @@ ways_to_give_body = f"""
 
       <div class="card card-accent" style="border-top-color:var(--blue);">
         <h3>Walk With Us!</h3>
-        <p style="font-size:14px;">Join the nationwide movement &mdash; give, walk, or start a team to help raise $25M.</p>
-        <a href="campaigns.html" style="margin-top:14px;font-weight:600;color:var(--green);">About the movement &rarr;</a>
+        <p style="font-size:14px;">The nationwide movement that raised $4.3M+ for the LEO Center. The campaign has closed &mdash; the story hasn't.</p>
+        <a href="campaigns.html" style="margin-top:14px;font-weight:600;color:var(--green);">Read what happened &rarr;</a>
       </div>
 
       <div class="card card-accent" style="border-top-color:var(--green);">
@@ -3004,21 +2977,6 @@ ways_to_give_body = f"""
         </ul>
         <a class="btn btn-primary" href="https://projecthood.networkforgood.com/projects/301372-2026-brick-by-brick-campaign" target="_blank" rel="noopener" style="width:100%;text-align:center;margin-top:16px;">Choose your brick →</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- WALK WITH US -->
-<section class="section bg-blue" id="walk">
-  <div class="wrap grid-2" style="align-items:center;">
-    <div>
-      <div class="eyebrow" style="color:var(--yellow);">Walk With Us!</div>
-      <h3 style="color:var(--white);">Supporting the movement? Give directly on Tiltify.</h3>
-      <p style="font-size:15px;opacity:.95;">Walk With Us! donations are tracked separately so team fundraising totals stay accurate.</p>
-    </div>
-    <div style="text-align:right;">
-      <a class="btn btn-outline-light" href="https://tiltify.com/project-hood/walk-across-america-2025">Walk With Us! →</a>
-      <p style="font-size:11.5px;margin-top:6px;opacity:.8;font-style:italic;">opens tiltify.com/project-hood</p>
     </div>
   </div>
 </section>
@@ -4068,7 +4026,7 @@ pages = [
     ("annual-report.html", "2025 Annual Report",         "Project H.O.O.D. 2025 Annual Report — $8.9M in total income, the five programming pillars, Walk With Us ($4.3M+ raised), LEO Center at ~70% complete, financials, and board & staff. Download the full PDF.", "a_impact",       annual_report_body),
     ("first-look.html",   "The First Look",               "The First Look \u2014 Project H.O.O.D. donor day. Give, share, and be part of this moment.",                                              "a_gi",           first_look_body),
     ("leo-center.html",  "LEO Center",                   "The Leadership and Economic Opportunity Center — 84% funded, a 90,000 sq ft community hub on S. King Drive.",                        "a_leo",          leo_body),
-    ("campaigns.html",   "Walk With Us!",                "Walk With Us! — a nationwide movement to raise $25M for youth, families, and the LEO Center. Give, walk, or start a team on Tiltify.",  "a_campaigns",    campaigns_body),
+    ("campaigns.html",   "Walk With Us!",                "Walk With Us! — the nationwide movement that grew out of Pastor Brooks' walk across America and raised $4.3M+ for youth, families, and the LEO Center. The campaign has closed.",  "a_campaigns",    campaigns_body),
     ("get-help.html",    "Get Help",                     "How can we help? Free, no-barrier support in Woodlawn — safety, jobs and training, health and counseling, youth programs, re-entry, and food. Call 773-923-8270.", None,             get_help_body),
     ("get-involved.html","Help Somebody",                "Help somebody today — give, volunteer, or partner with Project H.O.O.D.",                                                              "a_gi",           gi_body),
     ("donate.html",      "Donate",                       "Donate securely through NetworkForGood. Your gift stays in Woodlawn.",                                                                 "a_gi",           donate_body),
