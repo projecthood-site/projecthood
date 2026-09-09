@@ -49,7 +49,7 @@ NEWSLETTER_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSel7-YfFSxXgX-L6
 # Paste the PUBLISHED form URL ending in /viewform (the page embeds it in an
 # iframe so applicants apply without leaving the site). Leave "" to show the
 # fallback "reach out" box until the real link is ready.
-CONSTRUCTION_COHORT_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSex-7Ww32xtYQt3g2URSA8L1z4fx4f-Xj_xlBSfuCZIt_to5g/viewform"
+CONSTRUCTION_COHORT_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSexNnGin6KO9Ds5ZRyc2vBghx95Aut2XeN9EiHjV75MqHPlRw/viewform"
 
 def _eb_fetch_events(time_filter="current_future", order="start_asc", status="live", limit=None):
     """
@@ -534,6 +534,7 @@ FOOTER = f"""
           <li><a href="programs.html">Programs</a></li>
           <li><a href="stories.html">Success Stories</a></li>
           <li><a href="impact.html">News &amp; Impact</a></li>
+          <li><a href="annual-report.html">2025 Annual Report</a></li>
           <li><a href="leo-center.html">LEO Center</a></li>
           <li><a href="ways-to-give.html">Ways to Give</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -884,9 +885,9 @@ home_body = f"""
         </div>
         <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
           <a class="btn btn-yellow" href="https://projecthood.networkforgood.com/projects/301372-2026-brick-by-brick-campaign">Name a brick</a>
-          <a class="btn btn-outline-light" href="leo-center.html">See the building</a>
+          <a class="btn btn-outline-light" href="get-involved.html">Help somebody</a>
         </div>
-        <p style="font-size:13.5px;opacity:.8;margin-top:14px;font-family:var(--font-serif);font-style:italic;">Every brick in the Walkway of Destiny carries a name. Leave yours.</p>
+        <p style="font-size:13.5px;opacity:.8;margin-top:14px;font-family:var(--font-serif);font-style:italic;">Put your name in the Walkway of Destiny, or give your time — both build the same thing. <a href="leo-center.html" style="color:var(--yellow);">See the building &rarr;</a></p>
       </div>
       <div style="position:relative;">
         <img src="img/leo-center-rendering.jpg" alt="The LEO Center — 90,000 sq ft rising on S. King Drive in Woodlawn" style="width:100%;border-radius:8px;display:block;">
@@ -944,6 +945,26 @@ home_body = f"""
       <div class="stat"><div class="v">84%</div><div class="l">of the LEO Center funded — $7M to go</div></div>
     </div>
     <p style="margin-top:var(--sp-3);font-size:14px;color:var(--muted);"><a href="impact.html">See the full impact report →</a></p>
+  </div>
+</section>
+
+<!-- ANNUAL REPORT -->
+<section class="section">
+  <div class="wrap grid-2" style="align-items:center;gap:var(--sp-4);">
+    <div>
+      <div class="eyebrow" style="color:var(--red);">2025 Annual Report</div>
+      <h2>Where every dollar went.</h2>
+      <p style="font-size:var(--fs-lead);">$8.9M in total income, all five pillars, and the LEO Center build — laid out page by page, independently audited. No highlight reel without the ledger behind it.</p>
+      <div style="margin-top:var(--sp-3);display:flex;gap:12px;flex-wrap:wrap;">
+        <a class="btn btn-primary" href="annual-report.html">Read it online</a>
+        <a class="btn btn-outline" href="docs/ph-annual-report-2025.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </div>
+    <div>
+      <a href="annual-report.html" aria-label="Read the 2025 Annual Report" style="display:block;max-width:400px;margin:0 auto;">
+        <img src="img/annual-report-2025/page-01.jpg" alt="Cover of the Project H.O.O.D. 2025 Annual Report" loading="lazy" style="width:100%;height:auto;display:block;border-radius:8px;box-shadow:0 14px 44px rgba(0,0,0,.18);">
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1708,7 +1729,7 @@ construction_cohort_body = f"""
   <div class="wrap" style="text-align:center;">
     <div class="eyebrow" style="color:var(--red);">Sign up</div>
     <h2>Interested in the next cohort?</h2>
-    <p style="font-size:var(--fs-lead);max-width:640px;margin:0 auto;color:var(--muted);">Complete the form below and we'll email you when applications open, with the registration link and next start date. Questions? Reach out to Tawanna Cotten at <a href="mailto:tawannacotten@projecthood.org">tawannacotten@projecthood.org</a>.</p>
+    <p style="font-size:var(--fs-lead);max-width:640px;margin:0 auto;color:var(--muted);">Our next cohort begins November 2026. Complete the application below to be considered &mdash; questions? Reach out to Tawanna Cotten at <a href="mailto:tawannacotten@projecthood.org">tawannacotten@projecthood.org</a>.</p>
     {_cc_apply}
   </div>
 </section>
