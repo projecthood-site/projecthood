@@ -49,7 +49,7 @@ NEWSLETTER_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSel7-YfFSxXgX-L6
 # Paste the PUBLISHED form URL ending in /viewform (the page embeds it in an
 # iframe so applicants apply without leaving the site). Leave "" to show the
 # fallback "reach out" box until the real link is ready.
-CONSTRUCTION_COHORT_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSex-7Ww32xtYQt3g2URSA8L1z4fx4f-Xj_xlBSfuCZIt_to5g/viewform"
+CONSTRUCTION_COHORT_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSexNnGin6KO9Ds5ZRyc2vBghx95Aut2XeN9EiHjV75MqHPlRw/viewform"
 
 def _eb_fetch_events(time_filter="current_future", order="start_asc", status="live", limit=None):
     """
