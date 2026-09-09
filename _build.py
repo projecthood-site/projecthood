@@ -1729,7 +1729,7 @@ construction_cohort_body = f"""
   <div class="wrap" style="text-align:center;">
     <div class="eyebrow" style="color:var(--red);">Sign up</div>
     <h2>Interested in the next cohort?</h2>
-    <p style="font-size:var(--fs-lead);max-width:640px;margin:0 auto;color:var(--muted);">Complete the form below and we'll email you when applications open, with the registration link and next start date. Questions? Reach out to Tawanna Cotten at <a href="mailto:tawannacotten@projecthood.org">tawannacotten@projecthood.org</a>.</p>
+    <p style="font-size:var(--fs-lead);max-width:640px;margin:0 auto;color:var(--muted);">Our next cohort will begin in November 2026. Complete the application to be considered for the next cohort. Questions? Reach out to Tawanna Cotten at <a href="mailto:tawannacotten@projecthood.org">tawannacotten@projecthood.org</a>.</p>
     {_cc_apply}
   </div>
 </section>
