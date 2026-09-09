@@ -656,7 +656,7 @@ STORIES = [
         "name": "Terrance H.",
         "kicker": "Workforce Development &middot; Construction Cohort",
         "headline": "Built in the H.O.O.D. Built for the WORLD.",
-        "lede": "From taking orders at Starbucks to a proud member of the Roofers Union &mdash; and now he&rsquo;s helping build the roof of the LEO Center.",
+        "lede": "Meet Terrance, an alumnus of our construction trade training program. From taking orders at Starbucks to a proud member of the Roofers Union &mdash; and now he&rsquo;s helping build the roof of the LEO Center.",
         "pillars": ["workforce-development", "construction-cohort"],
         "youtube": "SIm53hTFoes",
         "hero": None,
