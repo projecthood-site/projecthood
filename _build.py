@@ -1650,6 +1650,17 @@ workforce_development_body = f"""
   </div>
 </section>
 
+<section class="section bg-offwhite">
+  <div class="wrap">
+    <div class="eyebrow">Register</div>
+    <h2>GED Program Signup</h2>
+    <p>Ready to get started? Fill out our GED signup form below and our team will follow up with next steps.</p>
+    <div class="video-frame" style="margin-top:var(--sp-3);">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdqT97VC_ZgjL2xuM_iFDqzgvpfRR7EQM4Nei4eV_LhIseeeA/viewform?embedded=true" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+  </div>
+</section>
+
 <section class="section bg-red">
   <div class="wrap">
     <div class="eyebrow" style="color:var(--yellow);">2025 Impact</div>
