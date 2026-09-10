@@ -1643,7 +1643,7 @@ workforce_development_body = f"""
   <div class="wrap">
     <div class="eyebrow">Get started</div>
     <h2>Sign up for GED classes.</h2>
-    <p>We offer free GED preparation and testing support to help you take the next step toward a career. Fill out the form below and our team will connect you with class times, locations, and everything you need to get started.</p>
+    <p>We offer free GED preparation and testing support to help you take the next step toward a career. Fill out the form below and our team will be in contact regarding the next session.</p>
     <div class="video-frame" style="margin-top:var(--sp-3);">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdqT97VC_ZgjL2xuM_iFDqzgvpfRR7EQM4Nei4eV_LhIseeeA/viewform?embedded=true" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
