@@ -902,8 +902,12 @@ home_body = f"""
     <div class="eyebrow" style="color:var(--red);">Real Stories</div>
     <h2>This is what transformation looks like.</h2>
     <p style="font-size:var(--fs-lead);max-width:680px;">Behind every number is a person whose life changed on this block. Watch one &mdash; then read the rest.</p>
+<div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start;">
+      <div style="flex:1;min-width:280px;">
 {_stories_home_feature}
-    <p style="margin-top:16px;"><a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSexNnGin6KO9Ds5ZRyc2vBghx95Aut2XeN9EiHjV75MqHPlRw/viewform?usp=header">Apply to Construction Training</a></p>
+      </div>
+      <p style="margin:0;"><a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSexNnGin6KO9Ds5ZRyc2vBghx95Aut2XeN9EiHjV75MqHPlRw/viewform?usp=header">Apply to Construction Training</a></p>
+    </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:var(--sp-4);">
 {_stories_home_cards}
       <a class="card" href="youth-programming.html" style="padding:20px 22px;text-decoration:none;display:block;border-top:4px solid var(--blue);">
