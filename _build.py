@@ -876,7 +876,7 @@ home_body = f"""
       <div>
         <div class="eyebrow" style="color:var(--yellow);">The LEO Center · Final push</div>
         <h1>90,000 square feet of <span class="hl-yellow">what's possible.</span></h1>
-        <p class="lead">The Robert R. McCormick Leadership &amp; Economic Opportunity Center is rising on S. King Drive — built by the neighborhood it serves, with graduates of our own construction program on the crew. We're 84% of the way there.</p>
+        <p class="lead">We're 84% of the way there. The Robert R. McCormick Leadership &amp; Economic Opportunity Center is rising on S. King Drive — built by the neighborhood it serves, with graduates of our own construction program on the crew.</p>
         <div style="margin-top:24px;">
           <div class="progress" style="background:#1a1718;border-color:var(--yellow);">
             <div class="progress-fill" style="width:84%;">84% Funded · $38M of $45M</div>
@@ -904,7 +904,7 @@ home_body = f"""
     <p style="font-size:var(--fs-lead);max-width:680px;">Behind every number is a person whose life changed on this block. Watch one &mdash; then read the rest.</p>
 <div style="position:relative;">
 {_stories_home_feature}
-      <p style="margin-top:14px;"><a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSexNnGin6KO9Ds5ZRyc2vBghx95Aut2XeN9EiHjV75MqHPlRw/viewform?usp=header">Apply to Construction Training</a></p>
+      <p style="margin-top:14px;"><a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSexNnGin6KO9Ds5ZRyc2vBghx95Aut2XeN9EiHjV75MqHPlRw/viewform?usp=header">Start your application</a></p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:var(--sp-4);">
 {_stories_home_cards}
