@@ -1643,18 +1643,7 @@ workforce_development_body = f"""
   <div class="wrap">
     <div class="eyebrow">Get started</div>
     <h2>Sign up for GED classes.</h2>
-    <p>We offer free GED preparation and testing support to help you take the next step toward a career. Sign up today and our team will connect you with class times, locations, and everything you need to get started.</p>
-    <div style="margin-top:var(--sp-3);">
-      <a class="btn btn-primary" href="https://projecthood.socialsolutionsportal.com/apricot-intake/0eb461e5-38a9-4ad1-9a4e-02bb3ee1414d" target="_blank" rel="noopener">Sign up for GED classes →</a>
-    </div>
-  </div>
-</section>
-
-<section class="section bg-offwhite">
-  <div class="wrap">
-    <div class="eyebrow">Register</div>
-    <h2>GED Program Signup</h2>
-    <p>Ready to get started? Fill out our GED signup form below and our team will follow up with next steps.</p>
+    <p>We offer free GED preparation and testing support to help you take the next step toward a career. Fill out the form below and our team will connect you with class times, locations, and everything you need to get started.</p>
     <div class="video-frame" style="margin-top:var(--sp-3);">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdqT97VC_ZgjL2xuM_iFDqzgvpfRR7EQM4Nei4eV_LhIseeeA/viewform?embedded=true" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
