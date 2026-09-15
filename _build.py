@@ -1738,7 +1738,6 @@ construction_cohort_body = f"""
         <li style="padding:10px 0;border-bottom:1px solid var(--line);">Have a high school diploma or GED equivalent</li>
         <li style="padding:10px 0;">Be a resident of Illinois</li>
       </ul>
-      <p style="margin-top:18px;font-size:14px;"><a href="https://www.projecthood.org/s/PH-ILW-Info-Sheet-2024_Revised.docx" target="_blank" rel="noopener">Read about our curriculum (info sheet) →</a></p>
     </div>
   </div>
 </section>
@@ -3071,9 +3070,9 @@ ways_to_give_body = f"""
       <div class="card card-accent" style="border-top-color:var(--blue);">
         <h4>Quick links by platform</h4>
         <ul style="list-style:none;padding:0;margin:0;font-size:14px;line-height:2.4;">
-          <li><a href="https://www.fidelitycharitable.org/giving-account/grant.html" target="_blank" rel="noopener" style="color:var(--green);">Fidelity Charitable → Grant now ↗</a></li>
-          <li><a href="https://www.schwabcharitable.org/nonprofit-search" target="_blank" rel="noopener" style="color:var(--green);">Schwab Charitable → Search nonprofits ↗</a></li>
-          <li><a href="https://vanguardcharitable.org/grantmaking" target="_blank" rel="noopener" style="color:var(--green);">Vanguard Charitable → Recommend a grant ↗</a></li>
+          <li><a href="https://www.fidelitycharitable.org/" target="_blank" rel="noopener" style="color:var(--green);">Fidelity Charitable → Log in to grant ↗</a></li>
+          <li><a href="https://www.dafgiving360.org/" target="_blank" rel="noopener" style="color:var(--green);">DAFgiving360 (formerly Schwab Charitable) → Log in to grant ↗</a></li>
+          <li><a href="https://www.vanguardcharitable.org/" target="_blank" rel="noopener" style="color:var(--green);">Vanguard Charitable → Recommend a grant ↗</a></li>
         </ul>
       </div>
       <div class="card" style="margin-top:16px;">
@@ -3517,7 +3516,8 @@ privacy_body = """
       <li><strong>Google Forms &amp; Google Analytics 4</strong> — form responses and site analytics (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>)</li>
       <li><strong>Google Calendar</strong> — public event calendar embedded on this site</li>
       <li><strong>NetworkForGood</strong> — donation processing and newsletter (<a href="https://www.networkforgood.com/about/privacy/" target="_blank" rel="noopener noreferrer">NetworkForGood Privacy Policy</a>)</li>
-      <li><strong>Tiltify</strong> — Walk Across America peer-to-peer fundraising (<a href="https://info.tiltify.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">Tiltify Privacy Policy</a>)</li>
+      <li><strong>Tiltify</strong> — peer-to-peer fundraising used during the Walk Across America campaign, which concluded in 2026</li>
+      <li><strong>Zoho SalesIQ</strong> — live chat on this site (<a href="https://www.zoho.com/privacy.html" target="_blank" rel="noopener noreferrer">Zoho Privacy Policy</a>)</li>
       <li><strong>Social Solutions Apricot</strong> — program intake and case management</li>
     </ul>
     <p>When you click a link to any of these services, you leave projecthood.org and their privacy policies apply.</p>
