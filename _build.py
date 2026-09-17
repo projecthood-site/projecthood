@@ -538,6 +538,7 @@ FOOTER = f"""
           <li><a href="leo-center.html">LEO Center</a></li>
           <li><a href="ways-to-give.html">Ways to Give</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="careers.html">Careers</a></li>
         </ul>
       </div>
       <div>
@@ -574,6 +575,9 @@ FOOTER = f"""
 </footer>
 
 <script src="js/main.js"></script>
+<!-- Zoho SalesIQ live chat -->
+<script>window.$zoho=window.$zoho || {{}};$zoho.salesiq=$zoho.salesiq||{{ready:function(){{}}}}</script>
+<script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siqc46fe66d51257009b48f43e92fa76f8b82435f3489d0c26110103ce367b2862e" defer></script>
 </body>
 </html>
 """
@@ -1734,7 +1738,6 @@ construction_cohort_body = f"""
         <li style="padding:10px 0;border-bottom:1px solid var(--line);">Have a high school diploma or GED equivalent</li>
         <li style="padding:10px 0;">Be a resident of Illinois</li>
       </ul>
-      <p style="margin-top:18px;font-size:14px;"><a href="https://www.projecthood.org/s/PH-ILW-Info-Sheet-2024_Revised.docx" target="_blank" rel="noopener">Read about our curriculum (info sheet) →</a></p>
     </div>
   </div>
 </section>
@@ -3067,9 +3070,9 @@ ways_to_give_body = f"""
       <div class="card card-accent" style="border-top-color:var(--blue);">
         <h4>Quick links by platform</h4>
         <ul style="list-style:none;padding:0;margin:0;font-size:14px;line-height:2.4;">
-          <li><a href="https://www.fidelitycharitable.org/giving-account/grant.html" target="_blank" rel="noopener" style="color:var(--green);">Fidelity Charitable → Grant now ↗</a></li>
-          <li><a href="https://www.schwabcharitable.org/nonprofit-search" target="_blank" rel="noopener" style="color:var(--green);">Schwab Charitable → Search nonprofits ↗</a></li>
-          <li><a href="https://vanguardcharitable.org/grantmaking" target="_blank" rel="noopener" style="color:var(--green);">Vanguard Charitable → Recommend a grant ↗</a></li>
+          <li><a href="https://www.fidelitycharitable.org/" target="_blank" rel="noopener" style="color:var(--green);">Fidelity Charitable → Log in to grant ↗</a></li>
+          <li><a href="https://www.dafgiving360.org/" target="_blank" rel="noopener" style="color:var(--green);">DAFgiving360 (formerly Schwab Charitable) → Log in to grant ↗</a></li>
+          <li><a href="https://www.vanguardcharitable.org/" target="_blank" rel="noopener" style="color:var(--green);">Vanguard Charitable → Recommend a grant ↗</a></li>
         </ul>
       </div>
       <div class="card" style="margin-top:16px;">
@@ -3513,7 +3516,8 @@ privacy_body = """
       <li><strong>Google Forms &amp; Google Analytics 4</strong> — form responses and site analytics (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>)</li>
       <li><strong>Google Calendar</strong> — public event calendar embedded on this site</li>
       <li><strong>NetworkForGood</strong> — donation processing and newsletter (<a href="https://www.networkforgood.com/about/privacy/" target="_blank" rel="noopener noreferrer">NetworkForGood Privacy Policy</a>)</li>
-      <li><strong>Tiltify</strong> — Walk Across America peer-to-peer fundraising (<a href="https://info.tiltify.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">Tiltify Privacy Policy</a>)</li>
+      <li><strong>Tiltify</strong> — peer-to-peer fundraising used during the Walk Across America campaign, which concluded in 2026</li>
+      <li><strong>Zoho SalesIQ</strong> — live chat on this site (<a href="https://www.zoho.com/privacy.html" target="_blank" rel="noopener noreferrer">Zoho Privacy Policy</a>)</li>
       <li><strong>Social Solutions Apricot</strong> — program intake and case management</li>
     </ul>
     <p>When you click a link to any of these services, you leave projecthood.org and their privacy policies apply.</p>
@@ -4040,6 +4044,572 @@ annual_report_body = f"""
 """
 
 # ---------------------------------------------------------------------------
+# Careers
+# ---------------------------------------------------------------------------
+# One entry per open role, most senior first. To post a job: copy a block, fill
+# it in, push. To take a job down: delete its block. Everything else — the
+# cards, the anchor links, the apply buttons, the count in the hero — is
+# generated from this list.
+#
+# PAY IS NOT OPTIONAL. Illinois HB 3129 (in force since 1 Jan 2025) requires a
+# good-faith pay figure or range AND a benefits summary in any posting for work
+# performed in Illinois, for employers with 15+ employees. Do not publish a role
+# with "pay" left blank or set to "competitive" / "DOE".
+
+from urllib.parse import quote
+
+CAREERS_EMAIL = "careers@projecthood.org"
+
+JOBS = [
+    {
+        "slug": "senior-director-development",
+        "title": "Senior Director of Development",
+        "dept": "Development",
+        "tag": "tag-yellow",
+        "type": "Full-time, exempt",
+        "pay": "$110,000 \u2013 $125,000 annually, commensurate with experience",
+        "schedule": "Full-time salaried",
+        "reports_to": "Executive Office",
+        "location": "Chicago, IL \u2014 6620 S. King Drive, with regular presence at the LEOC once it opens",
+        "term": "",
+        "funding": "",
+        "teaser": "Major gifts, national philanthropy, and the fundraising strategy that funds what comes next.",
+        "summary": (
+            "Project H.O.O.D. is hiring a Senior Director of Development to lead major gifts, "
+            "national philanthropy, and fundraising strategy."
+        ),
+        "summary_2": (
+            "The Leadership and Economic Opportunity Center \u2014 90,000 square feet of gym, pool, "
+            "training floors and classrooms on the block where Pastor Brooks spent a winter on a "
+            "rooftop \u2014 is still ahead of us. This role carries the fundraising that gets it open "
+            "and sustains everything the organization does next. As our founder puts it: let\u2019s "
+            "build something that outlives us."
+        ),
+        "duties": [
+            ("Where the role focuses", [
+                "<strong>Major gifts</strong> \u2014 the organization\u2019s largest individual and institutional relationships",
+                "<strong>National philanthropy</strong> \u2014 growing support beyond Chicago",
+                "<strong>Fundraising strategy</strong> \u2014 the plan that funds the next phase of the organization",
+            ]),
+        ],
+        "required": [],
+        "preferred": [],
+        "first_year": [],
+        "note": (
+            "The full job description for this role is still being finalized. Email "
+            "<a href=\"mailto:careers@projecthood.org?subject=Senior%20Director%20of%20Development\">"
+            "careers@projecthood.org</a> and we will send it as soon as it is ready \u2014 or send a "
+            "r\u00e9sum\u00e9 now and we will be in touch."
+        ),
+        "conditions": (
+            "Full-time, based at the Woodlawn campus, and at the Leadership and Economic Opportunity "
+            "Center once it opens. Evening and weekend hours for donor events and travel for national "
+            "philanthropy work."
+        ),
+        "fair_chance": False,
+    },
+    {
+        "slug": "impact-officer",
+        "title": "Impact Officer",
+        "dept": "Executive",
+        "tag": "tag-purple",
+        "type": "Full-time, exempt",
+        "pay": "$93,000 annually",
+        "schedule": "Full-time salaried",
+        "reports_to": "Executive Office",
+        "location": "6620 S. King Drive, Chicago — with regular presence at the LEOC once it opens",
+        "term": "",
+        "funding": "",
+        "teaser": "Own how we measure, prove, and tell the story of our impact — across 16 departments and five pillars.",
+        "summary": (
+            "The Impact Officer owns how Project H.O.O.D. measures, proves, and tells the story of its "
+            "impact. The role sits at the intersection of four functions — program evaluation, donor "
+            "relations, compliance, and strategic planning — and is organized around two verbs: collect "
+            "stories and tell stories."
+        ),
+        "summary_2": (
+            "Internally, the Impact Officer builds the measurement systems that let 16 departments across "
+            "five pillars know whether their work is producing outcomes. Externally, the Impact Officer "
+            "converts those outcomes into the evidence institutional funders, auditors, accreditors, and "
+            "major donors require. The position is being created ahead of the opening of the Leadership "
+            "and Economic Opportunity Center, a period of growth in which evaluation capacity is the "
+            "binding constraint on both program quality and fundraising."
+        ),
+        "duties": [
+            ("Program evaluation", [
+                "Develop and manage evaluation plans across all program areas",
+                "Design systems for data tracking and analysis",
+                "Advise on program plans, logic models, and outcomes",
+                "Recommend and implement measurement tools",
+                "Establish best practices and quality standards with program staff",
+                "Oversee continuous quality improvement — monthly outcomes review, biannual reporting, action plans for underperforming areas",
+            ]),
+            ("Donor relations", [
+                "Build an outreach plan for the existing 20,000-person contact list",
+                "Grow the list through volunteers, event attendees, and community members",
+                "Identify mega, major, developing, and prospective donors and assign portfolios",
+                "Establish regular communication through personal emails and segmented newsletters",
+                "Work with the graphic designer on the annual report, strategic plan, and brochures",
+                "Equip staff with the background they need to host donor visits well",
+            ]),
+            ("Compliance", [
+                "Prepare for audits and site visits with institutional funders",
+                "Support certification and licensure requirements",
+                "Assess options for accreditation",
+                "Identify research partners and develop project scopes",
+                "Act as liaison between IT, development, and programs on data tracking and security",
+                "Build working command of internal and external databases",
+            ]),
+            ("Strategic planning", [
+                "Partner with the COO on board expansion, structure, and training",
+                "Lead the environmental review process and SWOT analysis",
+                "Set goal statements and projects with program leaders",
+                "Advise on organizational structure and decision making",
+                "Forecast expansion into the new building and nationwide",
+            ]),
+        ],
+        "required": [
+            "Bachelor's degree in a relevant field; advanced degree in public policy, social work, public health, or evaluation preferred",
+            "Five or more years in program evaluation, impact measurement, research, or development in a nonprofit, public agency, or philanthropic setting",
+            "Demonstrated experience designing outcome frameworks, logic models, and data collection instruments",
+            "Proficiency with CRM and case management platforms, and the ability to learn new systems quickly",
+            "Strong analytical skills paired with the ability to turn data into narrative for non-technical audiences",
+            "Experience supporting audits, site visits, or institutional grant reporting",
+            "Excellent written and verbal communication — able to write for funders, boards, and community members with equal clarity",
+        ],
+        "preferred": [
+            "Familiarity with Stand Together Foundation's Customer First Measurement framework or comparable methodologies",
+            "Experience building a donor pipeline or segmentation strategy at a growing organization",
+            "Working knowledge of accreditation processes for community-based organizations",
+            "Connection to or experience working on Chicago's South Side",
+        ],
+        "first_year": [
+            "A documented evaluation plan and measurement toolset in place for every program pillar",
+            "Monthly outcomes review operating as a standing organizational rhythm",
+            "The 20,000-person contact list segmented, assigned to portfolios, and in active communication",
+            "Data infrastructure mapped across internal and external systems, with owners and security practices defined",
+            "Project H.O.O.D. audit- and site-visit-ready for its institutional funders",
+        ],
+        "conditions": (
+            "Based at the Woodlawn campus, and at the Leadership and Economic Opportunity Center once it "
+            "opens. Occasional evening and weekend hours for events, donor visits, and site visits. Some "
+            "travel required."
+        ),
+        "fair_chance": False,
+    },
+    {
+        "slug": "assistant-reentry-director",
+        "title": "Assistant Re-Entry Director",
+        "dept": "Re-Entry Services",
+        "tag": "tag-blue",
+        "type": "Full-time, exempt",
+        "pay": "$65,000 annually",
+        "schedule": "Full-time, 1.0 FTE",
+        "reports_to": "Re-Entry Program Director",
+        "location": "6620 S. King Drive, Chicago, and community sites",
+        "term": "September 1, 2026 – August 31, 2027 (renewable, subject to funding)",
+        "funding": "",
+        "teaser": "The operational lead of the Re-Entry program — the person who makes sure the work actually runs.",
+        "summary": (
+            "The Program Director sets direction and carries external relationships. The Assistant Director "
+            "makes sure the work actually runs — cohorts launch on schedule, caseloads stay covered, data "
+            "is entered, and the program can withstand an ICJIA monitoring visit on any given day."
+        ),
+        "summary_2": (
+            "This position directly supervises the part-time Re-Entry Coordinators and the Workforce Case "
+            "Manager, and serves as acting lead in the Program Director's absence. It is the position most "
+            "responsible for whether the grant's participant, placement, and retention targets are met."
+        ),
+        "duties": [
+            ("Program operations", [
+                "Manage day-to-day delivery across intake, case management, cohort training, and employment placement",
+                "Schedule and launch all four six-week cohort cycles — facilitators, space, materials, recruitment",
+                "Monitor caseload distribution and rebalance to hold service quality at roughly 15–20 participants per coordinator",
+                "Troubleshoot service delivery breakdowns and remove barriers for front-line staff",
+            ]),
+            ("Supervision and staff development", [
+                "Directly supervise the Re-Entry Coordinators and the Workforce Case Manager",
+                "Lead weekly case conferencing and individual supervision",
+                "Onboard and train new re-entry staff; set expectations and conduct reviews",
+                "Build a team culture consistent with our principle-based management approach",
+            ]),
+            ("Data, reporting, and compliance", [
+                "Own the accuracy and timeliness of all participant data in the system of record",
+                "Prepare quarterly and annual ICJIA performance reports with the Program Director and finance",
+                "Serve as the program's point of contact for monitoring visits, site visits, and audit requests",
+                "Maintain files, consents, and documentation to grant standards — correct gaps before they become findings",
+                "Track spending against personnel, supplies, and participant incentive lines and flag variances",
+            ]),
+            ("Partnerships", [
+                "Manage relationships with housing, legal, behavioral health, and workforce partners",
+                "Coordinate the contracted expungement legal services and life skills facilitation scopes",
+                "Represent the program with courts, parole and probation, and community partners",
+            ]),
+        ],
+        "required": [
+            "Bachelor's degree in social work, criminal justice, public administration, or human services; equivalent experience considered",
+            "Four or more years in re-entry, violence prevention, workforce development, or human services, including at least one year supervising staff",
+            "Demonstrated experience managing a grant-funded program, including performance reporting and compliance documentation",
+            "Strong data discipline — able to hold a team to timely, accurate entry and to read outcome data critically",
+            "Excellent written and verbal communication with participants, funders, and partners alike",
+            "Ability to work some evenings and weekends aligned to cohort and participant schedules",
+        ],
+        "preferred": [
+            "Master's degree in social work, public administration, or a related field",
+            "Experience with State of Illinois grant administration and GATA requirements",
+            "Lived experience with the criminal legal system",
+            "Established relationships across Chicago South Side reentry, legal, and employer networks",
+            "Training in trauma-informed or clinical supervision",
+        ],
+        "first_year": [],
+        "conditions": (
+            "Based at the Woodlawn campus with regular presence at community and partner sites. Some evening "
+            "and weekend hours to support cohort sessions and participant needs. Local travel required."
+        ),
+        "fair_chance": True,
+    },
+    {
+        "slug": "reentry-coordinator-ii",
+        "title": "Re-Entry Coordinator II",
+        "subtitle": "Cohort Facilitation",
+        "dept": "Re-Entry Services",
+        "tag": "tag-red",
+        "type": "Part-time, non-exempt",
+        "pay": "$20.00 per hour ($26,000 annualized)",
+        "schedule": "Part-time, 25 hours per week",
+        "reports_to": "Re-Entry Program Director",
+        "location": "6620 S. King Drive, Chicago, and community sites",
+        "term": "September 1, 2026 – August 31, 2027 (renewable, subject to funding)",
+        "funding": "",
+        "teaser": "Case management plus co-facilitation of the six-week re-entry cohort, across all four cycles.",
+        "summary": (
+            "The Re-Entry Coordinator II carries the same direct case management responsibilities as the "
+            "Coordinator I, and additionally co-facilitates the six-week re-entry cohort training curriculum "
+            "across all four cohort cycles."
+        ),
+        "summary_2": (
+            "This position is part-time by design. The 25-hour schedule is structured to align with cohort "
+            "session days, workshop facilitation, and individual participant follow-up."
+        ),
+        "duties": [
+            ("Case management", [
+                "Carry a caseload of approximately 15–20 active participants",
+                "Conduct structured intake assessments in the program's data system",
+                "Develop individualized service plans with each participant",
+                "Provide regular check-ins and consistent, high-touch follow-up",
+                "Coordinate referrals to housing and legal partners, including expungement legal services",
+                "Document participant progress and employment outcomes",
+                "Support crisis intervention as needed",
+            ]),
+            ("Cohort facilitation", [
+                "Co-facilitate the six-week re-entry cohort curriculum across all four cycles",
+                "Coordinate participant engagement, recruitment, and retention for each cohort",
+                "Track and document attendance for every session",
+                "Prepare session materials and coordinate logistics with the contracted life skills facilitator",
+                "Identify participants at risk of disengaging and intervene before they drop out",
+                "Capture the cohort completion data required for participant completion incentives",
+            ]),
+            ("Team and program support", [
+                "Participate in weekly case conferencing with the Re-Entry team",
+                "Coordinate with the Workforce Case Manager on employment readiness and placement handoffs",
+                "Contribute participant success stories and outcome data for program reporting",
+            ]),
+        ],
+        "required": [
+            "High school diploma or equivalent; associate's or bachelor's degree in social work, human services, or criminal justice preferred",
+            "Two or more years in case management, re-entry services, violence prevention, or workforce development",
+            "Demonstrated experience facilitating groups, workshops, or training cohorts with adult learners",
+            "Ability to build trust quickly with justice-involved adults and to hold participants accountable with respect",
+            "Working proficiency with case management or CRM software and comfort documenting work daily",
+            "Ability to work a schedule that includes evenings and weekends aligned to cohort session days",
+        ],
+        "preferred": [
+            "Lived experience with the criminal legal system",
+            "Curriculum delivery or adult education training",
+            "Knowledge of Chicago South Side housing, legal, behavioral health, and workforce resources",
+            "Training in motivational interviewing, trauma-informed care, or crisis intervention",
+        ],
+        "first_year": [],
+        "conditions": (
+            "25 hours per week, structured around participant availability and cohort session days, including "
+            "some evening and weekend hours. Work is performed at the Woodlawn campus and at community and "
+            "partner sites; local travel is required."
+        ),
+        "fair_chance": True,
+    },
+    {
+        "slug": "reentry-coordinator-i",
+        "title": "Re-Entry Coordinator I",
+        "dept": "Re-Entry Services",
+        "tag": "tag-red",
+        "type": "Part-time, non-exempt",
+        "pay": "$20.00 per hour ($26,000 annualized)",
+        "schedule": "Part-time, 25 hours per week",
+        "reports_to": "Re-Entry Program Director",
+        "location": "6620 S. King Drive, Chicago, and community sites",
+        "term": "September 1, 2026 – August 31, 2027 (renewable, subject to funding)",
+        "funding": "",
+        "teaser": "The participant's consistent point of contact, from intake through placement and follow-up.",
+        "summary": (
+            "The Re-Entry Coordinator I provides direct, high-touch case management to individuals returning "
+            "to the community from incarceration or court involvement. The Coordinator is the participant's "
+            "consistent point of contact from intake through employment placement and follow-up."
+        ),
+        "summary_2": (
+            "This position is part-time by design. The 25-hour schedule lets us hold specialized, high-touch "
+            "case management capacity while stretching grant resources, and is structured around participant "
+            "availability and cohort session days."
+        ),
+        "duties": [
+            ("Case management", [
+                "Carry a caseload of approximately 15–20 active participants",
+                "Conduct structured intake assessments in the program's data system",
+                "Develop individualized service plans with each participant",
+                "Provide regular check-ins and consistent, high-touch follow-up",
+                "Coordinate referrals to housing and legal partners, including expungement legal services",
+                "Document participant progress and employment outcomes",
+                "Support crisis intervention as needed",
+            ]),
+            ("Team and program support", [
+                "Participate in weekly case conferencing with the Re-Entry team",
+                "Coordinate with the Workforce Case Manager on employment readiness and placement handoffs",
+                "Contribute participant success stories and outcome data for program reporting",
+                "Represent Project H.O.O.D. with partners, courts, and community stakeholders",
+            ]),
+        ],
+        "required": [
+            "High school diploma or equivalent; associate's or bachelor's degree in social work, human services, or criminal justice preferred",
+            "Two or more years in case management, re-entry services, violence prevention, or workforce development",
+            "Ability to build trust quickly with justice-involved adults and to hold participants accountable with respect",
+            "Working proficiency with case management or CRM software and comfort documenting work daily",
+            "Reliable transportation and ability to travel locally to partner sites and community locations",
+            "Ability to work a schedule that includes some evenings and weekends",
+        ],
+        "preferred": [
+            "Lived experience with the criminal legal system",
+            "Knowledge of Chicago South Side housing, legal, behavioral health, and workforce resources",
+            "Training in motivational interviewing, trauma-informed care, or crisis intervention",
+            "Existing relationships with parole, probation, or reentry partners",
+        ],
+        "first_year": [],
+        "conditions": (
+            "25 hours per week, structured around participant availability and cohort session days, including "
+            "some evening and weekend hours. Work is performed at the Woodlawn campus and at community and "
+            "partner sites; local travel is required."
+        ),
+        "fair_chance": True,
+    },
+]
+
+
+def _job_apply_href(job):
+    subject = quote(f"Application — {job['title']}")
+    return f"mailto:{CAREERS_EMAIL}?subject={subject}"
+
+
+def _job_ul(items):
+    lis = "".join(f"<li>{i}</li>" for i in items)
+    return f"<ul>{lis}</ul>"
+
+
+def _job_card_html(job):
+    """The summary card in the openings list."""
+    sub = f' <span style="color:var(--muted);font-weight:400;">({job["subtitle"]})</span>' if job.get("subtitle") else ""
+    return f"""
+      <div class="card">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+          <span class="tag {job['tag']}">{job['dept']}</span>
+          <span class="tag tag-black">{job['type']}</span>
+        </div>
+        <h3 style="margin-bottom:8px;"><a href="#{job['slug']}" style="color:inherit;text-decoration:none;">{job['title']}{sub}</a></h3>
+        <p style="font-family:var(--font-serif);margin-bottom:14px;">{job['teaser']}</p>
+        <p style="font-size:14px;color:var(--muted);margin-bottom:16px;">
+          <strong style="color:var(--ink);">{job['pay']}</strong><br>{job['schedule']}
+        </p>
+        <div style="margin-top:auto;display:flex;flex-wrap:wrap;gap:10px;">
+          <a class="btn btn-outline" href="#{job['slug']}">Full description</a>
+          <a class="btn btn-primary" href="{_job_apply_href(job)}">Apply</a>
+        </div>
+      </div>"""
+
+
+def _job_facts_html(job):
+    rows = [
+        ("Department", job["dept"]),
+        ("Reports to", job["reports_to"]),
+        ("Classification", job["type"]),
+        ("Schedule", job["schedule"]),
+        ("Compensation", job["pay"]),
+        ("Location", job["location"]),
+    ]
+    if job.get("term"):
+        rows.append(("Term", job["term"]))
+    if job.get("funding"):
+        rows.append(("Funding", job["funding"]))
+    cells = "".join(
+        f'<div style="padding:10px 0;border-bottom:1px solid var(--line);">'
+        f'<div class="eyebrow" style="font-size:10.5px;margin-bottom:2px;">{label}</div>'
+        f'<div style="font-size:14.5px;">{value}</div></div>'
+        for label, value in rows
+    )
+    return f'<div style="margin:var(--sp-3) 0;">{cells}</div>'
+
+
+def _job_full_html(job):
+    """The full posting, anchored so a single role can be shared on its own."""
+    sub = f'<p class="lead" style="margin-top:-6px;">{job["subtitle"]}</p>' if job.get("subtitle") else ""
+    duties = ""
+    if job.get("duties"):
+        duties = '<h3 style="margin-top:var(--sp-4);">What you&rsquo;ll do</h3>' + "".join(
+            f'<h4 style="margin-top:var(--sp-3);">{heading}</h4>{_job_ul(items)}'
+            for heading, items in job["duties"]
+        )
+    # A role can be posted before its full JD exists. In that case we show what
+    # we actually know rather than padding the page with invented requirements.
+    quals = ""
+    if job.get("required") or job.get("preferred"):
+        quals = '<h3 style="margin-top:var(--sp-4);">What you bring</h3>'
+        if job.get("required"):
+            quals += "<h4>Required</h4>" + _job_ul(job["required"])
+        if job.get("preferred"):
+            quals += '<h4 style="margin-top:var(--sp-3);">Preferred</h4>' + _job_ul(job["preferred"])
+    note = (
+        f'<div class="callout-box green" style="margin-top:var(--sp-4);">'
+        f'<p style="margin:0;">{job["note"]}</p></div>'
+        if job.get("note") else ""
+    )
+    first_year = (
+        f'<h4 style="margin-top:var(--sp-3);">What success looks like in year one</h4>{_job_ul(job["first_year"])}'
+        if job.get("first_year") else ""
+    )
+    fair = (
+        '<p style="font-size:14px;color:var(--muted);margin-top:var(--sp-3);">'
+        'Applicants with lived experience in the criminal legal system are encouraged to apply. '
+        'A criminal record is not an automatic bar to employment and is considered individually '
+        'in accordance with Illinois law.</p>'
+        if job.get("fair_chance") else ""
+    )
+    return f"""
+<section class="section" id="{job['slug']}" style="border-top:2px solid var(--line);">
+  <div class="wrap">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+      <span class="tag {job['tag']}">{job['dept']}</span>
+      <span class="tag tag-black">{job['type']}</span>
+    </div>
+    <h2 style="margin-bottom:6px;">{job['title']}</h2>
+    {sub}
+    <div class="grid-2" style="align-items:start;">
+      <div>
+        <p style="font-family:var(--font-serif);font-size:var(--fs-lead);">{job['summary']}</p>
+        <p>{job['summary_2']}</p>
+        {duties}
+        {quals}
+        {first_year}
+        {note}
+        <h3 style="margin-top:var(--sp-4);">Schedule and working conditions</h3>
+        <p>{job['conditions']}</p>
+        {fair}
+      </div>
+      <div>
+        <div style="background:var(--offwhite);padding:var(--sp-4);border:1px solid var(--line);">
+          <div class="eyebrow">At a glance</div>
+          {_job_facts_html(job)}
+          <a class="btn btn-primary" href="{_job_apply_href(job)}" style="width:100%;text-align:center;">Apply for this role</a>
+          <p style="font-size:13px;color:var(--muted);margin-top:12px;text-align:center;line-height:1.6;">
+            Or email <a href="mailto:{CAREERS_EMAIL}" style="color:var(--green);">{CAREERS_EMAIL}</a><br>
+            with &ldquo;{job['title']}&rdquo; in the subject.
+          </p>
+          <p style="font-size:12.5px;color:var(--muted);margin-top:10px;text-align:center;border-top:1px solid var(--line);padding-top:10px;">
+            Share this role directly:<br>
+            <a href="https://projecthood.org/careers#{job['slug']}">projecthood.org/careers#{job['slug']}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>"""
+
+
+_jobs_cards_html = "".join(_job_card_html(j) for j in JOBS)
+_jobs_full_html = "".join(_job_full_html(j) for j in JOBS)
+_jobs_count = len(JOBS)
+
+careers_body = f"""
+<section class="hero bg-green">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--yellow);">Careers</div>
+    <h1>Come build it <span class="hl-yellow">with us.</span></h1>
+    <p class="lead">{_jobs_count} open roles in Woodlawn — re-entry, workforce, and impact. Every one of them is a job where you will know the names of the people you serve.</p>
+    <div class="btn-group" style="margin-top:var(--sp-3);">
+      <a class="btn btn-yellow" href="#openings">See the openings &darr;</a>
+      <a class="btn btn-outline-light" href="mailto:{CAREERS_EMAIL}">Email us a r&eacute;sum&eacute;</a>
+    </div>
+    <p style="font-size:14px;opacity:.85;margin-top:14px;">Applications go to <a href="mailto:{CAREERS_EMAIL}" style="color:var(--yellow);">{CAREERS_EMAIL}</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap grid-2">
+    <div>
+      <div class="eyebrow">Why here</div>
+      <h2>Small team. Real outcomes.</h2>
+      <p>Project H.O.O.D. serves more than 15,000 neighbors a year across five pillars &mdash; violence prevention, workforce development, health &amp; wellness, youth programming, and re-entry services &mdash; from one campus on King Drive.</p>
+      <p>We are building the Leadership and Economic Opportunity Center: 90,000 square feet of gym, pool, training floors, and classrooms on the block where Pastor Brooks spent a winter on a rooftop. Most of the roles below exist because of what that building will make possible.</p>
+      <p>This is close-range work. Caseloads are small on purpose. You will see the people you help in the grocery store.</p>
+    </div>
+    <div>
+      <div class="callout-box green">
+        <h3 style="margin-top:0;">A record is not a barrier here.</h3>
+        <p>Most of the roles below explicitly welcome applicants with lived experience in the criminal legal system. A criminal record is not an automatic bar to employment at Project H.O.O.D., and is considered individually in accordance with Illinois law.</p>
+        <p style="margin-bottom:0;">If you have been told no somewhere else because of your background, apply here anyway.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-offwhite" id="openings">
+  <div class="wrap">
+    <div class="eyebrow">Open roles</div>
+    <h2>{_jobs_count} positions open now.</h2>
+    <p class="lead" style="max-width:var(--w-read);">Full descriptions are below &mdash; each one has its own link you can send to someone directly.</p>
+    <div class="grid-3" style="margin-top:var(--sp-4);">
+      {_jobs_cards_html}
+    </div>
+  </div>
+</section>
+
+<section class="section bg-bg">
+  <div class="wrap grid-2">
+    <div>
+      <div class="eyebrow" style="color:var(--red);">How to apply</div>
+      <h2>Send a r&eacute;sum&eacute;. That is the whole first step.</h2>
+      <p>Email <a href="mailto:{CAREERS_EMAIL}">{CAREERS_EMAIL}</a> with the role in the subject line and a r&eacute;sum&eacute; attached. A cover letter helps but is not required &mdash; a few sentences in the email about why this work matters to you is plenty.</p>
+      <p>We read everything that comes in. If your experience fits, someone from our team will reach out to set up a conversation.</p>
+      <p style="font-size:14px;color:var(--muted);">Questions about a role before you apply? Email the same address and ask.</p>
+    </div>
+    <div>
+      <div class="eyebrow">Pay and benefits</div>
+      <h3>What we offer.</h3>
+      <p>Pay for every posted role is listed with the role &mdash; no ranges withheld, no &ldquo;commensurate with experience.&rdquo;</p>
+      <p><strong>Full-time employees</strong> are eligible for group health insurance and related coverage; paid time off starting at 10 days in year one, 15 days in years two through four, and 20 days at five years; ten paid organizational holidays; and paid bereavement leave. Benefits begin after the introductory period and are governed by the plan documents.</p>
+      <p><strong>All employees</strong>, full- and part-time, receive paid leave in accordance with Chicago and Illinois law.</p>
+    </div>
+  </div>
+</section>
+
+{_jobs_full_html}
+
+<section class="section bg-black">
+  <div class="wrap" style="text-align:center;">
+    <div class="eyebrow" style="color:var(--yellow);">Equal employment opportunity</div>
+    <p style="max-width:var(--w-read);margin:var(--sp-3) auto;font-size:15px;">Project H.O.O.D. is an equal opportunity employer. All qualified applicants receive consideration for employment without regard to any characteristic protected by federal, state, or local law.</p>
+    <a class="btn btn-yellow" href="mailto:{CAREERS_EMAIL}">Apply at {CAREERS_EMAIL}</a>
+  </div>
+</section>
+"""
+
+
+# ---------------------------------------------------------------------------
 # Registry — (filename, title, meta, active key, body)
 # ---------------------------------------------------------------------------
 pages = [
@@ -4071,6 +4641,7 @@ pages = [
     ("partner.html",     "Partner with us",              "Partner with Project H.O.O.D. — corporate, employer, foundation, church partnerships.",                                                 "a_gi",           partner_body),
     ("news.html",        "News & Impact",                "Project H.O.O.D. news and impact — this page now lives at News & Impact.",                                                             None,             news_body),
     ("contact.html",     "Contact",                      "Talk to us — press, partnership, participant, or general inquiry.",                                                                    None,             contact_body),
+    ("careers.html",     "Careers",                      "Join the team at Project H.O.O.D. — open roles in re-entry services, workforce development, and impact measurement on Chicago's South Side. Pay listed with every role. Fair-chance employer.", None,             careers_body),
     ("privacy.html",     "Privacy Policy",               "Project H.O.O.D. privacy policy — what we collect, how we use it, and your rights.",                                               None,             privacy_body),
     ("404.html",         "Page not found",               "This page moved or never existed — here's where to go next.",                                                                          None,             notfound_body),
 ]
