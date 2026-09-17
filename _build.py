@@ -4580,8 +4580,12 @@ def _job_full_html(job):
           <div class="eyebrow">At a glance</div>
           {_job_facts_html(job)}
           <a class="btn btn-primary" href="{_job_apply_href(job)}" style="width:100%;text-align:center;">Apply for this role</a>
-          <p style="font-size:12.5px;color:var(--muted);margin-top:10px;text-align:center;">
-            Or share this role directly:<br>
+          <p style="font-size:13px;color:var(--muted);margin-top:12px;text-align:center;line-height:1.6;">
+            Or email <a href="mailto:{CAREERS_EMAIL}" style="color:var(--green);">{CAREERS_EMAIL}</a><br>
+            with &ldquo;{job['title']}&rdquo; in the subject.
+          </p>
+          <p style="font-size:12.5px;color:var(--muted);margin-top:10px;text-align:center;border-top:1px solid var(--line);padding-top:10px;">
+            Share this role directly:<br>
             <a href="https://projecthood.org/careers#{job['slug']}">projecthood.org/careers#{job['slug']}</a>
           </p>
         </div>
@@ -4605,6 +4609,7 @@ careers_body = f"""
       <a class="btn btn-yellow" href="#openings">See the openings &darr;</a>
       <a class="btn btn-outline-light" href="mailto:{CAREERS_EMAIL}">Email us a r&eacute;sum&eacute;</a>
     </div>
+    <p style="font-size:14px;opacity:.85;margin-top:14px;">Applications go to <a href="mailto:{CAREERS_EMAIL}" style="color:var(--yellow);">{CAREERS_EMAIL}</a></p>
   </div>
 </section>
 
