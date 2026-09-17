@@ -4070,7 +4070,7 @@ JOBS = [
         "pay": "$110,000 \u2013 $125,000 annually, commensurate with experience",
         "schedule": "Full-time salaried",
         "reports_to": "Executive Office",
-        "location": "Chicago, IL \u2014 6620 S. King Drive, with regular presence at the LEOC",
+        "location": "Chicago, IL \u2014 6620 S. King Drive, with regular presence at the LEOC once it opens",
         "term": "",
         "funding": "",
         "teaser": "Major gifts, national philanthropy, and the fundraising strategy that funds what comes next.",
@@ -4079,11 +4079,11 @@ JOBS = [
             "national philanthropy, and fundraising strategy."
         ),
         "summary_2": (
-            "The Leadership and Economic Opportunity Center opens in October 2026 \u2014 90,000 square "
-            "feet of gym, pool, training floors and classrooms on the block where Pastor Brooks spent "
-            "a winter on a rooftop. This role carries the fundraising that sustains it and everything "
-            "the organization does next. As our founder puts it: let\u2019s build something that "
-            "outlives us."
+            "The Leadership and Economic Opportunity Center \u2014 90,000 square feet of gym, pool, "
+            "training floors and classrooms on the block where Pastor Brooks spent a winter on a "
+            "rooftop \u2014 is still ahead of us. This role carries the fundraising that gets it open "
+            "and sustains everything the organization does next. As our founder puts it: let\u2019s "
+            "build something that outlives us."
         ),
         "duties": [
             ("Where the role focuses", [
@@ -4102,9 +4102,9 @@ JOBS = [
             "r\u00e9sum\u00e9 now and we will be in touch."
         ),
         "conditions": (
-            "Full-time, based at the Woodlawn campus with regular presence at the Leadership and "
-            "Economic Opportunity Center. Evening and weekend hours for donor events and travel for "
-            "national philanthropy work."
+            "Full-time, based at the Woodlawn campus, and at the Leadership and Economic Opportunity "
+            "Center once it opens. Evening and weekend hours for donor events and travel for national "
+            "philanthropy work."
         ),
         "fair_chance": False,
     },
@@ -4117,7 +4117,7 @@ JOBS = [
         "pay": "$93,000 annually",
         "schedule": "Full-time salaried",
         "reports_to": "Executive Office",
-        "location": "6620 S. King Drive, Chicago — with regular presence at the LEOC",
+        "location": "6620 S. King Drive, Chicago — with regular presence at the LEOC once it opens",
         "term": "",
         "funding": "",
         "teaser": "Own how we measure, prove, and tell the story of our impact — across 16 departments and five pillars.",
@@ -4131,9 +4131,9 @@ JOBS = [
             "Internally, the Impact Officer builds the measurement systems that let 16 departments across "
             "five pillars know whether their work is producing outcomes. Externally, the Impact Officer "
             "converts those outcomes into the evidence institutional funders, auditors, accreditors, and "
-            "major donors require. The position is being created ahead of the October 2026 opening of the "
-            "Leadership and Economic Opportunity Center, a period of growth in which evaluation capacity "
-            "is the binding constraint on both program quality and fundraising."
+            "major donors require. The position is being created ahead of the opening of the Leadership "
+            "and Economic Opportunity Center, a period of growth in which evaluation capacity is the "
+            "binding constraint on both program quality and fundraising."
         ),
         "duties": [
             ("Program evaluation", [
@@ -4191,8 +4191,8 @@ JOBS = [
             "Project H.O.O.D. audit- and site-visit-ready for its institutional funders",
         ],
         "conditions": (
-            "Based at the Woodlawn campus with regular presence at the Leadership and Economic Opportunity "
-            "Center. Occasional evening and weekend hours for events, donor visits, and site visits. Some "
+            "Based at the Woodlawn campus, and at the Leadership and Economic Opportunity Center once it "
+            "opens. Occasional evening and weekend hours for events, donor visits, and site visits. Some "
             "travel required."
         ),
         "fair_chance": False,
@@ -4265,71 +4265,6 @@ JOBS = [
         "conditions": (
             "Based at the Woodlawn campus with regular presence at community and partner sites. Some evening "
             "and weekend hours to support cohort sessions and participant needs. Local travel required."
-        ),
-        "fair_chance": True,
-    },
-    {
-        "slug": "workforce-case-manager",
-        "title": "Workforce Case Manager",
-        "dept": "Re-Entry Services",
-        "tag": "tag-green",
-        "type": "Part-time, non-exempt",
-        "pay": "$20.00 per hour ($26,000 annualized)",
-        "schedule": "Part-time, 25 hours per week",
-        "reports_to": "Re-Entry Program Director",
-        "location": "6620 S. King Drive, Chicago, and community sites",
-        "term": "September 1, 2026 – August 31, 2027 (renewable, subject to funding)",
-        "funding": "ICJIA R3 Grant #927545 — 100% grant funded",
-        "teaser": "Where the coordinators stabilize participants, this role moves them into work — and stays with them after.",
-        "summary": (
-            "The Workforce Case Manager owns the employment side of the re-entry pathway. Where the "
-            "Re-Entry Coordinators stabilize participants, this position moves them into work — assessing "
-            "job readiness, building employer relationships, placing participants, and staying with them "
-            "through retention milestones."
-        ),
-        "summary_2": (
-            "The position is part-time by design, scheduled around participant availability, employer hiring "
-            "windows, and cohort session days."
-        ),
-        "duties": [
-            ("Employment readiness", [
-                "Assess each participant's work history, skills, credentials, and barriers to employment",
-                "Build individualized employment plans aligned to participant service plans",
-                "Deliver job readiness support: résumé development, interview preparation, workplace expectations, digital application skills",
-                "Coordinate referrals to credentialing, training, and licensure programs, including our own workforce development offerings",
-            ]),
-            ("Employer engagement and placement", [
-                "Develop and maintain relationships with second-chance employers across trades, logistics, healthcare, and hospitality",
-                "Match participants to openings and manage the placement process end to end",
-                "Advocate with employers on behalf of participants, including addressing background check concerns",
-                "Track placements, wages, and job start dates",
-            ]),
-            ("Retention", [
-                "Conduct structured follow-up at 30, 60, and 90 days post-placement and at longer milestones",
-                "Intervene early when a placement is at risk — transportation, childcare, conflict, or scheduling",
-                "Coordinate supportive services such as CTA cards, work gear, and tools",
-                "Document employment and retention outcomes as the program's core performance measures",
-            ]),
-        ],
-        "required": [
-            "High school diploma or equivalent; associate's or bachelor's degree in workforce development, human services, or business preferred",
-            "Two or more years in workforce development, job placement, staffing, or employment case management",
-            "Demonstrated success placing individuals with barriers to employment, ideally including justice-involved adults",
-            "Comfort making direct employer outreach and sustaining a book of hiring partners",
-            "Working proficiency with case management or CRM software and disciplined documentation habits",
-            "Reliable transportation and ability to travel locally to employer and community sites",
-        ],
-        "preferred": [
-            "Lived experience with the criminal legal system",
-            "Existing employer relationships on Chicago's South Side",
-            "Familiarity with WIOA, apprenticeship pathways, or industry credentialing",
-            "Knowledge of the Illinois Job Opportunities for Qualified Applicants Act and fair-chance hiring practice",
-        ],
-        "first_year": [],
-        "conditions": (
-            "25 hours per week, structured around participant availability and cohort session days, including "
-            "some evening and weekend hours. Work is performed at the Woodlawn campus and at community and "
-            "partner sites; local travel is required."
         ),
         "fair_chance": True,
     },
@@ -4619,7 +4554,7 @@ careers_body = f"""
       <div class="eyebrow">Why here</div>
       <h2>Small team. Real outcomes.</h2>
       <p>Project H.O.O.D. serves more than 15,000 neighbors a year across five pillars &mdash; violence prevention, workforce development, health &amp; wellness, youth programming, and re-entry services &mdash; from one campus on King Drive.</p>
-      <p>In October 2026 we open the Leadership and Economic Opportunity Center: 90,000 square feet of gym, pool, training floors, and classrooms on the block where Pastor Brooks spent a winter on a rooftop. Most of the roles below exist because of what that building is about to make possible.</p>
+      <p>We are building the Leadership and Economic Opportunity Center: 90,000 square feet of gym, pool, training floors, and classrooms on the block where Pastor Brooks spent a winter on a rooftop. Most of the roles below exist because of what that building will make possible.</p>
       <p>This is close-range work. Caseloads are small on purpose. You will see the people you help in the grocery store.</p>
     </div>
     <div>
