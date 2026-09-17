@@ -4208,7 +4208,7 @@ JOBS = [
         "reports_to": "Re-Entry Program Director",
         "location": "6620 S. King Drive, Chicago, and community sites",
         "term": "September 1, 2026 – August 31, 2027 (renewable, subject to funding)",
-        "funding": "ICJIA R3 Grant #927545 — 100% grant funded",
+        "funding": "",
         "teaser": "The operational lead of the Re-Entry program — the person who makes sure the work actually runs.",
         "summary": (
             "The Program Director sets direction and carries external relationships. The Assistant Director "
@@ -4256,7 +4256,7 @@ JOBS = [
         ],
         "preferred": [
             "Master's degree in social work, public administration, or a related field",
-            "Experience with ICJIA, R3, or other State of Illinois grant administration and GATA requirements",
+            "Experience with State of Illinois grant administration and GATA requirements",
             "Lived experience with the criminal legal system",
             "Established relationships across Chicago South Side reentry, legal, and employer networks",
             "Training in trauma-informed or clinical supervision",
@@ -4280,7 +4280,7 @@ JOBS = [
         "reports_to": "Re-Entry Program Director",
         "location": "6620 S. King Drive, Chicago, and community sites",
         "term": "September 1, 2026 – August 31, 2027 (renewable, subject to funding)",
-        "funding": "ICJIA R3 Grant #927545 — 100% grant funded",
+        "funding": "",
         "teaser": "Case management plus co-facilitation of the six-week re-entry cohort, across all four cycles.",
         "summary": (
             "The Re-Entry Coordinator II carries the same direct case management responsibilities as the "
@@ -4348,7 +4348,7 @@ JOBS = [
         "reports_to": "Re-Entry Program Director",
         "location": "6620 S. King Drive, Chicago, and community sites",
         "term": "September 1, 2026 – August 31, 2027 (renewable, subject to funding)",
-        "funding": "ICJIA R3 Grant #927545 — 100% grant funded",
+        "funding": "",
         "teaser": "The participant's consistent point of contact, from intake through placement and follow-up.",
         "summary": (
             "The Re-Entry Coordinator I provides direct, high-touch case management to individuals returning "
