@@ -4486,13 +4486,13 @@ def _job_card_html(job):
           <span class="tag {job['tag']}">{job['dept']}</span>
           <span class="tag tag-black">{job['type']}</span>
         </div>
-        <h3 style="margin-bottom:8px;"><a href="careers.html#{job['slug']}" style="color:inherit;text-decoration:none;">{job['title']}{sub}</a></h3>
+        <h3 style="margin-bottom:8px;"><a href="#{job['slug']}" style="color:inherit;text-decoration:none;">{job['title']}{sub}</a></h3>
         <p style="font-family:var(--font-serif);margin-bottom:14px;">{job['teaser']}</p>
         <p style="font-size:14px;color:var(--muted);margin-bottom:16px;">
           <strong style="color:var(--ink);">{job['pay']}</strong><br>{job['schedule']}
         </p>
         <div style="margin-top:auto;display:flex;flex-wrap:wrap;gap:10px;">
-          <a class="btn btn-outline" href="careers.html#{job['slug']}">Full description</a>
+          <a class="btn btn-outline" href="#{job['slug']}">Full description</a>
           <a class="btn btn-primary" href="{_job_apply_href(job)}">Apply</a>
         </div>
       </div>"""
@@ -4582,7 +4582,7 @@ def _job_full_html(job):
           <a class="btn btn-primary" href="{_job_apply_href(job)}" style="width:100%;text-align:center;">Apply for this role</a>
           <p style="font-size:12.5px;color:var(--muted);margin-top:10px;text-align:center;">
             Or share this role directly:<br>
-            <a href="careers.html#{job['slug']}">projecthood.org/careers#{job['slug']}</a>
+            <a href="https://projecthood.org/careers#{job['slug']}">projecthood.org/careers#{job['slug']}</a>
           </p>
         </div>
       </div>
@@ -4602,7 +4602,7 @@ careers_body = f"""
     <h1>Come build it <span class="hl-yellow">with us.</span></h1>
     <p class="lead">{_jobs_count} open roles in Woodlawn — re-entry, workforce, and impact. Every one of them is a job where you will know the names of the people you serve.</p>
     <div class="btn-group" style="margin-top:var(--sp-3);">
-      <a class="btn btn-yellow" href="careers.html#openings">See the openings &darr;</a>
+      <a class="btn btn-yellow" href="#openings">See the openings &darr;</a>
       <a class="btn btn-outline-light" href="mailto:{CAREERS_EMAIL}">Email us a r&eacute;sum&eacute;</a>
     </div>
   </div>
