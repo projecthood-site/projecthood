@@ -4062,6 +4062,53 @@ CAREERS_EMAIL = "careers@projecthood.org"
 
 JOBS = [
     {
+        "slug": "senior-director-development",
+        "title": "Senior Director of Development",
+        "dept": "Development",
+        "tag": "tag-yellow",
+        "type": "Full-time, exempt",
+        "pay": "$110,000 \u2013 $125,000 annually, commensurate with experience",
+        "schedule": "Full-time salaried",
+        "reports_to": "Executive Office",
+        "location": "Chicago, IL \u2014 6620 S. King Drive, with regular presence at the LEOC",
+        "term": "",
+        "funding": "",
+        "teaser": "Major gifts, national philanthropy, and the fundraising strategy that funds what comes next.",
+        "summary": (
+            "Project H.O.O.D. is hiring a Senior Director of Development to lead major gifts, "
+            "national philanthropy, and fundraising strategy."
+        ),
+        "summary_2": (
+            "The Leadership and Economic Opportunity Center opens in October 2026 \u2014 90,000 square "
+            "feet of gym, pool, training floors and classrooms on the block where Pastor Brooks spent "
+            "a winter on a rooftop. This role carries the fundraising that sustains it and everything "
+            "the organization does next. As our founder puts it: let\u2019s build something that "
+            "outlives us."
+        ),
+        "duties": [
+            ("Where the role focuses", [
+                "<strong>Major gifts</strong> \u2014 the organization\u2019s largest individual and institutional relationships",
+                "<strong>National philanthropy</strong> \u2014 growing support beyond Chicago",
+                "<strong>Fundraising strategy</strong> \u2014 the plan that funds the next phase of the organization",
+            ]),
+        ],
+        "required": [],
+        "preferred": [],
+        "first_year": [],
+        "note": (
+            "The full job description for this role is still being finalized. Email "
+            "<a href=\"mailto:careers@projecthood.org?subject=Senior%20Director%20of%20Development\">"
+            "careers@projecthood.org</a> and we will send it as soon as it is ready \u2014 or send a "
+            "r\u00e9sum\u00e9 now and we will be in touch."
+        ),
+        "conditions": (
+            "Full-time, based at the Woodlawn campus with regular presence at the Leadership and "
+            "Economic Opportunity Center. Evening and weekend hours for donor events and travel for "
+            "national philanthropy work."
+        ),
+        "fair_chance": False,
+    },
+    {
         "slug": "impact-officer",
         "title": "Impact Officer",
         "dept": "Executive",
@@ -4476,9 +4523,25 @@ def _job_facts_html(job):
 def _job_full_html(job):
     """The full posting, anchored so a single role can be shared on its own."""
     sub = f'<p class="lead" style="margin-top:-6px;">{job["subtitle"]}</p>' if job.get("subtitle") else ""
-    duties = "".join(
-        f'<h4 style="margin-top:var(--sp-3);">{heading}</h4>{_job_ul(items)}'
-        for heading, items in job["duties"]
+    duties = ""
+    if job.get("duties"):
+        duties = '<h3 style="margin-top:var(--sp-4);">What you&rsquo;ll do</h3>' + "".join(
+            f'<h4 style="margin-top:var(--sp-3);">{heading}</h4>{_job_ul(items)}'
+            for heading, items in job["duties"]
+        )
+    # A role can be posted before its full JD exists. In that case we show what
+    # we actually know rather than padding the page with invented requirements.
+    quals = ""
+    if job.get("required") or job.get("preferred"):
+        quals = '<h3 style="margin-top:var(--sp-4);">What you bring</h3>'
+        if job.get("required"):
+            quals += "<h4>Required</h4>" + _job_ul(job["required"])
+        if job.get("preferred"):
+            quals += '<h4 style="margin-top:var(--sp-3);">Preferred</h4>' + _job_ul(job["preferred"])
+    note = (
+        f'<div class="callout-box green" style="margin-top:var(--sp-4);">'
+        f'<p style="margin:0;">{job["note"]}</p></div>'
+        if job.get("note") else ""
     )
     first_year = (
         f'<h4 style="margin-top:var(--sp-3);">What success looks like in year one</h4>{_job_ul(job["first_year"])}'
@@ -4504,14 +4567,10 @@ def _job_full_html(job):
       <div>
         <p style="font-family:var(--font-serif);font-size:var(--fs-lead);">{job['summary']}</p>
         <p>{job['summary_2']}</p>
-        <h3 style="margin-top:var(--sp-4);">What you'll do</h3>
         {duties}
-        <h3 style="margin-top:var(--sp-4);">What you bring</h3>
-        <h4>Required</h4>
-        {_job_ul(job['required'])}
-        <h4 style="margin-top:var(--sp-3);">Preferred</h4>
-        {_job_ul(job['preferred'])}
+        {quals}
         {first_year}
+        {note}
         <h3 style="margin-top:var(--sp-4);">Schedule and working conditions</h3>
         <p>{job['conditions']}</p>
         {fair}
