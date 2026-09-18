@@ -4111,7 +4111,7 @@ JOBS = [
     {
         "slug": "impact-officer",
         "title": "Impact Officer",
-        "dept": "Executive",
+        "dept": "",
         "tag": "tag-purple",
         "type": "Full-time, exempt",
         "pay": "$93,000 annually",
@@ -4418,7 +4418,7 @@ def _job_card_html(job):
     return f"""
       <div class="card">
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-          <span class="tag {job['tag']}">{job['dept']}</span>
+          {'<span class="tag ' + job['tag'] + '">' + job['dept'] + '</span>' if job.get('dept') else ''}
           <span class="tag tag-black">{job['type']}</span>
         </div>
         <h3 style="margin-bottom:8px;"><a href="#{job['slug']}" style="color:inherit;text-decoration:none;">{job['title']}{sub}</a></h3>
@@ -4434,8 +4434,10 @@ def _job_card_html(job):
 
 
 def _job_facts_html(job):
-    rows = [
-        ("Department", job["dept"]),
+    rows = []
+    if job.get("dept"):
+        rows.append(("Department", job["dept"]))
+    rows += [
         ("Reports to", job["reports_to"]),
         ("Classification", job["type"]),
         ("Schedule", job["schedule"]),
@@ -4493,7 +4495,7 @@ def _job_full_html(job):
 <section class="section" id="{job['slug']}" style="border-top:2px solid var(--line);">
   <div class="wrap">
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
-      <span class="tag {job['tag']}">{job['dept']}</span>
+      {'<span class="tag ' + job['tag'] + '">' + job['dept'] + '</span>' if job.get('dept') else ''}
       <span class="tag tag-black">{job['type']}</span>
     </div>
     <h2 style="margin-bottom:6px;">{job['title']}</h2>
