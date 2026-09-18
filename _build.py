@@ -4174,7 +4174,7 @@ JOBS = [
             "Demonstrated experience designing outcome frameworks, logic models, and data collection instruments",
             "Proficiency with CRM and case management platforms, and the ability to learn new systems quickly",
             "Strong analytical skills paired with the ability to turn data into narrative for non-technical audiences",
-            "Experience supporting audits, site visits, or institutional grant reporting",
+            "Experience supporting audits, site visits, or institutional reporting requirements",
             "Excellent written and verbal communication — able to write for funders, boards, and community members with equal clarity",
         ],
         "preferred": [
@@ -4207,18 +4207,18 @@ JOBS = [
         "schedule": "Full-time, 1.0 FTE",
         "reports_to": "Re-Entry Program Director",
         "location": "6620 S. King Drive, Chicago, and community sites",
-        "term": "September 1, 2026 – August 31, 2027 (renewable, subject to funding)",
+        "term": "September 1, 2026 – August 31, 2027 (renewable)",
         "funding": "",
         "teaser": "The operational lead of the Re-Entry program — the person who makes sure the work actually runs.",
         "summary": (
             "The Program Director sets direction and carries external relationships. The Assistant Director "
             "makes sure the work actually runs — cohorts launch on schedule, caseloads stay covered, data "
-            "is entered, and the program can withstand an ICJIA monitoring visit on any given day."
+            "is entered, and the program can withstand a monitoring visit on any given day."
         ),
         "summary_2": (
             "This position directly supervises the part-time Re-Entry Coordinators and the Workforce Case "
             "Manager, and serves as acting lead in the Program Director's absence. It is the position most "
-            "responsible for whether the grant's participant, placement, and retention targets are met."
+            "responsible for whether the program's participant, placement, and retention targets are met."
         ),
         "duties": [
             ("Program operations", [
@@ -4235,9 +4235,9 @@ JOBS = [
             ]),
             ("Data, reporting, and compliance", [
                 "Own the accuracy and timeliness of all participant data in the system of record",
-                "Prepare quarterly and annual ICJIA performance reports with the Program Director and finance",
+                "Prepare quarterly and annual performance reports with the Program Director and finance",
                 "Serve as the program's point of contact for monitoring visits, site visits, and audit requests",
-                "Maintain files, consents, and documentation to grant standards — correct gaps before they become findings",
+                "Maintain files, consents, and documentation to program standards — correct gaps before they become findings",
                 "Track spending against personnel, supplies, and participant incentive lines and flag variances",
             ]),
             ("Partnerships", [
@@ -4249,14 +4249,13 @@ JOBS = [
         "required": [
             "Bachelor's degree in social work, criminal justice, public administration, or human services; equivalent experience considered",
             "Four or more years in re-entry, violence prevention, workforce development, or human services, including at least one year supervising staff",
-            "Demonstrated experience managing a grant-funded program, including performance reporting and compliance documentation",
+            "Demonstrated experience managing a program with formal performance reporting and compliance documentation",
             "Strong data discipline — able to hold a team to timely, accurate entry and to read outcome data critically",
             "Excellent written and verbal communication with participants, funders, and partners alike",
             "Ability to work some evenings and weekends aligned to cohort and participant schedules",
         ],
         "preferred": [
             "Master's degree in social work, public administration, or a related field",
-            "Experience with State of Illinois grant administration and GATA requirements",
             "Lived experience with the criminal legal system",
             "Established relationships across Chicago South Side reentry, legal, and employer networks",
             "Training in trauma-informed or clinical supervision",
@@ -4279,7 +4278,7 @@ JOBS = [
         "schedule": "Part-time, 25 hours per week",
         "reports_to": "Re-Entry Program Director",
         "location": "6620 S. King Drive, Chicago, and community sites",
-        "term": "September 1, 2026 – August 31, 2027 (renewable, subject to funding)",
+        "term": "September 1, 2026 – August 31, 2027 (renewable)",
         "funding": "",
         "teaser": "Case management plus co-facilitation of the six-week re-entry cohort, across all four cycles.",
         "summary": (
@@ -4347,7 +4346,7 @@ JOBS = [
         "schedule": "Part-time, 25 hours per week",
         "reports_to": "Re-Entry Program Director",
         "location": "6620 S. King Drive, Chicago, and community sites",
-        "term": "September 1, 2026 – August 31, 2027 (renewable, subject to funding)",
+        "term": "September 1, 2026 – August 31, 2027 (renewable)",
         "funding": "",
         "teaser": "The participant's consistent point of contact, from intake through placement and follow-up.",
         "summary": (
@@ -4357,7 +4356,7 @@ JOBS = [
         ),
         "summary_2": (
             "This position is part-time by design. The 25-hour schedule lets us hold specialized, high-touch "
-            "case management capacity while stretching grant resources, and is structured around participant "
+            "case management capacity while stretching limited resources, and is structured around participant "
             "availability and cohort session days."
         ),
         "duties": [
