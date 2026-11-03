@@ -4062,53 +4062,6 @@ CAREERS_EMAIL = "careers@projecthood.org"
 
 JOBS = [
     {
-        "slug": "senior-director-development",
-        "title": "Senior Director of Development",
-        "dept": "Development",
-        "tag": "tag-yellow",
-        "type": "Full-time, exempt",
-        "pay": "$110,000 \u2013 $125,000 annually, commensurate with experience",
-        "schedule": "Full-time salaried",
-        "reports_to": "Executive Office",
-        "location": "Chicago, IL \u2014 6620 S. King Drive, with regular presence at the LEOC once it opens",
-        "term": "",
-        "funding": "",
-        "teaser": "Major gifts, national philanthropy, and the fundraising strategy that funds what comes next.",
-        "summary": (
-            "Project H.O.O.D. is hiring a Senior Director of Development to lead major gifts, "
-            "national philanthropy, and fundraising strategy."
-        ),
-        "summary_2": (
-            "The Leadership and Economic Opportunity Center \u2014 90,000 square feet of gym, pool, "
-            "training floors and classrooms on the block where Pastor Brooks spent a winter on a "
-            "rooftop \u2014 is still ahead of us. This role carries the fundraising that gets it open "
-            "and sustains everything the organization does next. As our founder puts it: let\u2019s "
-            "build something that outlives us."
-        ),
-        "duties": [
-            ("Where the role focuses", [
-                "<strong>Major gifts</strong> \u2014 the organization\u2019s largest individual and institutional relationships",
-                "<strong>National philanthropy</strong> \u2014 growing support beyond Chicago",
-                "<strong>Fundraising strategy</strong> \u2014 the plan that funds the next phase of the organization",
-            ]),
-        ],
-        "required": [],
-        "preferred": [],
-        "first_year": [],
-        "note": (
-            "The full job description for this role is still being finalized. Email "
-            "<a href=\"mailto:careers@projecthood.org?subject=Senior%20Director%20of%20Development\">"
-            "careers@projecthood.org</a> and we will send it as soon as it is ready \u2014 or send a "
-            "r\u00e9sum\u00e9 now and we will be in touch."
-        ),
-        "conditions": (
-            "Full-time, based at the Woodlawn campus, and at the Leadership and Economic Opportunity "
-            "Center once it opens. Evening and weekend hours for donor events and travel for national "
-            "philanthropy work."
-        ),
-        "fair_chance": False,
-    },
-    {
         "slug": "impact-officer",
         "title": "Impact Officer",
         "dept": "",
@@ -4196,207 +4149,6 @@ JOBS = [
             "travel required."
         ),
         "fair_chance": False,
-    },
-    {
-        "slug": "assistant-reentry-director",
-        "title": "Assistant Re-Entry Director",
-        "dept": "Re-Entry Services",
-        "tag": "tag-blue",
-        "type": "Full-time, exempt",
-        "pay": "$65,000 annually",
-        "schedule": "Full-time, 1.0 FTE",
-        "reports_to": "Re-Entry Program Director",
-        "location": "6620 S. King Drive, Chicago, and community sites",
-        "term": "September 1, 2026 – August 31, 2027 (renewable)",
-        "funding": "",
-        "teaser": "The operational lead of the Re-Entry program — the person who makes sure the work actually runs.",
-        "summary": (
-            "The Program Director sets direction and carries external relationships. The Assistant Director "
-            "makes sure the work actually runs — cohorts launch on schedule, caseloads stay covered, data "
-            "is entered, and the program can withstand a monitoring visit on any given day."
-        ),
-        "summary_2": (
-            "This position directly supervises the part-time Re-Entry Coordinators and the Workforce Case "
-            "Manager, and serves as acting lead in the Program Director's absence. It is the position most "
-            "responsible for whether the program's participant, placement, and retention targets are met."
-        ),
-        "duties": [
-            ("Program operations", [
-                "Manage day-to-day delivery across intake, case management, cohort training, and employment placement",
-                "Schedule and launch all four six-week cohort cycles — facilitators, space, materials, recruitment",
-                "Monitor caseload distribution and rebalance to hold service quality at roughly 15–20 participants per coordinator",
-                "Troubleshoot service delivery breakdowns and remove barriers for front-line staff",
-            ]),
-            ("Supervision and staff development", [
-                "Directly supervise the Re-Entry Coordinators and the Workforce Case Manager",
-                "Lead weekly case conferencing and individual supervision",
-                "Onboard and train new re-entry staff; set expectations and conduct reviews",
-                "Build a team culture consistent with our principle-based management approach",
-            ]),
-            ("Data, reporting, and compliance", [
-                "Own the accuracy and timeliness of all participant data in the system of record",
-                "Prepare quarterly and annual performance reports with the Program Director and finance",
-                "Serve as the program's point of contact for monitoring visits, site visits, and audit requests",
-                "Maintain files, consents, and documentation to program standards — correct gaps before they become findings",
-                "Track spending against personnel, supplies, and participant incentive lines and flag variances",
-            ]),
-            ("Partnerships", [
-                "Manage relationships with housing, legal, behavioral health, and workforce partners",
-                "Coordinate the contracted expungement legal services and life skills facilitation scopes",
-                "Represent the program with courts, parole and probation, and community partners",
-            ]),
-        ],
-        "required": [
-            "Bachelor's degree in social work, criminal justice, public administration, or human services; equivalent experience considered",
-            "Four or more years in re-entry, violence prevention, workforce development, or human services, including at least one year supervising staff",
-            "Demonstrated experience managing a program with formal performance reporting and compliance documentation",
-            "Strong data discipline — able to hold a team to timely, accurate entry and to read outcome data critically",
-            "Excellent written and verbal communication with participants, funders, and partners alike",
-            "Ability to work some evenings and weekends aligned to cohort and participant schedules",
-        ],
-        "preferred": [
-            "Master's degree in social work, public administration, or a related field",
-            "Lived experience with the criminal legal system",
-            "Established relationships across Chicago South Side reentry, legal, and employer networks",
-            "Training in trauma-informed or clinical supervision",
-        ],
-        "first_year": [],
-        "conditions": (
-            "Based at the Woodlawn campus with regular presence at community and partner sites. Some evening "
-            "and weekend hours to support cohort sessions and participant needs. Local travel required."
-        ),
-        "fair_chance": True,
-    },
-    {
-        "slug": "reentry-coordinator-ii",
-        "title": "Re-Entry Coordinator II",
-        "subtitle": "Cohort Facilitation",
-        "dept": "Re-Entry Services",
-        "tag": "tag-red",
-        "type": "Part-time, non-exempt",
-        "pay": "$20.00 per hour ($26,000 annualized)",
-        "schedule": "Part-time, 25 hours per week",
-        "reports_to": "Re-Entry Program Director",
-        "location": "6620 S. King Drive, Chicago, and community sites",
-        "term": "September 1, 2026 – August 31, 2027 (renewable)",
-        "funding": "",
-        "teaser": "Case management plus co-facilitation of the six-week re-entry cohort, across all four cycles.",
-        "summary": (
-            "The Re-Entry Coordinator II carries the same direct case management responsibilities as the "
-            "Coordinator I, and additionally co-facilitates the six-week re-entry cohort training curriculum "
-            "across all four cohort cycles."
-        ),
-        "summary_2": (
-            "This position is part-time by design. The 25-hour schedule is structured to align with cohort "
-            "session days, workshop facilitation, and individual participant follow-up."
-        ),
-        "duties": [
-            ("Case management", [
-                "Carry a caseload of approximately 15–20 active participants",
-                "Conduct structured intake assessments in the program's data system",
-                "Develop individualized service plans with each participant",
-                "Provide regular check-ins and consistent, high-touch follow-up",
-                "Coordinate referrals to housing and legal partners, including expungement legal services",
-                "Document participant progress and employment outcomes",
-                "Support crisis intervention as needed",
-            ]),
-            ("Cohort facilitation", [
-                "Co-facilitate the six-week re-entry cohort curriculum across all four cycles",
-                "Coordinate participant engagement, recruitment, and retention for each cohort",
-                "Track and document attendance for every session",
-                "Prepare session materials and coordinate logistics with the contracted life skills facilitator",
-                "Identify participants at risk of disengaging and intervene before they drop out",
-                "Capture the cohort completion data required for participant completion incentives",
-            ]),
-            ("Team and program support", [
-                "Participate in weekly case conferencing with the Re-Entry team",
-                "Coordinate with the Workforce Case Manager on employment readiness and placement handoffs",
-                "Contribute participant success stories and outcome data for program reporting",
-            ]),
-        ],
-        "required": [
-            "High school diploma or equivalent; associate's or bachelor's degree in social work, human services, or criminal justice preferred",
-            "Two or more years in case management, re-entry services, violence prevention, or workforce development",
-            "Demonstrated experience facilitating groups, workshops, or training cohorts with adult learners",
-            "Ability to build trust quickly with justice-involved adults and to hold participants accountable with respect",
-            "Working proficiency with case management or CRM software and comfort documenting work daily",
-            "Ability to work a schedule that includes evenings and weekends aligned to cohort session days",
-        ],
-        "preferred": [
-            "Lived experience with the criminal legal system",
-            "Curriculum delivery or adult education training",
-            "Knowledge of Chicago South Side housing, legal, behavioral health, and workforce resources",
-            "Training in motivational interviewing, trauma-informed care, or crisis intervention",
-        ],
-        "first_year": [],
-        "conditions": (
-            "25 hours per week, structured around participant availability and cohort session days, including "
-            "some evening and weekend hours. Work is performed at the Woodlawn campus and at community and "
-            "partner sites; local travel is required."
-        ),
-        "fair_chance": True,
-    },
-    {
-        "slug": "reentry-coordinator-i",
-        "title": "Re-Entry Coordinator I",
-        "dept": "Re-Entry Services",
-        "tag": "tag-red",
-        "type": "Part-time, non-exempt",
-        "pay": "$20.00 per hour ($26,000 annualized)",
-        "schedule": "Part-time, 25 hours per week",
-        "reports_to": "Re-Entry Program Director",
-        "location": "6620 S. King Drive, Chicago, and community sites",
-        "term": "September 1, 2026 – August 31, 2027 (renewable)",
-        "funding": "",
-        "teaser": "The participant's consistent point of contact, from intake through placement and follow-up.",
-        "summary": (
-            "The Re-Entry Coordinator I provides direct, high-touch case management to individuals returning "
-            "to the community from incarceration or court involvement. The Coordinator is the participant's "
-            "consistent point of contact from intake through employment placement and follow-up."
-        ),
-        "summary_2": (
-            "This position is part-time by design. The 25-hour schedule lets us hold specialized, high-touch "
-            "case management capacity while stretching limited resources, and is structured around participant "
-            "availability and cohort session days."
-        ),
-        "duties": [
-            ("Case management", [
-                "Carry a caseload of approximately 15–20 active participants",
-                "Conduct structured intake assessments in the program's data system",
-                "Develop individualized service plans with each participant",
-                "Provide regular check-ins and consistent, high-touch follow-up",
-                "Coordinate referrals to housing and legal partners, including expungement legal services",
-                "Document participant progress and employment outcomes",
-                "Support crisis intervention as needed",
-            ]),
-            ("Team and program support", [
-                "Participate in weekly case conferencing with the Re-Entry team",
-                "Coordinate with the Workforce Case Manager on employment readiness and placement handoffs",
-                "Contribute participant success stories and outcome data for program reporting",
-                "Represent Project H.O.O.D. with partners, courts, and community stakeholders",
-            ]),
-        ],
-        "required": [
-            "High school diploma or equivalent; associate's or bachelor's degree in social work, human services, or criminal justice preferred",
-            "Two or more years in case management, re-entry services, violence prevention, or workforce development",
-            "Ability to build trust quickly with justice-involved adults and to hold participants accountable with respect",
-            "Working proficiency with case management or CRM software and comfort documenting work daily",
-            "Reliable transportation and ability to travel locally to partner sites and community locations",
-            "Ability to work a schedule that includes some evenings and weekends",
-        ],
-        "preferred": [
-            "Lived experience with the criminal legal system",
-            "Knowledge of Chicago South Side housing, legal, behavioral health, and workforce resources",
-            "Training in motivational interviewing, trauma-informed care, or crisis intervention",
-            "Existing relationships with parole, probation, or reentry partners",
-        ],
-        "first_year": [],
-        "conditions": (
-            "25 hours per week, structured around participant availability and cohort session days, including "
-            "some evening and weekend hours. Work is performed at the Woodlawn campus and at community and "
-            "partner sites; local travel is required."
-        ),
-        "fair_chance": True,
     },
 ]
 
@@ -4534,6 +4286,7 @@ def _job_full_html(job):
 _jobs_cards_html = "".join(_job_card_html(j) for j in JOBS)
 _jobs_full_html = "".join(_job_full_html(j) for j in JOBS)
 _jobs_count = len(JOBS)
+_jobs_noun = "position" if _jobs_count == 1 else "positions"
 
 careers_body = f"""
 <section class="hero bg-green">
@@ -4571,7 +4324,7 @@ careers_body = f"""
 <section class="section bg-offwhite" id="openings">
   <div class="wrap">
     <div class="eyebrow">Open roles</div>
-    <h2>{_jobs_count} positions open now.</h2>
+    <h2>{_jobs_count} {_jobs_noun} open now.</h2>
     <p class="lead" style="max-width:var(--w-read);">Full descriptions are below &mdash; each one has its own link you can send to someone directly.</p>
     <div class="grid-3" style="margin-top:var(--sp-4);">
       {_jobs_cards_html}
