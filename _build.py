@@ -450,7 +450,7 @@ def _admin_fetch_events():
     horizon = now_utc + timedelta(days=ADMIN_HORIZON_DAYS)
     query = (
         SUPABASE_URL + "/rest/v1/events"
-        "?select=id,title,starts_at,location,status"
+        "?select=id,title,starts_at,location,status,flyer_url"
         "&status=eq.published"
         "&starts_at=gte." + now_utc.strftime("%Y-%m-%dT%H:%M:%SZ") +
         "&starts_at=lte." + horizon.strftime("%Y-%m-%dT%H:%M:%SZ") +
@@ -495,7 +495,7 @@ def _admin_fetch_events():
             "date_str": dt.strftime("%a, %b %-d · %-I:%M %p"),
             "location": (row.get("location") or "").strip() or "Woodlawn",
             "url": f"{ADMIN_RSVP_BASE}/{row.get('id')}",
-            "image": "",
+            "image": (row.get("flyer_url") or "").strip(),
             "is_free": True,
             "cta": "RSVP",
             "_dt": dt.strftime("%Y-%m-%dT%H:%M:%S"),
