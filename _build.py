@@ -283,6 +283,20 @@ GCAL_ICS_URL = ("https://calendar.google.com/calendar/ical/"
                 + GCAL_ID.replace("@", "%40") + "/public/basic.ics")
 GCAL_HORIZON_DAYS = 180   # only show calendar events this far out
 
+# --- Admin panel events (Supabase) ---------------------------------------
+# The admin panel at projecthood-admin.vercel.app writes events to Supabase.
+# Only rows with status='published' are visible to this key, and that is
+# enforced by a row-level security policy in the database, not by this file.
+#
+# The key below is Supabase's PUBLISHABLE key. It is meant to sit in client
+# code and already ships inside the admin app's browser bundle, so putting it
+# here adds no exposure. It grants exactly what an anonymous reader is allowed,
+# which for this table is published events only.
+SUPABASE_URL = "https://vzpqgmvwoxzlpodlcwfg.supabase.co"
+SUPABASE_PUBLISHABLE_KEY = "sb_publishable__hjAcbaskuoNNJc16TnABQ_L292iKmG"
+ADMIN_HORIZON_DAYS = 180
+ADMIN_RSVP_BASE = "https://projecthood-admin.vercel.app/rsvp"
+
 def _ics_unescape(s):
     return (s.replace("\\n", "\n").replace("\\N", "\n")
              .replace("\\,", ",").replace("\\;", ";").replace("\\\\", "\\"))
@@ -385,6 +399,76 @@ def _gcal_fetch_events():
         })
     return events if events else None
 
+def _admin_fetch_events():
+    """
+    Fetch published events entered in the admin panel.
+
+    Same shape as _eb_fetch_events / _gcal_fetch_events, or None. Datetimes are
+    naive America/Chicago to match the calendar feed. A failure here is never
+    fatal: the page still builds from Eventbrite and the public calendar.
+    """
+    from datetime import datetime, timedelta, timezone
+    if urlreq is None:
+        return None
+
+    now_utc = datetime.now(timezone.utc)
+    horizon = now_utc + timedelta(days=ADMIN_HORIZON_DAYS)
+    query = (
+        SUPABASE_URL + "/rest/v1/events"
+        "?select=id,title,starts_at,location,status"
+        "&status=eq.published"
+        "&starts_at=gte." + now_utc.strftime("%Y-%m-%dT%H:%M:%SZ") +
+        "&starts_at=lte." + horizon.strftime("%Y-%m-%dT%H:%M:%SZ") +
+        "&order=starts_at.asc"
+    )
+    try:
+        req = urlreq.Request(query, headers={
+            "apikey": SUPABASE_PUBLISHABLE_KEY,
+            "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY,
+            "Accept": "application/json",
+            "User-Agent": "ph-site-build",
+        })
+        with urlreq.urlopen(req, timeout=15) as resp:
+            rows = json.loads(resp.read().decode("utf-8", "replace"))
+    except Exception as exc:
+        print(f"  [Admin] Could not fetch admin events: {exc}")
+        return None
+
+    try:
+        from zoneinfo import ZoneInfo
+        central = ZoneInfo("America/Chicago")
+    except Exception:
+        central = None
+
+    events = []
+    for row in rows:
+        raw = (row.get("starts_at") or "").replace("Z", "+00:00")
+        try:
+            dt = datetime.fromisoformat(raw)
+        except Exception:
+            continue
+        if dt.tzinfo is not None:
+            # Match the calendar feed's convention: naive, America/Chicago.
+            dt = (dt.astimezone(central) if central
+                  else dt.astimezone(timezone.utc) - timedelta(hours=5))
+            dt = dt.replace(tzinfo=None)
+        title = (row.get("title") or "").strip()
+        if not title:
+            continue
+        events.append({
+            "title": title,
+            "date_str": dt.strftime("%a, %b %-d · %-I:%M %p"),
+            "location": (row.get("location") or "").strip() or "Woodlawn",
+            "url": f"{ADMIN_RSVP_BASE}/{row.get('id')}",
+            "image": "",
+            "is_free": True,
+            "cta": "RSVP",
+            "_dt": dt.strftime("%Y-%m-%dT%H:%M:%S"),
+            "_src": "admin",
+        })
+    return events if events else None
+
+
 def _norm_title(t):
     t = re.sub(r"[^a-z0-9 ]", "", t.lower())
     t = re.sub(r"\b(20\d\d|the|a|an|with|in|hood)\b", "", t)
@@ -417,6 +501,45 @@ def _merge_events(eb, gcal):
     merged.sort(key=lambda ev: ev.get("_dt") or "9999")
     return merged
 
+def _apply_admin_events(admin, feed):
+    """
+    Admin-panel events take precedence over the automated feeds.
+
+    Anything in Eventbrite or the calendar that looks like the same event (same
+    normalised title, within 10 days) is dropped in favour of the admin record.
+    Without this, staff could edit an event in the panel and the page would go
+    on showing the feed's version — which is the failure this change exists to
+    fix. An empty admin list leaves the feeds exactly as they were.
+    """
+    from datetime import datetime
+    admin = list(admin or [])
+    feed = list(feed or [])
+    if not admin:
+        return feed
+
+    def _d(ev):
+        try:
+            return datetime.fromisoformat(ev["_dt"])
+        except Exception:
+            return None
+
+    kept = []
+    for f in feed:
+        fd, clash = _d(f), False
+        for a in admin:
+            ad = _d(a)
+            if fd and ad and _norm_title(f["title"]) == _norm_title(a["title"]) \
+                    and abs((fd - ad).days) <= 10:
+                clash = True
+                break
+        if not clash:
+            kept.append(f)
+
+    out = admin + kept
+    out.sort(key=lambda ev: ev.get("_dt") or "9999")
+    return out
+
+
 # Try fetching live events now; fall back to hardcoded cards if unavailable
 _live_events = _eb_fetch_events(time_filter="current_future", order="start_asc", status="live")
 if _live_events:
@@ -426,7 +549,12 @@ else:
 _gcal_events = _gcal_fetch_events()
 if _gcal_events:
     print(f"  [GCal] Loaded {len(_gcal_events)} upcoming events from public calendar ✓")
-_merged_events = _merge_events(_live_events, _gcal_events)
+_admin_events = _admin_fetch_events()
+if _admin_events:
+    print(f"  [Admin] Loaded {len(_admin_events)} published events from the admin panel ✓")
+
+_merged_events = _apply_admin_events(
+    _admin_events, _merge_events(_live_events, _gcal_events))
 if _merged_events:
     _event_cards_html = _build_event_cards_html(_merged_events)
 else:
