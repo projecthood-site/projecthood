@@ -297,6 +297,41 @@ SUPABASE_PUBLISHABLE_KEY = "sb_publishable__hjAcbaskuoNNJc16TnABQ_L292iKmG"
 ADMIN_HORIZON_DAYS = 180
 ADMIN_RSVP_BASE = "https://projecthood-admin.vercel.app/rsvp"
 
+# --- Curated events ------------------------------------------------------
+# Events that exist only as a flyer: not in Eventbrite, not on the public
+# calendar, so no automated source can see them. Keep this list short and
+# delete entries once they are past — nothing prunes it automatically.
+#
+# Shape matches the other sources. `image` is a repo-relative path, `_dt` is
+# naive America/Chicago, and `cta` labels the button.
+CURATED_EVENTS = [
+    {
+        "title": "Everybody Eats \u2014 Thanksgiving Food Giveaway",
+        "date_str": "Sat, Nov 21 \u00b7 10:00 AM",
+        "location": "New Beginnings Church \u00b7 6620 S. King Drive",
+        "url": "https://projecthood.networkforgood.com/",
+        "image": "img/events/everybody-eats-2026-11-21.jpg",
+        "is_free": True,
+        "cta": "Sponsor a family",
+        "_dt": "2026-11-21T10:00:00",
+        "_src": "curated",
+    },
+]
+
+
+def _curated_events():
+    """Hand-maintained events, filtered to those still ahead of us."""
+    from datetime import datetime
+    now = datetime.now()
+    out = []
+    for ev in CURATED_EVENTS:
+        try:
+            if datetime.fromisoformat(ev["_dt"]) >= now:
+                out.append(dict(ev))
+        except Exception:
+            continue
+    return out or None
+
 def _ics_unescape(s):
     return (s.replace("\\n", "\n").replace("\\N", "\n")
              .replace("\\,", ",").replace("\\;", ";").replace("\\\\", "\\"))
@@ -553,8 +588,14 @@ _admin_events = _admin_fetch_events()
 if _admin_events:
     print(f"  [Admin] Loaded {len(_admin_events)} published events from the admin panel ✓")
 
+_curated = _curated_events()
+if _curated:
+    print(f"  [Curated] {len(_curated)} hand-entered event(s) \u2713")
+
+# Curated and admin entries both outrank the automated feeds.
 _merged_events = _apply_admin_events(
-    _admin_events, _merge_events(_live_events, _gcal_events))
+    (_curated or []) + (_admin_events or []),
+    _merge_events(_live_events, _gcal_events))
 if _merged_events:
     _event_cards_html = _build_event_cards_html(_merged_events)
 else:
