@@ -3352,12 +3352,17 @@ volunteer_body = f"""
     </div>
     <div>
       <div class="eyebrow" style="color:var(--red);">Volunteer signup</div>
-      <div style="background:var(--offwhite);padding:var(--sp-4);border:2px dashed var(--line);">
-        <p style="font-family:var(--font-display);text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:var(--muted);">Google Form embed · on real site</p>
-        <h3 style="margin:10px 0;">Project H.O.O.D. Volunteer Signup</h3>
-        <p style="font-size:14px;">Name, email, phone, areas of interest, availability, background-check consent — responses go directly to our volunteer coordinator's Google Sheet.</p>
-        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfSJM9VCqgcNPJN8ji3-3-W41BHlyoTtLrlWzqFu4LvgoxDow/viewform" style="margin-top:12px;">Volunteer signup form →</a>
-      </div>
+      <iframe
+        src="https://form.jotform.com/263136607422049"
+        title="Project H.O.O.D. Volunteer Signup"
+        width="100%"
+        height="900"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        style="border:none;"
+        loading="lazy">Loading…</iframe>
+      <p style="font-size:14px;color:var(--muted);margin-top:10px;">Form not loading? <a href="https://form.jotform.com/263136607422049" target="_blank" rel="noopener">Open it in a new tab →</a></p>
     </div>
   </div>
 </section>
